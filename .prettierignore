@@ -1,0 +1,10 @@
+dist/
+.astro/
+node_modules/
+package-lock.json
+
+# Прозовые/данные-документы вне зоны действия форматтера кода (см. T-002:
+# массовое переформатирование markdown/JSON — не часть этой задачи)
+docs/
+fixtures/
+CLAUDE.md
