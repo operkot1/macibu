@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/*
+ * Токены — см. docs/04-design-system.md §1–4.
+ *
+ * Намеренно НЕ переопределены здесь (совпадают со значениями Tailwind v4
+ * по умолчанию один в один, задавать их заново значило бы дублировать
+ * дефолт без причины):
+ *   - шкала отступов (space-1..space-16, база 4px) — это ровно дефолтная
+ *     шкала Tailwind (0.25rem × номер), p-4 / gap-6 / m-10 и т.д. уже дают
+ *     нужные 16px/24px/40px;
+ *   - брейкпоинты sm/md/lg/xl (640/768/1024/1280) — дефолт Tailwind v4.
+ */
+
+@theme {
+  /* §1 Цветовые токены */
+  --color-primary-600: #1d4e89;
+  --color-primary-700: #163c69;
+  --color-primary-100: #e6eef6;
+  --color-neutral-900: #14181f;
+  --color-neutral-600: #4a5160;
+  --color-neutral-300: #c7ccd4;
+  --color-neutral-100: #f4f5f7;
+  --color-neutral-0: #ffffff;
+  --color-success-600: #1e7a46;
+  --color-warning-600: #b4740e;
+  --color-warning-100: #fbf0dc;
+  --color-danger-600: #b3261e;
+  --color-danger-100: #fbe9e7;
+  --color-focus-ring: #0b5fff;
+
+  /* Шрифт — см. docs/04, вступление. Файлы Inter (@font-face) не входят в
+     эту задачу (T-004 задаёт только токены, не загрузку конкретного
+     шрифта) — системный стек работает как фактический фолбэк уже сейчас. */
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* §2 Типографика — база 16px. text-display и text-h1 дополнительно
+     переопределяются на md (768px) отдельным правилом ниже — Tailwind v4
+     не позволяет закодировать брейкпоинт-зависимость внутри одного
+     @theme-токена. */
+  --text-display: 2rem; /* 32px */
+  --text-display--line-height: 2.5rem; /* 40px */
+  --text-display--font-weight: 700;
+
+  --text-h1: 1.75rem; /* 28px */
+  --text-h1--line-height: 2.25rem; /* 36px */
+  --text-h1--font-weight: 700;
+
+  --text-h2: 1.375rem; /* 22px */
+  --text-h2--line-height: 1.875rem; /* 30px */
+  --text-h2--font-weight: 700;
+
+  --text-h3: 1.125rem; /* 18px */
+  --text-h3--line-height: 1.625rem; /* 26px */
+  --text-h3--font-weight: 600;
+
+  --text-body: 1rem; /* 16px */
+  --text-body--line-height: 1.5rem; /* 24px */
+  --text-body--font-weight: 400;
+
+  --text-body-sm: 0.875rem; /* 14px */
+  --text-body-sm--line-height: 1.25rem; /* 20px */
+  --text-body-sm--font-weight: 400;
+
+  --text-caption: 0.75rem; /* 12px */
+  --text-caption--line-height: 1rem; /* 16px */
+  --text-caption--font-weight: 500;
+
+  --text-numeric: 1.25rem; /* 20px */
+  --text-numeric--line-height: 1.75rem; /* 28px */
+  --text-numeric--font-weight: 700;
+  /* tabular-nums — отдельная встроенная Tailwind-утилита, применяется
+     вместе с классом text-numeric: class="text-numeric tabular-nums" */
+
+  /* §4 Радиусы и тени — значения docs/04 отличаются от дефолта Tailwind,
+     переопределяем явно */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(20, 24, 31, 0.06);
+  --shadow-md: 0 4px 12px rgba(20, 24, 31, 0.1);
+}
+
+/* text-display/text-h1 на md (768px) — см. docs/04 §2. Брейкпоинт совпадает
+   с дефолтным --breakpoint-md Tailwind v4, поэтому здесь буквенное
+   значение 768px, а не переменная (в media-условии CSS custom property
+   с рассчитываемым брейкпоинтом использовать нельзя). */
+@media (width >= 768px) {
+  .text-display {
+    font-size: 2.5rem; /* 40px */
+    line-height: 3rem; /* 48px */
+  }
+
+  .text-h1 {
+    font-size: 2rem; /* 32px */
+    line-height: 2.5rem; /* 40px */
+  }
+}
