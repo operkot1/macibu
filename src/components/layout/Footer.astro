@@ -1,0 +1,94 @@
+---
+// Footer — docs/05-components.md §2. dataFreshness-поля — string | null,
+// как и DataFreshnessProps (T-018): до реального ETL честного значения
+// может не быть вовсе.
+import DataFreshness from "../content/DataFreshness.astro";
+
+export interface FooterProps {
+  currentLocale: "lv" | "ru";
+  dataFreshness: {
+    csddTariffsUpdatedAt: string | null;
+    ratingsUpdatedAt: string | null;
+  };
+}
+
+const { currentLocale, dataFreshness }: FooterProps = Astro.props;
+
+const links = {
+  lv: {
+    metodologija: "/lv/autoskolas/metodologija/",
+    kontakti: "/lv/kontakti/",
+    privatuma: "/lv/privatuma-politika/",
+  },
+  ru: {
+    metodologija: "/ru/avtoshkoly/metodologiya/",
+    kontakti: "/ru/kontakty/",
+    privatuma: "/ru/politika-konfidencialnosti/",
+  },
+} as const;
+
+const text = {
+  lv: {
+    metodologija: "Reitinga metodoloģija",
+    dataSourceLabel: "Datu avots",
+    dataSourceText: "CSDD atklātie dati",
+    kontakti: "Kontakti",
+    privatuma: "Privātuma politika",
+  },
+  ru: {
+    metodologija: "Методика рейтинга",
+    dataSourceLabel: "Источник данных",
+    dataSourceText: "Открытые данные CSDD",
+    kontakti: "Контакты",
+    privatuma: "Политика конфиденциальности",
+  },
+} as const;
+
+const l = links[currentLocale];
+const t = text[currentLocale];
+
+// 90 дней — порог по docs/03-data-model.md для тарифов ("ссылка на
+// официальный источник обязательна при устаревании >90 дней"). Для
+// рейтинга явного числа в docs/03 нет — переиспользую тот же порог
+// (согласуется с квартальной периодичностью обновления schools/instructors,
+// на которых рейтинг основан).
+const staleAfterDays = { csddTariffs: 90, ratings: 90 } as const;
+---
+
+<footer class="border-neutral-300 text-body-sm text-neutral-600 border-t p-4">
+  <nav class="mb-4 flex flex-wrap gap-4">
+    <a
+      href={l.metodologija}
+      class="focus-visible:ring-focus-ring rounded-md hover:underline"
+    >
+      {t.metodologija}
+    </a>
+    <a
+      href={l.kontakti}
+      class="focus-visible:ring-focus-ring rounded-md hover:underline"
+    >
+      {t.kontakti}
+    </a>
+    <a
+      href={l.privatuma}
+      class="focus-visible:ring-focus-ring rounded-md hover:underline"
+    >
+      {t.privatuma}
+    </a>
+  </nav>
+
+  <p class="mb-2">{t.dataSourceLabel}: {t.dataSourceText}</p>
+
+  <DataFreshness
+    label={currentLocale === "lv" ? "CSDD tarifi" : "Тарифы CSDD"}
+    updatedAt={dataFreshness.csddTariffsUpdatedAt}
+    staleAfterDays={staleAfterDays.csddTariffs}
+    locale={currentLocale}
+  />
+  <DataFreshness
+    label={currentLocale === "lv" ? "Reitings" : "Рейтинг"}
+    updatedAt={dataFreshness.ratingsUpdatedAt}
+    staleAfterDays={staleAfterDays.ratings}
+    locale={currentLocale}
+  />
+</footer>

@@ -4,14 +4,19 @@
 // обязательный string, но состояние "unknown" буквально описано как
 // "нет данных", что required-строка исключает. Поправлено здесь и в
 // docs/05-components.md на nullable.
+// locale — добавлено сверх исходного контракта: без него компонент
+// хардкодил русский текст независимо от языка страницы (найдено при
+// интеграции в Footer, T-014, — реальный баг смешения языков на LV-версии).
 
 export interface DataFreshnessProps {
   label: string;
   updatedAt: string | null;
   staleAfterDays: number;
+  locale: "lv" | "ru";
 }
 
-const { label, updatedAt, staleAfterDays }: DataFreshnessProps = Astro.props;
+const { label, updatedAt, staleAfterDays, locale }: DataFreshnessProps =
+  Astro.props;
 
 type FreshnessState = "fresh" | "stale" | "unknown";
 
@@ -27,12 +32,11 @@ function computeState(
   return daysSince > staleAfterDays ? "stale" : "fresh";
 }
 
-function formatDate(updatedAt: string): string {
-  return new Date(updatedAt).toLocaleDateString("lv-LV", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  });
+function formatDate(updatedAt: string, locale: "lv" | "ru"): string {
+  return new Date(updatedAt).toLocaleDateString(
+    locale === "lv" ? "lv-LV" : "ru-LV",
+    { year: "numeric", month: "2-digit", day: "2-digit" },
+  );
 }
 
 const state = computeState(updatedAt, staleAfterDays);
@@ -43,12 +47,25 @@ const toneClass: Record<FreshnessState, string> = {
   unknown: "text-neutral-600",
 };
 
+const phrases = {
+  lv: {
+    fresh: (d: string) => `${label}: pārbaudīts ${d}`,
+    stale: (d: string) => `${label}: atjaunots ${d} — pārbaudām aktualitāti`,
+    unknown: () => `${label}: nav datu`,
+  },
+  ru: {
+    fresh: (d: string) => `${label}: проверено ${d}`,
+    stale: (d: string) => `${label}: обновлено ${d} — проверяем актуальность`,
+    unknown: () => `${label}: нет данных`,
+  },
+} as const;
+
 function buildText(state: FreshnessState): string {
-  if (state === "unknown") return `${label}: нет данных`;
-  const formatted = formatDate(updatedAt as string);
+  if (state === "unknown") return phrases[locale].unknown();
+  const formatted = formatDate(updatedAt as string, locale);
   return state === "fresh"
-    ? `${label}: проверено ${formatted}`
-    : `${label}: обновлено ${formatted} — проверяем актуальность`;
+    ? phrases[locale].fresh(formatted)
+    : phrases[locale].stale(formatted);
 }
 
 const text = buildText(state);

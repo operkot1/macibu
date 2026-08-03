@@ -102,7 +102,10 @@ interface LangSwitchProps {
 ```ts
 interface FooterProps {
   currentLocale: "lv" | "ru";
-  dataFreshness: { csddTariffsUpdatedAt: string; ratingsUpdatedAt: string };
+  dataFreshness: {
+    csddTariffsUpdatedAt: string | null;
+    ratingsUpdatedAt: string | null;
+  };
 }
 ```
 Содержит: ссылку на методику рейтинга (`p3-metodologija`), источники данных,
@@ -158,6 +161,7 @@ interface DataFreshnessProps {
   label: string;              // "Тарифы CSDD", "Рейтинг"
   updatedAt: string | null;   // ISO date; null → состояние unknown
   staleAfterDays: number;     // порог, после которого статус меняется на warning
+  locale: "lv" | "ru";        // без этого статусный текст хардкодится на одном языке — найдено при интеграции в Footer (T-014)
 }
 ```
 Состояния: `fresh` (`color-success-600`, «Проверено {дата}»), `stale`
