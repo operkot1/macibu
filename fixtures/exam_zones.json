@@ -1,0 +1,51 @@
+{
+  "updated_at": "2026-07-20T00:00:00Z",
+  "source": "editorial-seed",
+  "zones": [
+    {
+      "id": "zone-riga-01",
+      "city_id": "riga",
+      "csdd_center_id": "csdd-riga-vienibas",
+      "title_lv": "Vienības gatve — pilsētas maršruts",
+      "title_ru": "Vienības gatve — городской маршрут",
+      "description_lv": "Biežāk izmantotais pilsētas maršruts no CSDD Vienības gatvē virzienā uz centru.",
+      "description_ru": "Самый частый городской маршрут от CSDD на Vienības gatve в сторону центра.",
+      "geo": { "lat": 56.9496, "lng": 24.1052 },
+      "route_type": "city",
+      "submitted_by": "editorial",
+      "submitted_at": "2026-06-01T00:00:00Z",
+      "moderation_status": "approved",
+      "upvotes": 14
+    },
+    {
+      "id": "zone-riga-02",
+      "city_id": "riga",
+      "csdd_center_id": "csdd-riga-vienibas",
+      "title_lv": "Apļa braukšana pie Krasta ielas",
+      "title_ru": "Круговое движение на Krasta iela",
+      "description_lv": "Bieži pārbaudīta apļveida krustojuma iemaņa eksāmenā.",
+      "description_ru": "Часто проверяемый навык кругового движения на экзамене.",
+      "geo": { "lat": 56.9302, "lng": 24.1234 },
+      "route_type": "maneuvers",
+      "submitted_by": "ugc",
+      "submitted_at": "2026-07-15T00:00:00Z",
+      "moderation_status": "approved",
+      "upvotes": 6
+    },
+    {
+      "id": "zone-daugavpils-01",
+      "city_id": "daugavpils",
+      "csdd_center_id": "csdd-daugavpils",
+      "title_lv": "Nomaļu ielu maršruts",
+      "title_ru": "Маршрут по окраинным улицам",
+      "description_lv": "Nesen iesniegts, gaida moderāciju.",
+      "description_ru": "Недавно добавлено, ожидает модерации.",
+      "geo": { "lat": 55.8747, "lng": 26.5363 },
+      "route_type": "city",
+      "submitted_by": "ugc",
+      "submitted_at": "2026-07-30T00:00:00Z",
+      "moderation_status": "pending",
+      "upvotes": 1
+    }
+  ]
+}

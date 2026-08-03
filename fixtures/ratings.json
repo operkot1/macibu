@@ -1,0 +1,76 @@
+{
+  "updated_at": "2026-08-01T03:00:00Z",
+  "methodology_version": "1.0.0",
+  "entries": [
+    {
+      "subject_type": "instructor",
+      "subject_id": "ins-berzins",
+      "pass_rate": 0.7083,
+      "sample_size": 48,
+      "confidence": "sufficient",
+      "rank_score": 0.5682,
+      "rank": 1,
+      "calculated_at": "2026-08-01T03:00:00Z"
+    },
+    {
+      "subject_type": "instructor",
+      "subject_id": "ins-petrova",
+      "pass_rate": 0.6452,
+      "sample_size": 31,
+      "confidence": "sufficient",
+      "rank_score": 0.4695,
+      "rank": 2,
+      "calculated_at": "2026-08-01T03:00:00Z"
+    },
+    {
+      "subject_type": "instructor",
+      "subject_id": "ins-ozols",
+      "pass_rate": 0.6296,
+      "sample_size": 27,
+      "confidence": "limited",
+      "rank_score": 0.4423,
+      "rank": 3,
+      "calculated_at": "2026-08-01T03:00:00Z"
+    },
+    {
+      "subject_type": "instructor",
+      "subject_id": "ins-lapins",
+      "pass_rate": 1.0,
+      "sample_size": 3,
+      "confidence": "insufficient",
+      "rank_score": 0.4385,
+      "rank": 4,
+      "calculated_at": "2026-08-01T03:00:00Z"
+    },
+    {
+      "subject_type": "school",
+      "subject_id": "sch-x",
+      "pass_rate": 0.7083,
+      "sample_size": 48,
+      "confidence": "sufficient",
+      "rank_score": 0.5682,
+      "rank": 1,
+      "calculated_at": "2026-08-01T03:00:00Z"
+    },
+    {
+      "subject_type": "school",
+      "subject_id": "sch-y",
+      "pass_rate": 0.6452,
+      "sample_size": 31,
+      "confidence": "sufficient",
+      "rank_score": 0.4695,
+      "rank": 2,
+      "calculated_at": "2026-08-01T03:00:00Z"
+    },
+    {
+      "subject_type": "school",
+      "subject_id": "sch-fors",
+      "pass_rate": 0.6296,
+      "sample_size": 27,
+      "confidence": "limited",
+      "rank_score": 0.4423,
+      "rank": 3,
+      "calculated_at": "2026-08-01T03:00:00Z"
+    }
+  ]
+}

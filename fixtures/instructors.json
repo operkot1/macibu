@@ -1,0 +1,66 @@
+{
+  "updated_at": "2026-08-01T00:00:00Z",
+  "source": "csdd-export-xlsx",
+  "instructors": [
+    {
+      "id": "ins-berzins",
+      "full_name": "A. Bērziņš",
+      "school_id": "sch-x",
+      "city_id": "riga",
+      "languages": ["lv", "ru"],
+      "gearbox": ["manual"],
+      "exam_attempts_total": 48,
+      "exam_passes_total": 34,
+      "sample_period_from": "2025-02-01",
+      "sample_period_to": "2026-07-31"
+    },
+    {
+      "id": "ins-petrova",
+      "full_name": "I. Petrova",
+      "school_id": "sch-y",
+      "city_id": "riga",
+      "languages": ["ru"],
+      "gearbox": ["manual", "automatic"],
+      "exam_attempts_total": 31,
+      "exam_passes_total": 20,
+      "sample_period_from": "2025-02-01",
+      "sample_period_to": "2026-07-31"
+    },
+    {
+      "id": "ins-ozols",
+      "full_name": "M. Ozols",
+      "school_id": "sch-fors",
+      "city_id": "riga",
+      "languages": ["lv", "ru"],
+      "gearbox": ["manual"],
+      "exam_attempts_total": 27,
+      "exam_passes_total": 17,
+      "sample_period_from": "2025-02-01",
+      "sample_period_to": "2026-07-31"
+    },
+    {
+      "id": "ins-lapins",
+      "full_name": "K. Lapiņš",
+      "school_id": "sch-z",
+      "city_id": "daugavpils",
+      "languages": ["lv"],
+      "gearbox": ["manual"],
+      "exam_attempts_total": 3,
+      "exam_passes_total": 3,
+      "sample_period_from": "2025-02-01",
+      "sample_period_to": "2026-07-31"
+    },
+    {
+      "id": "ins-jauns",
+      "full_name": "R. Kalniņš",
+      "school_id": "sch-new",
+      "city_id": "liepaja",
+      "languages": ["lv"],
+      "gearbox": ["manual"],
+      "exam_attempts_total": 0,
+      "exam_passes_total": 0,
+      "sample_period_from": "2025-02-01",
+      "sample_period_to": "2026-07-31"
+    }
+  ]
+}

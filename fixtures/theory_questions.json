@@ -1,0 +1,53 @@
+{
+  "updated_at": "2026-06-01T00:00:00Z",
+  "source": "editorial",
+  "questions": [
+    {
+      "id": "q-001",
+      "categories": ["B"],
+      "text_lv": "Kāds ir maksimālais atļautais braukšanas ātrums apdzīvotā vietā, ja nav citu norāžu?",
+      "text_ru": "Какая максимальная разрешённая скорость движения в населённом пункте при отсутствии иных знаков?",
+      "media_url": null,
+      "options": [
+        { "id": "a", "text_lv": "40 km/h", "text_ru": "40 км/ч", "is_correct": false },
+        { "id": "b", "text_lv": "50 km/h", "text_ru": "50 км/ч", "is_correct": true },
+        { "id": "c", "text_lv": "60 km/h", "text_ru": "60 км/ч", "is_correct": false }
+      ],
+      "explanation_lv": "Apdzīvotā vietā bez papildu norādēm maksimālais ātrums ir 50 km/h.",
+      "explanation_ru": "В населённом пункте без дополнительных знаков максимальная скорость — 50 км/ч.",
+      "difficulty": "easy",
+      "official_reference": "CSDD-T-014"
+    },
+    {
+      "id": "q-002",
+      "categories": ["B"],
+      "text_lv": "Kurā gadījumā transportlīdzekļa vadītājam ir pienākums ieslēgt avārijas gaismas signalizāciju?",
+      "text_ru": "В каком случае водитель обязан включить аварийную сигнализацию?",
+      "media_url": null,
+      "options": [
+        { "id": "a", "text_lv": "Apstājoties negaidīti uz brauktuves", "text_ru": "При вынужденной остановке на проезжей части", "is_correct": true },
+        { "id": "b", "text_lv": "Braucot pa apli", "text_ru": "При движении по кругу", "is_correct": false },
+        { "id": "c", "text_lv": "Iebraucot apdzīvotā vietā", "text_ru": "При въезде в населённый пункт", "is_correct": false }
+      ],
+      "explanation_lv": "Avārijas gaismas jāieslēdz, ja transportlīdzeklis negaidīti apstājies un rada bīstamību citiem satiksmes dalībniekiem.",
+      "explanation_ru": "Аварийная сигнализация включается при вынужденной остановке, создающей опасность для других участников движения.",
+      "difficulty": "medium",
+      "official_reference": "CSDD-T-102"
+    },
+    {
+      "id": "q-003",
+      "categories": ["B"],
+      "text_lv": "Video jautājums: kā pareizi rīkoties, tuvojoties šim negulētam gājēju pārejai?",
+      "text_ru": "Видео-вопрос: как правильно действовать при приближении к этому нерегулируемому пешеходному переходу?",
+      "media_url": "https://example.lv/media/theory/q-003.mp4",
+      "options": [
+        { "id": "a", "text_lv": "Palēnināt un dot ceļu gājējiem, kas jau uzsākuši šķērsošanu", "text_ru": "Снизить скорость и уступить пешеходам, начавшим переход", "is_correct": true },
+        { "id": "b", "text_lv": "Turpināt braukt ar to pašu ātrumu", "text_ru": "Продолжать движение с той же скоростью", "is_correct": false }
+      ],
+      "explanation_lv": "Pie negulēta gājēju pārejas vadītājam jādod ceļš gājējiem, kas jau atrodas uz brauktuves.",
+      "explanation_ru": "На нерегулируемом пешеходном переходе водитель обязан уступить пешеходам, уже находящимся на проезжей части.",
+      "difficulty": "medium",
+      "official_reference": null
+    }
+  ]
+}

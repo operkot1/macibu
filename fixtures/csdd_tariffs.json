@@ -1,0 +1,77 @@
+{
+  "updated_at": "2026-08-01T00:00:00Z",
+  "source": "csdd-export-xlsx",
+  "source_file_ref": "csdd_tarifi_2026-08-01.xlsx",
+  "tariffs": [
+    {
+      "id": "medical-certificate",
+      "category": "all",
+      "name_lv": "Vadītāja veselības apliecība",
+      "name_ru": "Медицинская справка водителя",
+      "price_eur": 32.5,
+      "unit": "one-time",
+      "effective_from": "2025-01-01",
+      "source_document": "MK noteikumi Nr.522"
+    },
+    {
+      "id": "white-license",
+      "category": "B",
+      "name_lv": "Baltā vadītāja apliecība",
+      "name_ru": "Белые водительские права",
+      "price_eur": 13.0,
+      "unit": "one-time",
+      "effective_from": "2025-01-01",
+      "source_document": "CSDD maksas pakalpojumu cenrādis"
+    },
+    {
+      "id": "theory-course",
+      "category": "B",
+      "name_lv": "Teorijas kurss (11 moduļi)",
+      "name_ru": "Теоретический курс (11 модулей)",
+      "price_eur": 200.0,
+      "unit": "one-time",
+      "effective_from": "2025-01-01",
+      "source_document": "Vidējā tirgus cena, autoskolu aptauja"
+    },
+    {
+      "id": "first-aid-course",
+      "category": "all",
+      "name_lv": "Pirmās palīdzības kurss",
+      "name_ru": "Курс первой помощи",
+      "price_eur": 50.0,
+      "unit": "one-time",
+      "effective_from": "2025-01-01",
+      "source_document": "Vidējā tirgus cena"
+    },
+    {
+      "id": "theory-exam",
+      "category": "B",
+      "name_lv": "Teorijas eksāmens CSDD",
+      "name_ru": "Экзамен по теории CSDD",
+      "price_eur": 11.4,
+      "unit": "per-attempt",
+      "effective_from": "2025-01-01",
+      "source_document": "CSDD maksas pakalpojumu cenrādis"
+    },
+    {
+      "id": "driving-exam",
+      "category": "B",
+      "name_lv": "Braukšanas eksāmens CSDD",
+      "name_ru": "Экзамен по вождению CSDD",
+      "price_eur": 50.57,
+      "unit": "per-attempt",
+      "effective_from": "2025-01-01",
+      "source_document": "CSDD maksas pakalpojumu cenrādis"
+    },
+    {
+      "id": "plastic-card",
+      "category": "all",
+      "name_lv": "Vadītāja apliecības izgatavošana",
+      "name_ru": "Изготовление пластиковой карты прав",
+      "price_eur": 22.41,
+      "unit": "one-time",
+      "effective_from": "2025-01-01",
+      "source_document": "CSDD maksas pakalpojumu cenrādis"
+    }
+  ]
+}

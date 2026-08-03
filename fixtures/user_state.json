@@ -1,0 +1,34 @@
+{
+  "user_id": null,
+  "phase": "learning-theory",
+  "wizard_result": {
+    "age_bracket": "18-24",
+    "has_medical_certificate": "no",
+    "gearbox_preference": "manual",
+    "city_id": "riga",
+    "computed_steps": [
+      { "step_id": "medical-certificate", "price_eur": 32.5, "duration_label": "1-7д" },
+      { "step_id": "white-license", "price_eur": 13.0, "duration_label": "1д" },
+      { "step_id": "choose-school", "price_eur": 0, "duration_label": "1-2н" },
+      { "step_id": "theory-course", "price_eur": 200.0, "duration_label": "4-8н" },
+      { "step_id": "first-aid-course", "price_eur": 50.0, "duration_label": "1д" },
+      { "step_id": "theory-exam", "price_eur": 11.4, "duration_label": "" },
+      { "step_id": "practice", "price_eur": 720.0, "duration_label": "2-4м" },
+      { "step_id": "driving-exam", "price_eur": 50.57, "duration_label": "" },
+      { "step_id": "plastic-card", "price_eur": 22.41, "duration_label": "" }
+    ],
+    "computed_total_eur": 1099.88,
+    "computed_deadline": "2029-08-02"
+  },
+  "saved_path_email": "user@example.com",
+  "theory_progress": [
+    { "question_id": "q-001", "correct": true, "answered_at": "2026-08-01T10:03:00Z" },
+    { "question_id": "q-002", "correct": false, "answered_at": "2026-08-01T10:04:12Z" }
+  ],
+  "tracker_lessons": [],
+  "deadlines": [
+    { "label": "Teorijas eksāmens derīgs 1 gadu", "due_date": "2027-08-01" }
+  ],
+  "push_opt_in": false,
+  "updated_at": "2026-08-01T10:04:12Z"
+}
