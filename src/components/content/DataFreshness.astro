@@ -1,0 +1,59 @@
+---
+// DataFreshness — docs/05-components.md §3.
+// updatedAt: string | null — в исходном контракте было заявлено как
+// обязательный string, но состояние "unknown" буквально описано как
+// "нет данных", что required-строка исключает. Поправлено здесь и в
+// docs/05-components.md на nullable.
+
+export interface DataFreshnessProps {
+  label: string;
+  updatedAt: string | null;
+  staleAfterDays: number;
+}
+
+const { label, updatedAt, staleAfterDays }: DataFreshnessProps = Astro.props;
+
+type FreshnessState = "fresh" | "stale" | "unknown";
+
+function computeState(
+  updatedAt: string | null,
+  staleAfterDays: number,
+): FreshnessState {
+  if (updatedAt === null) return "unknown";
+  const updatedDate = new Date(updatedAt);
+  if (Number.isNaN(updatedDate.getTime())) return "unknown";
+  const daysSince =
+    (Date.now() - updatedDate.getTime()) / (1000 * 60 * 60 * 24);
+  return daysSince > staleAfterDays ? "stale" : "fresh";
+}
+
+function formatDate(updatedAt: string): string {
+  return new Date(updatedAt).toLocaleDateString("lv-LV", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+}
+
+const state = computeState(updatedAt, staleAfterDays);
+
+const toneClass: Record<FreshnessState, string> = {
+  fresh: "text-success-600",
+  stale: "text-warning-600",
+  unknown: "text-neutral-600",
+};
+
+function buildText(state: FreshnessState): string {
+  if (state === "unknown") return `${label}: нет данных`;
+  const formatted = formatDate(updatedAt as string);
+  return state === "fresh"
+    ? `${label}: проверено ${formatted}`
+    : `${label}: обновлено ${formatted} — проверяем актуальность`;
+}
+
+const text = buildText(state);
+---
+
+<p class:list={["text-body-sm", toneClass[state]]} data-freshness-state={state}>
+  {text}
+</p>
