@@ -217,11 +217,19 @@ boolean → тест падает с точным путём до поля, фа
 единственная линейка под нашу Astro 5. Критерий с намеренной порчей
 подтверждён вживую: `InvalidContentEntryDataError`, `route_id: Required`.
 
-**T-012 — HomeTemplate-заглушка**
+**T-012 — HomeTemplate-заглушка** — ✅ выполнено
 Цель: минимальная главная на LV/RU (Header/Footer, без контентных блоков
 Ф1). Предусловия: T-007, T-013, T-014. Файлы: `src/pages/lv/index.astro`,
 `src/pages/ru/index.astro`, `src/components/layout/HomeTemplate.astro`.
 Применяется СК-Контент. DoD: стандартный + СК-Контент.
+Реализовано: `src/pages/{lv,ru}/index.astro` теперь тонкие обёртки над
+`HomeTemplate.astro` (заменили стаб T-007). Сверх буквального списка файлов
+— `hreflang`×3 и `canonical` в `<head>` (не контентный блок, сквозное
+правило docs/07, `alternateUrl` для `LangSwitch` всё равно вычислялся) и
+реальные (не `null`) даты для `Footer.dataFreshness` через `getCsddTariffs()`/
+`getRatings()` (T-009) — фикстурные данные существуют, писать «нет данных»
+было бы нечестно. Полная интеграция Header+PhaseBar(×2, общий стор)+Footer
+подтверждена вживую в реальном браузере (Playwright, временно).
 
 **T-013 — Header + LangSwitch** — ✅ выполнено
 Цель: реализовать по props из docs/05-components.md §2. Предусловия:
