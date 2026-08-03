@@ -1,0 +1,100 @@
+---
+/*
+ * Header — docs/05-components.md §2. Верхнее меню — 5 пунктов по пилларам
+ * (docs/02-routes.md, Модуль 7 §7.4). LangSwitch НЕ получает alternateUrl
+ * через пропсы Header (в HeaderProps такого поля нет буквально по
+ * контракту) — вызывающий шаблон передаёт готовый <LangSwitch> в
+ * именованный слот "lang-switch", Header только резервирует для него
+ * место в разметке.
+ *
+ * Бургер-меню на мобильном — чистый CSS (checkbox + peer-*), без JS.
+ * checkbox/label/nav — прямые дети <header>, иначе peer-* селекторы (это
+ * CSS sibling-комбинаторы) не сработают через вложенность.
+ */
+
+export interface HeaderProps {
+  currentLocale: "lv" | "ru";
+  currentRouteId: string;
+}
+
+const { currentLocale, currentRouteId }: HeaderProps = Astro.props;
+
+const navItems = [
+  {
+    routeId: "p1-index",
+    label: { lv: "Sāku", ru: "Начинаю" },
+    path: { lv: "/lv/ka-iegut-tiesibas/", ru: "/ru/kak-poluchit-prava/" },
+  },
+  {
+    routeId: "p2-index",
+    label: { lv: "CSDD eksāmeni", ru: "Экзамены CSDD" },
+    path: { lv: "/lv/csdd-eksameni/", ru: "/ru/ekzameny-csdd/" },
+  },
+  {
+    routeId: "p3-index",
+    label: { lv: "Autoskolas", ru: "Автошколы" },
+    path: { lv: "/lv/autoskolas/", ru: "/ru/avtoshkoly/" },
+  },
+  {
+    routeId: "p4-index",
+    label: { lv: "Mācos braukt", ru: "Учусь водить" },
+    path: { lv: "/lv/macos-braukt/", ru: "/ru/uchus-vodit/" },
+  },
+  {
+    routeId: "p5-index",
+    label: { lv: "Esmu vadītājs", ru: "Уже водитель" },
+    path: { lv: "/lv/esmu-vaditajs/", ru: "/ru/ya-voditel/" },
+  },
+] as const;
+
+const homeHref = `/${currentLocale}/`;
+---
+
+<header class="border-neutral-300 relative border-b">
+  <input
+    type="checkbox"
+    id="nav-toggle"
+    class="peer sr-only"
+    aria-controls="main-nav"
+    aria-label={currentLocale === "lv" ? "Izvēlne" : "Меню"}
+  />
+  <label
+    for="nav-toggle"
+    class="text-h3 focus-visible:ring-focus-ring absolute top-1/2 right-4 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-md peer-focus-visible:ring-2 md:hidden"
+  >
+    ☰
+  </label>
+
+  <div class="flex items-center justify-between gap-4 p-4">
+    <a href={homeHref} class="text-h3 text-neutral-900 font-bold">ПОРТАЛ</a>
+    <slot name="lang-switch" />
+  </div>
+
+  <nav
+    id="main-nav"
+    class="border-neutral-300 hidden border-t peer-checked:block md:block md:border-t-0"
+  >
+    <ul class="flex flex-col md:flex-row md:gap-2 md:p-2">
+      {
+        navItems.map((item) => (
+          <li>
+            <a
+              href={item.path[currentLocale]}
+              aria-current={
+                item.routeId === currentRouteId ? "page" : undefined
+              }
+              class:list={[
+                "text-body focus-visible:ring-focus-ring block px-4 py-3 rounded-md",
+                item.routeId === currentRouteId
+                  ? "bg-primary-100 text-primary-700 font-bold"
+                  : "text-neutral-900 hover:bg-neutral-100",
+              ]}
+            >
+              {item.label[currentLocale]}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>

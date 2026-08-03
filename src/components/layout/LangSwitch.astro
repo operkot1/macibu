@@ -1,0 +1,45 @@
+---
+// LangSwitch — docs/05-components.md §2.
+// alternateUrl === null → состояние disabled: второй язык виден, но
+// неактивен, с подсказкой — не скрывается молча и не ведёт на 404
+// (docs/07-i18n-seo.md §2).
+
+export interface LangSwitchProps {
+  currentLocale: "lv" | "ru";
+  alternateUrl: string | null;
+}
+
+const { currentLocale, alternateUrl }: LangSwitchProps = Astro.props;
+
+const otherLocale = currentLocale === "lv" ? "ru" : "lv";
+const otherLabel = otherLocale.toUpperCase();
+const disabledHint =
+  otherLocale === "ru"
+    ? "Страница пока недоступна на русском"
+    : "Lapa pagaidām nav pieejama latviešu valodā";
+---
+
+<div class="text-body-sm flex items-center gap-1">
+  <span class="text-neutral-900 px-2 py-1 font-bold" aria-current="true">
+    {currentLocale.toUpperCase()}
+  </span>
+  <span class="text-neutral-300" aria-hidden="true">|</span>
+  {
+    alternateUrl !== null ? (
+      <a
+        href={alternateUrl}
+        class="text-primary-600 hover:text-primary-700 focus-visible:ring-focus-ring rounded-md px-2 py-1"
+      >
+        {otherLabel}
+      </a>
+    ) : (
+      <span
+        class="text-neutral-300 cursor-not-allowed px-2 py-1"
+        aria-disabled="true"
+        title={disabledHint}
+      >
+        {otherLabel}
+      </span>
+    )
+  }
+</div>

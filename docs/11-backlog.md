@@ -223,12 +223,21 @@ boolean → тест падает с точным путём до поля, фа
 `src/pages/ru/index.astro`, `src/components/layout/HomeTemplate.astro`.
 Применяется СК-Контент. DoD: стандартный + СК-Контент.
 
-**T-013 — Header + LangSwitch**
+**T-013 — Header + LangSwitch** — ✅ выполнено
 Цель: реализовать по props из docs/05-components.md §2. Предусловия:
 T-007. Файлы: `src/components/layout/Header.astro`,
 `src/components/layout/LangSwitch.astro`. Применяется СК-Инструмент
 частично (состояние `disabled` для LangSwitch без пары — тестируется).
 DoD: стандартный.
+Реализовано: 5 пунктов меню — пилларные `p1-index`…`p5-index` из
+docs/02-routes.md. **Известное временное состояние:** все 5 ведут на
+страницы, которых ещё нет (Pillar-индексы — Ф1–Ф3), это 404 до
+соответствующих фаз, не баг Header. `LangSwitch` вставляется через
+именованный слот `lang-switch` (не проп Header — в `HeaderProps` такого
+поля нет по контракту docs/05, Header только резервирует место в
+разметке). Бургер-меню — чистый CSS (`checkbox` + `peer-*`), проверено на
+скомпилированном CSS, не только по исходнику. Подсветка активного пункта
+и `disabled`-состояние LangSwitch проверены на реальном HTML.
 
 **T-014 — Footer**
 Цель: реализовать по docs/05-components.md, включая слот `DataFreshness`
