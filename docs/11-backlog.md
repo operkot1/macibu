@@ -201,12 +201,21 @@ boolean → тест падает с точным путём до поля, фа
 без неё в git тест гарантированно красный на чистом клоне/в CI; закоммичена
 в этой же задаче по решению пользователя.
 
-**T-011 — Content Collections конфиг**
+**T-011 — Content Collections конфиг** — ✅ выполнено
 Цель: схема frontmatter (`route_id`, `lang`, `title`, `description`,
 `pageType`) для контентных коллекций. Предусловия: T-008. Файлы:
 `src/content/config.ts`. Критерии: сборка падает, если frontmatter не
 соответствует схеме. Проверка: намеренно убрать `route_id` из тестового
 файла, увидеть ошибку сборки. DoD: стандартный.
+Реализовано: файл — `src/content.config.ts` (Content Layer API в Astro 5,
+не `src/content/config.ts` — та локация для legacy-режима более старых
+версий, подтверждено исходниками пакета). Коллекция `pages`, loader
+`glob()` на `src/content/pages/**/*.mdx`. `pageType` — строка, не enum:
+полный список типов страниц ещё не привязан к реальным `*Template.astro`.
+Потребовалась установка `@astrojs/mdx` (без неё `*.mdx` не читается вовсе)
+— последняя версия требует Astro 7, использована `@astrojs/mdx@4.3.14`,
+единственная линейка под нашу Astro 5. Критерий с намеренной порчей
+подтверждён вживую: `InvalidContentEntryDataError`, `route_id: Required`.
 
 **T-012 — HomeTemplate-заглушка**
 Цель: минимальная главная на LV/RU (Header/Footer, без контентных блоков
