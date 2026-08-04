@@ -10,6 +10,8 @@
     "lint": "eslint . --max-warnings=0",
     "format:check": "prettier --check .",
     "test:unit": "vitest run",
+    "budget": "tsx scripts/check-bundle-budget.ts",
+    "i18n:coverage": "tsx scripts/check-i18n-coverage.ts",
     "prepare": "husky"
   },
   "dependencies": {
@@ -35,6 +37,7 @@
     "lint-staged": "^17.3.0",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
+    "tsx": "^4.23.5",
     "typescript": "^5.7.0",
     "typescript-eslint": "^8.65.0",
     "vitest": "^4.1.10"
