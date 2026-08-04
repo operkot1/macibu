@@ -1,0 +1,29 @@
+---
+// Callout — docs/05-components.md §3.
+
+export interface CalloutProps {
+  tone: "info" | "warning" | "danger" | "success";
+  title?: string;
+}
+
+const { tone, title }: CalloutProps = Astro.props;
+
+const toneClasses: Record<CalloutProps["tone"], string> = {
+  info: "bg-primary-100 text-primary-700 border-primary-600",
+  warning: "bg-warning-100 text-warning-600 border-warning-600",
+  danger: "bg-danger-100 text-danger-600 border-danger-600",
+  success: "bg-success-100 text-success-600 border-success-600",
+};
+
+// warning/danger — это предупреждение об опасности/ошибке, role="alert"
+// имеет смысл (немедленно объявляется скринридером); info/success —
+// дополнительная информация, не требующая прерывания, role="note".
+const role = tone === "warning" || tone === "danger" ? "alert" : "note";
+---
+
+<div class:list={["rounded-md border-l-4 p-4", toneClasses[tone]]} role={role}>
+  {title && <p class="text-h3 mb-2 font-bold">{title}</p>}
+  <div class="text-body">
+    <slot />
+  </div>
+</div>

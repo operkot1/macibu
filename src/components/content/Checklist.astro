@@ -1,0 +1,25 @@
+---
+// Checklist — docs/05-components.md §3. Специализация StepList без цен и
+// сроков, для справочных чек-листов («Что взять с собой», «Проверка перед
+// покупкой»). Чистый HTML <ul>, без стейта — не то же самое, что
+// интерактивный чек-лист (тот — StepListInteractive.tsx, T-036).
+
+export interface ChecklistProps {
+  items: string[];
+}
+
+const { items }: ChecklistProps = Astro.props;
+---
+
+<ul class="flex flex-col gap-2">
+  {
+    items.map((item) => (
+      <li class="text-body text-neutral-900 flex items-start gap-2">
+        <span class="text-primary-600 mt-1" aria-hidden="true">
+          ✓
+        </span>
+        <span>{item}</span>
+      </li>
+    ))
+  }
+</ul>

@@ -1,0 +1,59 @@
+---
+// StepList — docs/05-components.md §3. Только неинтерактивная отрисовка.
+// `interactive` сохранён в пропсах по контракту, но ветка true (чекбоксы
+// + персистентность в user_state) не реализуется здесь — это отдельный
+// остров StepListInteractive.tsx, T-036. Здесь interactive влияет только
+// на то, что isDone показывается как визуальная галочка без возможности
+// клика (кликабельность требует JS-состояния, которого в этом компоненте
+// нет по определению).
+
+export interface StepListStep {
+  index: number;
+  title: string;
+  priceEur?: number;
+  durationLabel?: string;
+  isDone?: boolean;
+}
+
+export interface StepListProps {
+  steps: StepListStep[];
+  interactive: boolean;
+}
+
+const { steps }: StepListProps = Astro.props;
+
+function formatPrice(priceEur: number): string {
+  return `${priceEur.toLocaleString("lv-LV", { minimumFractionDigits: 0, maximumFractionDigits: 2 })} €`;
+}
+---
+
+<ol class="flex flex-col gap-2">
+  {
+    steps.map((step) => (
+      <li class="border-neutral-300 flex items-center gap-3 rounded-md border p-3">
+        <span
+          class:list={[
+            "text-body-sm flex h-8 w-8 shrink-0 items-center justify-center rounded-full font-bold",
+            step.isDone
+              ? "bg-success-100 text-success-600"
+              : "bg-neutral-100 text-neutral-900",
+          ]}
+          aria-hidden="true"
+        >
+          {step.isDone ? "✓" : step.index}
+        </span>
+        <span class="text-body text-neutral-900 flex-1">{step.title}</span>
+        {step.durationLabel && (
+          <span class="text-body-sm text-neutral-600">
+            {step.durationLabel}
+          </span>
+        )}
+        {step.priceEur !== undefined && (
+          <span class="text-numeric text-neutral-900 tabular-nums">
+            {formatPrice(step.priceEur)}
+          </span>
+        )}
+      </li>
+    ))
+  }
+</ol>

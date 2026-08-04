@@ -303,12 +303,22 @@ ADR фиксирует 18, отклонений не допущено). `phaseSt
 вживую). Полная интеграция (Header/PhaseBar/Footer/LangSwitch/hreflang) на
 реальной контентной странице подтверждена браузером.
 
-**T-017 — Callout, StepList (non-interactive), Checklist, FAQ**
+**T-017 — Callout, StepList (non-interactive), Checklist, FAQ** — ✅ выполнено
 Цель: 4 контентных компонента по docs/05-components.md §3, без интерактива.
 Предусловия: T-016. Файлы: `src/components/content/{Callout,StepList,
 Checklist,FAQ}.astro`. Критерии: `FAQ.astro` генерирует `FAQPage` Schema.org
 автоматически из пропсов. Проверка: тестовая MDX-страница со всеми
 компонентами, ревью вёрстки на 375px. DoD: стандартный.
+Реализовано: у `Callout` 4 тона, а в docs/04-design-system.md светлого
+фона (`*-100`) для `success` не было — добавлен `color-success-100`
+(`#E6F4EC`) и в доку, и в `@theme`. `StepList` — только неинтерактивная
+отрисовка (`interactive` в пропсах сохранён по контракту, но не влияет на
+поведение — кликабельная версия с персистентностью это отдельный компонент
+`StepListInteractive.tsx`, T-036). Всё проверено вживую на 375px
+(скриншот) + структурно (Playwright): роли `Callout`, галочка `StepList`
+на `isDone`, переключение `<details>`, содержимое сгенерированного
+`FAQPage` JSON-LD. Найден и исправлен баг кодировки в тестовой странице
+(не в компонентах) — без `<meta charset="utf-8">` кириллица ломалась.
 
 **T-018 — DataFreshness** — ✅ выполнено (сделана раньше T-014, T-017 —
 см. ниже)
