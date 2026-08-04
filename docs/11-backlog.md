@@ -286,12 +286,22 @@ ADR фиксирует 18, отклонений не допущено). `phaseSt
 `localStorage`, из-за чего даже `typeof localStorage` триггерит warning
 при сборке — guard переведён на `typeof window`.
 
-**T-016 — ArticleTemplate + тестовый route**
+**T-016 — ArticleTemplate + тестовый route** — ✅ выполнено
 Цель: базовый шаблон статьи, обкатанный на реальном route (`about`).
 Предусловия: T-011, T-013, T-014. Файлы:
 `src/components/layout/ArticleTemplate.astro`,
 `src/content/pages/lv/about.mdx`, `src/content/pages/ru/about.mdx`.
 Применяется СК-Контент. DoD: стандартный + СК-Контент.
+Реализовано: `docs/02-routes.md` ссылался на никогда не описанный
+`LegalTemplate` для `about`/`contacts`/`privacy` — заменён на
+`ArticleTemplate` (нет документированной поведенческой разницы,
+дублировать компонент не стал). `ArticleTemplate` принимает
+`canonicalPath`/`alternateUrl` от вызывающей страницы и выводит из них
+`hreflang`/`canonical`/`x-default` — не хардкодит под конкретный route
+(поймано и исправлено до проверки). Content Collection `id` — `"lv/about"`/
+`"ru/about"` (путь относительно base минус расширение, подтверждено
+вживую). Полная интеграция (Header/PhaseBar/Footer/LangSwitch/hreflang) на
+реальной контентной странице подтверждена браузером.
 
 **T-017 — Callout, StepList (non-interactive), Checklist, FAQ**
 Цель: 4 контентных компонента по docs/05-components.md §3, без интерактива.

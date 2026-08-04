@@ -1,0 +1,96 @@
+---
+// ArticleTemplate — базовый шаблон контентной страницы (docs/11-backlog.md
+// T-016). Используется и для справочных статей, и для статичных
+// юридических страниц (about/contacts/privacy) — контракт
+// `LegalTemplate` из docs/02-routes.md никогда не был описан в
+// docs/05-components.md и поведенчески не отличался бы от этого шаблона,
+// заводить дубль не стал (see docs/02-routes.md, about/contacts/privacy).
+import { render, type CollectionEntry } from "astro:content";
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import LangSwitch from "./LangSwitch.astro";
+import PhaseBar from "./PhaseBar.tsx";
+import { getCsddTariffs, getRatings } from "../../lib/data";
+import "../../styles/base.css";
+
+type RenderResult = Awaited<ReturnType<typeof render>>;
+
+export interface ArticleTemplateProps {
+  entry: CollectionEntry<"pages">;
+  Content: RenderResult["Content"];
+  canonicalPath: string;
+  alternateUrl: string | null;
+}
+
+const { entry, Content, canonicalPath, alternateUrl }: ArticleTemplateProps =
+  Astro.props;
+const { route_id, lang, title, description } = entry.data;
+
+// Плейсхолдер-домен — docs/07-i18n-seo.md §3, до появления реального (В-4,
+// docs/00-assumptions.md).
+const baseUrl = "https://example.lv";
+
+// lv/ru пути выводятся из canonicalPath (путь этой страницы) и
+// alternateUrl (путь другого языка, переданный вызывающей страницей) —
+// не хардкодятся, шаблон переиспользуется для любых route_id. Если пары
+// нет (alternateUrl === null) — hreflang для отсутствующего языка не
+// эмитится вовсе (docs/07-i18n-seo.md §2).
+const lvPath = lang === "lv" ? canonicalPath : alternateUrl;
+const ruPath = lang === "ru" ? canonicalPath : alternateUrl;
+
+const csddTariffs = getCsddTariffs();
+const ratings = getRatings();
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={`${baseUrl}${canonicalPath}`} />
+    {
+      lvPath && (
+        <link rel="alternate" hreflang="lv-LV" href={`${baseUrl}${lvPath}`} />
+      )
+    }
+    {
+      ruPath && (
+        <link rel="alternate" hreflang="ru-LV" href={`${baseUrl}${ruPath}`} />
+      )
+    }
+    {
+      lvPath && (
+        <link
+          rel="alternate"
+          hreflang="x-default"
+          href={`${baseUrl}${lvPath}`}
+        />
+      )
+    }
+  </head>
+  <body>
+    <Header currentLocale={lang} currentRouteId={route_id}>
+      <LangSwitch
+        slot="lang-switch"
+        currentLocale={lang}
+        alternateUrl={alternateUrl}
+      />
+    </Header>
+    <PhaseBar client:load variant="sticky-mobile" currentLocale={lang} />
+    <PhaseBar client:load variant="inline-desktop" currentLocale={lang} />
+    <main class="p-4">
+      <h1 class="text-h1 text-neutral-900 mb-4">{title}</h1>
+      <div class="text-body text-neutral-900">
+        <Content />
+      </div>
+    </main>
+    <Footer
+      currentLocale={lang}
+      dataFreshness={{
+        csddTariffsUpdatedAt: csddTariffs.updated_at,
+        ratingsUpdatedAt: ratings.updated_at,
+      }}
+    />
+  </body>
+</html>
