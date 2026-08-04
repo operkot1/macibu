@@ -1,0 +1,46 @@
+---
+// AnalyticsLayerA — docs/08-analytics.md §1, Слой А: агрегатная
+// посещаемость без согласия. Cookieless, без персистентного ID, без
+// localStorage — не обработка персональных данных в смысле ePrivacy.
+//
+// Эндпоинт /api/beacon/pageview ещё не существует (нужны Cloudflare
+// Functions — T-005, отложена). До тех пор запрос получает 404 — это
+// ожидаемо, тот же паттерн, что с непостроенными Pillar-страницами в
+// Header (T-013). Клиентский механизм самодостаточен и корректен уже
+// сейчас; серверный приёмник — отдельная задача Ф2+.
+//
+// Не React-остров: не нужен фреймворк ради одного sendBeacon/fetch,
+// обычный <script> не расходует бюджет client:*-островов.
+
+export interface AnalyticsLayerAProps {
+  routeId: string;
+}
+
+const { routeId }: AnalyticsLayerAProps = Astro.props;
+---
+
+<script define:vars={{ routeId }}>
+  (function () {
+    const payload = JSON.stringify({
+      route_id: routeId,
+      path: window.location.pathname,
+      referrer: document.referrer || null,
+    });
+    const url = "/api/beacon/pageview";
+
+    if (navigator.sendBeacon) {
+      const blob = new Blob([payload], { type: "application/json" });
+      navigator.sendBeacon(url, blob);
+    } else {
+      fetch(url, {
+        method: "POST",
+        body: payload,
+        keepalive: true,
+        headers: { "Content-Type": "application/json" },
+      }).catch(function () {
+        // Эндпоинта пока нет (T-005 не сделана) — сбой ожидаем, не должен
+        // ничего ломать на странице.
+      });
+    }
+  })();
+</script>

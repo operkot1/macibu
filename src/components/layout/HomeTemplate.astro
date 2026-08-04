@@ -6,6 +6,7 @@ import Header from "./Header.astro";
 import Footer from "./Footer.astro";
 import LangSwitch from "./LangSwitch.astro";
 import PhaseBar from "./PhaseBar.tsx";
+import AnalyticsLayerA from "./AnalyticsLayerA.astro";
 import { getCsddTariffs, getRatings } from "../../lib/data";
 import "../../styles/base.css";
 
@@ -47,6 +48,7 @@ const placeholderText =
     <link rel="alternate" hreflang="x-default" href={`${baseUrl}/lv/`} />
   </head>
   <body>
+    <AnalyticsLayerA routeId="home" />
     <Header currentLocale={currentLocale} currentRouteId="home">
       <LangSwitch
         slot="lang-switch"
