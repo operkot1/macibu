@@ -22,17 +22,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Typecheck
-        run: npm run typecheck
-
-      - name: Lint
-        run: npm run lint
-
-      - name: Format check
-        run: npm run format:check
-
-      - name: Unit tests
-        run: npm run test:unit
-
-      - name: Build
-        run: npm run build
+      # Единая команда (docs/10-quality-gates.md §3): typecheck, lint,
+      # format:check, test:unit, build, budget, i18n:coverage, lighthouse.
+      # GitHub-hosted ubuntu-latest runners поставляются с предустановленным
+      # Chrome (задокументировано в actions/runner-images) — отдельная
+      # установка/CHROME_PATH не нужны. Не проверено на реальном раннере
+      # в этой сессии (нет удалённого репозитория, см. T-006c) — только
+      # локально, где Chrome пришлось указывать явным CHROME_PATH.
+      - name: Check
+        run: npm run check

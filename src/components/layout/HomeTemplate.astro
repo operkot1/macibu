@@ -25,6 +25,10 @@ const csddTariffs = getCsddTariffs();
 const ratings = getRatings();
 
 const title = currentLocale === "lv" ? "Portāls" : "Портал";
+const description =
+  currentLocale === "lv"
+    ? "Informatīvais portāls par autovadītāja apliecības iegūšanu Latvijā."
+    : "Информационный портал о получении водительских прав в Латвии.";
 const placeholderText =
   currentLocale === "lv"
     ? "Sākumlapa — izstrādē (Ф1)."
@@ -36,6 +40,7 @@ const placeholderText =
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+    <meta name="description" content={description} />
     <link rel="canonical" href={`${baseUrl}/${currentLocale}/`} />
     <link rel="alternate" hreflang="lv-LV" href={`${baseUrl}/lv/`} />
     <link rel="alternate" hreflang="ru-LV" href={`${baseUrl}/ru/`} />
