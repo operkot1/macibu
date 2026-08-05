@@ -11,6 +11,7 @@ import Footer from "./Footer.astro";
 import LangSwitch from "./LangSwitch.astro";
 import PhaseBar from "./PhaseBar.tsx";
 import AnalyticsLayerA from "./AnalyticsLayerA.astro";
+import CookieBanner from "./CookieBanner.tsx";
 import { getCsddTariffs, getRatings } from "../../lib/data";
 import "../../styles/base.css";
 
@@ -94,5 +95,6 @@ const ratings = getRatings();
         ratingsUpdatedAt: ratings.updated_at,
       }}
     />
+    <CookieBanner client:load currentLocale={lang} />
   </body>
 </html>

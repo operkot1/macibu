@@ -7,6 +7,7 @@ import Footer from "./Footer.astro";
 import LangSwitch from "./LangSwitch.astro";
 import PhaseBar from "./PhaseBar.tsx";
 import AnalyticsLayerA from "./AnalyticsLayerA.astro";
+import CookieBanner from "./CookieBanner.tsx";
 import { getCsddTariffs, getRatings } from "../../lib/data";
 import "../../styles/base.css";
 
@@ -76,5 +77,6 @@ const placeholderText =
         ratingsUpdatedAt: ratings.updated_at,
       }}
     />
+    <CookieBanner client:load currentLocale={currentLocale} />
   </body>
 </html>
