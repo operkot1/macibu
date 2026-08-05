@@ -1,14 +1,20 @@
 ---
-// HomeTemplate — заглушка Ф0 (T-012). Реальные контентные блоки Экрана 1
-// (заголовок, статистика 67%, CTA визарда, превью стоимости/рейтинга,
-// тренажёр) — T-026, Ф1. Здесь только каркас: Header + PhaseBar + Footer.
+// HomeTemplate — Экран 1 (Модуль 7 §7.5), T-026. Один основной CTA
+// (визард) — намеренно контрастный (заливка), остальные CTA — текстовые
+// ссылки, чтобы визуально не конкурировать (не только по количеству, но
+// и по весу — см. "два равнозначных CTA снижают конверсию").
+//
+// CTA визарда/калькулятора/рейтинга/тренажёра ведут на ещё не построенные
+// маршруты (T-032/T-035/T-056/T-047 — более поздние задачи Ф1/Ф2) —
+// честно 404 сейчас, тот же паттерн, что с пунктами меню Header (T-013).
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
 import LangSwitch from "./LangSwitch.astro";
 import PhaseBar from "./PhaseBar.tsx";
 import AnalyticsLayerA from "./AnalyticsLayerA.astro";
 import CookieBanner from "./CookieBanner.tsx";
-import { getCsddTariffs, getRatings } from "../../lib/data";
+import DataFreshness from "../content/DataFreshness.astro";
+import { getCsddTariffs, getRatings, getCostModel } from "../../lib/data";
 import "../../styles/base.css";
 
 export interface HomeTemplateProps {
@@ -25,24 +31,87 @@ const baseUrl = "https://example.lv";
 
 const csddTariffs = getCsddTariffs();
 const ratings = getRatings();
+const costModel = getCostModel();
 
-const title = currentLocale === "lv" ? "Portāls" : "Портал";
-const description =
-  currentLocale === "lv"
-    ? "Informatīvais portāls par autovadītāja apliecības iegūšanu Latvijā."
-    : "Информационный портал о получении водительских прав в Латвии.";
-const placeholderText =
-  currentLocale === "lv"
-    ? "Sākumlapa — izstrādē (Ф1)."
-    : "Главная — в разработке (Ф1).";
+// Честный диапазон из реальных данных (min/max по всем city×scenario в
+// фикстуре), НЕ иллюстративные "752-1945" из мокапа Модуля 7 — портал не
+// выдумывает числа (docs/03-data-model.md), а мокап не был привязан к
+// реальной модели данных.
+const totals = costModel.coefficients.map(
+  (c) =>
+    c.school_fee_eur + c.practice_fee_eur + c.csdd_fee_eur + c.medical_fee_eur,
+);
+const minCost = Math.min(...totals);
+const maxCost = Math.max(...totals);
+
+const routes = {
+  lv: {
+    wizard: "/lv/tavs-cels/",
+    kalkulators: "/lv/autoskolas/kalkulators/",
+    reitings: "/lv/autoskolas/reitings/",
+    testi: "/lv/csdd-eksameni/teorija/testi/",
+  },
+  ru: {
+    wizard: "/ru/tvoj-put/",
+    kalkulators: "/ru/avtoshkoly/kalkulyator/",
+    reitings: "/ru/avtoshkoly/rejting/",
+    testi: "/ru/ekzameny-csdd/teoriya/testy/",
+  },
+} as const;
+
+const text = {
+  lv: {
+    title: "Portāls",
+    description:
+      "Informatīvais portāls par autovadītāja apliecības iegūšanu Latvijā.",
+    heroTitle: "Tiesības Latvijā — bez pārsteigumiem un slēptām cenām",
+    heroSubtitle:
+      "Divas trešdaļas nenokārto eksāmenu ar pirmo reizi. Mēs izskaidrojam, kāpēc — un kā neiekļūt šajos 67%.",
+    wizardCtaTitle: "▶ Uzbūvēt manu ceļu",
+    wizardCtaSubtitle: "4 jautājumi · 60 sekundes",
+    phaseHeading: "Kur tu tagad esi?",
+    costHeading: "Cik tas patiešām maksā",
+    costCta: "Aprēķināt savu summu",
+    ratingHeading: "Skolu un instruktoru reitings",
+    ratingSubtitle: "Pēc oficiāliem CSDD datiem",
+    ratingCta: "Skatīt reitingu",
+    trainerHeading: "Teorijas trenažieris",
+    trainerSubtitle: "20 jautājumi dienā · 7 min",
+    trainerCta: "Sākt bez reģistrācijas",
+    csddTariffsLabel: "CSDD tarifi",
+  },
+  ru: {
+    title: "Портал",
+    description:
+      "Информационный портал о получении водительских прав в Латвии.",
+    heroTitle: "Права в Латвии — без сюрпризов и скрытых цен",
+    heroSubtitle:
+      "Две трети не сдают экзамен с первого раза. Мы объясняем, почему — и как не попасть в эти 67%.",
+    wizardCtaTitle: "▶ Построить мой путь",
+    wizardCtaSubtitle: "4 вопроса · 60 секунд",
+    phaseHeading: "Где ты сейчас?",
+    costHeading: "Сколько это реально стоит",
+    costCta: "Рассчитать свою сумму",
+    ratingHeading: "Рейтинг школ и инструкторов",
+    ratingSubtitle: "По официальным данным CSDD",
+    ratingCta: "Смотреть рейтинг",
+    trainerHeading: "Тренажёр теории",
+    trainerSubtitle: "20 вопросов в день · 7 мин",
+    trainerCta: "Начать без регистрации",
+    csddTariffsLabel: "Тарифы CSDD",
+  },
+} as const;
+
+const t = text[currentLocale];
+const r = routes[currentLocale];
 ---
 
 <html lang={currentLocale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
+    <title>{t.title}</title>
+    <meta name="description" content={t.description} />
     <link rel="canonical" href={`${baseUrl}/${currentLocale}/`} />
     <link rel="alternate" hreflang="lv-LV" href={`${baseUrl}/lv/`} />
     <link rel="alternate" hreflang="ru-LV" href={`${baseUrl}/ru/`} />
@@ -62,14 +131,64 @@ const placeholderText =
       variant="sticky-mobile"
       currentLocale={currentLocale}
     />
-    <PhaseBar
-      client:load
-      variant="inline-desktop"
-      currentLocale={currentLocale}
-    />
-    <main class="p-4">
-      <p>{placeholderText}</p>
+
+    <main class="flex flex-col gap-8 p-4">
+      <section>
+        <h1 class="text-display text-neutral-900 mb-2">{t.heroTitle}</h1>
+        <p class="text-body text-neutral-600">{t.heroSubtitle}</p>
+      </section>
+
+      <a
+        href={r.wizard}
+        class="bg-primary-600 rounded-lg p-4 text-center text-neutral-0"
+      >
+        <span class="text-h3 block font-bold">{t.wizardCtaTitle}</span>
+        <span class="text-body-sm block">{t.wizardCtaSubtitle}</span>
+      </a>
+
+      <section class="hidden md:block">
+        <h2 class="text-h3 text-neutral-900 mb-2">{t.phaseHeading}</h2>
+        <PhaseBar
+          client:load
+          variant="inline-desktop"
+          currentLocale={currentLocale}
+        />
+      </section>
+
+      <section class="border-neutral-300 border-t pt-6">
+        <h2 class="text-h3 text-neutral-900 mb-2">{t.costHeading}</h2>
+        <p class="text-numeric text-neutral-900 mb-2 tabular-nums">
+          {minCost} € — {maxCost} €
+        </p>
+        <a href={r.kalkulators} class="text-primary-600 underline">
+          {t.costCta}
+        </a>
+      </section>
+
+      <section class="border-neutral-300 border-t pt-6">
+        <h2 class="text-h3 text-neutral-900 mb-2">{t.ratingHeading}</h2>
+        <p class="text-body-sm text-neutral-600 mb-2">{t.ratingSubtitle}</p>
+        <a href={r.reitings} class="text-primary-600 underline">
+          {t.ratingCta}
+        </a>
+      </section>
+
+      <section class="border-neutral-300 border-t pt-6">
+        <h2 class="text-h3 text-neutral-900 mb-2">{t.trainerHeading}</h2>
+        <p class="text-body-sm text-neutral-600 mb-2">{t.trainerSubtitle}</p>
+        <a href={r.testi} class="text-primary-600 underline">
+          {t.trainerCta}
+        </a>
+      </section>
+
+      <DataFreshness
+        label={t.csddTariffsLabel}
+        updatedAt={csddTariffs.updated_at}
+        staleAfterDays={90}
+        locale={currentLocale}
+      />
     </main>
+
     <Footer
       currentLocale={currentLocale}
       dataFreshness={{
