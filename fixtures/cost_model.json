@@ -45,6 +45,39 @@
       "medical_fee_eur": 85,
       "is_estimated_fallback": true,
       "updated_at": "2026-07-01T00:00:00Z"
+    },
+    {
+      "city_id": "riga",
+      "gearbox": "automatic",
+      "scenario": "optimist",
+      "school_fee_eur": 325,
+      "practice_fee_eur": 480,
+      "csdd_fee_eur": 84,
+      "medical_fee_eur": 60,
+      "is_estimated_fallback": false,
+      "updated_at": "2026-07-01T00:00:00Z"
+    },
+    {
+      "city_id": "riga",
+      "gearbox": "automatic",
+      "scenario": "realist",
+      "school_fee_eur": 450,
+      "practice_fee_eur": 790,
+      "csdd_fee_eur": 135,
+      "medical_fee_eur": 85,
+      "is_estimated_fallback": false,
+      "updated_at": "2026-07-01T00:00:00Z"
+    },
+    {
+      "city_id": "riga",
+      "gearbox": "automatic",
+      "scenario": "pessimist",
+      "school_fee_eur": 560,
+      "practice_fee_eur": 1190,
+      "csdd_fee_eur": 247,
+      "medical_fee_eur": 100,
+      "is_estimated_fallback": false,
+      "updated_at": "2026-07-01T00:00:00Z"
     }
   ]
 }
