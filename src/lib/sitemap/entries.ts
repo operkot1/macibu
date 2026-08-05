@@ -16,4 +16,10 @@ export interface SitemapEntry {
 export const sitemapEntries: SitemapEntry[] = [
   { routeId: "home", lv: "/lv/", ru: "/ru/" },
   { routeId: "about", lv: "/lv/par-mums/", ru: "/ru/o-nas/" },
+  { routeId: "contacts", lv: "/lv/kontakti/", ru: "/ru/kontakty/" },
+  {
+    routeId: "privacy",
+    lv: "/lv/privatuma-politika/",
+    ru: "/ru/politika-konfidencialnosti/",
+  },
 ];

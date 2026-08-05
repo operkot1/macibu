@@ -189,8 +189,8 @@
 | route_id | путь LV | путь RU | тип | шаблон | фаза | инстр. | источник | статус |
 |---|---|---|---|---|---|---|---|---|
 | `about` | `/par-mums/` | `/o-nas/` | статичная страница | `ArticleTemplate` | Ф0 | — | static-content | в проде (T-016) |
-| `contacts` | `/kontakti/` | `/kontakty/` | статичная страница | `ArticleTemplate` | Ф0 | — | static-content | план |
-| `privacy` | `/privatuma-politika/` | `/politika-konfidencialnosti/` | юридическая страница | `ArticleTemplate` | Ф0 | — | static-content | план — **БЛОКИРУЮЩЕЕ** для `apply-*`, см. docs/09 |
+| `contacts` | `/kontakti/` | `/kontakty/` | статичная страница | `ArticleTemplate` | Ф0 | — | static-content | в проде (T-024, плейсхолдер) |
+| `privacy` | `/privatuma-politika/` | `/politika-konfidencialnosti/` | юридическая страница | `ArticleTemplate` | Ф0 | — | static-content | в проде (T-024, плейсхолдер) — контент **БЛОКИРУЮЩЕЕ** для `apply-*` до финального текста (T-075), см. docs/09 |
 | `blog-index` | `/blogs/` | `/blog/` | новости изменений в правилах | `BlogIndexTemplate` | Ф5 | — | static-content (Content Collections) | план |
 | `blog-post` | `/blogs/{slug}/` | `/blog/{slug}/` | пост | `BlogPostTemplate` | Ф5 | — | static-content | план |
 
