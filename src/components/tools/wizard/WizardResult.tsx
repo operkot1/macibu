@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import type { WizardResult as WizardResultData } from "../../../types/data";
-import { trackWizardEvent } from "../../../lib/wizard/trackWizardEvent";
+import { trackEvent } from "../../../lib/analytics/trackEvent";
 
 /*
  * WizardResult — Экран 2, нижняя часть (Модуль 7 §7.5). Только карточки
@@ -112,7 +112,7 @@ export default function WizardResult({
   const months = estimateDurationMonths(result.computed_steps);
 
   useEffect(() => {
-    trackWizardEvent("wizard_completed", {
+    trackEvent("wizard_completed", {
       total_eur: result.computed_total_eur,
       city_id: result.city_id,
       deadline: result.computed_deadline,

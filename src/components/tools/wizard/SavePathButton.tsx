@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { WizardInput } from "../../../lib/wizard/computeWizardPath";
-import { trackWizardEvent } from "../../../lib/wizard/trackWizardEvent";
+import { trackEvent } from "../../../lib/analytics/trackEvent";
 
 /*
  * SavePathButton — Экран 2, «Сохранить путь» (Модуль 7 §7.5, T-031).
@@ -17,7 +17,7 @@ import { trackWizardEvent } from "../../../lib/wizard/trackWizardEvent";
  *
  * wizard_path_saved{has_email} и wizard_share_link_copied — события Слоя Б
  * (docs/08-analytics.md §1, §2), которого пока нет (только Слой А,
- * T-021) — см. trackWizardEvent.ts.
+ * T-021) — см. lib/analytics/trackEvent.ts.
  */
 
 export interface SavePathButtonProps {
@@ -89,7 +89,7 @@ export default function SavePathButton({
       saveEmailLocally(trimmedEmail, wizardInput);
     }
     setShareUrl(buildShareUrl(wizardInput));
-    trackWizardEvent("wizard_path_saved", { has_email: hasEmail });
+    trackEvent("wizard_path_saved", { has_email: hasEmail });
   }
 
   async function handleCopy() {
@@ -97,7 +97,7 @@ export default function SavePathButton({
     try {
       await navigator.clipboard.writeText(shareUrl);
       setCopied(true);
-      trackWizardEvent("wizard_share_link_copied");
+      trackEvent("wizard_share_link_copied");
     } catch {
       // Clipboard API недоступен/отклонён — ссылка всё равно видна и
       // выделяема вручную в readonly-поле ниже.

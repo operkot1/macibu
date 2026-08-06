@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { WizardInput } from "../../../lib/wizard/computeWizardPath";
-import { trackWizardEvent } from "../../../lib/wizard/trackWizardEvent";
+import { trackEvent } from "../../../lib/analytics/trackEvent";
+import { CITY_IDS, cityLabels } from "../../../lib/cities";
 
 /*
  * WizardSteps — Экран 2 (Модуль 7 §7.5), только форма из 4 шагов. Экран
@@ -19,18 +20,6 @@ export interface WizardStepsProps {
 type AgeBracket = WizardInput["age_bracket"];
 type MedicalCertificate = WizardInput["has_medical_certificate"];
 type GearboxPreference = WizardInput["gearbox_preference"];
-
-const CITY_IDS = [
-  "riga",
-  "daugavpils",
-  "liepaja",
-  "jelgava",
-  "jurmala",
-  "ventspils",
-  "valmiera",
-  "rezekne",
-  "ogre",
-] as const;
 
 const AGE_BRACKETS: AgeBracket[] = ["16-17", "18-24", "25-35", "36+"];
 const MEDICAL_VALUES: MedicalCertificate[] = ["yes", "no", "unknown"];
@@ -64,17 +53,6 @@ const text = {
     } as Record<GearboxPreference, string>,
     q4: "Kura pilsēta?",
     cityPlaceholder: "Izvēlies pilsētu",
-    cityLabel: {
-      riga: "Rīga",
-      daugavpils: "Daugavpils",
-      liepaja: "Liepāja",
-      jelgava: "Jelgava",
-      jurmala: "Jūrmala",
-      ventspils: "Ventspils",
-      valmiera: "Valmiera",
-      rezekne: "Rēzekne",
-      ogre: "Ogre",
-    } as Record<(typeof CITY_IDS)[number], string>,
   },
   ru: {
     stepLabel: (n: number) => `Шаг ${n}/4`,
@@ -99,17 +77,6 @@ const text = {
     } as Record<GearboxPreference, string>,
     q4: "Какой город?",
     cityPlaceholder: "Выберите город",
-    cityLabel: {
-      riga: "Рига",
-      daugavpils: "Даугавпилс",
-      liepaja: "Лиепая",
-      jelgava: "Елгава",
-      jurmala: "Юрмала",
-      ventspils: "Вентспилс",
-      valmiera: "Валмиера",
-      rezekne: "Резекне",
-      ogre: "Огре",
-    } as Record<(typeof CITY_IDS)[number], string>,
   },
 } as const;
 
@@ -128,23 +95,23 @@ export default function WizardSteps({
   const [gearboxPreference, setGearboxPreference] =
     useState<GearboxPreference | null>(null);
 
-  useEffect(() => trackWizardEvent("wizard_started"), []);
+  useEffect(() => trackEvent("wizard_started"), []);
 
   function selectAge(value: AgeBracket) {
     setAgeBracket(value);
-    trackWizardEvent("wizard_step_completed", { step: 1, value });
+    trackEvent("wizard_step_completed", { step: 1, value });
     setStep(2);
   }
 
   function selectMedical(value: MedicalCertificate) {
     setMedicalCertificate(value);
-    trackWizardEvent("wizard_step_completed", { step: 2, value });
+    trackEvent("wizard_step_completed", { step: 2, value });
     setStep(3);
   }
 
   function selectGearbox(value: GearboxPreference) {
     setGearboxPreference(value);
-    trackWizardEvent("wizard_step_completed", { step: 3, value });
+    trackEvent("wizard_step_completed", { step: 3, value });
     setStep(4);
   }
 
@@ -156,7 +123,7 @@ export default function WizardSteps({
     ) {
       return;
     }
-    trackWizardEvent("wizard_step_completed", { step: 4, value: cityId });
+    trackEvent("wizard_step_completed", { step: 4, value: cityId });
     onComplete({
       age_bracket: ageBracket,
       has_medical_certificate: medicalCertificate,
@@ -241,7 +208,7 @@ export default function WizardSteps({
             </option>
             {CITY_IDS.map((id) => (
               <option key={id} value={id}>
-                {t.cityLabel[id]}
+                {cityLabels[currentLocale][id]}
               </option>
             ))}
           </select>
