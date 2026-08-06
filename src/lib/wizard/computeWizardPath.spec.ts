@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { computeWizardPath, fallbackLatviaAverage } from "./computeWizardPath";
+import { computeWizardPath } from "./computeWizardPath";
+import { fallbackLatviaAverage } from "../costModel";
 import { getCsddTariffs, getCostModel } from "../data";
 
 const tariffs = getCsddTariffs().tariffs;
