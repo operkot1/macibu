@@ -1,0 +1,21 @@
+---
+import ToolPageTemplate from "../../components/layout/ToolPageTemplate.astro";
+import Wizard from "../../components/tools/wizard/Wizard.tsx";
+import { getCsddTariffs, getCostModel } from "../../lib/data";
+
+const tariffs = getCsddTariffs().tariffs;
+const cost = getCostModel().coefficients;
+---
+
+<ToolPageTemplate
+  currentLocale="ru"
+  routeId="wizard"
+  title="Твой путь к правам"
+  description="Визард «Твой путь» — 4 вопроса, и ты увидишь все шаги, реальные цены и срок на пути к правам в Латвии."
+  heading="Твой путь к правам"
+  intro="4 вопроса, 60 секунд — и ты увидишь все шаги, цены и срок, которые ждут тебя на пути к водительскому удостоверению."
+  canonicalPath="/ru/tvoj-put/"
+  alternateUrl="/lv/tavs-cels/"
+>
+  <Wizard client:visible tariffs={tariffs} cost={cost} currentLocale="ru" />
+</ToolPageTemplate>

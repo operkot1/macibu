@@ -1,0 +1,113 @@
+---
+// ToolPageTemplate — общий шаблон для страниц-инструментов (T-032, первое
+// применение — `wizard`). Разрешает `ToolPageTemplate` из docs/02-routes.md
+// (тот же разрыв "имя есть в реестре, компонента нет", что был с
+// `LegalTemplate`/`ArticleTemplate`, T-016) — строится не под один визард,
+// т.к. в реестре ~25 будущих tool-маршрутов ссылаются на то же имя.
+//
+// В отличие от ArticleTemplate — не завязан на Content Collections
+// (`pages`): у инструментов нет длинного MDX-текста, только короткий
+// intro пропами. Сам остров инструмента — именованный default slot.
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import LangSwitch from "./LangSwitch.astro";
+import PhaseBar from "./PhaseBar.tsx";
+import AnalyticsLayerA from "./AnalyticsLayerA.astro";
+import CookieBanner from "./CookieBanner.tsx";
+import { getCsddTariffs, getRatings } from "../../lib/data";
+import "../../styles/base.css";
+
+export interface ToolPageTemplateProps {
+  currentLocale: "lv" | "ru";
+  routeId: string;
+  title: string;
+  description: string;
+  heading: string;
+  intro: string;
+  canonicalPath: string;
+  alternateUrl: string | null;
+}
+
+const {
+  currentLocale,
+  routeId,
+  title,
+  description,
+  heading,
+  intro,
+  canonicalPath,
+  alternateUrl,
+}: ToolPageTemplateProps = Astro.props;
+
+// Плейсхолдер-домен — docs/07-i18n-seo.md §3, до появления реального (В-4,
+// docs/00-assumptions.md).
+const baseUrl = "https://example.lv";
+
+const lvPath = currentLocale === "lv" ? canonicalPath : alternateUrl;
+const ruPath = currentLocale === "ru" ? canonicalPath : alternateUrl;
+
+const csddTariffs = getCsddTariffs();
+const ratings = getRatings();
+---
+
+<html lang={currentLocale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={`${baseUrl}${canonicalPath}`} />
+    {
+      lvPath && (
+        <link rel="alternate" hreflang="lv-LV" href={`${baseUrl}${lvPath}`} />
+      )
+    }
+    {
+      ruPath && (
+        <link rel="alternate" hreflang="ru-LV" href={`${baseUrl}${ruPath}`} />
+      )
+    }
+    {
+      lvPath && (
+        <link
+          rel="alternate"
+          hreflang="x-default"
+          href={`${baseUrl}${lvPath}`}
+        />
+      )
+    }
+  </head>
+  <body>
+    <AnalyticsLayerA routeId={routeId} />
+    <Header currentLocale={currentLocale} currentRouteId={routeId}>
+      <LangSwitch
+        slot="lang-switch"
+        currentLocale={currentLocale}
+        alternateUrl={alternateUrl}
+      />
+    </Header>
+    <PhaseBar
+      client:load
+      variant="sticky-mobile"
+      currentLocale={currentLocale}
+    />
+    <PhaseBar
+      client:load
+      variant="inline-desktop"
+      currentLocale={currentLocale}
+    />
+    <main class="p-4">
+      <h1 class="text-h1 text-neutral-900 mb-2">{heading}</h1>
+      <p class="text-body text-neutral-600 mb-6">{intro}</p>
+      <slot />
+    </main>
+    <Footer
+      currentLocale={currentLocale}
+      dataFreshness={{
+        csddTariffsUpdatedAt: csddTariffs.updated_at,
+        ratingsUpdatedAt: ratings.updated_at,
+      }}
+    />
+    <CookieBanner client:load currentLocale={currentLocale} />
+  </body>
+</html>
