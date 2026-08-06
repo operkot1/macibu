@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import type { WizardResult as WizardResultData } from "../../../types/data";
+import { trackWizardEvent } from "../../../lib/wizard/trackWizardEvent";
 
 /*
  * WizardResult — Экран 2, нижняя часть (Модуль 7 §7.5). Только карточки
@@ -44,6 +46,14 @@ const text = {
     deadlineLabel: "Tavs termiņš",
     deadlineRule: "braukšanas eksāmens — līdz 3 gadiem no reģistrācijas",
     deadlineDate: "Datums",
+    fallbackBadge:
+      "Šī summa ir Latvijas vidējā aplēse — tavai pilsētai precīzu datu vēl nav.",
+    ageWarningTitle: "16–17 gadi: nepieciešama baltā apliecība",
+    ageWarningBody:
+      "Šajā vecumā ceļš sākas ar balto apliecību un vecāku piekrišanu.",
+    ageWarningLink: "Uzzini vairāk",
+    ageWarningHref:
+      "/lv/ka-iegut-tiesibas/baltas-tiesibas/macities-ar-vecakiem/",
   },
   ru: {
     title: (steps: number, months: number) =>
@@ -52,6 +62,13 @@ const text = {
     deadlineLabel: "Твой дедлайн",
     deadlineRule: "экзамен вождения — до 3 лет с регистрации",
     deadlineDate: "Дата",
+    fallbackBadge:
+      "Эта сумма — усреднённая оценка по Латвии, точных данных по твоему городу пока нет.",
+    ageWarningTitle: "16–17 лет: нужны белые права",
+    ageWarningBody:
+      "В этом возрасте путь начинается с белых прав и согласия родителей.",
+    ageWarningLink: "Подробнее",
+    ageWarningHref: "/ru/kak-poluchit-prava/belye-prava/uchit-s-roditelyami/",
   },
 } as const;
 
@@ -94,14 +111,41 @@ export default function WizardResult({
   const t = text[currentLocale];
   const months = estimateDurationMonths(result.computed_steps);
 
+  useEffect(() => {
+    trackWizardEvent("wizard_completed", {
+      total_eur: result.computed_total_eur,
+      city_id: result.city_id,
+      deadline: result.computed_deadline,
+    });
+    // Событие «визард завершён» относится к конкретному result, не к
+    // жизненному циклу компонента вообще — фиксируем один раз на маунт
+    // этого результата (WizardResult размонтируется/монтируется заново
+    // при повторном прохождении визарда, T-032 соберёт этот переход).
+  }, []);
+
   return (
     <div>
+      {result.age_bracket === "16-17" && (
+        <div className="bg-primary-100 text-primary-700 border-primary-600 mb-4 rounded-md border-l-4 p-4">
+          <p className="text-h3 mb-2 font-bold">{t.ageWarningTitle}</p>
+          <p className="text-body mb-2">{t.ageWarningBody}</p>
+          <a href={t.ageWarningHref} className="text-body underline">
+            {t.ageWarningLink}
+          </a>
+        </div>
+      )}
+
       <h2 className="text-h2 text-neutral-900 mb-1">
         {t.title(result.computed_steps.length, months)}
       </h2>
-      <p className="text-numeric text-neutral-900 mb-4 tabular-nums">
+      <p
+        className={`text-numeric text-neutral-900 tabular-nums ${result.is_estimated_fallback ? "mb-1" : "mb-4"}`}
+      >
         {t.approxTotal} {formatEur(result.computed_total_eur)}
       </p>
+      {result.is_estimated_fallback && (
+        <p className="text-body-sm text-neutral-600 mb-4">{t.fallbackBadge}</p>
+      )}
 
       <ol className="mb-6 flex flex-col gap-2">
         {result.computed_steps.map((step, index) => {

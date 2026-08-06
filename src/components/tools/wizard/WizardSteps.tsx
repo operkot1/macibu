@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { WizardInput } from "../../../lib/wizard/computeWizardPath";
+import { trackWizardEvent } from "../../../lib/wizard/trackWizardEvent";
 
 /*
  * WizardSteps — Экран 2 (Модуль 7 §7.5), только форма из 4 шагов. Экран
@@ -127,18 +128,23 @@ export default function WizardSteps({
   const [gearboxPreference, setGearboxPreference] =
     useState<GearboxPreference | null>(null);
 
+  useEffect(() => trackWizardEvent("wizard_started"), []);
+
   function selectAge(value: AgeBracket) {
     setAgeBracket(value);
+    trackWizardEvent("wizard_step_completed", { step: 1, value });
     setStep(2);
   }
 
   function selectMedical(value: MedicalCertificate) {
     setMedicalCertificate(value);
+    trackWizardEvent("wizard_step_completed", { step: 2, value });
     setStep(3);
   }
 
   function selectGearbox(value: GearboxPreference) {
     setGearboxPreference(value);
+    trackWizardEvent("wizard_step_completed", { step: 3, value });
     setStep(4);
   }
 
@@ -150,6 +156,7 @@ export default function WizardSteps({
     ) {
       return;
     }
+    trackWizardEvent("wizard_step_completed", { step: 4, value: cityId });
     onComplete({
       age_bracket: ageBracket,
       has_medical_certificate: medicalCertificate,

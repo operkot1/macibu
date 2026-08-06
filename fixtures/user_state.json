@@ -18,7 +18,8 @@
       { "step_id": "plastic-card", "price_eur": 22.41, "duration_label": "" }
     ],
     "computed_total_eur": 1099.88,
-    "computed_deadline": "2029-08-02"
+    "computed_deadline": "2029-08-02",
+    "is_estimated_fallback": false
   },
   "saved_path_email": "user@example.com",
   "theory_progress": [

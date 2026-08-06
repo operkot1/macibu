@@ -30,6 +30,7 @@ describe("computeWizardPath", () => {
       "plastic-card",
     ]);
     expect(result.computed_total_eur).toBe(1549.88);
+    expect(result.is_estimated_fallback).toBe(false);
   });
 
   it("дедлайн — примерно +3 года от текущей даты", () => {
@@ -113,6 +114,7 @@ describe("computeWizardPath", () => {
     // (720 [riga] + 650 [daugavpils]) / 2 = 685 — единственные две
     // manual/realist записи в фикстуре на момент теста.
     expect(practiceStep?.price_eur).toBe(685);
+    expect(result.is_estimated_fallback).toBe(true);
   });
 
   it("отсутствующий тариф пропускает шаг, не подставляет 0", () => {

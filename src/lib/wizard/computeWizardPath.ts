@@ -149,5 +149,6 @@ export function computeWizardPath(
     computed_steps: steps,
     computed_total_eur,
     computed_deadline,
+    is_estimated_fallback: realist.is_estimated_fallback,
   };
 }

@@ -14,6 +14,7 @@ export const WizardResultSchema = z.object({
   ),
   computed_total_eur: z.number(),
   computed_deadline: z.string(),
+  is_estimated_fallback: z.boolean(),
 });
 
 export const UserStateSchema = z.object({

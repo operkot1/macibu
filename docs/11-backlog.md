@@ -615,6 +615,50 @@ email при указании пишется в `localStorage` под узким
 запуска Chrome в этом окружении, не связан с изменением (компонент нигде
 не подключён к реальному route, это будет только в T-032).
 
+**Ретроактивное дополнение T-027/T-029/T-030/T-031 (перед T-032)**
+При подготовке плана T-032 перечитал `docs/06-tools/vizard-tvoj-put.md`
+целиком против уже закоммиченного кода и нашёл три реальных пробела
+относительно контракта, не блокированных ничем внешним — закрыл их до
+сборки route, не откладывая в долг:
+1. `is_estimated_fallback` нигде не доходил до UI: `WizardResult`
+   (docs/03) вообще не имел такого поля, `computeWizardPath` (T-027)
+   вычислял флаг внутри `fallbackLatviaAverage`, но не прокидывал его в
+   возврат. Добавлено поле в docs/03-data-model.md, `src/types/data.ts`,
+   `src/schemas/userState.ts` (Zod), пробрасывается в
+   `computeWizardPath.ts`; `computeWizardPath.spec.ts` и
+   `fixtures/user_state.json` обновлены под новое обязательное поле.
+   `WizardResult.tsx` (T-030) теперь рендерит бейдж «оценка по Латвии в
+   среднем» / «Latvijas vidējā aplēse» при `is_estimated_fallback: true`.
+2. Отсутствовал Callout для `age_bracket: "16-17"` (юридическое
+   предупреждение про белые права + согласие родителей, docs/06 edge
+   case) — добавлен в `WizardResult.tsx`, ссылка на
+   `p1-baltas-macities-ar-vecakiem` (LV/RU). Route в реестре есть, но
+   статус «план» (Ф2) — ссылка 404 до Ф2, тот же честный паттерн, что
+   Pillar-ссылки в Header (T-013).
+3. Ни одно из 5 событий аналитики визарда (docs/06 §Аналитика) не имело
+   точки интеграции, кроме `wizard_path_saved` (T-031) — `wizard_started`,
+   `wizard_step_completed{step,value}`, `wizard_completed{...}`,
+   `wizard_share_link_copied` отсутствовали в `WizardSteps.tsx` (T-029),
+   `WizardResult.tsx` (T-030), `SavePathButton.tsx` (T-031). Вынес общий
+   честный no-op `src/lib/wizard/trackWizardEvent.ts` (тот же паттерн, что
+   `AnalyticsLayerA.astro`, Слой Б всё ещё не подключён) и расставил все
+   5 точек интеграции; `SavePathButton.tsx` переведён на этот общий
+   хелпер вместо своего `trackWizardPathSaved`.
+Проверено вживую (Playwright, временный, `--no-save`): собрал два
+сценария через реальный `WizardSteps→computeWizardPath→WizardResult→
+SavePathButton` (не моки) — обычный (18-24, Рига) и граничный (16-17,
+Лиепая → fallback). В обычном сценарии предупреждение и бейдж
+отсутствуют, в граничном — оба видны; во обоих сценариях все 8 вызовов
+событий (5 уникальных имён, `wizard_step_completed`×4) фиксируются с
+верными параметрами (сверил числа: `total_eur`/`city_id`/`deadline` в
+`wizard_completed` совпадают с тем, что показано в UI). Первая версия
+проверки дала ложный `hasAgeWarning: true` на обычном сценарии — оказался
+слишком широкий текстовый матчер в самом тестовом скрипте (совпал со
+словами «Белые права» в карточке шага, не с предупреждением), не баг
+компонента — сузил матчер, пересверил. `npm run check`: всё зелёное,
+кроме Lighthouse (тот же `spawn Unknown system error -86`, не связан с
+изменением).
+
 **T-032 — Подключить `wizard` route**
 Цель: собрать T-029–T-031 в остров на `wizard` (LV/RU). Предусловия:
 T-029, T-030, T-031, T-022 (Слой Б для событий воронки). Файлы:

@@ -157,6 +157,7 @@ export interface WizardResult {
   }>;
   computed_total_eur: number;
   computed_deadline: string; // ISO date, "экзамен вождения до 3 лет с зачисления"
+  is_estimated_fallback: boolean; // true, если city_id не нашёлся в cost_model и сумма — усреднение по Латвии
 }
 
 export interface UserState {

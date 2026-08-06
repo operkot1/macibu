@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { WizardInput } from "../../../lib/wizard/computeWizardPath";
+import { trackWizardEvent } from "../../../lib/wizard/trackWizardEvent";
 
 /*
  * SavePathButton — Экран 2, «Сохранить путь» (Модуль 7 §7.5, T-031).
@@ -14,10 +15,9 @@ import type { WizardInput } from "../../../lib/wizard/computeWizardPath";
  * нет (Ф4, не подключено), backend для реальной отправки письма тоже не
  * существует, поэтому текст ниже не обещает "письмо отправлено".
  *
- * wizard_path_saved{has_email} — событие Слоя Б (docs/08-analytics.md §1,
- * §2), которого пока нет (только Слой А, T-021). Точка интеграции ниже —
- * тот же честный паттерн, что AnalyticsLayerA.astro (T-021): вызов
- * оставлен как обозначенный no-op, не притворяется работающим.
+ * wizard_path_saved{has_email} и wizard_share_link_copied — события Слоя Б
+ * (docs/08-analytics.md §1, §2), которого пока нет (только Слой А,
+ * T-021) — см. trackWizardEvent.ts.
  */
 
 export interface SavePathButtonProps {
@@ -47,13 +47,6 @@ function saveEmailLocally(email: string, input: WizardInput): void {
       updated_at: new Date().toISOString(),
     }),
   );
-}
-
-function trackWizardPathSaved(hasEmail: boolean): void {
-  // Слой Б ещё не подключён (нет consent-механизма и приёмника) — событие
-  // wizard_path_saved{has_email} некуда отправлять. Точка интеграции
-  // фиксирована здесь намеренно, чтобы её не искать заново в Ф2+.
-  void hasEmail;
 }
 
 const text = {
@@ -96,7 +89,7 @@ export default function SavePathButton({
       saveEmailLocally(trimmedEmail, wizardInput);
     }
     setShareUrl(buildShareUrl(wizardInput));
-    trackWizardPathSaved(hasEmail);
+    trackWizardEvent("wizard_path_saved", { has_email: hasEmail });
   }
 
   async function handleCopy() {
@@ -104,6 +97,7 @@ export default function SavePathButton({
     try {
       await navigator.clipboard.writeText(shareUrl);
       setCopied(true);
+      trackWizardEvent("wizard_share_link_copied");
     } catch {
       // Clipboard API недоступен/отклонён — ссылка всё равно видна и
       // выделяема вручную в readonly-поле ниже.
