@@ -1,0 +1,26 @@
+---
+import ToolPageTemplate from "../../../components/layout/ToolPageTemplate.astro";
+import Calculator from "../../../components/tools/calculator/Calculator.tsx";
+import { getCostModel, getSchools } from "../../../lib/data";
+
+const coeffs = getCostModel().coefficients;
+const schools = getSchools().schools;
+---
+
+<ToolPageTemplate
+  currentLocale="ru"
+  routeId="p3-kalkulators"
+  title="Калькулятор автошколы"
+  description="Калькулятор стоимости автошколы — три сценария, реальные цены по городу и коробке, сравнение с Autoskola FORS."
+  heading="Калькулятор автошколы"
+  intro="Узнай реальную цену — для оптимиста, реалиста и пессимиста — и что в неё НЕ входит."
+  canonicalPath="/ru/avtoshkoly/kalkulyator/"
+  alternateUrl="/lv/autoskolas/kalkulators/"
+>
+  <Calculator
+    client:visible
+    coeffs={coeffs}
+    schools={schools}
+    currentLocale="ru"
+  />
+</ToolPageTemplate>

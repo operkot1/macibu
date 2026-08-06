@@ -1,0 +1,26 @@
+---
+import ToolPageTemplate from "../../../components/layout/ToolPageTemplate.astro";
+import Calculator from "../../../components/tools/calculator/Calculator.tsx";
+import { getCostModel, getSchools } from "../../../lib/data";
+
+const coeffs = getCostModel().coefficients;
+const schools = getSchools().schools;
+---
+
+<ToolPageTemplate
+  currentLocale="lv"
+  routeId="p3-kalkulators"
+  title="Autoskolas kalkulators"
+  description="Autoskolas izmaksu kalkulators — trīs scenāriji, reālas cenas pēc pilsētas un kārbas, salīdzinājums ar Autoskolu FORS."
+  heading="Autoskolas kalkulators"
+  intro="Uzzini reālo cenu — optimistam, reālistam un pesimistam — un ko tajā NAV iekļauts."
+  canonicalPath="/lv/autoskolas/kalkulators/"
+  alternateUrl="/ru/avtoshkoly/kalkulyator/"
+>
+  <Calculator
+    client:visible
+    coeffs={coeffs}
+    schools={schools}
+    currentLocale="lv"
+  />
+</ToolPageTemplate>
