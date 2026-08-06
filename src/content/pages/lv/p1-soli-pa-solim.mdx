@@ -1,0 +1,88 @@
+---
+route_id: "p1-soli-pa-solim"
+lang: "lv"
+title: "9 soļi līdz tiesībām"
+description: "Pilns ceļš līdz autovadītāja apliecībai Latvijā — 9 soļi noteiktā secībā, ar progresa čeklistu."
+pageType: "howto"
+---
+
+import StepListInteractive from "../../../components/content/StepListInteractive.tsx";
+import HowToSchema from "../../../components/content/HowToSchema.astro";
+
+export const steps = [
+  {
+    title: "Medicīnas izziņa",
+    duration: "1-7д",
+    text: "Apmeklē ģimenes ārstu (un, ja nepieciešams, psihiatru/narkologu) un saņem izziņu par piemērotību vadīt transportlīdzekli — tā vajadzīga, lai sāktu teorijas kursu.",
+  },
+  {
+    title: "Baltā apliecība",
+    duration: "1д",
+    text: "Noformē pagaidu vadītāja apliecību CSDD — ar to drīkst legāli praktizēties uz ceļa jau pirms gala eksāmenu kārtošanas.",
+  },
+  {
+    title: "Skolas izvēle",
+    duration: "1-2н",
+    text: "Salīdzini savas pilsētas autoskolas: mācību valoda, kārba, atsauksmes un cena — no šīs izvēles atkarīga visa turpmākā programma.",
+  },
+  {
+    title: "Teorijas kurss (11 moduļi)",
+    duration: "4-8н",
+    text: "Pabeidz 11 moduļu kursu par ceļu satiksmes noteikumiem un drošu braukšanu — parasti aizņem 4-8 nedēļas atkarībā no nodarbību intensitātes.",
+  },
+  {
+    title: "Pirmās palīdzības kurss",
+    duration: "1д",
+    text: "Atsevišķs obligāts pirmās palīdzības kurss — bez tā neielaidīs uz CSDD teorijas eksāmenu.",
+  },
+  {
+    title: "CSDD teorijas eksāmens",
+    duration: undefined,
+    text: "Nokārto teorijas eksāmenu CSDD — var pārkārtot pēc neveiksmes, bet katru reizi par atsevišķu samaksu.",
+  },
+  {
+    title: "Braukšanas prakse",
+    duration: "2-4м",
+    text: "Ilgākais posms: 2-4 mēneši praktisko nodarbību ar instruktoru, stundu skaits atkarīgs no tava progresa.",
+  },
+  {
+    title: "CSDD braukšanas eksāmens",
+    duration: undefined,
+    text: "Noslēguma praktiskais eksāmens CSDD uz koplietošanas ceļiem.",
+  },
+  {
+    title: "Plastikāta kartes saņemšana",
+    duration: undefined,
+    text: "Pēc visu eksāmenu sekmīgas nokārtošanas tiek noformēta pastāvīgā plastikāta vadītāja apliecība.",
+  },
+];
+
+Pilns ceļš no pirmā ārsta apmeklējuma līdz plastikāta vadītāja apliecībai —
+9 soļi noteiktā secībā. Atzīmē paveiktos — progress tiek saglabāts šajā
+pārlūkā.
+
+<StepListInteractive
+  client:visible
+  checklistId="p1-soli-pa-solim"
+  steps={steps.map((s, i) => ({
+    index: i + 1,
+    title: s.title,
+    ...(s.duration ? { durationLabel: s.duration } : {}),
+  }))}
+/>
+
+<HowToSchema
+  name="9 soļi līdz tiesībām"
+  description="Pilns ceļš līdz autovadītāja apliecībai Latvijā — 9 soļi noteiktā secībā."
+  steps={steps.map((s) => ({ name: s.title, text: s.text }))}
+/>
+
+## Kas notiek katrā solī
+
+{steps.map((s, i) => (
+
+  <div>
+    <h3>{i + 1}. {s.title}</h3>
+    <p>{s.text}</p>
+  </div>
+))}

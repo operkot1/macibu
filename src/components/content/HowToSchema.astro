@@ -1,0 +1,33 @@
+---
+// HowToSchema — docs/07-i18n-seo.md §8: "любая страница с StepList
+// interactive" получает HowTo Schema.org. Генерируется из типизированных
+// пропсов (не пишется вручную в MDX), тот же принцип, что FAQ.astro для
+// FAQPage.
+
+export interface HowToStep {
+  name: string;
+  text: string;
+}
+
+export interface HowToSchemaProps {
+  name: string;
+  description: string;
+  steps: HowToStep[];
+}
+
+const { name, description, steps }: HowToSchemaProps = Astro.props;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name,
+  description,
+  step: steps.map((step) => ({
+    "@type": "HowToStep",
+    name: step.name,
+    text: step.text,
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

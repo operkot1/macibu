@@ -46,7 +46,7 @@
 |---|---|---|---|---|---|---|---|---|
 | `p1-index` | `/ka-iegut-tiesibas/` | `/kak-poluchit-prava/` | pillar-хаб | `PillarIndexTemplate` | Ф1 | — | static-content | план |
 | `p1-celvedis` | `/ka-iegut-tiesibas/celvedis/` | `/kak-poluchit-prava/rukovodstvo/` | cornerstone-гайд | `ArticleTemplate` | Ф1 | — | static-content | план |
-| `p1-soli-pa-solim` | `/ka-iegut-tiesibas/soli-pa-solim/` | `/kak-poluchit-prava/9-shagov/` | интерактивный чек-лист | `ToolPageTemplate` | Ф1 | ★ | `user_state` (прогресс чек-листа) | план |
+| `p1-soli-pa-solim` | `/ka-iegut-tiesibas/soli-pa-solim/` | `/kak-poluchit-prava/9-shagov/` | статья + интерактивный чек-лист | `ArticleTemplate` | Ф1 | ★ | `user_state` (прогресс чек-листа) | в проде (T-037) |
 | `p1-dokumenti` | `/ka-iegut-tiesibas/dokumenti/` | `/kak-poluchit-prava/dokumenty/` | справочная статья | `ArticleTemplate` | Ф1 | — | static-content | план |
 | `p1-vecums` | `/ka-iegut-tiesibas/vecums/` | `/kak-poluchit-prava/vozrast/` | справочная статья | `ArticleTemplate` | Ф1 | — | static-content | план |
 | `p1-medicina-index` | `/ka-iegut-tiesibas/medicina/` | `/kak-poluchit-prava/medicina/` | подраздел-хаб | `SubsectionIndexTemplate` | Ф2 | — | static-content | план |
