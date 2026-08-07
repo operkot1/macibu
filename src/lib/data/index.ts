@@ -7,6 +7,7 @@ import { ExamZonesFileSchema } from "../../schemas/examZones";
 import { TheoryQuestionsFileSchema } from "../../schemas/theoryQuestions";
 import { UserStateSchema } from "../../schemas/userState";
 import { CostModelFileSchema } from "../../schemas/costModel";
+import { CsddCentersFileSchema } from "../../schemas/csddCenters";
 import type {
   CsddTariffsFile,
   SchoolsFile,
@@ -16,6 +17,7 @@ import type {
   TheoryQuestionsFile,
   UserState,
   CostModelFile,
+  CsddCentersFile,
 } from "../../types/data";
 
 /*
@@ -54,4 +56,8 @@ export function getUserStateFixture(): UserState {
 
 export function getCostModel(): CostModelFile {
   return loadFixture("cost_model.json", CostModelFileSchema);
+}
+
+export function getCsddCenters(): CsddCentersFile {
+  return loadFixture("csdd_centers.json", CsddCentersFileSchema);
 }

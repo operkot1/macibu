@@ -1,0 +1,20 @@
+---
+import ToolPageTemplate from "../../../../components/layout/ToolPageTemplate.astro";
+import CentersMap from "../../../../components/tools/csdd-centers/CentersMap.astro";
+import { getCsddCenters } from "../../../../lib/data";
+
+const { centers } = getCsddCenters();
+---
+
+<ToolPageTemplate
+  currentLocale="lv"
+  routeId="p2-vadisana-centri"
+  title="CSDD eksāmenu centri"
+  description="CSDD centru adreses, kur kārto braukšanas eksāmenu."
+  heading="CSDD eksāmenu centri"
+  intro="CSDD centru adreses pa pilsētām. Saraksts pagaidām nav pilnīgs un jāprecizē — aktuālo adresi vienmēr var pārbaudīt CSDD oficiālajā mājaslapā."
+  canonicalPath="/lv/csdd-eksameni/vadisana/centri/"
+  alternateUrl="/ru/ekzameny-csdd/vozhdenie/centry/"
+>
+  <CentersMap centers={centers} currentLocale="lv" />
+</ToolPageTemplate>

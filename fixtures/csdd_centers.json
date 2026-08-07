@@ -1,0 +1,26 @@
+{
+  "updated_at": "2026-08-07T00:00:00Z",
+  "source": "placeholder",
+  "centers": [
+    {
+      "city_id": "riga",
+      "address": "Piemēra iela 1, Rīga",
+      "phone": "+371 20000010"
+    },
+    {
+      "city_id": "daugavpils",
+      "address": "Piemēra iela 5, Daugavpils",
+      "phone": "+371 20000011"
+    },
+    {
+      "city_id": "liepaja",
+      "address": "Piemēra iela 12, Liepāja",
+      "phone": null
+    },
+    {
+      "city_id": "jelgava",
+      "address": "Piemēra iela 3, Jelgava",
+      "phone": null
+    }
+  ]
+}

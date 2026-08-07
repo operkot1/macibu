@@ -1,0 +1,63 @@
+---
+// CentersMap — «карта центров CSDD» (T-042, docs/11-backlog.md).
+// Несмотря на название "карта" — не встроенный интерактивный виджет
+// (Leaflet/Mapbox): это новая тяжёлая зависимость и требует API-ключа,
+// которого нет (тот же класс отложенного решения, что домен/хостинг,
+// docs/00-assumptions.md). Список карточек + ссылка на внешний поиск
+// на карте (без встраивания, без ключа).
+//
+// Не React-остров: контента без состояния (список ссылок) не нужен
+// клиентский JS — тот же принцип, что AnalyticsLayerA.astro (T-021),
+// не расходует JS-бюджет островов зря. `ToolShell` (docs/05 §4) нигде
+// фактически не построен и не используется ни Wizard.tsx, ни
+// Calculator.tsx — не завожу его здесь первым, следую уже сложившейся
+// практике.
+
+import { CITY_IDS, cityLabels, type CityId } from "../../../lib/cities";
+import type { CsddCenter } from "../../../types/data";
+
+export interface CentersMapProps {
+  centers: CsddCenter[];
+  currentLocale: "lv" | "ru";
+}
+
+const { centers, currentLocale }: CentersMapProps = Astro.props;
+
+function mapSearchUrl(address: string): string {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+}
+
+const text = {
+  lv: { mapLink: "Skatīt kartē", phoneLabel: "Tālrunis" },
+  ru: { mapLink: "Смотреть на карте", phoneLabel: "Телефон" },
+} as const;
+const t = text[currentLocale];
+---
+
+<ul class="flex flex-col gap-3">
+  {
+    centers.map((center) => (
+      <li class="border-neutral-300 rounded-md border p-4">
+        <p class="text-h3 text-neutral-900 mb-1">
+          {CITY_IDS.includes(center.city_id as CityId)
+            ? cityLabels[currentLocale][center.city_id as CityId]
+            : center.city_id}
+        </p>
+        <p class="text-body text-neutral-900 mb-1">{center.address}</p>
+        {center.phone && (
+          <p class="text-body-sm text-neutral-600 mb-2">
+            {t.phoneLabel}: {center.phone}
+          </p>
+        )}
+        <a
+          href={mapSearchUrl(center.address)}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-primary-600 underline"
+        >
+          {t.mapLink}
+        </a>
+      </li>
+    ))
+  }
+</ul>

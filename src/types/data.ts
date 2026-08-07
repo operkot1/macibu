@@ -207,3 +207,20 @@ export interface CostModelFile {
   source: "market-research" | "partner-data";
   coefficients: CostModelCoefficients[];
 }
+
+// 9. `csdd_centers` — адреса центров CSDD (T-042)
+
+export interface CsddCenter {
+  city_id: string;
+  address: string;
+  phone: string | null;
+}
+
+export interface CsddCentersFile {
+  updated_at: string;
+  // "placeholder" — честно отражает, что это не реальная выгрузка CSDD
+  // (docs/00-assumptions.md, [ДОПУЩЕНИЕ] про адреса центров), а
+  // иллюстративные данные до появления настоящего ETL.
+  source: "placeholder" | "csdd-export-xlsx";
+  centers: CsddCenter[];
+}

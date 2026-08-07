@@ -1,0 +1,20 @@
+---
+import ToolPageTemplate from "../../../../components/layout/ToolPageTemplate.astro";
+import CentersMap from "../../../../components/tools/csdd-centers/CentersMap.astro";
+import { getCsddCenters } from "../../../../lib/data";
+
+const { centers } = getCsddCenters();
+---
+
+<ToolPageTemplate
+  currentLocale="ru"
+  routeId="p2-vadisana-centri"
+  title="Центры сдачи экзаменов CSDD"
+  description="Адреса центров CSDD, где принимают экзамен вождения."
+  heading="Центры сдачи экзаменов CSDD"
+  intro="Адреса центров CSDD по городам. Список пока неполный и требует сверки — актуальный адрес всегда можно проверить на официальном сайте CSDD."
+  canonicalPath="/ru/ekzameny-csdd/vozhdenie/centry/"
+  alternateUrl="/lv/csdd-eksameni/vadisana/centri/"
+>
+  <CentersMap centers={centers} currentLocale="ru" />
+</ToolPageTemplate>
