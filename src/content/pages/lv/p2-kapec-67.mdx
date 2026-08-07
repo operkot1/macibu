@@ -1,0 +1,77 @@
+---
+route_id: "p2-kapec-67"
+lang: "lv"
+title: "Kāpēc 67% nenokārto eksāmenu ar pirmo reizi"
+description: "CSDD oficiālā statistika un reālie neveiksmes iemesli teorijas un braukšanas eksāmenos — un ko ar to var darīt."
+pageType: "flagship-article"
+---
+
+import { getRatings } from "../../../lib/data";
+
+export const ratings = getRatings();
+export const sufficientSchools = ratings.entries.filter(
+  (e) => e.subject_type === "school" && e.confidence === "sufficient",
+);
+export const avgPassRate = Math.round(
+  (sufficientSchools.reduce((sum, e) => sum + e.pass_rate, 0) /
+    sufficientSchools.length) *
+    100,
+);
+
+Pēc CSDD oficiālās statistikas, aptuveni divas trešdaļas kārtotāju
+nenokārto eksāmenu (teorijas vai praktisko) ar pirmo reizi. Tas nav
+izņēmums — tā ir norma, ar ko sastopas vairākums. Tālāk — reālie
+neveiksmes iemesli un ko var darīt jau iepriekš, lai nokļūtu tajā otrajā
+trešdaļā.
+
+## Kāpēc nenokārto teoriju
+
+- **Priekšroka krustojumos** — īpaši neregulējamos un apļveida
+  krustojumos.
+- **Līdzīgas ceļa zīmes** — neskaidrība virspusējas mācīšanās gadījumā.
+- **Ātruma ierobežojumi pēc ceļa veida** — atšķirīgas noklusējuma
+  vērtības viegli sajaukt.
+- **Signāli un apdzīšanas noteikumi** — tēma, ko bieži nenovērtē.
+
+Detalizēts apskats — rakstā
+[«Biežākās kļūdas teorijas eksāmenā»](/lv/csdd-eksameni/teorija/biezakas-kludas/).
+
+## Kāpēc nenokārto braukšanu
+
+- **Nepietiekama patstāvīgā prakse** — ja gandrīz visu laiku braukts pēc
+  instruktora norādēm, eksāmena daļa bez norādēm
+  ([«Patstāvīgā braukšana»](/lv/csdd-eksameni/vadisana/patstaviga-brauksana/))
+  kļūst negaidīti sarežģīta.
+- **Satraukums laukuma manevros** — obligātās figūras tehniski nav
+  sarežģītas, bet tieši satraukums visbiežāk sabojā izpildījumu.
+- **Nesagatavotība nepazīstamai videi** — reāli ceļi ir
+  neparedzamāki nekā mācību maršruti.
+
+## Skola un instruktors — ne tikai formalitāte
+
+{sufficientSchools.length > 0 && (
+
+  <p>
+    Starp {sufficientSchools.length} autoskolām šajā portālā, par kurām
+    ir uzkrāta pietiekama statistika, vidējais nokārtošanas rādītājs ir
+    {" "}
+    {avgPassRate}%. Tas neatceļ nacionālo statistiku iepriekš — tas ir
+    cits griezums: tas, ko tiešām var kontrolēt, izvēloties, pie kā
+    mācīties. Atšķirība starp skolām ir izmērāma, ne nejauša.
+  </p>
+)}
+
+Salīdzināt skolas pēc godīga reitinga varēs lapā
+[«Skolu reitings»](/lv/autoskolas/reitings/) — ņem vērā tikai reālus
+CSDD datus, bez izņēmumiem partneriem.
+
+## Ko darīt jau iepriekš
+
+1. Izmēģini [vizardu «Tavs ceļš»](/lv/tavs-cels/) — redzēsi visu ceļu un
+   reālos termiņus.
+2. Patrenējies [teorijas trenažierī](/lv/csdd-eksameni/teorija/testi/) —
+   bez maksas, bez reģistrācijas.
+3. Atzīmē progresu [čeklistā «9 soļi»](/lv/ka-iegut-tiesibas/soli-pa-solim/).
+4. Salīdzini reālās izmaksas [kalkulatorā](/lv/autoskolas/kalkulators/).
+
+← [CSDD eksāmeni](/lv/csdd-eksameni/)
