@@ -71,12 +71,12 @@
 |---|---|---|---|---|---|---|---|---|
 | `p2-index` | `/csdd-eksameni/` | `/ekzameny-csdd/` | pillar-хаб | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-039) |
 | `p2-teorija-index` | `/csdd-eksameni/teorija/` | `/ekzameny-csdd/teoriya/` | подраздел-хаб | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-039) |
-| `p2-teorija-eksamens` | `/csdd-eksameni/teorija/eksamens/` | `/ekzameny-csdd/teoriya/ekzamen/` | разбор экзамена | `ArticleTemplate` | Ф1 | — | static-content | план |
+| `p2-teorija-eksamens` | `/csdd-eksameni/teorija/eksamens/` | `/ekzameny-csdd/teoriya/ekzamen/` | разбор экзамена | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-040) |
 | `p2-teorija-testi` | `/csdd-eksameni/teorija/testi/` | `/ekzameny-csdd/teoriya/testy/` | тренажёр | `ToolPageTemplate` | Ф1 | ★★ | `theory_questions`, `user_state` | план |
 | `p2-teorija-rezims` | `/csdd-eksameni/teorija/eksamena-rezims/` | `/ekzameny-csdd/teoriya/rezhim-ekzamena/` | симулятор экзамена | `ToolPageTemplate` | Ф2 | ★★ | `theory_questions`, `user_state` | план |
 | `p2-teorija-video` | `/csdd-eksameni/teorija/video-jautajumi/` | `/ekzameny-csdd/teoriya/video-voprosy/` | тренажёр видео-вопросов | `ToolPageTemplate` | Ф2 | ★★ | `theory_questions` | план |
-| `p2-teorija-kludas` | `/csdd-eksameni/teorija/biezakas-kludas/` | `/ekzameny-csdd/teoriya/chastye-oshibki/` | справочная статья | `ArticleTemplate` | Ф1 | — | static-content | план |
-| `p2-teorija-pieteiksanas` | `/csdd-eksameni/teorija/pieteiksanas/` | `/ekzameny-csdd/teoriya/zapis-na-ekzamen/` | HowTo | `ArticleTemplate` | Ф1 | — | static-content | план |
+| `p2-teorija-kludas` | `/csdd-eksameni/teorija/biezakas-kludas/` | `/ekzameny-csdd/teoriya/chastye-oshibki/` | справочная статья | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-040) |
+| `p2-teorija-pieteiksanas` | `/csdd-eksameni/teorija/pieteiksanas/` | `/ekzameny-csdd/teoriya/zapis-na-ekzamen/` | HowTo | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-040) |
 | `p2-vadisana-index` | `/csdd-eksameni/vadisana/` | `/ekzameny-csdd/vozhdenie/` | подраздел-хаб | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-039) |
 | `p2-vadisana-eksamens` | `/csdd-eksameni/vadisana/eksamens/` | `/ekzameny-csdd/vozhdenie/ekzamen/` | разбор процедуры | `ArticleTemplate` | Ф1 | — | static-content | **см. дефект D-02** |
 | `p2-vadisana-figuras` | `/csdd-eksameni/vadisana/figuras/` | `/ekzameny-csdd/vozhdenie/figury/` | справочная статья | `ArticleTemplate` | Ф1 | — | static-content | план |

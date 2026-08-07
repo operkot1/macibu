@@ -960,10 +960,34 @@ index.astro`. Дочерние ссылки на хабах в основном 
 budget/i18n:coverage (10 полных пар LV/RU, было 7) — зелёные; Lighthouse
 — тот же `spawn Unknown system error -86`, не связан с изменением.
 
-**T-040 — Статьи teorija: eksamens, kludas, pieteiksanas**
+**T-040 — Статьи teorija: eksamens, kludas, pieteiksanas** — ✅ выполнено
 Предусловия: T-039. Файлы: `p2-teorija-eksamens.mdx`,
 `p2-teorija-kludas.mdx`, `p2-teorija-pieteiksanas.mdx` (×LV/RU). DoD:
 СК-Контент ×3.
+Реализовано: шаблон в docs/02 уже был верный (`ArticleTemplate`) — не
+потребовалось той же правки, что в T-039. `p2-teorija-pieteiksanas`
+типизирована в docs/02 как «HowTo» (колонка «тип»), но не входит в
+список docs/07-i18n-seo.md §8, где HowTo-разметка реально требуется
+(`p1-celvedis`, `p1-baltas-ka-sanemt`, `p5-csn-negadijums`, StepList
+interactive) — Schema.org не добавлена, проверено вживую (0 блоков
+`application/ld+json` на странице), не спутал «тип страницы» с
+«требуется схема». Как и раньше, список файлов в задаче не включал
+реальные `.astro`-страницы — добавлены 6 файлов под
+`src/pages/{lv,ru}/{csdd-eksameni,ekzameny-csdd}/{teorija,teoriya}/*`.
+Конкретные цифры (число вопросов, точный проходной балл) не выдуманы —
+CSDD может их менять, текст честно говорит «уточняется в отделении»
+вместо вымышленного числа (правило пустых данных, docs/03-data-model.md,
+применено и к контенту, не только к JSON-фикстурам). Все статьи ведут
+`← Теория` назад на `p2-teorija-index` (T-039) и перекрёстно ссылаются
+друг на друга и на тренажёр/тарифы (ещё не построены — честные будущие
+404, тот же принцип).
+Проверено вживую (Playwright, временный, `--no-save`): все 6 страниц
+отдают 200; реальный клик с `p2-teorija-index` на «Как проходит экзамен»
+приводит на верную страницу с верным title; JSON-LD на `pieteiksanas`
+отсутствует, как и ожидалось. `npm run check`:
+typecheck/lint/format/test:unit/build/budget/i18n:coverage (13 полных пар
+LV/RU, было 10) — зелёные; Lighthouse — тот же
+`spawn Unknown system error -86`, не связан с изменением.
 
 **T-041 — Статьи vadisana: eksamens, figuras, patstaviga, ko-nemt**
 Предусловия: T-039. Файлы: 4 route × LV/RU. DoD: СК-Контент ×4.

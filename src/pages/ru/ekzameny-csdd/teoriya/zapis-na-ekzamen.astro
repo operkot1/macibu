@@ -1,0 +1,16 @@
+---
+import { getEntry, render } from "astro:content";
+import ArticleTemplate from "../../../../components/layout/ArticleTemplate.astro";
+
+const entry = await getEntry("pages", "ru/p2-teorija-pieteiksanas");
+if (!entry)
+  throw new Error("Content entry 'ru/p2-teorija-pieteiksanas' not found");
+const { Content } = await render(entry);
+---
+
+<ArticleTemplate
+  entry={entry}
+  Content={Content}
+  canonicalPath="/ru/ekzameny-csdd/teoriya/zapis-na-ekzamen/"
+  alternateUrl="/lv/csdd-eksameni/teorija/pieteiksanas/"
+/>
