@@ -1,0 +1,15 @@
+---
+import { getEntry, render } from "astro:content";
+import ArticleTemplate from "../../../../components/layout/ArticleTemplate.astro";
+
+const entry = await getEntry("pages", "lv/p2-teorija-index");
+if (!entry) throw new Error("Content entry 'lv/p2-teorija-index' not found");
+const { Content } = await render(entry);
+---
+
+<ArticleTemplate
+  entry={entry}
+  Content={Content}
+  canonicalPath="/lv/csdd-eksameni/teorija/"
+  alternateUrl="/ru/ekzameny-csdd/teoriya/"
+/>

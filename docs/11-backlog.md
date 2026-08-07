@@ -926,9 +926,39 @@ typecheck/lint/format/test:unit/build/budget/i18n:coverage (7 полных па�
 LV/RU, было 4) — зелёные; Lighthouse — тот же
 `spawn Unknown system error -86`, не связан с изменением.
 
-**T-039 — Pillar 2: index + подразделы teorija/vadisana**
+**T-039 — Pillar 2: index + подразделы teorija/vadisana** — ✅ выполнено
 Цель: `p2-index`, `p2-teorija-index`, `p2-vadisana-index`. Предусловия:
 T-016. Файлы: `src/content/pages/{lv,ru}/p2-*.mdx`. DoD: СК-Контент ×3.
+Реализовано: `PillarIndexTemplate`/`SubsectionIndexTemplate` из
+docs/02-routes.md (используются ~15 раз по всему реестру для всех
+pillar/подраздел-хабов) нигде не были определены в docs/05-components.md
+— тот же класс разрыва, что `LegalTemplate` (T-016). В отличие от
+`ToolPageTemplate` (T-032, реальная функциональная разница — острова),
+здесь разницы в поведении нет: хаб-странице нужен тот же Header/Footer/
+head, что статье, а стилизованная сетка карточек-ссылок достижима прямо
+в MDX `<Content/>` (уже доказано на `p1-celvedis`, T-038) — заводить
+отдельный компонент не стал, переиспользован `ArticleTemplate`,
+docs/02-routes.md поправлен (3 строки). Раздел D-05 (docs/02) предполагает
+хлебные крошки для хаб-страниц — не реализованы: breadcrumbs не
+построены вообще нигде на портале ни для одной уже сданной страницы, это
+общесайтовый пробел, а не регрессия этой задачи, чинить его здесь было
+бы выходом за рамки. Первые `index.astro`-страницы в `src/pages/`
+(раньше все файлы были именованными, не `index`) — 6 новых файлов под
+`src/pages/{lv,ru}/{csdd-eksameni,ekzameny-csdd}/{,teorija,vadisana}/
+index.astro`. Дочерние ссылки на хабах в основном ведут на ещё не
+построенные статьи (T-040+) — честно 404 до соответствующих задач, тот
+же принцип, что везде; реально существующие переходы (между `p2-index` и
+двумя подраздел-хабами, LangSwitch) — рабочие. Schema.org не добавлена —
+«pillar-хаб»/«подраздел-хаб» нет в таблице docs/07 §8, факт таблицы, не
+упущение. Побочный эффект: пункт навигации Header «Экзамены CSDD»
+(T-013) вёл на честный 404 — теперь ведёт на реальную страницу.
+Проверено вживую (Playwright, временный, `--no-save`): все 6 страниц
+отдают 200; реальный клик по карточке «Теория» на `p2-index` приводит на
+`p2-teorija-index` с верным title; обратная ссылка «← Экзамены CSDD»
+приводит назад; LangSwitch с `ekzameny-csdd` реально ведёт на
+`csdd-eksameni`. `npm run check`: typecheck/lint/format/test:unit/build/
+budget/i18n:coverage (10 полных пар LV/RU, было 7) — зелёные; Lighthouse
+— тот же `spawn Unknown system error -86`, не связан с изменением.
 
 **T-040 — Статьи teorija: eksamens, kludas, pieteiksanas**
 Предусловия: T-039. Файлы: `p2-teorija-eksamens.mdx`,
