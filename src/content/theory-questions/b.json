@@ -1,0 +1,777 @@
+[
+  {
+    "id": "q-101",
+    "categories": ["B"],
+    "text_lv": "Kāds ir maksimālais atļautais braukšanas ātrums ārpus apdzīvotas vietas uz parasta ceļa, ja nav citu norāžu?",
+    "text_ru": "Какая максимальная разрешённая скорость движения вне населённого пункта на обычной дороге при отсутствии иных знаков?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "70 km/h",
+        "text_ru": "70 км/ч",
+        "is_correct": false
+      },
+      {
+        "id": "b",
+        "text_lv": "90 km/h",
+        "text_ru": "90 км/ч",
+        "is_correct": true
+      },
+      {
+        "id": "c",
+        "text_lv": "110 km/h",
+        "text_ru": "110 км/ч",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Ārpus apdzīvotas vietas uz parasta ceļa bez papildu norādēm vieglā automašīna drīkst braukt ar ātrumu līdz 90 km/h.",
+    "explanation_ru": "Вне населённого пункта на обычной дороге без дополнительных знаков легковой автомобиль может двигаться со скоростью до 90 км/ч.",
+    "difficulty": "easy",
+    "official_reference": null
+  },
+  {
+    "id": "q-102",
+    "categories": ["B"],
+    "text_lv": "Krustojumā bez luksoforiem un ceļa zīmēm, kur ceļiem ir vienāds statuss, kuram transportlīdzeklim ir priekšroka?",
+    "text_ru": "На перекрёстке без светофоров и знаков приоритета, где дороги равнозначны, у кого преимущество?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Tam, kas brauc pa labi",
+        "text_ru": "У того, кто приближается справа",
+        "is_correct": true
+      },
+      {
+        "id": "b",
+        "text_lv": "Tam, kas brauc ātrāk",
+        "text_ru": "У того, кто едет быстрее",
+        "is_correct": false
+      },
+      {
+        "id": "c",
+        "text_lv": "Tam, kas iebrauc pirmais",
+        "text_ru": "У того, кто въехал первым",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Uz vienāda statusa ceļiem bez papildu norādēm darbojas «priekšroka labajai rokai» — priekšroka transportlīdzeklim, kas tuvojas no labās puses.",
+    "explanation_ru": "На равнозначных дорогах без дополнительных знаков действует правило «помеха справа» — преимущество у транспортного средства, приближающегося справа.",
+    "difficulty": "medium",
+    "official_reference": null
+  },
+  {
+    "id": "q-103",
+    "categories": ["B"],
+    "text_lv": "Ko nozīmē apaļa ceļa zīme ar sarkanu apmali un skaitli tās vidū?",
+    "text_ru": "Что означает круглый дорожный знак с красной окантовкой и цифрой в центре?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Ieteicamais ātrums",
+        "text_ru": "Рекомендуемая скорость",
+        "is_correct": false
+      },
+      {
+        "id": "b",
+        "text_lv": "Aizliegts pārsniegt norādīto ātrumu",
+        "text_ru": "Запрещено превышать указанную скорость",
+        "is_correct": true
+      },
+      {
+        "id": "c",
+        "text_lv": "Minimālais atļautais ātrums",
+        "text_ru": "Минимально допустимая скорость",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Apaļa zīme ar sarkanu apmali un skaitli aizliedz pārsniegt norādīto ātrumu — tā ir aizlieguma zīme, ne ieteikums.",
+    "explanation_ru": "Круглый знак с красной окантовкой и цифрой запрещает превышать указанную скорость — это запрещающий знак, а не рекомендация.",
+    "difficulty": "easy",
+    "official_reference": null
+  },
+  {
+    "id": "q-104",
+    "categories": ["B"],
+    "text_lv": "Kādu informāciju parasti sniedz trīsstūrveida ceļa zīme ar sarkanu apmali?",
+    "text_ru": "Какую информацию обычно даёт треугольный дорожный знак с красной окантовкой?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Brīdina par iespējamu bīstamību ceļa posmā",
+        "text_ru": "Предупреждает о возможной опасности на участке дороги",
+        "is_correct": true
+      },
+      {
+        "id": "b",
+        "text_lv": "Norāda obligātu virzienu",
+        "text_ru": "Указывает обязательное направление движения",
+        "is_correct": false
+      },
+      {
+        "id": "c",
+        "text_lv": "Aizliedz apstāties",
+        "text_ru": "Запрещает остановку",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Trīsstūrveida zīmes ar sarkanu apmali ir brīdinājuma zīmes — tās informē par iespējamu bīstamību priekšā, ne aizliedz vai pavēl.",
+    "explanation_ru": "Треугольные знаки с красной окантовкой — предупреждающие: они сообщают о возможной опасности впереди, а не запрещают и не предписывают.",
+    "difficulty": "easy",
+    "official_reference": null
+  },
+  {
+    "id": "q-105",
+    "categories": ["B"],
+    "text_lv": "Vai ir atļauts apdzīt, ja uz brauktuves ir nepārtraukta (nepārtraukta viena) marķējuma līnija starp joslām?",
+    "text_ru": "Разрешён ли обгон, если на проезжей части нанесена сплошная разделительная линия разметки?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Jā, ja redzamība ir laba",
+        "text_ru": "Да, если хорошая видимость",
+        "is_correct": false
+      },
+      {
+        "id": "b",
+        "text_lv": "Nē, nepārtrauktu līniju šķērsot nedrīkst",
+        "text_ru": "Нет, пересекать сплошную линию нельзя",
+        "is_correct": true
+      },
+      {
+        "id": "c",
+        "text_lv": "Jā, ja ātrums ir zem 50 km/h",
+        "text_ru": "Да, если скорость ниже 50 км/ч",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Nepārtraukta marķējuma līnija aizliedz to šķērsot — apdzīšana šajā vietā nav atļauta neatkarīgi no redzamības vai ātruma.",
+    "explanation_ru": "Сплошная линия разметки запрещает её пересечение — обгон в этом месте не разрешён независимо от видимости или скорости.",
+    "difficulty": "easy",
+    "official_reference": null
+  },
+  {
+    "id": "q-106",
+    "categories": ["B"],
+    "text_lv": "Gājējs jau ir uzsācis nepazīmēta (negulēta) gājēju pārejas šķērsošanu. Kā jārīkojas vadītājam?",
+    "text_ru": "Пешеход уже начал переходить дорогу по нерегулируемому пешеходному переходу. Как должен поступить водитель?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Dot ceļu gājējam",
+        "text_ru": "Уступить дорогу пешеходу",
+        "is_correct": true
+      },
+      {
+        "id": "b",
+        "text_lv": "Signalizēt ar taures signālu un turpināt braukt",
+        "text_ru": "Подать звуковой сигнал и продолжить движение",
+        "is_correct": false
+      },
+      {
+        "id": "c",
+        "text_lv": "Apstāties tikai tad, ja gājējs pamāj ar roku",
+        "text_ru": "Остановиться только если пешеход подаёт знак рукой",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Vadītājam jādod ceļš gājējiem, kas jau atrodas uz gājēju pārejas vai ir uzsākuši tās šķērsošanu.",
+    "explanation_ru": "Водитель обязан уступить дорогу пешеходам, уже находящимся на пешеходном переходе или начавшим его переход.",
+    "difficulty": "easy",
+    "official_reference": null
+  },
+  {
+    "id": "q-107",
+    "categories": ["B"],
+    "text_lv": "Kam transportlīdzeklī ir jālieto drošības josta?",
+    "text_ru": "Кто в транспортном средстве обязан пристёгиваться ремнём безопасности?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Tikai vadītājam",
+        "text_ru": "Только водитель",
+        "is_correct": false
+      },
+      {
+        "id": "b",
+        "text_lv": "Vadītājam un priekšējā sēdeklī sēdošajam pasažierim",
+        "text_ru": "Водитель и пассажир на переднем сиденье",
+        "is_correct": false
+      },
+      {
+        "id": "c",
+        "text_lv": "Vadītājam un visiem pasažieriem visās sēdvietās, kur ir jostas",
+        "text_ru": "Водитель и все пассажиры на всех местах, оборудованных ремнями",
+        "is_correct": true
+      }
+    ],
+    "explanation_lv": "Drošības josta jālieto visiem transportlīdzeklī esošajiem, kuru sēdvieta ir aprīkota ar drošības jostu — ne tikai vadītājam vai priekšējam pasažierim.",
+    "explanation_ru": "Ремень безопасности обязателен для всех находящихся в транспортном средстве, чьё место оборудовано ремнём, — не только для водителя или переднего пассажира.",
+    "difficulty": "easy",
+    "official_reference": null
+  },
+  {
+    "id": "q-108",
+    "categories": ["B"],
+    "text_lv": "Ko nozīmē apgriezta trīsstūra forma ceļa zīme «Dot ceļu»?",
+    "text_ru": "Что означает знак «Уступи дорогу» в форме перевёрнутого треугольника?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Jāapstājas vienmēr, pat ja ceļš brīvs",
+        "text_ru": "Нужно всегда останавливаться, даже если дорога свободна",
+        "is_correct": false
+      },
+      {
+        "id": "b",
+        "text_lv": "Jādod ceļš transportam uz krustojošā ceļa, apstāšanās nav obligāta, ja tas ir droši",
+        "text_ru": "Нужно уступить дорогу транспорту на пересекаемой дороге, остановка не обязательна, если это безопасно",
+        "is_correct": true
+      },
+      {
+        "id": "c",
+        "text_lv": "Braukšana pa šo ceļu ir aizliegta",
+        "text_ru": "Движение по этой дороге запрещено",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Zīme «Dot ceļu» prasa dot priekšroku krustojošā ceļa transportam, bet, atšķirībā no zīmes «Stop», pilnīga apstāšanās nav obligāta, ja situācija to neprasa.",
+    "explanation_ru": "Знак «Уступи дорогу» требует уступить приоритет транспорту на пересекаемой дороге, но, в отличие от знака «Stop», полная остановка не обязательна, если ситуация этого не требует.",
+    "difficulty": "medium",
+    "official_reference": null
+  },
+  {
+    "id": "q-109",
+    "categories": ["B"],
+    "text_lv": "Vadītājs tuvojas ceļa zīmei «Stop». Kā jārīkojas?",
+    "text_ru": "Водитель приближается к знаку «Stop». Как нужно действовать?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Pilnībā apstāties, pat ja ceļš šķiet brīvs",
+        "text_ru": "Полностью остановиться, даже если дорога кажется свободной",
+        "is_correct": true
+      },
+      {
+        "id": "b",
+        "text_lv": "Palēnināt un turpināt braukt, ja neviens netuvojas",
+        "text_ru": "Снизить скорость и продолжить движение, если никто не приближается",
+        "is_correct": false
+      },
+      {
+        "id": "c",
+        "text_lv": "Apstāties tikai tumšajā laikā",
+        "text_ru": "Останавливаться только в тёмное время суток",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Zīme «Stop» prasa pilnīgu apstāšanos neatkarīgi no tā, vai ceļš šķiet brīvs — tas atšķir to no zīmes «Dot ceļu».",
+    "explanation_ru": "Знак «Stop» требует полной остановки независимо от того, кажется ли дорога свободной — этим он отличается от знака «Уступи дорогу».",
+    "difficulty": "easy",
+    "official_reference": null
+  },
+  {
+    "id": "q-110",
+    "categories": ["B"],
+    "text_lv": "Vai atļauts apdzīt tieši pirms gājēju pārejas?",
+    "text_ru": "Разрешён ли обгон непосредственно перед пешеходным переходом?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Jā, ja neviens gājējs nav redzams",
+        "text_ru": "Да, если не видно пешеходов",
+        "is_correct": false
+      },
+      {
+        "id": "b",
+        "text_lv": "Nē, apdzīšana tieši pirms gājēju pārejas ir aizliegta",
+        "text_ru": "Нет, обгон непосредственно перед пешеходным переходом запрещён",
+        "is_correct": true
+      },
+      {
+        "id": "c",
+        "text_lv": "Jā, ja apdzenamais transportlīdzeklis brauc lēnāk par 30 km/h",
+        "text_ru": "Да, если обгоняемое транспортное средство едет медленнее 30 км/ч",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Apdzīšana ir aizliegta tieši pirms gājēju pārejas un uz tās — tas samazina redzamību citiem ceļu satiksmes dalībniekiem, tostarp gājējiem.",
+    "explanation_ru": "Обгон запрещён непосредственно перед пешеходным переходом и на нём — это снижает видимость для других участников движения, включая пешеходов.",
+    "difficulty": "medium",
+    "official_reference": null
+  },
+  {
+    "id": "q-111",
+    "categories": ["B"],
+    "text_lv": "Kam parasti ir priekšroka apļveida krustojumā (rotācijas aplī)?",
+    "text_ru": "У кого обычно приоритет на кольцевом перекрёстке (круговом движении)?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Transportlīdzeklim, kas jau atrodas aplī",
+        "text_ru": "У транспорта, уже находящегося на круге",
+        "is_correct": true
+      },
+      {
+        "id": "b",
+        "text_lv": "Transportlīdzeklim, kas iebrauc aplī",
+        "text_ru": "У транспорта, въезжающего на круг",
+        "is_correct": false
+      },
+      {
+        "id": "c",
+        "text_lv": "Lielākajam transportlīdzeklim",
+        "text_ru": "У более крупного транспортного средства",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Ja nav norādīts citādi ar ceļa zīmēm, priekšroka apļveida krustojumā ir transportlīdzekļiem, kas jau atrodas aplī — iebraucot aplī, jādod tiem ceļš.",
+    "explanation_ru": "Если знаки не указывают иначе, на кольцевом перекрёстке приоритет у транспорта, уже находящегося на круге — при въезде на круг ему нужно уступить.",
+    "difficulty": "medium",
+    "official_reference": null
+  },
+  {
+    "id": "q-112",
+    "categories": ["B"],
+    "text_lv": "Kāpēc jāievēro pietiekams distances attālums līdz priekšā braucošajam transportlīdzeklim?",
+    "text_ru": "Зачем нужно соблюдать достаточную дистанцию до движущегося впереди транспортного средства?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Lai varētu droši apstāties, ja priekšā braucošais bremzē",
+        "text_ru": "Чтобы можно было безопасно остановиться, если едущий впереди затормозит",
+        "is_correct": true
+      },
+      {
+        "id": "b",
+        "text_lv": "Lai ietaupītu degvielu",
+        "text_ru": "Чтобы сэкономить топливо",
+        "is_correct": false
+      },
+      {
+        "id": "c",
+        "text_lv": "Tas nepieciešams tikai uz automaģistrālēm",
+        "text_ru": "Это нужно только на автомагистралях",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Pietiekama distance nepieciešama, lai vadītājam būtu laiks reaģēt un droši apstāties negaidītas bremzēšanas gadījumā — tas attiecas uz jebkuru ceļu, ne tikai automaģistrālēm.",
+    "explanation_ru": "Достаточная дистанция нужна, чтобы у водителя было время среагировать и безопасно остановиться при неожиданном торможении — это касается любой дороги, не только автомагистралей.",
+    "difficulty": "easy",
+    "official_reference": null
+  },
+  {
+    "id": "q-113",
+    "categories": ["B"],
+    "text_lv": "Kad drīkst izmantot aizmugurējo miglas lukturi?",
+    "text_ru": "Когда разрешено использовать задний противотуманный фонарь?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Jebkurā tumšā laikā",
+        "text_ru": "В любое тёмное время суток",
+        "is_correct": false
+      },
+      {
+        "id": "b",
+        "text_lv": "Kad redzamība ir būtiski samazināta (migla, spēcīgs lietus vai sniegs)",
+        "text_ru": "Когда видимость существенно снижена (туман, сильный дождь или снег)",
+        "is_correct": true
+      },
+      {
+        "id": "c",
+        "text_lv": "Vienmēr, braucot pilsētā",
+        "text_ru": "Всегда при движении в городе",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Aizmugurējais miglas lukturis paredzēts tikai situācijām ar būtiski samazinātu redzamību — pastāvīga lietošana traucē un maldina citus vadītājus.",
+    "explanation_ru": "Задний противотуманный фонарь предназначен только для условий существенно сниженной видимости — постоянное использование мешает и вводит в заблуждение других водителей.",
+    "difficulty": "medium",
+    "official_reference": null
+  },
+  {
+    "id": "q-114",
+    "categories": ["B"],
+    "text_lv": "Kāpēc ziemas periodā ir noteiktas prasības riepām?",
+    "text_ru": "Почему в зимний период установлены требования к шинам?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Lai nodrošinātu labāku saķeri ar ceļa segumu ziemas apstākļos",
+        "text_ru": "Чтобы обеспечить лучшее сцепление с дорожным покрытием в зимних условиях",
+        "is_correct": true
+      },
+      {
+        "id": "b",
+        "text_lv": "Tikai estētisku iemeslu dēļ",
+        "text_ru": "Только по эстетическим причинам",
+        "is_correct": false
+      },
+      {
+        "id": "c",
+        "text_lv": "Lai samazinātu automašīnas svaru",
+        "text_ru": "Чтобы уменьшить вес автомобиля",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Ziemas riepu prasības noteiktas, lai transportlīdzeklim būtu pietiekama saķere sniega, ledus vai zemas temperatūras apstākļos — precīzus datumus nosaka spēkā esošie noteikumi.",
+    "explanation_ru": "Требования к зимним шинам установлены для достаточного сцепления с покрытием в условиях снега, льда или низких температур — точные календарные даты определяются действующими правилами.",
+    "difficulty": "medium",
+    "official_reference": null
+  },
+  {
+    "id": "q-115",
+    "categories": ["B"],
+    "text_lv": "Kas jāievēro, pārvadājot mazu bērnu automašīnā?",
+    "text_ru": "Что нужно соблюдать при перевозке маленького ребёнка в автомобиле?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Bērnam jāizmanto viņa augumam un svaram atbilstoša bērnu autosēdeklīte",
+        "text_ru": "Ребёнок должен использовать автокресло, соответствующее его росту и весу",
+        "is_correct": true
+      },
+      {
+        "id": "b",
+        "text_lv": "Pietiek turēt bērnu rokās",
+        "text_ru": "Достаточно держать ребёнка на руках",
+        "is_correct": false
+      },
+      {
+        "id": "c",
+        "text_lv": "Bērnu drīkst pārvadāt bez papildu drošības līdzekļiem, ja brauciens ir īss",
+        "text_ru": "Ребёнка можно перевозить без дополнительных средств безопасности, если поездка короткая",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Mazu bērnu jāpārvadā atbilstošā bērnu autosēdeklītē — tas attiecas neatkarīgi no brauciena garuma.",
+    "explanation_ru": "Маленького ребёнка нужно перевозить в подходящем автокресле — это требование действует независимо от длительности поездки.",
+    "difficulty": "easy",
+    "official_reference": null
+  },
+  {
+    "id": "q-116",
+    "categories": ["B"],
+    "text_lv": "Kāpēc braukšana alkohola ietekmē virs likumā noteiktās normas ir aizliegta?",
+    "text_ru": "Почему запрещено управлять транспортным средством в состоянии алкогольного опьянения выше установленной законом нормы?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Alkohols pasliktina reakciju un lēmumu pieņemšanu, palielinot avārijas risku",
+        "text_ru": "Алкоголь ухудшает реакцию и принятие решений, повышая риск аварии",
+        "is_correct": true
+      },
+      {
+        "id": "b",
+        "text_lv": "Tas ir aizliegts tikai jaunajiem vadītājiem",
+        "text_ru": "Это запрещено только начинающим водителям",
+        "is_correct": false
+      },
+      {
+        "id": "c",
+        "text_lv": "Ierobežojums attiecas tikai uz braukšanu naktī",
+        "text_ru": "Ограничение действует только при движении ночью",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Alkohols pasliktina reakcijas laiku, uzmanību un spriestspēju — tāpēc likums nosaka maksimāli pieļaujamo līmeni, kura pārsniegšana ir aizliegta visiem vadītājiem.",
+    "explanation_ru": "Алкоголь ухудшает время реакции, внимание и способность оценивать ситуацию — поэтому закон устанавливает максимально допустимый уровень, превышение которого запрещено всем водителям.",
+    "difficulty": "easy",
+    "official_reference": null
+  },
+  {
+    "id": "q-117",
+    "categories": ["B"],
+    "text_lv": "Kādi dokumenti vadītājam jāspēj uzrādīt CSDD vai policijas pārbaudē?",
+    "text_ru": "Какие документы водитель должен предъявить по требованию CSDD или полиции?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Vadītāja apliecība un transportlīdzekļa reģistrācijas dokuments",
+        "text_ru": "Водительское удостоверение и регистрационный документ транспортного средства",
+        "is_correct": true
+      },
+      {
+        "id": "b",
+        "text_lv": "Tikai pase",
+        "text_ru": "Только паспорт",
+        "is_correct": false
+      },
+      {
+        "id": "c",
+        "text_lv": "Dokumenti nav nepieciešami, ja brauc netālu no mājām",
+        "text_ru": "Документы не нужны, если поездка недалеко от дома",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Vadītājam jābūt līdzi un jāspēj uzrādīt derīga vadītāja apliecība un transportlīdzekļa reģistrācijas dokuments — neatkarīgi no brauciena attāluma.",
+    "explanation_ru": "У водителя должны быть при себе и предъявляться по требованию действующее водительское удостоверение и регистрационный документ транспортного средства — независимо от расстояния поездки.",
+    "difficulty": "easy",
+    "official_reference": null
+  },
+  {
+    "id": "q-118",
+    "categories": ["B"],
+    "text_lv": "Tuvojas operatīvais transportlīdzeklis (piemēram, ātrā palīdzība) ar ieslēgtu bākuguni un skaņas signālu. Kā jārīkojas?",
+    "text_ru": "Приближается автомобиль оперативной службы (например, скорая помощь) с включёнными спецсигналами. Как нужно действовать?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Dot tam ceļu, vajadzības gadījumā apstājoties vai novirzoties malā",
+        "text_ru": "Уступить ему дорогу, при необходимости остановившись или сместившись к обочине",
+        "is_correct": true
+      },
+      {
+        "id": "b",
+        "text_lv": "Turpināt braukt ar to pašu ātrumu, jo tam nav priekšrocību",
+        "text_ru": "Продолжать движение с той же скоростью, так как у него нет преимущества",
+        "is_correct": false
+      },
+      {
+        "id": "c",
+        "text_lv": "Nekavējoties apstāties uz vietas neatkarīgi no situācijas",
+        "text_ru": "Немедленно остановиться на месте независимо от ситуации",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Operatīvajiem transportlīdzekļiem ar ieslēgtu bākuguni un skaņas signālu ir priekšroka — citiem satiksmes dalībniekiem jādod tiem ceļš, droši novirzoties vai apstājoties.",
+    "explanation_ru": "У автомобилей оперативных служб с включёнными спецсигналами есть приоритет — остальные участники движения обязаны уступить дорогу, безопасно сместившись или остановившись.",
+    "difficulty": "easy",
+    "official_reference": null
+  },
+  {
+    "id": "q-119",
+    "categories": ["B"],
+    "text_lv": "Vadītājs vēlas pagriezties pa kreisi krustojumā, kur pretim brauc cits transportlīdzeklis taisni. Kam ir priekšroka?",
+    "text_ru": "Водитель хочет повернуть налево на перекрёстке, где навстречу прямо едет другой автомобиль. У кого приоритет?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Vadītājam, kas pagriežas pa kreisi",
+        "text_ru": "У водителя, поворачивающего налево",
+        "is_correct": false
+      },
+      {
+        "id": "b",
+        "text_lv": "Transportlīdzeklim, kas brauc taisni pretējā virzienā",
+        "text_ru": "У транспорта, движущегося прямо во встречном направлении",
+        "is_correct": true
+      },
+      {
+        "id": "c",
+        "text_lv": "Tam, kurš pirmais signalizē ar pagrieziena rādītāju",
+        "text_ru": "У того, кто первым включил указатель поворота",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Pagriežoties pa kreisi, vadītājam jādod ceļš transportlīdzekļiem, kas brauc taisni no pretējā virziena, ja nav citu norāžu, kas nosaka citādi.",
+    "explanation_ru": "При повороте налево водитель обязан уступить дорогу транспорту, движущемуся прямо во встречном направлении, если иное не определено знаками или разметкой.",
+    "difficulty": "medium",
+    "official_reference": null
+  },
+  {
+    "id": "q-120",
+    "categories": ["B"],
+    "text_lv": "Vai drīkst apstāties vai novietot transportlīdzekli tieši pie krustojuma vai gājēju pārejas?",
+    "text_ru": "Можно ли останавливаться или парковаться непосредственно у перекрёстка или пешеходного перехода?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Jā, ja tas netraucē citiem",
+        "text_ru": "Да, если это никому не мешает",
+        "is_correct": false
+      },
+      {
+        "id": "b",
+        "text_lv": "Nē, tas vispārīgi ir aizliegts, jo pasliktina redzamību un satiksmes drošību",
+        "text_ru": "Нет, это в общем случае запрещено, так как ухудшает видимость и безопасность движения",
+        "is_correct": true
+      },
+      {
+        "id": "c",
+        "text_lv": "Jā, ja apstāšanās ir īslaicīga (mazāk par minūti)",
+        "text_ru": "Да, если остановка кратковременная (менее минуты)",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Apstāšanās un novietošana tieši pie krustojuma vai gājēju pārejas parasti ir aizliegta — tas slēpj redzamību citiem satiksmes dalībniekiem un rada bīstamību.",
+    "explanation_ru": "Остановка и стоянка непосредственно у перекрёстка или пешеходного перехода, как правило, запрещены — это ухудшает видимость для других участников движения и создаёт опасность.",
+    "difficulty": "medium",
+    "official_reference": null
+  },
+  {
+    "id": "q-121",
+    "categories": ["B"],
+    "text_lv": "Kāda ir papildu josla automaģistrāles labajā pusē ar pārtrauktu marķējumu, kas paredzēta avārijas situācijām?",
+    "text_ru": "Что представляет собой дополнительная полоса справа на автомагистрали, предназначенная для аварийных ситуаций?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Sadales josla (ceļa mala) — nav paredzēta parastai braukšanai",
+        "text_ru": "Обочина/полоса безопасности — не предназначена для обычного движения",
+        "is_correct": true
+      },
+      {
+        "id": "b",
+        "text_lv": "Papildu josla ātrai braukšanai",
+        "text_ru": "Дополнительная полоса для быстрого движения",
+        "is_correct": false
+      },
+      {
+        "id": "c",
+        "text_lv": "Josla, kuru drīkst izmantot sastrēguma gadījumā",
+        "text_ru": "Полоса, которую можно использовать при заторе",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Sadales josla (ceļa mala) automaģistrālē paredzēta apstāšanās vietai avārijas gadījumā, ne parastai braukšanai vai apdzīšanai.",
+    "explanation_ru": "Полоса безопасности (обочина) на автомагистрали предназначена для остановки в аварийной ситуации, а не для обычного движения или обгона.",
+    "difficulty": "hard",
+    "official_reference": null
+  },
+  {
+    "id": "q-122",
+    "categories": ["B"],
+    "text_lv": "Kad ir aizliegts veikt apgriešanos (U-veida pagriezienu)?",
+    "text_ru": "Когда запрещено выполнять разворот?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Ja tas norādīts ar ceļa zīmi vai apgriešanās nav droša (piemēram, nepietiekama redzamība)",
+        "text_ru": "Если это указано знаком или разворот небезопасен (например, недостаточная видимость)",
+        "is_correct": true
+      },
+      {
+        "id": "b",
+        "text_lv": "Apgriešanās ir aizliegta vienmēr un visur",
+        "text_ru": "Разворот запрещён всегда и везде",
+        "is_correct": false
+      },
+      {
+        "id": "c",
+        "text_lv": "Tikai naktī",
+        "text_ru": "Только ночью",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Apgriešanās aizliegta, ja to nosaka ceļa zīme vai marķējums, kā arī vietās, kur tā nav droša, piemēram, nepietiekamas redzamības dēļ — nevis vienmēr un visur.",
+    "explanation_ru": "Разворот запрещён там, где это указано знаком или разметкой, а также там, где он небезопасен, например из-за недостаточной видимости, — а не всегда и везде.",
+    "difficulty": "medium",
+    "official_reference": null
+  },
+  {
+    "id": "q-123",
+    "categories": ["B"],
+    "text_lv": "Vadītājs izbrauc no pagalma uz ielu ar aktīvu satiksmi. Kā jārīkojas?",
+    "text_ru": "Водитель выезжает со двора на улицу с активным движением. Как нужно действовать?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Dot ceļu visiem transportlīdzekļiem un gājējiem uz ielas",
+        "text_ru": "Уступить дорогу всем транспортным средствам и пешеходам на улице",
+        "is_correct": true
+      },
+      {
+        "id": "b",
+        "text_lv": "Ielas transportam jādod ceļš izbraucošajam",
+        "text_ru": "Транспорт на улице должен уступить выезжающему",
+        "is_correct": false
+      },
+      {
+        "id": "c",
+        "text_lv": "Priekšroku nosaka tas, kurš brauc lielāks transportlīdzeklis",
+        "text_ru": "Приоритет определяется тем, у кого транспортное средство крупнее",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Izbraucot no pagalma, teritorijas vai citas piegulošas vietas uz ceļu, vadītājam jādod ceļš visiem transportlīdzekļiem un gājējiem, kas jau atrodas uz ceļa.",
+    "explanation_ru": "При выезде со двора, прилегающей территории или иного примыкания на дорогу водитель обязан уступить дорогу всем транспортным средствам и пешеходам, уже находящимся на дороге.",
+    "difficulty": "easy",
+    "official_reference": null
+  },
+  {
+    "id": "q-124",
+    "categories": ["B"],
+    "text_lv": "Vadītājam jāpagriežas pa labi krustojumā, kur marķēta velosipēdistu pārbrauktuve šķērso viņa braukšanas virzienu. Kā jārīkojas?",
+    "text_ru": "Водителю нужно повернуть направо на перекрёстке, где велопереезд пересекает направление его движения. Как нужно действовать?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Dot ceļu velosipēdistiem, kas šķērso pārbrauktuvi",
+        "text_ru": "Уступить дорогу велосипедистам, пересекающим переезд",
+        "is_correct": true
+      },
+      {
+        "id": "b",
+        "text_lv": "Velosipēdistiem jāgaida, kamēr visi automobiļi pabeidz manevru",
+        "text_ru": "Велосипедисты должны ждать, пока все автомобили завершат манёвр",
+        "is_correct": false
+      },
+      {
+        "id": "c",
+        "text_lv": "Priekšroka ir tam, kurš brauc ātrāk",
+        "text_ru": "Приоритет у того, кто едет быстрее",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Pagriežoties un šķērsojot marķētu velosipēdistu pārbrauktuvi, vadītājam jādod ceļš velosipēdistiem, kas to jau šķērso vai ir uzsākuši šķērsošanu.",
+    "explanation_ru": "При повороте через обозначенный велопереезд водитель обязан уступить дорогу велосипедистам, уже пересекающим его или начавшим пересечение.",
+    "difficulty": "medium",
+    "official_reference": null
+  },
+  {
+    "id": "q-125",
+    "categories": ["B"],
+    "text_lv": "Kāpēc pirms manevra (piemēram, joslas maiņas vai pagrieziena) jāieslēdz pagrieziena rādītājs savlaicīgi?",
+    "text_ru": "Зачем перед манёвром (например, сменой полосы или поворотом) заранее включать указатель поворота?",
+    "media_url": null,
+    "options": [
+      {
+        "id": "a",
+        "text_lv": "Lai citi satiksmes dalībnieki savlaicīgi saprastu vadītāja nodomu",
+        "text_ru": "Чтобы другие участники движения заранее поняли намерение водителя",
+        "is_correct": true
+      },
+      {
+        "id": "b",
+        "text_lv": "Tas ir tikai ieteikums, ne obligāta prasība",
+        "text_ru": "Это лишь рекомендация, а не обязательное требование",
+        "is_correct": false
+      },
+      {
+        "id": "c",
+        "text_lv": "Tikai tāpēc, lai izvairītos no soda",
+        "text_ru": "Только чтобы избежать штрафа",
+        "is_correct": false
+      }
+    ],
+    "explanation_lv": "Savlaicīga signalizēšana ļauj citiem ceļu satiksmes dalībniekiem paredzēt vadītāja nodomu un attiecīgi pielāgot savu rīcību — tas ir drošības, ne tikai formalitātes jautājums.",
+    "explanation_ru": "Заблаговременная сигнализация позволяет другим участникам движения предвидеть намерение водителя и соответствующе скорректировать своё поведение — это вопрос безопасности, а не только формальности.",
+    "difficulty": "easy",
+    "official_reference": null
+  }
+]

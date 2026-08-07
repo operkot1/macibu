@@ -257,7 +257,7 @@ interface TheoryQuestion {
   text_lv: string;
   text_ru: string;
   media_url: string | null;       // для video-jautajumi — ссылка на видео
-  options: TheoryQuestionOption[];
+  options: TheoryQuestionOption[]; // ровно один options[].is_correct === true — проверяется Zod-refine (T-044), не только формой полей
   explanation_lv: string;
   explanation_ru: string;
   difficulty: "easy" | "medium" | "hard";
