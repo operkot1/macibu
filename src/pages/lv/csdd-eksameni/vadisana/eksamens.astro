@@ -1,0 +1,16 @@
+---
+import { getEntry, render } from "astro:content";
+import ArticleTemplate from "../../../../components/layout/ArticleTemplate.astro";
+
+const entry = await getEntry("pages", "lv/p2-vadisana-eksamens");
+if (!entry)
+  throw new Error("Content entry 'lv/p2-vadisana-eksamens' not found");
+const { Content } = await render(entry);
+---
+
+<ArticleTemplate
+  entry={entry}
+  Content={Content}
+  canonicalPath="/lv/csdd-eksameni/vadisana/eksamens/"
+  alternateUrl="/ru/ekzameny-csdd/vozhdenie/ekzamen/"
+/>

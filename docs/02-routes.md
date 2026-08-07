@@ -78,12 +78,12 @@
 | `p2-teorija-kludas` | `/csdd-eksameni/teorija/biezakas-kludas/` | `/ekzameny-csdd/teoriya/chastye-oshibki/` | справочная статья | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-040) |
 | `p2-teorija-pieteiksanas` | `/csdd-eksameni/teorija/pieteiksanas/` | `/ekzameny-csdd/teoriya/zapis-na-ekzamen/` | HowTo | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-040) |
 | `p2-vadisana-index` | `/csdd-eksameni/vadisana/` | `/ekzameny-csdd/vozhdenie/` | подраздел-хаб | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-039) |
-| `p2-vadisana-eksamens` | `/csdd-eksameni/vadisana/eksamens/` | `/ekzameny-csdd/vozhdenie/ekzamen/` | разбор процедуры | `ArticleTemplate` | Ф1 | — | static-content | **см. дефект D-02** |
-| `p2-vadisana-figuras` | `/csdd-eksameni/vadisana/figuras/` | `/ekzameny-csdd/vozhdenie/figury/` | справочная статья | `ArticleTemplate` | Ф1 | — | static-content | план |
-| `p2-vadisana-patstaviga` | `/csdd-eksameni/vadisana/patstaviga-brauksana/` | `/ekzameny-csdd/vozhdenie/samostoyatelnyj-marshrut/` | справочная статья | `ArticleTemplate` | Ф1 | — | static-content | план |
+| `p2-vadisana-eksamens` | `/csdd-eksameni/vadisana/eksamens/` | `/ekzameny-csdd/vozhdenie/ekzamen/` | разбор процедуры | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-041) |
+| `p2-vadisana-figuras` | `/csdd-eksameni/vadisana/figuras/` | `/ekzameny-csdd/vozhdenie/figury/` | справочная статья | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-041) |
+| `p2-vadisana-patstaviga` | `/csdd-eksameni/vadisana/patstaviga-brauksana/` | `/ekzameny-csdd/vozhdenie/samostoyatelnyj-marshrut/` | справочная статья | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-041) |
 | `p2-vadisana-zonas` | `/csdd-eksameni/vadisana/eksamena-zonas/` | `/ekzameny-csdd/vozhdenie/zony-ekzamena/` | карта зон (UGC) | `ToolPageTemplate` | Ф4 | ★★ | `exam_zones` | план |
 | `p2-vadisana-centri` | `/csdd-eksameni/vadisana/centri/` | `/ekzameny-csdd/vozhdenie/centry/` | карта центров | `ToolPageTemplate` | Ф1 | ★ | static-content (адреса, не меняются часто) | план |
-| `p2-vadisana-ko-nemt` | `/csdd-eksameni/vadisana/ko-nemt-lidzi/` | `/ekzameny-csdd/vozhdenie/chto-vzyat-s-soboj/` | чек-лист | `ArticleTemplate` | Ф1 | — | static-content | план |
+| `p2-vadisana-ko-nemt` | `/csdd-eksameni/vadisana/ko-nemt-lidzi/` | `/ekzameny-csdd/vozhdenie/chto-vzyat-s-soboj/` | чек-лист | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-041) |
 | `p2-kapec-67` | `/csdd-eksameni/kapec-67-nenokarto/` | `/ekzameny-csdd/pochemu-67-ne-sdayut/` | флагманская статья | `ArticleTemplate` | Ф1 | — | static-content, `ratings` (агрегат) | план |
 | `p2-nenokartoju-index` | `/csdd-eksameni/nenokartoju/` | `/ekzameny-csdd/ne-sdal/` | «Не сдал» — экран | `NotPassedTemplate` | Ф1 | ★★ | static-content, `theory_questions` (дедлайн-подсчёт) | план |
 | `p2-nenokartoju-protokols` | `/csdd-eksameni/nenokartoju/protokola-analize/` | `/ekzameny-csdd/ne-sdal/razbor-protokola/` | разбор протокола | `ToolPageTemplate` | Ф4 | ★★ | static-content (справочник кодов нарушений) | план |
