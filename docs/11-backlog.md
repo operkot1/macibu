@@ -1204,9 +1204,27 @@ build — зелёные; budget/i18n:coverage не меняются (ещё н�
 route — это T-047); Lighthouse — тот же `spawn Unknown system error -86`,
 не связан с изменением.
 
-**T-047 — Подключить `p2-teorija-testi` route**
+**T-047 — Подключить `p2-teorija-testi` route** — ✅ выполнено
 Предусловия: T-046. Файлы: `src/pages/{lv,ru}/csdd-eksameni/teorija/testi.astro`
 / `ekzameny-csdd/teoriya/testy.astro`. DoD: СК-Инструмент + СК-Контент.
+Реализовано: без сюрпризов — шаблон и пути в docs/02 уже были верными,
+файлы в тексте задачи совпали с реальными путями (в отличие от
+предыдущих route-тасков, тут не пришлось ничего чинить). Вопросы
+загружаются через `getCollection("theoryQuestions")` во фронтматтере
+страницы (Content Layer доступен в `.astro`, в отличие от plain vitest,
+T-045) и передаются в `Trainer` пропом, категория захардкожена `"B"`
+(единственная реально существующая — контракт и так говорит «никаких
+полей» на входе). Статус строки `p2-teorija-testi` в docs/02-routes.md
+→ «в проде».
+Проверено вживую (Playwright, временный, `--no-save`): обе страницы
+отдают 200; реальные данные из T-044 доходят до острова — `1/20` на
+старте, ответ на вопрос показывает обратную связь; LangSwitch работает;
+клик с `p2-teorija-index` на «Тренажёр теории» (раньше честный 404)
+теперь приводит на реальную страницу. `npm run check`:
+typecheck/lint/format/test:unit/build/budget — зелёные (обе страницы —
+51753 B, в бюджете); i18n:coverage не меняется (18 пар — не MDX-
+страница, тот же случай, что wizard/calculator/CentersMap); Lighthouse
+— тот же `spawn Unknown system error -86`, не связан с изменением.
 
 **T-048 — Экран «Не сдал»: контент + дедлайн-калькулятор**
 Цель: `computeTheoryValidityDeadline` + unit-тест + UI мини-инструмента.

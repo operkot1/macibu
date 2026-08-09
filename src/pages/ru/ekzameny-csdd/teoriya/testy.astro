@@ -1,0 +1,26 @@
+---
+import ToolPageTemplate from "../../../../components/layout/ToolPageTemplate.astro";
+import Trainer from "../../../../components/tools/theory-trainer/Trainer.tsx";
+import { getCollection } from "astro:content";
+
+const entries = await getCollection("theoryQuestions");
+const questions = entries.map((e) => e.data);
+---
+
+<ToolPageTemplate
+  currentLocale="ru"
+  routeId="p2-teorija-testi"
+  title="Тренажёр теории CSDD"
+  description="Тренажёр вопросов теоретического экзамена CSDD — 20 вопросов в день, без регистрации."
+  heading="Тренажёр теории CSDD"
+  intro="20 вопросов в день, максимально близко к реальному экзамену. Прогресс сохраняется в этом браузере."
+  canonicalPath="/ru/ekzameny-csdd/teoriya/testy/"
+  alternateUrl="/lv/csdd-eksameni/teorija/testi/"
+>
+  <Trainer
+    client:visible
+    questions={questions}
+    category="B"
+    currentLocale="ru"
+  />
+</ToolPageTemplate>

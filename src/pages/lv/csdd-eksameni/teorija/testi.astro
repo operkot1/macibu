@@ -1,0 +1,26 @@
+---
+import ToolPageTemplate from "../../../../components/layout/ToolPageTemplate.astro";
+import Trainer from "../../../../components/tools/theory-trainer/Trainer.tsx";
+import { getCollection } from "astro:content";
+
+const entries = await getCollection("theoryQuestions");
+const questions = entries.map((e) => e.data);
+---
+
+<ToolPageTemplate
+  currentLocale="lv"
+  routeId="p2-teorija-testi"
+  title="CSDD teorijas trenažieris"
+  description="CSDD teorijas eksāmena jautājumu trenažieris — 20 jautājumi dienā, bez reģistrācijas."
+  heading="CSDD teorijas trenažieris"
+  intro="20 jautājumi dienā, tuvi reālajam eksāmenam. Progress tiek saglabāts šajā pārlūkā."
+  canonicalPath="/lv/csdd-eksameni/teorija/testi/"
+  alternateUrl="/ru/ekzameny-csdd/teoriya/testy/"
+>
+  <Trainer
+    client:visible
+    questions={questions}
+    category="B"
+    currentLocale="lv"
+  />
+</ToolPageTemplate>
