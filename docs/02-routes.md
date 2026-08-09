@@ -87,8 +87,8 @@
 | `p2-kapec-67` | `/csdd-eksameni/kapec-67-nenokarto/` | `/ekzameny-csdd/pochemu-67-ne-sdayut/` | флагманская статья | `ArticleTemplate` | Ф1 | — | static-content, `ratings` (агрегат) | в проде (T-043) |
 | `p2-nenokartoju-index` | `/csdd-eksameni/nenokartoju/` | `/ekzameny-csdd/ne-sdal/` | «Не сдал» — экран | `NotPassedTemplate` | Ф1 | ★★ | static-content, `theory_questions` (дедлайн-подсчёт) | план |
 | `p2-nenokartoju-protokols` | `/csdd-eksameni/nenokartoju/protokola-analize/` | `/ekzameny-csdd/ne-sdal/razbor-protokola/` | разбор протокола | `ToolPageTemplate` | Ф4 | ★★ | static-content (справочник кодов нарушений) | план |
-| `p2-nenokartoju-atgriezties` | `/csdd-eksameni/nenokartoju/ka-atgriezties/` | `/ekzameny-csdd/ne-sdal/kak-vernutsya/` | гайд | `ArticleTemplate` | Ф1 | — | static-content | план |
-| `p2-nenokartoju-tresa` | `/csdd-eksameni/nenokartoju/tresa-reize/` | `/ekzameny-csdd/ne-sdal/tretya-popytka/` | гайд | `ArticleTemplate` | Ф1 | — | static-content | план |
+| `p2-nenokartoju-atgriezties` | `/csdd-eksameni/nenokartoju/ka-atgriezties/` | `/ekzameny-csdd/ne-sdal/kak-vernutsya/` | гайд | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-049) |
+| `p2-nenokartoju-tresa` | `/csdd-eksameni/nenokartoju/tresa-reize/` | `/ekzameny-csdd/ne-sdal/tretya-popytka/` | гайд | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-049) |
 | `p2-cenas` | `/csdd-eksameni/cenas/` | `/ekzameny-csdd/ceny/` | тарифы (из JSON) | `ArticleTemplate` + таблица | Ф1 | — | `csdd_tariffs` | план |
 
 ## Pillar 3 — Автошколы (`/autoskolas/` · `/avtoshkoly/`)
