@@ -89,7 +89,7 @@
 | `p2-nenokartoju-protokols` | `/csdd-eksameni/nenokartoju/protokola-analize/` | `/ekzameny-csdd/ne-sdal/razbor-protokola/` | разбор протокола | `ToolPageTemplate` | Ф4 | ★★ | static-content (справочник кодов нарушений) | план |
 | `p2-nenokartoju-atgriezties` | `/csdd-eksameni/nenokartoju/ka-atgriezties/` | `/ekzameny-csdd/ne-sdal/kak-vernutsya/` | гайд | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-049) |
 | `p2-nenokartoju-tresa` | `/csdd-eksameni/nenokartoju/tresa-reize/` | `/ekzameny-csdd/ne-sdal/tretya-popytka/` | гайд | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-049) |
-| `p2-cenas` | `/csdd-eksameni/cenas/` | `/ekzameny-csdd/ceny/` | тарифы (из JSON) | `ArticleTemplate` + таблица | Ф1 | — | `csdd_tariffs` | план |
+| `p2-cenas` | `/csdd-eksameni/cenas/` | `/ekzameny-csdd/ceny/` | тарифы (из JSON) | `ArticleTemplate` + таблица | Ф1 | — | `csdd_tariffs` | в проде (T-050) |
 
 ## Pillar 3 — Автошколы (`/autoskolas/` · `/avtoshkoly/`)
 

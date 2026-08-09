@@ -1,0 +1,33 @@
+---
+route_id: "p2-cenas"
+lang: "lv"
+title: "CSDD tarifi"
+description: "CSDD oficiālie tarifi par eksāmeniem un dokumentiem, plus vidējās tirgus cenas kursiem, kurus CSDD tieši nenosaka."
+pageType: "reference"
+---
+
+import TariffsTable from "../../../components/content/TariffsTable.astro";
+import DataFreshness from "../../../components/content/DataFreshness.astro";
+import { getCsddTariffs } from "../../../lib/data";
+
+export const tariffsFile = getCsddTariffs();
+
+Zemāk — CSDD oficiālās summas par eksāmeniem un dokumentiem. Daļu rindu
+(teorijas kurss, pirmās palīdzības kurss) CSDD tieši nenosaka — tās ir
+vidējās tirgus cenas, ne valsts tarifs; avots norādīts katrai rindai
+atsevišķi, nekas netiek klusi sajaukts.
+
+<TariffsTable tariffs={tariffsFile.tariffs} currentLocale="lv" />
+
+<DataFreshness
+  label="CSDD tarifi"
+  updatedAt={tariffsFile.updated_at}
+  staleAfterDays={90}
+  locale="lv"
+/>
+
+Precīzu summu savai pilsētai un kārbai — ņemot vērā reālo braukšanas
+praksi — aprēķina
+[izmaksu kalkulators](/lv/autoskolas/kalkulators/).
+
+← [CSDD eksāmeni](/lv/csdd-eksameni/)

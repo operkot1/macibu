@@ -1,0 +1,34 @@
+---
+route_id: "p2-cenas"
+lang: "ru"
+title: "Тарифы CSDD"
+description: "Официальные тарифы CSDD за экзамены и документы, плюс средние рыночные цены на курсы, которые CSDD не устанавливает напрямую."
+pageType: "reference"
+---
+
+import TariffsTable from "../../../components/content/TariffsTable.astro";
+import DataFreshness from "../../../components/content/DataFreshness.astro";
+import { getCsddTariffs } from "../../../lib/data";
+
+export const tariffsFile = getCsddTariffs();
+
+Ниже — официальные суммы CSDD за экзамены и документы. Часть строк
+(теоретический курс, курс первой помощи) CSDD напрямую не
+устанавливает — это средние рыночные цены, а не государственный тариф;
+источник указан для каждой строки отдельно, ничего не смешивается
+молча.
+
+<TariffsTable tariffs={tariffsFile.tariffs} currentLocale="ru" />
+
+<DataFreshness
+  label="Тарифы CSDD"
+  updatedAt={tariffsFile.updated_at}
+  staleAfterDays={90}
+  locale="ru"
+/>
+
+Точную сумму для своего города и коробки передач — с учётом реальной
+практики вождения — считает
+[калькулятор стоимости](/ru/avtoshkoly/kalkulyator/).
+
+← [Экзамены CSDD](/ru/ekzameny-csdd/)

@@ -1,0 +1,15 @@
+---
+import { getEntry, render } from "astro:content";
+import ArticleTemplate from "../../../components/layout/ArticleTemplate.astro";
+
+const entry = await getEntry("pages", "ru/p2-cenas");
+if (!entry) throw new Error("Content entry 'ru/p2-cenas' not found");
+const { Content } = await render(entry);
+---
+
+<ArticleTemplate
+  entry={entry}
+  Content={Content}
+  canonicalPath="/ru/ekzameny-csdd/ceny/"
+  alternateUrl="/lv/csdd-eksameni/cenas/"
+/>

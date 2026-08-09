@@ -1,0 +1,91 @@
+---
+// TariffsTable — docs/11-backlog.md T-050. Не остров — статичная
+// таблица без состояния, тот же принцип, что Checklist.astro (T-017) и
+// CentersMap.astro (T-042): не нужен клиентский JS ради вывода списка.
+
+import type { CsddTariff } from "../../types/data";
+
+export interface TariffsTableProps {
+  tariffs: CsddTariff[];
+  currentLocale: "lv" | "ru";
+}
+
+const { tariffs, currentLocale }: TariffsTableProps = Astro.props;
+
+const unitLabels = {
+  lv: {
+    "one-time": "vienreiz",
+    "per-attempt": "par mēģinājumu",
+    "per-year": "gadā",
+  },
+  ru: {
+    "one-time": "разово",
+    "per-attempt": "за попытку",
+    "per-year": "в год",
+  },
+} as const;
+
+const categoryAllLabel = { lv: "visas", ru: "любая" } as const;
+
+const columnLabels = {
+  lv: {
+    name: "Pakalpojums",
+    category: "Kategorija",
+    price: "Cena",
+    unit: "Periodiskums",
+    source: "Avots",
+  },
+  ru: {
+    name: "Услуга",
+    category: "Категория",
+    price: "Цена",
+    unit: "Периодичность",
+    source: "Источник",
+  },
+} as const;
+
+const c = columnLabels[currentLocale];
+
+function formatEur(value: number): string {
+  return `${value.toLocaleString("lv-LV", { minimumFractionDigits: 0, maximumFractionDigits: 2 })} €`;
+}
+---
+
+<div class="overflow-x-auto">
+  <table class="text-body-sm w-full border-collapse">
+    <thead>
+      <tr>
+        <th class="border-neutral-300 border-b p-2 text-left">{c.name}</th>
+        <th class="border-neutral-300 border-b p-2 text-left">{c.category}</th>
+        <th class="border-neutral-300 border-b p-2 text-right">{c.price}</th>
+        <th class="border-neutral-300 border-b p-2 text-left">{c.unit}</th>
+        <th class="border-neutral-300 border-b p-2 text-left">{c.source}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        tariffs.map((tariff) => (
+          <tr>
+            <td class="border-neutral-300 text-neutral-900 border-b p-2">
+              {currentLocale === "lv" ? tariff.name_lv : tariff.name_ru}
+            </td>
+            <td class="border-neutral-300 text-neutral-600 border-b p-2">
+              {tariff.category === "all"
+                ? categoryAllLabel[currentLocale]
+                : tariff.category}
+            </td>
+            <td class="text-numeric border-neutral-300 border-b p-2 text-right tabular-nums">
+              {formatEur(tariff.price_eur)}
+            </td>
+            <td class="border-neutral-300 text-neutral-600 border-b p-2">
+              {unitLabels[currentLocale][tariff.unit]}
+            </td>
+            <td class="border-neutral-300 text-neutral-600 border-b p-2">
+              {tariff.source_document}
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
