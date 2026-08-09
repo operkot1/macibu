@@ -1,0 +1,210 @@
+---
+// NotPassedTemplate — экран «Не сдал» (p2-nenokartoju-index, T-049b,
+// docs/06-tools/ekran-ne-sdal.md). «Самый важный экран портала по
+// прямому указанию задания» — до T-049b не был назначен ни одной
+// задаче, найдено при подготовке T-048.
+//
+// Счётчик «~N человек сегодня» — не рендерится: реальной агрегатной
+// статистики (редакционно обновляемого поля) не существует, а
+// контракт прямо предписывает в этом случае не выдумывать число, а
+// переформулировать на «две трети» без суточного счётчика. Именно эта
+// ветка и используется здесь целиком.
+//
+// Один основной CTA (заливка) → p2-nenokartoju-atgriezties (временная
+// замена p2-nenokartoju-protokols, которого нет до Ф4 — T-103), один
+// второстепенный (текстовая ссылка) → секция «истории» внутри той же
+// статьи (докс: подборка живёт внутри atgriezties, не отдельным
+// файлом) — тот же принцип «не два равнозначных CTA», что HomeTemplate
+// (T-026).
+//
+// CSDD tariffs price для блока «Когда можно пересдать» — цена
+// driving-exam, буквально по формуле контракта.
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import LangSwitch from "./LangSwitch.astro";
+import PhaseBar from "./PhaseBar.tsx";
+import AnalyticsLayerA from "./AnalyticsLayerA.astro";
+import CookieBanner from "./CookieBanner.tsx";
+import DeadlineCalc from "../tools/not-passed/DeadlineCalc.tsx";
+import { getCsddTariffs, getRatings } from "../../lib/data";
+import "../../styles/base.css";
+
+export interface NotPassedTemplateProps {
+  currentLocale: "lv" | "ru";
+}
+
+const { currentLocale }: NotPassedTemplateProps = Astro.props;
+const alternateLocale = currentLocale === "lv" ? "ru" : "lv";
+
+const baseUrl = "https://example.lv";
+
+const routes = {
+  lv: {
+    canonicalPath: "/csdd-eksameni/nenokartoju/",
+    alternateUrl: "/ekzameny-csdd/ne-sdal/",
+    cenas: "/lv/csdd-eksameni/cenas/",
+    atgriezties: "/lv/csdd-eksameni/nenokartoju/ka-atgriezties/",
+  },
+  ru: {
+    canonicalPath: "/ekzameny-csdd/ne-sdal/",
+    alternateUrl: "/csdd-eksameni/nenokartoju/",
+    cenas: "/ru/ekzameny-csdd/ceny/",
+    atgriezties: "/ru/ekzameny-csdd/ne-sdal/kak-vernutsya/",
+  },
+} as const;
+const r = routes[currentLocale];
+const canonicalPath = `/${currentLocale}${r.canonicalPath}`;
+const alternateUrl = `/${alternateLocale}${routes[alternateLocale].canonicalPath}`;
+
+const csddTariffs = getCsddTariffs();
+const ratings = getRatings();
+const drivingExamTariff = csddTariffs.tariffs.find(
+  (t) => t.id === "driving-exam",
+);
+
+function formatEur(value: number): string {
+  return `${value.toLocaleString("lv-LV", { minimumFractionDigits: 0, maximumFractionDigits: 2 })} €`;
+}
+
+const text = {
+  lv: {
+    title: "Nenokārtoji CSDD eksāmenu? Kas tālāk",
+    description:
+      "Nenokārtoji CSDD eksāmenu — tas ir parasti. Kad var pārkārtot, cik tas maksā un ar ko sākt.",
+    h1: "Nenokārtoji? Tas ir parasti",
+    supportText:
+      "Aptuveni divas trešdaļas kārtotāju nenokārto CSDD eksāmenu ar pirmo reizi — tā ir oficiāla statistika, ne izņēmums.",
+    retakeHeading: "Kad var pārkārtot",
+    retakeBody: (price: string) =>
+      `Pārkārtošana iespējama ne agrāk kā nākamajā darba dienā. Aptuvenā braukšanas eksāmena pārkārtošanas maksa — ${price} (pilna tabula — «CSDD tarifi»).`,
+    retakeLink: "CSDD tarifi",
+    primaryCta: "Saprast, kas nogāja greizi",
+    secondaryCta: "Stāsti par tiem, kas nokārtoja ne ar pirmo reizi",
+  },
+  ru: {
+    title: "Не сдал экзамен CSDD? Что делать дальше",
+    description:
+      "Не сдал экзамен CSDD — это нормально. Когда можно пересдать, сколько это стоит и с чего начать.",
+    h1: "Не сдал? Это нормально",
+    supportText:
+      "Около двух третей сдающих не проходят экзамен CSDD с первого раза — это официальная статистика, не исключение.",
+    retakeHeading: "Когда можно пересдать",
+    retakeBody: (price: string) =>
+      `Пересдача возможна не раньше следующего рабочего дня. Ориентировочная стоимость пересдачи экзамена вождения — ${price} (полная таблица — «Тарифы CSDD»).`,
+    retakeLink: "Тарифы CSDD",
+    primaryCta: "Разобрать, что пошло не так",
+    secondaryCta: "Истории тех, кто сдал не с первого раза",
+  },
+} as const;
+const t = text[currentLocale];
+---
+
+<html lang={currentLocale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{t.title}</title>
+    <meta name="description" content={t.description} />
+    <link rel="canonical" href={`${baseUrl}${canonicalPath}`} />
+    <link
+      rel="alternate"
+      hreflang={currentLocale === "lv" ? "lv-LV" : "ru-LV"}
+      href={`${baseUrl}${canonicalPath}`}
+    />
+    <link
+      rel="alternate"
+      hreflang={alternateLocale === "lv" ? "lv-LV" : "ru-LV"}
+      href={`${baseUrl}${alternateUrl}`}
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={`${baseUrl}/lv${routes.lv.canonicalPath}`}
+    />
+  </head>
+  <body>
+    <AnalyticsLayerA routeId="p2-nenokartoju-index" />
+    <Header currentLocale={currentLocale} currentRouteId="p2-nenokartoju-index">
+      <LangSwitch
+        slot="lang-switch"
+        currentLocale={currentLocale}
+        alternateUrl={alternateUrl}
+      />
+    </Header>
+    <PhaseBar
+      client:load
+      variant="sticky-mobile"
+      currentLocale={currentLocale}
+    />
+    <PhaseBar
+      client:load
+      variant="inline-desktop"
+      currentLocale={currentLocale}
+    />
+    <main class="flex flex-col gap-6 p-4">
+      <section>
+        <h1 class="text-h1 text-neutral-900 mb-2">{t.h1}</h1>
+        <p class="text-body text-neutral-600">{t.supportText}</p>
+      </section>
+
+      <section class="border-neutral-300 border-t pt-6">
+        <h2 class="text-h3 text-neutral-900 mb-2">{t.retakeHeading}</h2>
+        <p class="text-body text-neutral-600 mb-2">
+          {
+            t.retakeBody(
+              drivingExamTariff ? formatEur(drivingExamTariff.price_eur) : "—",
+            )
+          }
+        </p>
+        <a href={r.cenas} class="text-primary-600 underline">
+          {t.retakeLink}
+        </a>
+      </section>
+
+      <section class="border-neutral-300 border-t pt-6">
+        <DeadlineCalc client:visible currentLocale={currentLocale} />
+      </section>
+
+      <section
+        class="border-neutral-300 flex flex-col items-start gap-3 border-t pt-6"
+      >
+        <a
+          href={r.atgriezties}
+          id="not-passed-cta-primary"
+          class="bg-primary-600 rounded-md p-3 px-4 text-white"
+        >
+          {t.primaryCta}
+        </a>
+        <a
+          href={`${r.atgriezties}#istorii`}
+          id="not-passed-cta-secondary"
+          class="text-primary-600 underline"
+        >
+          {t.secondaryCta}
+        </a>
+      </section>
+    </main>
+    <Footer
+      currentLocale={currentLocale}
+      dataFreshness={{
+        csddTariffsUpdatedAt: csddTariffs.updated_at,
+        ratingsUpdatedAt: ratings.updated_at,
+      }}
+    />
+    <CookieBanner client:load currentLocale={currentLocale} />
+    <script>
+      import { trackEvent } from "../../lib/analytics/trackEvent";
+      trackEvent("not_passed_screen_viewed");
+      document
+        .getElementById("not-passed-cta-primary")
+        ?.addEventListener("click", () =>
+          trackEvent("not_passed_cta_protocol_clicked"),
+        );
+      document
+        .getElementById("not-passed-cta-secondary")
+        ?.addEventListener("click", () =>
+          trackEvent("not_passed_cta_stories_clicked"),
+        );
+    </script>
+  </body>
+</html>
