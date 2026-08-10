@@ -1393,10 +1393,42 @@ build/budget/i18n:coverage (21 полная пара LV/RU, было 20) — з�
 Lighthouse — тот же `spawn Unknown system error -86`, не связан с
 изменением.
 
-**T-051 — Ревизия Ф1**
+**T-051 — Ревизия Ф1** ✅ выполнено
 Предусловия: T-026…T-050. Критерии: `npm run check` зелёный, оба языка
 проверены вручную по каждому route Ф1, docs/02-routes.md обновлён. DoD:
 фаза Ф1 в проде.
+Реализовано: при ревизии обнаружен реальный пробел — маршрут `p1-index`
+(`/ka-iegut-tiesibas/` · `/kak-poluchit-prava/`), самый важный хаб Pillar 1,
+не имел ни одной задачи-владельца во всём backlog (аналогично находкам
+T-048→T-049b и T-039). Масштаб небольшой и полностью повторяет уже
+отработанный паттерн `p2-index` (T-039), поэтому решено не заводить
+отдельную задачу, а закрыть пробел прямо в рамках T-051. Созданы
+`src/content/pages/{lv,ru}/p1-index.mdx` (карточная сетка ссылок, тот же
+идиом, что `p2-index.mdx`) и `src/pages/lv/ka-iegut-tiesibas/index.astro` /
+`src/pages/ru/kak-poluchit-prava/index.astro` (тонкие обёртки
+`getEntry`+`render`+`ArticleTemplate`, идентичные `p2-index`-роутам).
+На хабе 8 карточек: 4 ссылки на уже собранные страницы Ф1 (`celvedis`/
+`rukovodstvo`, `soli-pa-solim`/`9-shagov`, `dokumenti`/`dokumenty`,
+`vecums`/`vozrast`) и 4 честные ссылки на ещё не собранные подразделы Ф2
+(`medicina`, `baltas-tiesibas`/`belye-prava`, `pirma-palidziba`/
+`pervaya-pomoshch`, `arzemniekiem`/`inostrancam`) — все 8 путей сверены
+буквально с `docs/02-routes.md`. В `docs/02-routes.md` строка `p1-index`
+переведена «план» → «в проде (T-051)»; также исправлен столбец «шаблон»
+(было `PillarIndexTemplate` — компонент никогда не существовал, как и в
+T-039 — используется реальный `ArticleTemplate`).
+Полная регрессия: `npm run check` зелёный (typecheck/lint/format/
+test:unit/build/budget/i18n:coverage — 22 полных пары LV/RU, было 21);
+Lighthouse — тот же несвязанный `spawn Unknown system error -86`.
+Дополнительно прогнан полный обход всех 24 маршрутов Ф1 × 2 языка (48 URL)
+через временный Playwright (`npm install --no-save`, деинсталлирован по
+завершении) на `astro preview`: все 48 отдают 200 и не дают неожиданных
+console-ошибок. Единственная 404-ошибка, всплывавшая на каждой странице
+(`/api/beacon/pageview`), — уже задокументированный, ещё не реализованный
+Cloudflare Pages Function эндпоинт (см. `AnalyticsLayerA.astro` и
+`docs/11-backlog.md` про Слой Б), не существующий под `astro preview` в
+принципе; воспроизводится и на уже давно сданных страницах фазы Ф0,
+никак не связан с T-051 — отфильтрован из результатов явно, не скрыт
+молча.
 
 ---
 

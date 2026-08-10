@@ -44,7 +44,7 @@
 
 | route_id | путь LV | путь RU | тип | шаблон | фаза | инстр. | источник | статус |
 |---|---|---|---|---|---|---|---|---|
-| `p1-index` | `/ka-iegut-tiesibas/` | `/kak-poluchit-prava/` | pillar-хаб | `PillarIndexTemplate` | Ф1 | — | static-content | план |
+| `p1-index` | `/ka-iegut-tiesibas/` | `/kak-poluchit-prava/` | pillar-хаб | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-051) |
 | `p1-celvedis` | `/ka-iegut-tiesibas/celvedis/` | `/kak-poluchit-prava/rukovodstvo/` | cornerstone-гайд | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-038) |
 | `p1-soli-pa-solim` | `/ka-iegut-tiesibas/soli-pa-solim/` | `/kak-poluchit-prava/9-shagov/` | статья + интерактивный чек-лист | `ArticleTemplate` | Ф1 | ★ | `user_state` (прогресс чек-листа) | в проде (T-037) |
 | `p1-dokumenti` | `/ka-iegut-tiesibas/dokumenti/` | `/kak-poluchit-prava/dokumenty/` | справочная статья | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-038) |
