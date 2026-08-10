@@ -17,6 +17,8 @@ import PhaseBar from "./PhaseBar.tsx";
 import AnalyticsLayerA from "./AnalyticsLayerA.astro";
 import CookieBanner from "./CookieBanner.tsx";
 import CatalogFilters from "../tools/catalog/CatalogFilters.tsx";
+import Callout from "../content/Callout.astro";
+import DataFreshness from "../content/DataFreshness.astro";
 import { getCsddTariffs, getRatings } from "../../lib/data";
 import {
   filterSchools,
@@ -35,6 +37,7 @@ export interface CatalogTemplateProps {
   canonicalPath: string;
   alternateUrl: string | null;
   schools: School[];
+  schoolsUpdatedAt: string;
   ratings: RatingEntry[];
 }
 
@@ -48,6 +51,7 @@ const {
   canonicalPath,
   alternateUrl,
   schools,
+  schoolsUpdatedAt,
   ratings,
 }: CatalogTemplateProps = Astro.props;
 
@@ -70,6 +74,9 @@ const text = {
     partnerBadge: "Portāla partneris",
     apply: "Pieteikties",
     detailsLink: "Skolas profils",
+    emptyDataTitle: "Katalogs īslaicīgi nav pieejams",
+    emptyDataBody: "Skolu saraksts pašlaik nav ielādēts — mēģini vēlāk.",
+    schoolsDataLabel: "Skolu saraksts",
   },
   ru: {
     city: "Город",
@@ -79,9 +86,26 @@ const text = {
     partnerBadge: "Партнёр портала",
     apply: "Записаться",
     detailsLink: "Профиль школы",
+    emptyDataTitle: "Каталог временно недоступен",
+    emptyDataBody: "Список школ сейчас не загружен — попробуйте позже.",
+    schoolsDataLabel: "Список школ",
   },
 } as const;
 const t = text[currentLocale];
+
+// docs/07-i18n-seo.md §8: p3-katalogs получает ItemList, генерируется из
+// типизированных пропсов здесь же (не вручную в MDX) — тот же принцип, что
+// HowToSchema/FAQ.astro.
+const itemListJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: defaultList.map((school, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: school.name,
+    url: `${baseUrl}/${currentLocale}/skola/${school.slug}/`,
+  })),
+};
 ---
 
 <html lang={currentLocale}>
@@ -110,6 +134,10 @@ const t = text[currentLocale];
         />
       )
     }
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(itemListJsonLd)}
+    />
   </head>
   <body>
     <AnalyticsLayerA routeId={routeId} />
@@ -134,59 +162,75 @@ const t = text[currentLocale];
       <h1 class="text-h1 text-neutral-900 mb-2">{heading}</h1>
       <p class="text-body text-neutral-600 mb-6">{intro}</p>
 
-      <CatalogFilters
-        client:visible
-        schools={schools}
-        ratings={ratings}
-        currentLocale={currentLocale}
-      />
+      {
+        schools.length === 0 ? (
+          <Fragment>
+            <Callout tone="warning" title={t.emptyDataTitle}>
+              <p>{t.emptyDataBody}</p>
+            </Callout>
+            <DataFreshness
+              label={t.schoolsDataLabel}
+              updatedAt={schoolsUpdatedAt}
+              staleAfterDays={120}
+              locale={currentLocale}
+            />
+          </Fragment>
+        ) : (
+          <Fragment>
+            <CatalogFilters
+              client:visible
+              schools={schools}
+              ratings={ratings}
+              currentLocale={currentLocale}
+            />
 
-      <ul id="catalog-static-list" class="flex flex-col gap-3">
-        {
-          defaultList.map((school) => (
-            <li class="border-neutral-300 rounded-md border p-4">
-              <div class="mb-1 flex items-center justify-between gap-2">
-                <p class="text-h3 text-neutral-900">{school.name}</p>
-                {school.is_partner && (
-                  <span class="bg-primary-100 text-primary-600 rounded-full px-2 py-0.5 text-xs font-bold">
-                    {t.partnerBadge}
-                  </span>
-                )}
-              </div>
-              <p class="text-body-sm text-neutral-600">
-                {t.city}: {school.city_id} · {t.languages}:{" "}
-                {school.languages.join(", ")} · {t.gearbox}:{" "}
-                {school.gearbox.join(", ")}
-              </p>
-              <p class="text-body-sm text-neutral-900 mt-1">
-                {school.partner_price_eur !== null
-                  ? `${school.partner_price_eur} €`
-                  : t.priceOnRequest}
-              </p>
-              <div class="mt-2 flex items-center gap-4">
-                <a
-                  href={`/${currentLocale === "lv" ? "lv" : "ru"}/skola/${school.slug}/`}
-                  class="text-primary-600 text-body-sm underline"
-                >
-                  {t.detailsLink}
-                </a>
-                {school.is_partner && (
-                  <a
-                    href={
-                      currentLocale === "lv"
-                        ? "/lv/pieteikties/"
-                        : "/ru/zapisatsya/"
-                    }
-                    class="text-primary-600 text-body-sm underline"
-                  >
-                    {t.apply}
-                  </a>
-                )}
-              </div>
-            </li>
-          ))
-        }
-      </ul>
+            <ul id="catalog-static-list" class="flex flex-col gap-3">
+              {defaultList.map((school) => (
+                <li class="border-neutral-300 rounded-md border p-4">
+                  <div class="mb-1 flex items-center justify-between gap-2">
+                    <p class="text-h3 text-neutral-900">{school.name}</p>
+                    {school.is_partner && (
+                      <span class="bg-primary-100 text-primary-600 rounded-full px-2 py-0.5 text-xs font-bold">
+                        {t.partnerBadge}
+                      </span>
+                    )}
+                  </div>
+                  <p class="text-body-sm text-neutral-600">
+                    {t.city}: {school.city_id} · {t.languages}:{" "}
+                    {school.languages.join(", ")} · {t.gearbox}:{" "}
+                    {school.gearbox.join(", ")}
+                  </p>
+                  <p class="text-body-sm text-neutral-900 mt-1">
+                    {school.partner_price_eur !== null
+                      ? `${school.partner_price_eur} €`
+                      : t.priceOnRequest}
+                  </p>
+                  <div class="mt-2 flex items-center gap-4">
+                    <a
+                      href={`/${currentLocale === "lv" ? "lv" : "ru"}/skola/${school.slug}/`}
+                      class="text-primary-600 text-body-sm underline"
+                    >
+                      {t.detailsLink}
+                    </a>
+                    {school.is_partner && (
+                      <a
+                        href={
+                          currentLocale === "lv"
+                            ? "/lv/pieteikties/"
+                            : "/ru/zapisatsya/"
+                        }
+                        class="text-primary-600 text-body-sm underline"
+                      >
+                        {t.apply}
+                      </a>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </Fragment>
+        )
+      }
     </main>
     <Footer
       currentLocale={currentLocale}

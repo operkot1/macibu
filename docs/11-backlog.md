@@ -1542,11 +1542,43 @@ build/budget/i18n:coverage — зелёные (маршрутов не приб�
 LV/RU те же 22); Lighthouse — тот же несвязанный `spawn Unknown system
 error -86`.
 
-**T-054 — Подключить `p3-katalogs`, noindex фильтров**
+**T-054 — Подключить `p3-katalogs`, noindex фильтров** ✅ выполнено
 Предусловия: T-053, T-019. Файлы:
 `src/pages/{lv,ru}/autoskolas/katalogs.astro` / `avtoshkoly/katalog.astro`.
 Критерии: непустая комбинация фильтров → `noindex` (e2e-проверка). DoD:
 СК-Инструмент + СК-Контент.
+Реализовано: страницы — тонкие обёртки (`getSchools`+`getRatings` →
+`CatalogTemplate`), тот же идиом, что `kalkulators.astro`. При сверке
+критерия СК-Контент «Schema.org-тип соответствует таблице
+docs/07-i18n-seo.md §8» найден реальный пробел, не покрытый в T-053:
+`p3-katalogs` по таблице §8 обязан отдавать `ItemList`, разметка
+генерируется внутри владеющего шаблона (тот же принцип, что
+`HowToSchema`/`FAQ.astro`) — добавлено прямо в `CatalogTemplate.astro`
+(файл T-053, правка раскрыта здесь). Заодно реализовано defensive-состояние
+«нет данных» из docs/06-tools/katalog-shkol.md (`Callout tone="warning"` +
+`DataFreshness`, показывается при `schools.length === 0`) — текущей
+фикстурой не достижимо, но того же уровня полноты состояний, что у
+остальных инструментов.
+
+Живая e2e-проверка (Playwright, временный, `--no-save`, деинсталлирован
+по завершении) на **реальном** маршруте (`npm run build` + `npm run
+preview`), не на scratch-странице, как в T-053: LV/RU обе отдают 200;
+дефолтный порядок — Bērziņš-школа (`sch-x`) первая; `ItemList` JSON-LD
+присутствует, 5 элементов; фильтр по городу → URL получает `?city=riga`
+И `<meta name="robots" content="noindex">` появляется; сброс фильтров →
+meta исчезает; заведомо пустая комбинация → zero-results-экран; реальный
+клик по `LangSwitch` (не прямая навигация) переключает LV↔RU корректно;
+`canonical`/`hreflang`×3/`title`/`meta description` в `<head>` все
+корректны. Консольных ошибок не обнаружено (не считая уже
+задокументированного `/api/beacon/pageview`).
+
+`npm run check`: typecheck/lint/format/test:unit (56 тестов,
+не изменилось — маршрут не содержит новых unit-тестируемых формул)/build/
+budget (обе новые страницы 52112 B, в бюджете)/i18n:coverage (22 пары,
+не изменилось — инструмент не через Content Collections, тот же паттерн,
+что визард/калькулятор) — зелёные; Lighthouse — тот же несвязанный `spawn
+Unknown system error -86`. `docs/02-routes.md`: `p3-katalogs` →
+«в проде (T-054)».
 
 **T-055 — `RatingTemplate` (общий для школ/инструкторов)**
 Предусловия: T-052. Файлы: `src/components/layout/RatingTemplate.astro`.

@@ -1,0 +1,21 @@
+---
+import CatalogTemplate from "../../../components/layout/CatalogTemplate.astro";
+import { getSchools, getRatings } from "../../../lib/data";
+
+const schoolsFile = getSchools();
+const ratings = getRatings().entries;
+---
+
+<CatalogTemplate
+  currentLocale="lv"
+  routeId="p3-katalogs"
+  title="Autoskolu katalogs"
+  description="Visas Latvijas autoskolas no CSDD atklātajiem datiem — filtrē pēc pilsētas, valodas un kārbas, kārto pēc reitinga vai cenas."
+  heading="Autoskolu katalogs"
+  intro="Šeit ir visas Latvijas autoskolas — ne tikai partneri. Filtrē un kārto, lai atrastu piemērotāko."
+  canonicalPath="/lv/autoskolas/katalogs/"
+  alternateUrl="/ru/avtoshkoly/katalog/"
+  schools={schoolsFile.schools}
+  schoolsUpdatedAt={schoolsFile.updated_at}
+  ratings={ratings}
+/>
