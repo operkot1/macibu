@@ -1438,12 +1438,47 @@ Cloudflare Pages Function эндпоинт (см. `AnalyticsLayerA.astro` и
 школы, города + остаток Pillar 1 (per `A-01`) + дешифратор прайса, симулятор
 экзамена, видео-вопросы (per `A-02`).
 
-**T-052 — `compute-ratings.ts` (ETL) + unit-тесты `wilsonLowerBound`**
+**T-052 — `compute-ratings.ts` (ETL) + unit-тесты `wilsonLowerBound`** ✅ выполнено
 Цель: скрипт, вычисляющий `ratings.json` из `schools.json`+`instructors.json`
 по формуле docs/03-data-model.md. Предусловия: T-008, T-009. Файлы:
 `scripts/compute-ratings.ts`, `src/lib/ratings/wilsonLowerBound.spec.ts`.
 Критерии: воспроизводит числа из docs/03 (Bērziņš ≈0.568 и т.д.) на
 фикстурах. DoD: стандартный.
+Реализовано: как и в списке файлов задачи, сама реализация формулы
+(`src/lib/ratings/wilsonLowerBound.ts`) в тексте задачи не была указана —
+добавлена как обязательная зависимость спека. Дополнительно, сверх
+списка файлов задачи, выделена чистая функция агрегации
+`src/lib/ratings/computeRatings.ts` + `computeRatings.spec.ts` (тот же
+паттерн, что `computeWizardPath`/`computeCalculator`/`buildDailySession`:
+формула — чистая функция в `src/lib/{tool}/`, скрипт — тонкая CLI-обёртка
+поверх неё, а не вся логика внутри `scripts/*.ts`). В `package.json`
+добавлен npm-скрипт `compute-ratings` (вне пайплайна `npm run check` —
+это шаг регенерации данных, а не CI-гейт).
+При сверке фикстур с методикой (`docs/06-tools/rejting-shkol.md`: рейтинг
+школы = сумма попыток/успехов всех её инструкторов, только для школ с
+`data_available_for_rating: true`) обнаружен реальный пробел: в уже
+закоммиченном `fixtures/ratings.json` отсутствовала рейтинговая запись
+для школы `sch-z` («Autoskola Z») — у неё есть инструктор с валидной
+(хоть и малой) выборкой (К. Lapiņš, 3/3, `data_available_for_rating:
+true`), школьная агрегированная запись обязана существовать по методике,
+но её не было — файл был набран руками, а не посчитан. Реальный прогон
+ETL подтвердил: все ранее внесённые вручную числа (`pass_rate`,
+`rank_score`, порядок) совпали с расчётом формулы дословно (Bērziņš
+0.5682, Petrova 0.4695, Ozols 0.4423, Lapiņš 0.4385 — как в docs/03) —
+единственное расхождение — недостающая запись `sch-z`, которая теперь
+добавлена (`rank_score` 0.4385, `confidence: "insufficient"`, `rank: 4`,
+идентична записи инструктора Lapiņš, что и ожидается при одном
+инструкторе на школу). Инструктор с `exam_attempts_total: 0`
+(`ins-jauns`) и школа с `data_available_for_rating: false` (`sch-new`)
+подтверждены исключёнными из выдачи целиком (не 0%), как требует правило
+пустых данных docs/03.
+`avgPassRate`/`sufficientSchools` на `p2-kapec-67` (T-043) не затронуты —
+`sch-z` попадает в `confidence: "insufficient"`, а не `"sufficient"`,
+исключается тем же фильтром, что и раньше.
+`npm run check`: typecheck/lint/format/test:unit (47 тестов, было 35)/
+build/budget/i18n:coverage — зелёные; Lighthouse — тот же несвязанный
+`spawn Unknown system error -86`. Маршруты не менялись — docs/02-routes.md
+не затронут.
 
 **T-053 — `CatalogTemplate` + фильтрация/сортировка**
 Предусловия: T-009, T-052. Файлы:

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-01T03:00:00Z",
+  "updated_at": "2026-08-10T19:35:55.727Z",
   "methodology_version": "1.0.0",
   "entries": [
     {
@@ -10,7 +10,7 @@
       "confidence": "sufficient",
       "rank_score": 0.5682,
       "rank": 1,
-      "calculated_at": "2026-08-01T03:00:00Z"
+      "calculated_at": "2026-08-10T19:35:55.727Z"
     },
     {
       "subject_type": "instructor",
@@ -20,7 +20,7 @@
       "confidence": "sufficient",
       "rank_score": 0.4695,
       "rank": 2,
-      "calculated_at": "2026-08-01T03:00:00Z"
+      "calculated_at": "2026-08-10T19:35:55.727Z"
     },
     {
       "subject_type": "instructor",
@@ -30,17 +30,17 @@
       "confidence": "limited",
       "rank_score": 0.4423,
       "rank": 3,
-      "calculated_at": "2026-08-01T03:00:00Z"
+      "calculated_at": "2026-08-10T19:35:55.727Z"
     },
     {
       "subject_type": "instructor",
       "subject_id": "ins-lapins",
-      "pass_rate": 1.0,
+      "pass_rate": 1,
       "sample_size": 3,
       "confidence": "insufficient",
       "rank_score": 0.4385,
       "rank": 4,
-      "calculated_at": "2026-08-01T03:00:00Z"
+      "calculated_at": "2026-08-10T19:35:55.727Z"
     },
     {
       "subject_type": "school",
@@ -50,7 +50,7 @@
       "confidence": "sufficient",
       "rank_score": 0.5682,
       "rank": 1,
-      "calculated_at": "2026-08-01T03:00:00Z"
+      "calculated_at": "2026-08-10T19:35:55.727Z"
     },
     {
       "subject_type": "school",
@@ -60,7 +60,7 @@
       "confidence": "sufficient",
       "rank_score": 0.4695,
       "rank": 2,
-      "calculated_at": "2026-08-01T03:00:00Z"
+      "calculated_at": "2026-08-10T19:35:55.727Z"
     },
     {
       "subject_type": "school",
@@ -70,7 +70,17 @@
       "confidence": "limited",
       "rank_score": 0.4423,
       "rank": 3,
-      "calculated_at": "2026-08-01T03:00:00Z"
+      "calculated_at": "2026-08-10T19:35:55.727Z"
+    },
+    {
+      "subject_type": "school",
+      "subject_id": "sch-z",
+      "pass_rate": 1,
+      "sample_size": 3,
+      "confidence": "insufficient",
+      "rank_score": 0.4385,
+      "rank": 4,
+      "calculated_at": "2026-08-10T19:35:55.727Z"
     }
   ]
 }
