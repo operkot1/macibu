@@ -1,0 +1,31 @@
+---
+// ItemListSchema — docs/07-i18n-seo.md §8: p3-katalogs/p3-reitings/
+// p3-instruktori/cat-* получают ItemList. Тот же принцип, что HowToSchema
+// (T-036) — небольшой Schema.org-компонент, вставляется прямо в контент
+// страницы (не в head шаблона), т.к. используется только частью
+// tool-страниц, не всеми, кто использует ToolPageTemplate.
+
+export interface ItemListSchemaItem {
+  name: string;
+  url: string;
+}
+
+export interface ItemListSchemaProps {
+  items: ItemListSchemaItem[];
+}
+
+const { items }: ItemListSchemaProps = Astro.props;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: items.map((item, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: item.name,
+    url: item.url,
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

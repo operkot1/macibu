@@ -1,0 +1,37 @@
+---
+import ToolPageTemplate from "../../../components/layout/ToolPageTemplate.astro";
+import RatingList from "../../../components/tools/rating/RatingList.tsx";
+import ItemListSchema from "../../../components/content/ItemListSchema.astro";
+import { getSchools, getRatings } from "../../../lib/data";
+import { joinRatingSubjects } from "../../../lib/ratings/joinRatingSubjects";
+
+const schools = getSchools().schools;
+const ratings = getRatings().entries;
+
+const { ranked } = joinRatingSubjects(schools, ratings, "school", {});
+const baseUrl = "https://example.lv";
+const itemListItems = ranked.map((entry) => ({
+  name: entry.subject.name,
+  url: `${baseUrl}/ru/skola/${entry.subject.slug}/`,
+}));
+---
+
+<ToolPageTemplate
+  currentLocale="ru"
+  routeId="p3-reitings"
+  title="Рейтинг автошкол"
+  description="Честный рейтинг автошкол Латвии по реальной статистике сдачи экзаменов CSDD — не по рекламе, фильтруй по городу, языку и коробке."
+  heading="Рейтинг автошкол"
+  intro="Рейтинг строится только на реальной статистике CSDD — без исключений для партнёров. Сортировку выбрать нельзя, это часть честной методики."
+  canonicalPath="/ru/avtoshkoly/rejting/"
+  alternateUrl="/lv/autoskolas/reitings/"
+>
+  <ItemListSchema items={itemListItems} />
+  <RatingList
+    client:visible
+    subjectType="school"
+    subjects={schools}
+    ratingEntries={ratings}
+    currentLocale="ru"
+  />
+</ToolPageTemplate>

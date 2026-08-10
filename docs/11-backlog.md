@@ -1639,8 +1639,40 @@ build/budget/i18n:coverage — зелёные; Lighthouse — тот же нес
 `spawn Unknown system error -86`. Маршрутов ещё нет — `docs/02-routes.md`
 не тронут.
 
-**T-056 — Подключить `p3-reitings`**
+**T-056 — Подключить `p3-reitings`** ✅ выполнено
 Предусловия: T-055. Файлы: route ×LV/RU. DoD: СК-Инструмент + СК-Контент.
+Реализовано: маршруты — тонкие обёртки на `ToolPageTemplate` + `RatingList`
+(`subjectType="school"`), по выводу T-055 (не `RatingTemplate`). При
+сверке СК-Контент найден тот же пробел, что в T-054 для каталога:
+docs/07-i18n-seo.md §8 требует `ItemList` и для `p3-reitings`. Т.к.
+`ToolPageTemplate` — общий для многих tool-страниц, которым `ItemList` не
+нужен, схема не встроена в шаблон, а вынесена в новый переиспользуемый
+`src/components/content/ItemListSchema.astro` (тот же принцип, что уже
+существующий `HowToSchema.astro` — Schema.org-компонент вставляется прямо
+в контент страницы, не в head шаблона); список для `ItemList` — дефолтный
+(без фильтров) ранжированный порядок через `joinRatingSubjects` из T-055.
+Компонент сразу переиспользуем для T-057 (`p3-instruktori`), та же
+разметка §8 требует и там.
+
+Живая e2e-проверка (Playwright, временный, `--no-save`, деинсталлирован
+по завершении) на реальном собранном маршруте: LV/RU отдают 200;
+дефолтный порядок — `sch-x→sch-y→sch-fors→sch-z`; блок «Vēl nav CSDD
+statistikas» показывается (`sch-new`); `ItemList` JSON-LD — 4 элемента,
+корректные `/lv/skola/{slug}/`-ссылки; на странице ровно 3 `<select>` —
+сортировки нет (критерий задачи выполнен буквально); фильтр по городу
+работает; ссылка на методологию — честная future-404
+`/lv/autoskolas/metodologija/`; реальный клик по `LangSwitch` переключает
+LV↔RU; Tab доходит до `<select>`; `canonical`/`hreflang`×2/`title`
+корректны. Консольных ошибок не обнаружено.
+
+`npm run check`: typecheck/lint/format/test:unit (62, без изменений —
+формул не добавлено, переиспользованы T-055/T-052)/build/budget (обе
+страницы 51677 B, в бюджете)/i18n:coverage (22 пары, без изменений — не
+Content Collections) — зелёные; Lighthouse — тот же несвязанный `spawn
+Unknown system error -86`. `docs/02-routes.md`: `p3-reitings` →
+«в проде (T-056)», столбец «шаблон» исправлен `RatingTemplate` →
+`ToolPageTemplate` (тот же паттерн правки реестра, что T-051 для
+`p1-index`).
 
 **T-057 — Подключить `p3-instruktori`**
 Цель: воспроизвести Экран 5 дословно (прогресс-бары, бейджи достоверности).
