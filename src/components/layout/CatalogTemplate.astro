@@ -1,0 +1,200 @@
+---
+// CatalogTemplate — шаблон каталога школ (T-053, docs/06-tools/katalog-shkol.md,
+// первое применение — `p3-katalogs`). В отличие от ToolPageTemplate (T-032,
+// один client:visible остров без осмысленного SSR) — каталог обязан
+// работать без JS: список школ по умолчанию (без фильтров, сортировка
+// "rating") рендерится обычной Astro-разметкой ниже, а CatalogFilters —
+// прогрессивное улучшение поверх него (реальный fetch/JSON остаётся тем
+// же, остров только переключает представление после гидратации).
+//
+// Карточка школы здесь и JSX-карточка внутри CatalogFilters.tsx обязаны
+// визуально совпадать (одинаковые Tailwind-классы) — при правке одной
+// нужно синхронно поправить другую, автоматической проверки этому нет.
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import LangSwitch from "./LangSwitch.astro";
+import PhaseBar from "./PhaseBar.tsx";
+import AnalyticsLayerA from "./AnalyticsLayerA.astro";
+import CookieBanner from "./CookieBanner.tsx";
+import CatalogFilters from "../tools/catalog/CatalogFilters.tsx";
+import { getCsddTariffs, getRatings } from "../../lib/data";
+import {
+  filterSchools,
+  DEFAULT_CATALOG_FILTERS,
+} from "../../lib/catalog/filterSchools";
+import type { School, RatingEntry } from "../../types/data";
+import "../../styles/base.css";
+
+export interface CatalogTemplateProps {
+  currentLocale: "lv" | "ru";
+  routeId: string;
+  title: string;
+  description: string;
+  heading: string;
+  intro: string;
+  canonicalPath: string;
+  alternateUrl: string | null;
+  schools: School[];
+  ratings: RatingEntry[];
+}
+
+const {
+  currentLocale,
+  routeId,
+  title,
+  description,
+  heading,
+  intro,
+  canonicalPath,
+  alternateUrl,
+  schools,
+  ratings,
+}: CatalogTemplateProps = Astro.props;
+
+const baseUrl = "https://example.lv";
+
+const lvPath = currentLocale === "lv" ? canonicalPath : alternateUrl;
+const ruPath = currentLocale === "ru" ? canonicalPath : alternateUrl;
+
+const csddTariffs = getCsddTariffs();
+const globalRatings = getRatings();
+
+const defaultList = filterSchools(schools, ratings, DEFAULT_CATALOG_FILTERS);
+
+const text = {
+  lv: {
+    city: "Pilsēta",
+    languages: "Valodas",
+    gearbox: "Kārba",
+    priceOnRequest: "cena pēc pieprasījuma",
+    partnerBadge: "Portāla partneris",
+    apply: "Pieteikties",
+    detailsLink: "Skolas profils",
+  },
+  ru: {
+    city: "Город",
+    languages: "Языки",
+    gearbox: "Коробка",
+    priceOnRequest: "цена по запросу",
+    partnerBadge: "Партнёр портала",
+    apply: "Записаться",
+    detailsLink: "Профиль школы",
+  },
+} as const;
+const t = text[currentLocale];
+---
+
+<html lang={currentLocale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={`${baseUrl}${canonicalPath}`} />
+    {
+      lvPath && (
+        <link rel="alternate" hreflang="lv-LV" href={`${baseUrl}${lvPath}`} />
+      )
+    }
+    {
+      ruPath && (
+        <link rel="alternate" hreflang="ru-LV" href={`${baseUrl}${ruPath}`} />
+      )
+    }
+    {
+      lvPath && (
+        <link
+          rel="alternate"
+          hreflang="x-default"
+          href={`${baseUrl}${lvPath}`}
+        />
+      )
+    }
+  </head>
+  <body>
+    <AnalyticsLayerA routeId={routeId} />
+    <Header currentLocale={currentLocale} currentRouteId={routeId}>
+      <LangSwitch
+        slot="lang-switch"
+        currentLocale={currentLocale}
+        alternateUrl={alternateUrl}
+      />
+    </Header>
+    <PhaseBar
+      client:load
+      variant="sticky-mobile"
+      currentLocale={currentLocale}
+    />
+    <PhaseBar
+      client:load
+      variant="inline-desktop"
+      currentLocale={currentLocale}
+    />
+    <main class="p-4">
+      <h1 class="text-h1 text-neutral-900 mb-2">{heading}</h1>
+      <p class="text-body text-neutral-600 mb-6">{intro}</p>
+
+      <CatalogFilters
+        client:visible
+        schools={schools}
+        ratings={ratings}
+        currentLocale={currentLocale}
+      />
+
+      <ul id="catalog-static-list" class="flex flex-col gap-3">
+        {
+          defaultList.map((school) => (
+            <li class="border-neutral-300 rounded-md border p-4">
+              <div class="mb-1 flex items-center justify-between gap-2">
+                <p class="text-h3 text-neutral-900">{school.name}</p>
+                {school.is_partner && (
+                  <span class="bg-primary-100 text-primary-600 rounded-full px-2 py-0.5 text-xs font-bold">
+                    {t.partnerBadge}
+                  </span>
+                )}
+              </div>
+              <p class="text-body-sm text-neutral-600">
+                {t.city}: {school.city_id} · {t.languages}:{" "}
+                {school.languages.join(", ")} · {t.gearbox}:{" "}
+                {school.gearbox.join(", ")}
+              </p>
+              <p class="text-body-sm text-neutral-900 mt-1">
+                {school.partner_price_eur !== null
+                  ? `${school.partner_price_eur} €`
+                  : t.priceOnRequest}
+              </p>
+              <div class="mt-2 flex items-center gap-4">
+                <a
+                  href={`/${currentLocale === "lv" ? "lv" : "ru"}/skola/${school.slug}/`}
+                  class="text-primary-600 text-body-sm underline"
+                >
+                  {t.detailsLink}
+                </a>
+                {school.is_partner && (
+                  <a
+                    href={
+                      currentLocale === "lv"
+                        ? "/lv/pieteikties/"
+                        : "/ru/zapisatsya/"
+                    }
+                    class="text-primary-600 text-body-sm underline"
+                  >
+                    {t.apply}
+                  </a>
+                )}
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+    <Footer
+      currentLocale={currentLocale}
+      dataFreshness={{
+        csddTariffsUpdatedAt: csddTariffs.updated_at,
+        ratingsUpdatedAt: globalRatings.updated_at,
+      }}
+    />
+    <CookieBanner client:load currentLocale={currentLocale} />
+  </body>
+</html>
