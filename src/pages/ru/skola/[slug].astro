@@ -1,0 +1,24 @@
+---
+import SchoolCardTemplate from "../../../components/layout/SchoolCardTemplate.astro";
+import { getSchools, getInstructors, getRatings } from "../../../lib/data";
+import type { School } from "../../../types/data";
+
+export async function getStaticPaths() {
+  const schools = getSchools().schools;
+  return schools.map((school) => ({
+    params: { slug: school.slug },
+    props: { school },
+  }));
+}
+
+const { school } = Astro.props as { school: School };
+const instructors = getInstructors().instructors;
+const ratingEntries = getRatings().entries;
+---
+
+<SchoolCardTemplate
+  currentLocale="ru"
+  school={school}
+  instructors={instructors}
+  ratingEntries={ratingEntries}
+/>

@@ -1,0 +1,326 @@
+---
+// SchoolCardTemplate — карточка школы (T-059, docs/02-routes.md
+// route_id `school-card`, A-05: плоский маршрут /skola/{slug}/, общий
+// slug на LV/RU). Полностью проп-driven (schools.json/instructors.json/
+// ratings.json), без Content Collections — на школу нет ручного текста,
+// весь контент — данные. Первый динамический маршрут проекта:
+// src/pages/{lv,ru}/skola/[slug].astro генерируют по одной странице на
+// школу через getStaticPaths.
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import LangSwitch from "./LangSwitch.astro";
+import PhaseBar from "./PhaseBar.tsx";
+import AnalyticsLayerA from "./AnalyticsLayerA.astro";
+import CookieBanner from "./CookieBanner.tsx";
+import Callout from "../content/Callout.astro";
+import { getCsddTariffs, getRatings } from "../../lib/data";
+import { joinRatingSubjects } from "../../lib/ratings/joinRatingSubjects";
+import type { School, Instructor, RatingEntry } from "../../types/data";
+
+export interface SchoolCardTemplateProps {
+  currentLocale: "lv" | "ru";
+  school: School;
+  instructors: Instructor[];
+  ratingEntries: RatingEntry[];
+}
+
+const {
+  currentLocale,
+  school,
+  instructors,
+  ratingEntries,
+}: SchoolCardTemplateProps = Astro.props;
+
+const baseUrl = "https://example.lv";
+const canonicalPath = `/${currentLocale}/skola/${school.slug}/`;
+const alternateUrl = `/${currentLocale === "lv" ? "ru" : "lv"}/skola/${school.slug}/`;
+const lvPath = currentLocale === "lv" ? canonicalPath : alternateUrl;
+const ruPath = currentLocale === "ru" ? canonicalPath : alternateUrl;
+
+const csddTariffs = getCsddTariffs();
+const globalRatings = getRatings();
+
+const { ranked: rankedSchools } = joinRatingSubjects(
+  [school],
+  ratingEntries,
+  "school",
+  {},
+);
+const schoolRating = rankedSchools[0] ?? null;
+
+const schoolInstructors = instructors.filter((i) => i.school_id === school.id);
+const { ranked: rankedInstructors, unranked: unrankedInstructors } =
+  joinRatingSubjects(schoolInstructors, ratingEntries, "instructor", {});
+
+const text = {
+  lv: {
+    title: `${school.name} — atsauksmes un cena`,
+    city: "Pilsēta",
+    languages: "Valodas",
+    gearbox: "Kārba",
+    categories: "Kategorijas",
+    priceOnRequest: "Cena pēc pieprasījuma",
+    partnerBadge: "Portāla partneris",
+    apply: "Pieteikties",
+    contactHeading: "Kontakti",
+    phone: "Tālrunis",
+    email: "E-pasts",
+    website: "Mājaslapa",
+    csddNumber: "CSDD reģ. numurs",
+    ratingHeading: "Reitings",
+    noRatingYet: "Šai skolai vēl nav CSDD statistikas.",
+    confidenceSufficient: "ⓘ Izlase pietiekama",
+    confidenceLimited: "Izlase ierobežota — ņem vērā piesardzīgi",
+    confidenceInsufficient: "⚠ Izlase maza — reitings nav uzticams",
+    students: "skolēni",
+    instructorsHeading: "Instruktori",
+    noInstructorRatingYet: "Vēl nav CSDD statistikas",
+    methodologyLink: "Kā mēs to aprēķinām?",
+    backToCatalog: "← Atpakaļ uz katalogu",
+  },
+  ru: {
+    title: `${school.name} — отзывы и цена`,
+    city: "Город",
+    languages: "Языки",
+    gearbox: "Коробка",
+    categories: "Категории",
+    priceOnRequest: "Цена по запросу",
+    partnerBadge: "Партнёр портала",
+    apply: "Записаться",
+    contactHeading: "Контакты",
+    phone: "Телефон",
+    email: "Email",
+    website: "Сайт",
+    csddNumber: "Рег. номер CSDD",
+    ratingHeading: "Рейтинг",
+    noRatingYet: "У этой школы пока нет статистики CSDD.",
+    confidenceSufficient: "ⓘ Выборка достаточная",
+    confidenceLimited: "Выборка ограничена — учитывайте с осторожностью",
+    confidenceInsufficient: "⚠ Выборка мала — рейтинг недостоверен",
+    students: "учеников",
+    instructorsHeading: "Инструкторы",
+    noInstructorRatingYet: "Пока нет статистики CSDD",
+    methodologyLink: "Как мы это считаем?",
+    backToCatalog: "← Назад в каталог",
+  },
+} as const;
+const t = text[currentLocale];
+
+function confidenceText(confidence: RatingEntry["confidence"]): string {
+  if (confidence === "sufficient") return t.confidenceSufficient;
+  if (confidence === "limited") return t.confidenceLimited;
+  return t.confidenceInsufficient;
+}
+
+const methodologyHref =
+  currentLocale === "lv"
+    ? "/lv/autoskolas/metodologija/"
+    : "/ru/avtoshkoly/metodologiya/";
+const catalogHref =
+  currentLocale === "lv"
+    ? "/lv/autoskolas/katalogs/"
+    : "/ru/avtoshkoly/katalog/";
+
+// docs/07-i18n-seo.md §8: LocalBusiness (+AggregateRating, только если
+// confidence !== "insufficient" — не публикуем недостоверную выборку как
+// оценку, ввело бы поисковик в заблуждение так же, как пользователя).
+const jsonLd: Record<string, unknown> = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: school.name,
+  address: school.address,
+  ...(school.phone ? { telephone: school.phone } : {}),
+  ...(school.website ? { url: school.website } : {}),
+};
+if (schoolRating && schoolRating.confidence !== "insufficient") {
+  jsonLd.aggregateRating = {
+    "@type": "AggregateRating",
+    ratingValue: Math.round(schoolRating.pass_rate * 100),
+    bestRating: 100,
+    worstRating: 0,
+    ratingCount: schoolRating.sample_size,
+  };
+}
+---
+
+<html lang={currentLocale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{t.title}</title>
+    <meta
+      name="description"
+      content={`${school.name}: ${school.city_id}, ${school.languages.join(
+        ", ",
+      )}. ${school.partner_price_eur !== null ? `${school.partner_price_eur} €` : t.priceOnRequest}.`}
+    />
+    <link rel="canonical" href={`${baseUrl}${canonicalPath}`} />
+    <link rel="alternate" hreflang="lv-LV" href={`${baseUrl}${lvPath}`} />
+    <link rel="alternate" hreflang="ru-LV" href={`${baseUrl}${ruPath}`} />
+    <link rel="alternate" hreflang="x-default" href={`${baseUrl}${lvPath}`} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <AnalyticsLayerA routeId="school-card" />
+    <Header currentLocale={currentLocale} currentRouteId="school-card">
+      <LangSwitch
+        slot="lang-switch"
+        currentLocale={currentLocale}
+        alternateUrl={alternateUrl}
+      />
+    </Header>
+    <PhaseBar
+      client:load
+      variant="sticky-mobile"
+      currentLocale={currentLocale}
+    />
+    <PhaseBar
+      client:load
+      variant="inline-desktop"
+      currentLocale={currentLocale}
+    />
+    <main class="p-4">
+      <div class="mb-4 flex items-center justify-between gap-2">
+        <h1 class="text-h1 text-neutral-900">{school.name}</h1>
+        {
+          school.is_partner && (
+            <span class="bg-primary-100 text-primary-600 rounded-full px-2 py-0.5 text-xs font-bold">
+              {t.partnerBadge}
+            </span>
+          )
+        }
+      </div>
+
+      <p class="text-body-sm text-neutral-600 mb-1">
+        {t.city}: {school.city_id} · {t.languages}: {
+          school.languages.join(", ")
+        } ·{" "}
+        {t.gearbox}: {school.gearbox.join(", ")}
+      </p>
+      <p class="text-body-sm text-neutral-600 mb-4">
+        {t.categories}: {school.categories.join(", ")}
+      </p>
+
+      <p class="text-body text-neutral-900 mb-4">
+        {
+          school.partner_price_eur !== null
+            ? `${school.partner_price_eur} €`
+            : t.priceOnRequest
+        }
+      </p>
+
+      {
+        school.is_partner && (
+          <a
+            href={
+              currentLocale === "lv" ? "/lv/pieteikties/" : "/ru/zapisatsya/"
+            }
+            class="bg-primary-600 text-body mb-6 inline-block rounded-md px-4 py-2 text-white"
+          >
+            {t.apply}
+          </a>
+        )
+      }
+
+      <section class="border-neutral-300 mb-6 rounded-md border p-4">
+        <p class="text-h3 text-neutral-900 mb-2">{t.contactHeading}</p>
+        <p class="text-body-sm text-neutral-600">{school.address}</p>
+        {
+          school.phone && (
+            <p class="text-body-sm text-neutral-600">
+              {t.phone}: {school.phone}
+            </p>
+          )
+        }
+        {
+          school.contact_email && (
+            <p class="text-body-sm text-neutral-600">
+              {t.email}: {school.contact_email}
+            </p>
+          )
+        }
+        {
+          school.website && (
+            <p class="text-body-sm text-neutral-600">
+              {t.website}:{" "}
+              <a href={school.website} class="text-primary-600 underline">
+                {school.website}
+              </a>
+            </p>
+          )
+        }
+        <p class="text-body-sm text-neutral-600">
+          {t.csddNumber}: {school.csdd_registration_number}
+        </p>
+      </section>
+
+      <section class="mb-6">
+        <p class="text-h3 text-neutral-900 mb-2">{t.ratingHeading}</p>
+        {
+          schoolRating ? (
+            <div class="border-neutral-300 rounded-md border p-4">
+              <p class="text-body text-neutral-900">
+                {Math.round(schoolRating.pass_rate * 100)}% ·{" "}
+                {schoolRating.sample_size} {t.students}
+              </p>
+              <p class="text-body-sm text-neutral-600">
+                {confidenceText(schoolRating.confidence)}
+              </p>
+            </div>
+          ) : (
+            <Callout tone="info">
+              <p>{t.noRatingYet}</p>
+            </Callout>
+          )
+        }
+      </section>
+
+      {
+        (rankedInstructors.length > 0 || unrankedInstructors.length > 0) && (
+          <section class="mb-6">
+            <p class="text-h3 text-neutral-900 mb-2">{t.instructorsHeading}</p>
+            <ul class="flex flex-col gap-2">
+              {rankedInstructors.map((entry) => (
+                <li class="border-neutral-300 rounded-md border p-3">
+                  <p class="text-body text-neutral-900">
+                    {entry.subject.full_name}
+                  </p>
+                  <p class="text-body-sm text-neutral-600">
+                    {Math.round(entry.pass_rate * 100)}% · {entry.sample_size}{" "}
+                    {t.students} · {confidenceText(entry.confidence)}
+                  </p>
+                </li>
+              ))}
+              {unrankedInstructors.map((instructor) => (
+                <li class="border-neutral-300 rounded-md border p-3">
+                  <p class="text-body text-neutral-900">
+                    {instructor.full_name}
+                  </p>
+                  <p class="text-body-sm text-neutral-600">
+                    {t.noInstructorRatingYet}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
+
+      <a href={methodologyHref} class="text-primary-600 text-body-sm underline">
+        {t.methodologyLink}
+      </a>
+      <br />
+      <a href={catalogHref} class="text-primary-600 text-body-sm underline">
+        {t.backToCatalog}
+      </a>
+    </main>
+    <Footer
+      currentLocale={currentLocale}
+      dataFreshness={{
+        csddTariffsUpdatedAt: csddTariffs.updated_at,
+        ratingsUpdatedAt: globalRatings.updated_at,
+      }}
+    />
+    <CookieBanner client:load currentLocale={currentLocale} />
+  </body>
+</html>

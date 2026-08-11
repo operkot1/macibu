@@ -114,7 +114,7 @@
 | `p3-city-valmiera` | `/autoskolas/valmiera/` | `/avtoshkoly/valmiera/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | план |
 | `p3-city-rezekne` | `/autoskolas/rezekne/` | `/avtoshkoly/rezekne/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | план |
 | `p3-city-ogre` | `/autoskolas/ogre/` | `/avtoshkoly/ogre/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | план |
-| `school-card` | `/skola/{slug}/` | `/skola/{slug}/` | карточка школы (шаблон, вне пилларного префикса) | `SchoolCardTemplate` | Ф2 (каталог, все школы LV) / Ф3 (запись — только `is_partner`) | — | `schools`, `instructors`, `ratings` | план — см. `A-05` |
+| `school-card` | `/skola/{slug}/` | `/skola/{slug}/` | карточка школы (шаблон, вне пилларного префикса) | `SchoolCardTemplate` | Ф2 (каталог, все школы LV) / Ф3 (запись — только `is_partner`) | — | `schools`, `instructors`, `ratings` | в проде (T-059), см. `A-05` |
 | `school-card-fors` | `/skola/fors/` | `/skola/fors/` | карточка школы — экземпляр `school-card` | `SchoolCardTemplate` | Ф3 | — | `schools` (`is_partner: true`) | план |
 
 ## Pillar 4 — Учусь водить (`/macos-braukt/` · `/uchus-vodit/`)
