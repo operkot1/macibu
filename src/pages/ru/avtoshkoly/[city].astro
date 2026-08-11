@@ -1,0 +1,23 @@
+---
+import CityHubTemplate from "../../../components/layout/CityHubTemplate.astro";
+import { getSchools, getRatings } from "../../../lib/data";
+import { CITY_IDS } from "../../../lib/cities";
+
+export async function getStaticPaths() {
+  return CITY_IDS.map((cityId) => ({
+    params: { city: cityId },
+    props: { cityId },
+  }));
+}
+
+const { cityId } = Astro.props;
+const schools = getSchools().schools;
+const ratings = getRatings().entries;
+---
+
+<CityHubTemplate
+  currentLocale="ru"
+  cityId={cityId}
+  schools={schools}
+  ratings={ratings}
+/>

@@ -1,4 +1,5 @@
 import { getSchools } from "../data";
+import { CITY_IDS } from "../cities";
 
 export interface SitemapEntry {
   routeId: string;
@@ -38,5 +39,11 @@ export const sitemapEntries: SitemapEntry[] = [
     routeId: `school-card-${school.slug}`,
     lv: `/lv/skola/${school.slug}/`,
     ru: `/ru/skola/${school.slug}/`,
+  })),
+  // Динамический маршрут city-хабов (T-061) — тот же принцип §5.
+  ...CITY_IDS.map((cityId) => ({
+    routeId: `p3-city-${cityId}`,
+    lv: `/lv/autoskolas/${cityId}/`,
+    ru: `/ru/avtoshkoly/${cityId}/`,
   })),
 ];

@@ -1,0 +1,194 @@
+---
+// CityHubTemplate — city-хаб (T-061, docs/02-routes.md route_id
+// `p3-city-*`, ★ — не один из 15 приоритетных инструментов, контракт
+// зафиксирован прямо в тексте задачи). В отличие от каталога
+// (CatalogTemplate, T-053, ★★, интерактивные фильтры) — city-хаб
+// полностью статичен: его смысл — быть реально индексируемой SEO-
+// страницей под локальный запрос ("автошкола в Риге"), а не инструментом.
+// Отфильтрованный вид каталога (?city=riga) специально noindex (T-054) —
+// у него нет собственного индексируемого URL, city-хаб — именно он.
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import LangSwitch from "./LangSwitch.astro";
+import PhaseBar from "./PhaseBar.tsx";
+import AnalyticsLayerA from "./AnalyticsLayerA.astro";
+import CookieBanner from "./CookieBanner.tsx";
+import Callout from "../content/Callout.astro";
+import { getCsddTariffs, getRatings } from "../../lib/data";
+import { filterSchools } from "../../lib/catalog/filterSchools";
+import { cityLabels, type CityId } from "../../lib/cities";
+import type { School, RatingEntry } from "../../types/data";
+
+export interface CityHubTemplateProps {
+  currentLocale: "lv" | "ru";
+  cityId: CityId;
+  schools: School[];
+  ratings: RatingEntry[];
+}
+
+const { currentLocale, cityId, schools, ratings }: CityHubTemplateProps =
+  Astro.props;
+
+const routeId = `p3-city-${cityId}`;
+const canonicalPath = `/${currentLocale}/${currentLocale === "lv" ? "autoskolas" : "avtoshkoly"}/${cityId}/`;
+const alternateUrl = `/${currentLocale === "lv" ? "ru" : "lv"}/${currentLocale === "lv" ? "avtoshkoly" : "autoskolas"}/${cityId}/`;
+const lvPath = currentLocale === "lv" ? canonicalPath : alternateUrl;
+const ruPath = currentLocale === "ru" ? canonicalPath : alternateUrl;
+
+const baseUrl = "https://example.lv";
+const csddTariffs = getCsddTariffs();
+const globalRatings = getRatings();
+
+const cityName = cityLabels[currentLocale][cityId];
+const cityList = filterSchools(schools, ratings, {
+  city_id: cityId,
+  sort: "rating",
+});
+
+const catalogHref =
+  currentLocale === "lv"
+    ? `/lv/autoskolas/katalogs/?city=${cityId}`
+    : `/ru/avtoshkoly/katalog/?city=${cityId}`;
+
+const text = {
+  lv: {
+    heading: `Autoskolas — ${cityName}`,
+    intro: `Autoskolas pilsētā ${cityName} pēc reālas CSDD statistikas.`,
+    city: "Pilsēta",
+    languages: "Valodas",
+    gearbox: "Kārba",
+    priceOnRequest: "cena pēc pieprasījuma",
+    partnerBadge: "Portāla partneris",
+    apply: "Pieteikties",
+    detailsLink: "Skolas profils",
+    emptyTitle: `Šajā pilsētā vēl nav reģistrētu skolu portālā`,
+    emptyBody:
+      "Tas nenozīmē, ka autoskolu šeit nav — CSDD atklātie dati par šo pilsētu portālā vēl nav apstrādāti.",
+    catalogLink: "Skatīt visu katalogu ar filtriem →",
+  },
+  ru: {
+    heading: `Автошколы — ${cityName}`,
+    intro: `Автошколы в городе ${cityName} по реальной статистике CSDD.`,
+    city: "Город",
+    languages: "Языки",
+    gearbox: "Коробка",
+    priceOnRequest: "цена по запросу",
+    partnerBadge: "Партнёр портала",
+    apply: "Записаться",
+    detailsLink: "Профиль школы",
+    emptyTitle: "В этом городе пока нет зарегистрированных в портале школ",
+    emptyBody:
+      "Это не значит, что автошкол здесь нет — открытые данные CSDD по этому городу пока не обработаны.",
+    catalogLink: "Смотреть весь каталог с фильтрами →",
+  },
+} as const;
+const t = text[currentLocale];
+
+const description =
+  currentLocale === "lv"
+    ? `Autoskolas pilsētā ${cityName} — reāla CSDD statistika, cenas un valodas, bez izņēmumiem partneriem.`
+    : `Автошколы в городе ${cityName} — реальная статистика CSDD, цены и языки, без исключений для партнёров.`;
+---
+
+<html lang={currentLocale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{t.heading}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={`${baseUrl}${canonicalPath}`} />
+    <link rel="alternate" hreflang="lv-LV" href={`${baseUrl}${lvPath}`} />
+    <link rel="alternate" hreflang="ru-LV" href={`${baseUrl}${ruPath}`} />
+    <link rel="alternate" hreflang="x-default" href={`${baseUrl}${lvPath}`} />
+  </head>
+  <body>
+    <AnalyticsLayerA routeId={routeId} />
+    <Header currentLocale={currentLocale} currentRouteId={routeId}>
+      <LangSwitch
+        slot="lang-switch"
+        currentLocale={currentLocale}
+        alternateUrl={alternateUrl}
+      />
+    </Header>
+    <PhaseBar
+      client:load
+      variant="sticky-mobile"
+      currentLocale={currentLocale}
+    />
+    <PhaseBar
+      client:load
+      variant="inline-desktop"
+      currentLocale={currentLocale}
+    />
+    <main class="p-4">
+      <h1 class="text-h1 text-neutral-900 mb-2">{t.heading}</h1>
+      <p class="text-body text-neutral-600 mb-6">{t.intro}</p>
+
+      {
+        cityList.length === 0 ? (
+          <Callout tone="info" title={t.emptyTitle}>
+            <p>{t.emptyBody}</p>
+          </Callout>
+        ) : (
+          <ul class="flex flex-col gap-3">
+            {cityList.map((school) => (
+              <li class="border-neutral-300 rounded-md border p-4">
+                <div class="mb-1 flex items-center justify-between gap-2">
+                  <p class="text-h3 text-neutral-900">{school.name}</p>
+                  {school.is_partner && (
+                    <span class="bg-primary-100 text-primary-600 rounded-full px-2 py-0.5 text-xs font-bold">
+                      {t.partnerBadge}
+                    </span>
+                  )}
+                </div>
+                <p class="text-body-sm text-neutral-600">
+                  {t.languages}: {school.languages.join(", ")} · {t.gearbox}:{" "}
+                  {school.gearbox.join(", ")}
+                </p>
+                <p class="text-body-sm text-neutral-900 mt-1">
+                  {school.partner_price_eur !== null
+                    ? `${school.partner_price_eur} €`
+                    : t.priceOnRequest}
+                </p>
+                <div class="mt-2 flex items-center gap-4">
+                  <a
+                    href={`/${currentLocale}/skola/${school.slug}/`}
+                    class="text-primary-600 text-body-sm underline"
+                  >
+                    {t.detailsLink}
+                  </a>
+                  {school.is_partner && (
+                    <a
+                      href={
+                        currentLocale === "lv"
+                          ? "/lv/pieteikties/"
+                          : "/ru/zapisatsya/"
+                      }
+                      class="text-primary-600 text-body-sm underline"
+                    >
+                      {t.apply}
+                    </a>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+
+      <p class="mt-6">
+        <a href={catalogHref} class="text-primary-600 text-body-sm underline">
+          {t.catalogLink}
+        </a>
+      </p>
+    </main>
+    <Footer
+      currentLocale={currentLocale}
+      dataFreshness={{
+        csddTariffsUpdatedAt: csddTariffs.updated_at,
+        ratingsUpdatedAt: globalRatings.updated_at,
+      }}
+    />
+    <CookieBanner client:load currentLocale={currentLocale} />
+  </body>
+</html>

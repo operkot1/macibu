@@ -105,15 +105,15 @@
 | `p3-cenu-atsifretajs` | `/autoskolas/cenu-atsifretajs/` | `/avtoshkoly/rasshifrovka-cen/` | дешифратор прайса | `ToolPageTemplate` | Ф2 | ★★ | `cost_model`, `csdd_tariffs` | план |
 | `p3-kalkulators` | `/autoskolas/kalkulators/` | `/avtoshkoly/kalkulyator/` | калькулятор цены | `ToolPageTemplate` | Ф1 | ★★ | `cost_model` | в проде (T-035) |
 | `p3-ligums` | `/autoskolas/ligums/` | `/avtoshkoly/dogovor/` | справочная статья | `ArticleTemplate` | Ф2 | — | static-content | план |
-| `p3-city-riga` | `/autoskolas/riga/` | `/avtoshkoly/riga/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` (фильтр по городу) | план |
-| `p3-city-daugavpils` | `/autoskolas/daugavpils/` | `/avtoshkoly/daugavpils/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | план |
-| `p3-city-liepaja` | `/autoskolas/liepaja/` | `/avtoshkoly/liepaja/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | план |
-| `p3-city-jelgava` | `/autoskolas/jelgava/` | `/avtoshkoly/jelgava/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | план |
-| `p3-city-jurmala` | `/autoskolas/jurmala/` | `/avtoshkoly/jurmala/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | план |
-| `p3-city-ventspils` | `/autoskolas/ventspils/` | `/avtoshkoly/ventspils/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | план |
-| `p3-city-valmiera` | `/autoskolas/valmiera/` | `/avtoshkoly/valmiera/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | план |
-| `p3-city-rezekne` | `/autoskolas/rezekne/` | `/avtoshkoly/rezekne/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | план |
-| `p3-city-ogre` | `/autoskolas/ogre/` | `/avtoshkoly/ogre/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | план |
+| `p3-city-riga` | `/autoskolas/riga/` | `/avtoshkoly/riga/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` (фильтр по городу) | в проде (T-061) |
+| `p3-city-daugavpils` | `/autoskolas/daugavpils/` | `/avtoshkoly/daugavpils/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | в проде (T-061) |
+| `p3-city-liepaja` | `/autoskolas/liepaja/` | `/avtoshkoly/liepaja/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | в проде (T-061) |
+| `p3-city-jelgava` | `/autoskolas/jelgava/` | `/avtoshkoly/jelgava/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | в проде (T-061) |
+| `p3-city-jurmala` | `/autoskolas/jurmala/` | `/avtoshkoly/jurmala/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | в проде (T-061) |
+| `p3-city-ventspils` | `/autoskolas/ventspils/` | `/avtoshkoly/ventspils/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | в проде (T-061) |
+| `p3-city-valmiera` | `/autoskolas/valmiera/` | `/avtoshkoly/valmiera/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | в проде (T-061) |
+| `p3-city-rezekne` | `/autoskolas/rezekne/` | `/avtoshkoly/rezekne/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | в проде (T-061) |
+| `p3-city-ogre` | `/autoskolas/ogre/` | `/avtoshkoly/ogre/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | в проде (T-061) |
 | `school-card` | `/skola/{slug}/` | `/skola/{slug}/` | карточка школы (шаблон, вне пилларного префикса) | `SchoolCardTemplate` | Ф2 (каталог, все школы LV) / Ф3 (запись — только `is_partner`) | — | `schools`, `instructors`, `ratings` | в проде (T-059), см. `A-05` |
 | `school-card-fors` | `/skola/fors/` | `/skola/fors/` | карточка школы — экземпляр `school-card` | `SchoolCardTemplate` | Ф3 | — | `schools` (`is_partner: true`) | план |
 
