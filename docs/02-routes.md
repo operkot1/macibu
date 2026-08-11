@@ -100,11 +100,11 @@
 | `p3-reitings` | `/autoskolas/reitings/` | `/avtoshkoly/rejting/` | рейтинг школ | `ToolPageTemplate` | Ф2 | ★★ | `ratings`, `schools` | в проде (T-056) |
 | `p3-instruktori` | `/autoskolas/instruktori/` | `/avtoshkoly/instruktory/` | рейтинг инструкторов | `ToolPageTemplate` | Ф2 | ★★ | `ratings`, `instructors` | в проде (T-057) |
 | `p3-metodologija` | `/autoskolas/metodologija/` | `/avtoshkoly/metodologiya/` | методика (открытая) | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-058), см. `A-06`, дублируется ссылкой из подвала |
-| `p3-ka-izveleties` | `/autoskolas/ka-izveleties/` | `/avtoshkoly/kak-vybrat/` | справочная статья | `ArticleTemplate` | Ф2 | — | static-content | план |
-| `p3-slepti-maksajumi` | `/autoskolas/slepti-maksajumi/` | `/avtoshkoly/skrytye-platezhi/` | справочная статья | `ArticleTemplate` | Ф2 | — | static-content | план |
+| `p3-ka-izveleties` | `/autoskolas/ka-izveleties/` | `/avtoshkoly/kak-vybrat/` | справочная статья | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-062) |
+| `p3-slepti-maksajumi` | `/autoskolas/slepti-maksajumi/` | `/avtoshkoly/skrytye-platezhi/` | справочная статья | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-062) |
 | `p3-cenu-atsifretajs` | `/autoskolas/cenu-atsifretajs/` | `/avtoshkoly/rasshifrovka-cen/` | дешифратор прайса | `ToolPageTemplate` | Ф2 | ★★ | `cost_model`, `csdd_tariffs` | план |
 | `p3-kalkulators` | `/autoskolas/kalkulators/` | `/avtoshkoly/kalkulyator/` | калькулятор цены | `ToolPageTemplate` | Ф1 | ★★ | `cost_model` | в проде (T-035) |
-| `p3-ligums` | `/autoskolas/ligums/` | `/avtoshkoly/dogovor/` | справочная статья | `ArticleTemplate` | Ф2 | — | static-content | план |
+| `p3-ligums` | `/autoskolas/ligums/` | `/avtoshkoly/dogovor/` | справочная статья | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-062) |
 | `p3-city-riga` | `/autoskolas/riga/` | `/avtoshkoly/riga/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` (фильтр по городу) | в проде (T-061) |
 | `p3-city-daugavpils` | `/autoskolas/daugavpils/` | `/avtoshkoly/daugavpils/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | в проде (T-061) |
 | `p3-city-liepaja` | `/autoskolas/liepaja/` | `/avtoshkoly/liepaja/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | в проде (T-061) |
