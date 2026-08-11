@@ -1930,9 +1930,37 @@ Sitemap не тронут — это статичные страницы тог�
 точечно добавлять только эти три было бы произвольным, не решает общий
 вопрос.
 
-**T-063 — `decodePrice` + unit-тесты**
+**T-063 — `decodePrice` + unit-тесты** ✅ выполнено
 Предусловия: T-008, T-009. Файлы: `src/lib/decoder/decodePrice.ts`,
 `.spec.ts`. DoD: стандартный.
+Реализовано: контракт (docs/06-tools/deshifrator-prajsa.md) уже
+полностью описывал формулу — реализовано практически дословно, с одной
+правкой. Псевдокод в доке хардкодил `typical_eur: 200` для
+`theory_course` — magic number, не связанный с реальным `cost_model`,
+хотя `school_fee_eur` (та же строка «Skola»/«Школа», что уже показывает
+Calculator.tsx, T-034/T-035) — ровно этот компонент, по городу и коробке.
+Исправлено на `cost.school_fee_eur`. Второй magic number в доке
+(`practice_hours_count < 20`) сверен с остальными документами — нигде не
+продублирован и не противоречит, оставлен как есть (собственный порог
+этого инструмента, не баг).
+
+Сигнатура `decodePrice(input, cost: CostModelCoefficients)` — резолюция
+нужной строки `cost_model` (city_id/gearbox/scenario="realist",
+`fallbackLatviaAverage` при отсутствии города) по контракту остаётся за
+вызывающим кодом — это войдёт в T-064 (UI), тот же паттерн, что уже
+использует `computeCalculator`.
+
+Unit-тесты (8, на реальной строке riga/manual/realist из
+`fixtures/cost_model.json`): цена уже полная (ничего не придумано);
+каждый компонент по отдельности, включая проверку, что `theory_course`
+берёт именно `school_fee_eur`, не `200`; `practice_hours_count < 20` и
+`>= 20`; `practice_hours_count: null` (неизвестно из рекламы — честно не
+считается недостачей, не выдумывается); все компоненты одновременно.
+
+`npm run check`: typecheck/lint/format/test:unit (70 тестов, было 62)/
+build/budget/i18n:coverage (26 пар, без изменений) — зелёные; Lighthouse
+— тот же несвязанный `spawn Unknown system error -86`. Маршрутов нет —
+`docs/02-routes.md` не тронут, UI/route — T-064.
 
 **T-064 — UI дешифратора + подключить route**
 Предусловия: T-063. Файлы: `src/components/tools/decoder/Decoder.tsx` +
