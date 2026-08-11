@@ -1,0 +1,109 @@
+---
+route_id: "p3-metodologija"
+lang: "lv"
+title: "Reitinga metodoloģija"
+description: "Kā portāls aprēķina skolu un instruktoru reitingu — vienkāršiem vārdiem un ar pašu formulu, bez izņēmumiem partneriem."
+pageType: "reference"
+---
+
+Skolu un instruktoru reitings šeit netiek sastādīts pēc atsauksmēm vai
+maksas — tikai pēc reālas CSDD statistikas: cik mēģinājumu, cik veiksmīgu.
+Šī lapa paskaidro, kā no diviem skaitļiem rodas viena pozīcija sarakstā —
+saprotamiem vārdiem un ar pašu formulu.
+
+## Kāpēc vienkāršs procents ir negodīgs
+
+Iedomājies divus instruktorus:
+
+- **48 skolēni, 34 nokārtoja** — 71%.
+- **3 skolēni, visi 3 nokārtoja** — 100%.
+
+Ja kārto tikai pēc procenta, otrais instruktors izskatās labāks. Bet 3
+skolēni ir pārāk maza izlase, lai par to spriestu droši — varbūt tie
+vienkārši bija veiksmīgi. 48 skolēni jau dod pamatotu ainu. Godīgs
+reitings nedrīkst ļaut mazai izlasei ar labu sagadīšanos apsteigt lielu,
+pierādītu rezultātu.
+
+## Kā mēs to risinām
+
+Portāls nešķiro pēc paša procenta — pozīciju sarakstā nosaka **Vilsona
+intervāla apakšējā robeža** (Wilson score interval, 95% ticamība), tā
+pati matemātika, ko izmanto, piemēram, Reddit, lai kārtotu komentārus pēc
+balsojuma attiecības, nevis pēc paša "patīk" skaita.
+
+Vienkāršiem vārdiem: formula jautā — _"cik zema varētu būt patiesā
+veiksmes iespēja, ja esam piesardzīgi un ņemam vērā izlases lielumu?"_
+Maza izlase ar augstu procentu saņem zemu, piesardzīgu vērtējumu. Liela
+izlase ar godīgu procentu saņem vērtējumu, kas ir tuvu pašam procentam —
+jo lielai izlasei nejaušība vairs tik lielu lomu nespēlē.
+
+Mūsu piemērā: 48/34 (71%) → aprēķinātā vērtība ≈ **0.57**. 3/3 (100%) →
+aprēķinātā vērtība ≈ **0.44**. Pirmais ranžējas augstāk — tieši tā, kā tam
+jābūt.
+
+## Pati formula
+
+```
+wilsonLowerBound(veiksmīgie, kopā, z = 1.96):
+  ja kopā === 0: atgriezt 0
+
+  p̂ = veiksmīgie / kopā
+  saucējs = 1 + z² / kopā
+  centrs = p̂ + z² / (2 × kopā)
+  starpība = z × √((p̂ × (1 − p̂) + z² / (4 × kopā)) / kopā)
+
+  atgriezt (centrs − starpība) / saucējs
+```
+
+`z = 1.96` atbilst 95% ticamības intervālam — standarta izvēle statistikā,
+ne mūsu izdomāta. Formula ir realizēta vienā vietā mūsu iekšējā sistēmā un
+tiek mainīta **tikai** ar koda pārskati (code review), nevis administratora
+panelī vai ar roku labotu skaitli. Neviens portāla darbinieks nevar
+"pielabot" konkrētas skolas pozīciju.
+
+## Ko nozīmē procenta rādītājs, un ko — pozīcija
+
+Sarakstā **redzamais procents** (piemēram, "71%") vienmēr ir godīgs, neapstrādāts
+skaitlis — mēs to neslēpjam un nepiekrāsojam. Bet **pozīcija sarakstā**
+nosaka iepriekš aprakstīto formulu, ne pašu procentu. Tas ir vienīgais
+sarežģītais moments, kas jāsaprot: liels procents var būt zemāk sarakstā
+nekā mazāks, ja aiz tā ir mazāka izlase.
+
+## Uzticamības nozīmīte
+
+Blakus katram ierakstam ir nozīmīte, kas parāda, cik lielai izlasei
+formula pamatojas — tā **neietekmē pozīciju** (formula to jau dara), tikai
+brīdina, cik piesardzīgi jāuztver skaitlis:
+
+| Izlases lielums | Nozīmīte | Teksts                                   |
+| --------------- | -------- | ---------------------------------------- |
+| ≥ 30            | ⓘ        | Izlase pietiekama                        |
+| 10–29           | —        | Izlase ierobežota — ņem vērā piesardzīgi |
+| < 10            | ⚠        | Izlase maza — reitings nav uzticams      |
+
+Neviens slieksnis neizslēdz skolu vai instruktoru no saraksta — mazas
+izlases jau tiek "atbīdītas" uz leju pašas formulas dēļ. Slēpt tos būtu
+mazāk godīgi nekā rādīt ar skaidru brīdinājumu.
+
+## Ko dara ar tiem, kam datu vēl nav
+
+Skola vai instruktors bez CSDD statistikas (piemēram, tikko reģistrēta
+skola) netiek rādīts ar 0% — tas būtu izdomāts skaitlis. Tā vietā tas
+parādās atsevišķā blokā "Vēl nav CSDD statistikas" zem galvenā saraksta.
+
+## Partneris nesaņem priekšrocību
+
+Autoskola FORS ir portāla partneris, bet reitingā tas nemaina neko —
+tā pozīcija tiek aprēķināta pēc tieši tās pašas formulas, ar tiem pašiem
+datiem, kā jebkurai citai skolai. Vienīgā atšķirība — informatīva
+nozīmīte "Portāla partneris" blakus nosaukumam, kas neietekmē ne kārtību,
+ne rindas stilu.
+
+## Kārtošanu nevar mainīt
+
+Reitinga lapās nav pogas "kārtot pēc procenta" — apzināti. Tas būtu veids,
+kā godīgo metodiku apiet ar UI izvēli. Var filtrēt pēc pilsētas, valodas
+un kārbas, bet kārtība vienmēr paliek pēc aprakstītās formulas.
+
+← [Skolu reitings](/lv/autoskolas/reitings/) ·
+[Instruktoru reitings](/lv/autoskolas/instruktori/)

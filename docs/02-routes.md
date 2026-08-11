@@ -99,7 +99,7 @@
 | `p3-katalogs` | `/autoskolas/katalogs/` | `/avtoshkoly/katalog/` | каталог + фильтры | `CatalogTemplate` | Ф2 | ★★ | `schools` | в проде (T-054) |
 | `p3-reitings` | `/autoskolas/reitings/` | `/avtoshkoly/rejting/` | рейтинг школ | `ToolPageTemplate` | Ф2 | ★★ | `ratings`, `schools` | в проде (T-056) |
 | `p3-instruktori` | `/autoskolas/instruktori/` | `/avtoshkoly/instruktory/` | рейтинг инструкторов | `ToolPageTemplate` | Ф2 | ★★ | `ratings`, `instructors` | в проде (T-057) |
-| `p3-metodologija` | `/autoskolas/metodologija/` | `/avtoshkoly/metodologiya/` | методика (открытая) | `ArticleTemplate` | Ф2 | — | static-content | план — см. `A-06`, дублируется ссылкой из подвала |
+| `p3-metodologija` | `/autoskolas/metodologija/` | `/avtoshkoly/metodologiya/` | методика (открытая) | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-058), см. `A-06`, дублируется ссылкой из подвала |
 | `p3-ka-izveleties` | `/autoskolas/ka-izveleties/` | `/avtoshkoly/kak-vybrat/` | справочная статья | `ArticleTemplate` | Ф2 | — | static-content | план |
 | `p3-slepti-maksajumi` | `/autoskolas/slepti-maksajumi/` | `/avtoshkoly/skrytye-platezhi/` | справочная статья | `ArticleTemplate` | Ф2 | — | static-content | план |
 | `p3-cenu-atsifretajs` | `/autoskolas/cenu-atsifretajs/` | `/avtoshkoly/rasshifrovka-cen/` | дешифратор прайса | `ToolPageTemplate` | Ф2 | ★★ | `cost_model`, `csdd_tariffs` | план |
