@@ -1,0 +1,26 @@
+---
+import ToolPageTemplate from "../../../components/layout/ToolPageTemplate.astro";
+import Decoder from "../../../components/tools/decoder/Decoder.tsx";
+import { getCostModel, getSchools } from "../../../lib/data";
+
+const coeffs = getCostModel().coefficients;
+const schools = getSchools().schools;
+---
+
+<ToolPageTemplate
+  currentLocale="lv"
+  routeId="p3-cenu-atsifretajs"
+  title="Cenas dešifrētājs"
+  description="Ievadi jebkuru autoskolas reklamēto cenu un uzzini, kas tajā, iespējams, nav iekļauts, un kāda ir reālā pilnā cena."
+  heading="Cenas dešifrētājs"
+  intro="Šis nav sūdzību rīks pret konkrētu skolu — tas parāda, kas parasti NAV iekļauts jebkurā reklamētajā cenā, lai tu zinātu, ko jautāt pirms paraksta."
+  canonicalPath="/lv/autoskolas/cenu-atsifretajs/"
+  alternateUrl="/ru/avtoshkoly/rasshifrovka-cen/"
+>
+  <Decoder
+    client:visible
+    coeffs={coeffs}
+    schools={schools}
+    currentLocale="lv"
+  />
+</ToolPageTemplate>
