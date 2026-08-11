@@ -125,11 +125,11 @@ function syncRobotsMeta(shouldNoindex: boolean): void {
   const existing = document.querySelector('meta[name="robots"]');
   if (shouldNoindex) {
     if (existing) {
-      existing.setAttribute("content", "noindex");
+      existing.setAttribute("content", "noindex, follow");
     } else {
       const meta = document.createElement("meta");
       meta.setAttribute("name", "robots");
-      meta.setAttribute("content", "noindex");
+      meta.setAttribute("content", "noindex, follow");
       document.head.appendChild(meta);
     }
   } else if (existing) {
