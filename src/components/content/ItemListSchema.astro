@@ -7,7 +7,7 @@
 
 export interface ItemListSchemaItem {
   name: string;
-  url: string;
+  url?: string;
 }
 
 export interface ItemListSchemaProps {
@@ -23,7 +23,7 @@ const jsonLd = {
     "@type": "ListItem",
     position: index + 1,
     name: item.name,
-    url: item.url,
+    ...(item.url ? { url: item.url } : {}),
   })),
 };
 ---

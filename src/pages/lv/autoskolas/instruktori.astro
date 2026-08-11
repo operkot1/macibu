@@ -1,0 +1,37 @@
+---
+import ToolPageTemplate from "../../../components/layout/ToolPageTemplate.astro";
+import RatingList from "../../../components/tools/rating/RatingList.tsx";
+import ItemListSchema from "../../../components/content/ItemListSchema.astro";
+import { getSchools, getInstructors, getRatings } from "../../../lib/data";
+import { joinRatingSubjects } from "../../../lib/ratings/joinRatingSubjects";
+
+const schools = getSchools().schools;
+const instructors = getInstructors().instructors;
+const ratings = getRatings().entries;
+
+const { ranked } = joinRatingSubjects(instructors, ratings, "instructor", {});
+const itemListItems = ranked.map((entry) => ({
+  name: entry.subject.full_name,
+}));
+---
+
+<ToolPageTemplate
+  currentLocale="lv"
+  routeId="p3-instruktori"
+  title="Instruktoru reitings"
+  description="Godīgs Latvijas braukšanas instruktoru reitings pēc reālas CSDD eksāmenu statistikas — filtrē pēc pilsētas, valodas un kārbas."
+  heading="Instruktoru reitings"
+  intro="Reitings balstīts tikai uz reālo CSDD statistiku — bez izņēmumiem. Kārtošanu izvēlēties nevar, tā ir daļa no godīgas metodikas."
+  canonicalPath="/lv/autoskolas/instruktori/"
+  alternateUrl="/ru/avtoshkoly/instruktory/"
+>
+  <ItemListSchema items={itemListItems} />
+  <RatingList
+    client:visible
+    subjectType="instructor"
+    subjects={instructors}
+    schools={schools}
+    ratingEntries={ratings}
+    currentLocale="lv"
+  />
+</ToolPageTemplate>
