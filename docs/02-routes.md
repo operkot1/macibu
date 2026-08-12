@@ -49,11 +49,11 @@
 | `p1-soli-pa-solim` | `/ka-iegut-tiesibas/soli-pa-solim/` | `/kak-poluchit-prava/9-shagov/` | статья + интерактивный чек-лист | `ArticleTemplate` | Ф1 | ★ | `user_state` (прогресс чек-листа) | в проде (T-037) |
 | `p1-dokumenti` | `/ka-iegut-tiesibas/dokumenti/` | `/kak-poluchit-prava/dokumenty/` | справочная статья | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-038) |
 | `p1-vecums` | `/ka-iegut-tiesibas/vecums/` | `/kak-poluchit-prava/vozrast/` | справочная статья | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-038) |
-| `p1-medicina-index` | `/ka-iegut-tiesibas/medicina/` | `/kak-poluchit-prava/medicina/` | подраздел-хаб | `SubsectionIndexTemplate` | Ф2 | — | static-content | план |
-| `p1-medicina-izzina` | `/ka-iegut-tiesibas/medicina/izzina/` | `/kak-poluchit-prava/medicina/spravka/` | гайд | `ArticleTemplate` | Ф2 | — | static-content | план |
+| `p1-medicina-index` | `/ka-iegut-tiesibas/medicina/` | `/kak-poluchit-prava/medicina/` | подраздел-хаб | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-068) |
+| `p1-medicina-izzina` | `/ka-iegut-tiesibas/medicina/izzina/` | `/kak-poluchit-prava/medicina/spravka/` | гайд | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-068) |
 | `p1-medicina-kur-iziet` | `/ka-iegut-tiesibas/medicina/kur-iziet/` | `/kak-poluchit-prava/medicina/gde-projti/` | каталог | `ToolPageTemplate` | Ф2 | ★ | `schools` (мед. учреждения, отдельная выборка) | план |
-| `p1-medicina-veselibas-ierobezojumi` | `/ka-iegut-tiesibas/medicina/veselibas-ierobezojumi/` | `/kak-poluchit-prava/medicina/ogranicheniya-zdorovya/` | справочная статья | `ArticleTemplate` | Ф2 | — | static-content | план |
-| `p1-medicina-atteikums` | `/ka-iegut-tiesibas/medicina/atteikums/` | `/kak-poluchit-prava/medicina/otkaz/` | гайд | `ArticleTemplate` | Ф2 | — | static-content | план |
+| `p1-medicina-veselibas-ierobezojumi` | `/ka-iegut-tiesibas/medicina/veselibas-ierobezojumi/` | `/kak-poluchit-prava/medicina/ogranicheniya-zdorovya/` | справочная статья | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-068) |
+| `p1-medicina-atteikums` | `/ka-iegut-tiesibas/medicina/atteikums/` | `/kak-poluchit-prava/medicina/otkaz/` | гайд | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-068) |
 | `p1-baltas-tiesibas-index` | `/ka-iegut-tiesibas/baltas-tiesibas/` | `/kak-poluchit-prava/belye-prava/` | подраздел-хаб | `SubsectionIndexTemplate` | Ф2 | — | static-content | **см. дефект D-01** |
 | `p1-baltas-ka-sanemt` | `/ka-iegut-tiesibas/baltas-tiesibas/ka-sanemt/` | `/kak-poluchit-prava/belye-prava/kak-poluchit/` | HowTo | `ArticleTemplate` | Ф2 | — | static-content | план |
 | `p1-baltas-macities-ar-vecakiem` | `/ka-iegut-tiesibas/baltas-tiesibas/macities-ar-vecakiem/` | `/kak-poluchit-prava/belye-prava/uchit-s-roditelyami/` | гайд | `ArticleTemplate` | Ф2 | — | static-content | план |
