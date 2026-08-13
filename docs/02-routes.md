@@ -54,10 +54,10 @@
 | `p1-medicina-kur-iziet` | `/ka-iegut-tiesibas/medicina/kur-iziet/` | `/kak-poluchit-prava/medicina/gde-projti/` | каталог | `ToolPageTemplate` | Ф2 | ★ | `schools` (мед. учреждения, отдельная выборка) | план |
 | `p1-medicina-veselibas-ierobezojumi` | `/ka-iegut-tiesibas/medicina/veselibas-ierobezojumi/` | `/kak-poluchit-prava/medicina/ogranicheniya-zdorovya/` | справочная статья | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-068) |
 | `p1-medicina-atteikums` | `/ka-iegut-tiesibas/medicina/atteikums/` | `/kak-poluchit-prava/medicina/otkaz/` | гайд | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-068) |
-| `p1-baltas-tiesibas-index` | `/ka-iegut-tiesibas/baltas-tiesibas/` | `/kak-poluchit-prava/belye-prava/` | подраздел-хаб | `SubsectionIndexTemplate` | Ф2 | — | static-content | **см. дефект D-01** |
-| `p1-baltas-ka-sanemt` | `/ka-iegut-tiesibas/baltas-tiesibas/ka-sanemt/` | `/kak-poluchit-prava/belye-prava/kak-poluchit/` | HowTo | `ArticleTemplate` | Ф2 | — | static-content | план |
-| `p1-baltas-macities-ar-vecakiem` | `/ka-iegut-tiesibas/baltas-tiesibas/macities-ar-vecakiem/` | `/kak-poluchit-prava/belye-prava/uchit-s-roditelyami/` | гайд | `ArticleTemplate` | Ф2 | — | static-content | план |
-| `p1-baltas-atbildiba` | `/ka-iegut-tiesibas/baltas-tiesibas/atbildiba/` | `/kak-poluchit-prava/belye-prava/otvetstvennost/` | справочная статья | `ArticleTemplate` | Ф2 | — | static-content | план |
+| `p1-baltas-tiesibas-index` | `/ka-iegut-tiesibas/baltas-tiesibas/` | `/kak-poluchit-prava/belye-prava/` | подраздел-хаб | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-069), D-01 исправлен |
+| `p1-baltas-ka-sanemt` | `/ka-iegut-tiesibas/baltas-tiesibas/ka-sanemt/` | `/kak-poluchit-prava/belye-prava/kak-poluchit/` | HowTo | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-069) |
+| `p1-baltas-macities-ar-vecakiem` | `/ka-iegut-tiesibas/baltas-tiesibas/macities-ar-vecakiem/` | `/kak-poluchit-prava/belye-prava/uchit-s-roditelyami/` | гайд | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-069) |
+| `p1-baltas-atbildiba` | `/ka-iegut-tiesibas/baltas-tiesibas/atbildiba/` | `/kak-poluchit-prava/belye-prava/otvetstvennost/` | справочная статья | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-069) |
 | `p1-pirma-palidziba-index` | `/ka-iegut-tiesibas/pirma-palidziba/` | `/kak-poluchit-prava/pervaya-pomoshch/` | подраздел-хаб | `SubsectionIndexTemplate` | Ф2 | — | static-content | план |
 | `p1-pirma-palidziba-kursi` | `/ka-iegut-tiesibas/pirma-palidziba/kursi-saraksts/` | `/kak-poluchit-prava/pervaya-pomoshch/spisok-kursov/` | каталог | `ToolPageTemplate` | Ф2 | ★ | `schools` (курсы первой помощи, отдельная выборка) | план |
 | `p1-arzemniekiem-index` | `/ka-iegut-tiesibas/arzemniekiem/` | `/kak-poluchit-prava/inostrancam/` | подраздел-хаб | `SubsectionIndexTemplate` | Ф2 | — | static-content | **см. дефект D-01** |
@@ -219,11 +219,12 @@ docs/00-assumptions.md).
 Ф2):**
 - `/baltas-tiesibas/ka-sanemt/` получает `Callout`-блок со ссылкой на
   `p1-soli-pa-solim` (интерактивный чек-лист 9 шагов) — белые права там уже
-  шаг №2 результата визарда, естественная точка входа.
+  шаг №2 результата визарда, естественная точка входа. **Исправлено в
+  T-069.**
 - `/arzemniekiem/apmaina/` и `/arzemniekiem/ukrainai/` получают `Callout` со
   ссылкой на `wizard` (визард «Твой путь») — оба сценария («меняю права»,
   «гражданин Украины») можно закрыть отдельной веткой в визарде на будущее,
-  а сейчас — явным переходом к нему.
+  а сейчас — явным переходом к нему. Ожидает T-071.
 
 ### D-02. Слаг `/eksamens/` используется дважды с разным смыслом
 `/csdd-eksameni/teorija/eksamens/` («разбор экзамена теории») и

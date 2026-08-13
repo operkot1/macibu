@@ -1,0 +1,73 @@
+---
+route_id: "p1-baltas-ka-sanemt"
+lang: "lv"
+title: "Kā saņemt balto apliecību"
+description: "Soli pa solim, kā 16 gadu vecumā iegūt pagaidu («balto») vadītāja apliecību Latvijā."
+pageType: "howto"
+---
+
+import HowToSchema from "../../../components/content/HowToSchema.astro";
+import Callout from "../../../components/content/Callout.astro";
+
+export const steps = [
+  {
+    name: "Sasniedz 16 gadu vecumu",
+    text: "Pagaidu apliecību var sākt kārtot no 16 gadu vecuma — agrāk process nav pieejams.",
+  },
+  {
+    name: "Saņem vecāku vai aizbildņu piekrišanu",
+    text: "Nepilngadīgajam nepieciešama vecāku vai aizbildņu rakstiska piekrišana visam procesam.",
+  },
+  {
+    name: "Iegūsti veselības izziņu",
+    text: "Tāpat kā pilngadīgajiem — bez veselības izziņas autoskola nevar reģistrēt mācībām.",
+  },
+  {
+    name: "Reģistrējies autoskolā un apgūsti teoriju",
+    text: "Process līdz teorijas eksāmenam neatšķiras no pieaugušo ceļa — tikai ar papildu piekrišanas dokumentu.",
+  },
+  {
+    name: "Nokārto CSDD teorijas eksāmenu",
+    text: "Tas pats eksāmens, kas pieaugušajiem — vienādi jautājumi, vienāds slieksnis.",
+  },
+  {
+    name: "Saņem pagaidu (balto) apliecību",
+    text: "Ar to var sākt braukt vecāku vai aizbildņu (vai cita CSDD prasībām atbilstoša pavadošā vadītāja) uzraudzībā — pirms pilna B kategorijas eksāmena.",
+  },
+];
+
+Pagaidu apliecība ļauj sākt praktisko braukšanu jau no 16 gadu vecuma —
+vecāku vai aizbildņu uzraudzībā, pirms vēl esi kārtojis pilnu B
+kategorijas eksāmenu.
+
+<Callout tone="info" title="Neaizmirsti par 9 soļu čeklisti">
+  Baltā apliecība ir tikai viens solis pilnā ceļā. [«9 soļi līdz
+  tiesībām»](/lv/ka-iegut-tiesibas/soli-pa-solim/) — interaktīvs čeklists, kas
+  seko līdzi visam procesam, ne tikai šai daļai.
+</Callout>
+
+<HowToSchema
+  name="Kā saņemt balto apliecību"
+  description="Soli pa solim, kā 16 gadu vecumā iegūt pagaidu vadītāja apliecību Latvijā."
+  steps={steps}
+/>
+
+## Soļi
+
+<ol class="flex list-decimal flex-col gap-3 pl-5">
+  {steps.map((step) => (
+    <li>
+      <p class="text-body text-neutral-900 font-bold">{step.name}</p>
+      <p class="text-body-sm text-neutral-600">{step.text}</p>
+    </li>
+  ))}
+</ol>
+
+Precīzas, aktuālās prasības (piemēram, kādam jābūt pavadošajam vadītājam)
+apstiprina CSDD vai autoskola — šī lapa sniedz vispārīgu pārskatu, nevis
+juridisku konsultāciju.
+
+Kad esi gatavs braukt kopā ar kādu no ģimenes, skaties
+[«Mācīšanās ar vecākiem»](/lv/ka-iegut-tiesibas/baltas-tiesibas/macities-ar-vecakiem/).
+
+← [Baltā apliecība](/lv/ka-iegut-tiesibas/baltas-tiesibas/)

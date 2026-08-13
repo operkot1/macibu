@@ -1,0 +1,18 @@
+---
+import { getEntry, render } from "astro:content";
+import ArticleTemplate from "../../../../components/layout/ArticleTemplate.astro";
+
+const entry = await getEntry("pages", "lv/p1-baltas-macities-ar-vecakiem");
+if (!entry)
+  throw new Error(
+    "Content entry 'lv/p1-baltas-macities-ar-vecakiem' not found",
+  );
+const { Content } = await render(entry);
+---
+
+<ArticleTemplate
+  entry={entry}
+  Content={Content}
+  canonicalPath="/lv/ka-iegut-tiesibas/baltas-tiesibas/macities-ar-vecakiem/"
+  alternateUrl="/ru/kak-poluchit-prava/belye-prava/uchit-s-roditelyami/"
+/>
