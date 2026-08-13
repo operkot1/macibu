@@ -1,0 +1,38 @@
+{
+  "updated_at": "2026-08-13T00:00:00Z",
+  "source": "placeholder",
+  "locations": [
+    {
+      "id": "mcl-riga-1",
+      "name": "Piemēra veselības centrs",
+      "city_id": "riga",
+      "address": "Piemēra iela 22, Rīga",
+      "phone": "+371 20000030",
+      "website": null
+    },
+    {
+      "id": "mcl-riga-2",
+      "name": "Piemēra ģimenes ārstu prakse",
+      "city_id": "riga",
+      "address": "Piemēra iela 60, Rīga",
+      "phone": null,
+      "website": null
+    },
+    {
+      "id": "mcl-daugavpils-1",
+      "name": "Piemēra veselības punkts",
+      "city_id": "daugavpils",
+      "address": "Piemēra iela 9, Daugavpils",
+      "phone": "+371 20000031",
+      "website": null
+    },
+    {
+      "id": "mcl-jelgava-1",
+      "name": "Piemēra medicīnas centrs",
+      "city_id": "jelgava",
+      "address": "Piemēra iela 4, Jelgava",
+      "phone": null,
+      "website": null
+    }
+  ]
+}

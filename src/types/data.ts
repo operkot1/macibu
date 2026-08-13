@@ -243,3 +243,21 @@ export interface FirstAidProvidersFile {
   source: "placeholder" | "editorial";
   providers: FirstAidProvider[];
 }
+
+// 11. `medical_check_locations` — места сдачи медсправки (T-072)
+
+export interface MedicalCheckLocation {
+  id: string;
+  name: string;
+  city_id: string;
+  address: string;
+  phone: string | null;
+  website: string | null;
+}
+
+export interface MedicalCheckLocationsFile {
+  updated_at: string;
+  // "placeholder" — тот же принцип, что first_aid_providers (A-12).
+  source: "placeholder" | "editorial";
+  locations: MedicalCheckLocation[];
+}

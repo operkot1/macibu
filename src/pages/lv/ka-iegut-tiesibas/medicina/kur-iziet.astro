@@ -1,0 +1,24 @@
+---
+import ToolPageTemplate from "../../../../components/layout/ToolPageTemplate.astro";
+import MedicalCheckLocationList from "../../../../components/tools/medical-checks/MedicalCheckLocationList.tsx";
+import { getMedicalCheckLocations } from "../../../../lib/data";
+
+const locations = getMedicalCheckLocations().locations;
+---
+
+<ToolPageTemplate
+  currentLocale="lv"
+  routeId="p1-medicina-kur-iziet"
+  title="Kur iziet veselības pārbaudi"
+  description="Vietu saraksts, kur var iziet veselības pārbaudi vadītāja apliecības iegūšanai — filtrējams pēc pilsētas."
+  heading="Kur iziet veselības pārbaudi"
+  intro="Filtrē pēc pilsētas, lai atrastu tuvāko vietu."
+  canonicalPath="/lv/ka-iegut-tiesibas/medicina/kur-iziet/"
+  alternateUrl="/ru/kak-poluchit-prava/medicina/gde-projti/"
+>
+  <MedicalCheckLocationList
+    client:visible
+    locations={locations}
+    currentLocale="lv"
+  />
+</ToolPageTemplate>

@@ -9,6 +9,7 @@ import { UserStateSchema } from "../../schemas/userState";
 import { CostModelFileSchema } from "../../schemas/costModel";
 import { CsddCentersFileSchema } from "../../schemas/csddCenters";
 import { FirstAidProvidersFileSchema } from "../../schemas/firstAidProviders";
+import { MedicalCheckLocationsFileSchema } from "../../schemas/medicalCheckLocations";
 import type {
   CsddTariffsFile,
   SchoolsFile,
@@ -20,6 +21,7 @@ import type {
   CostModelFile,
   CsddCentersFile,
   FirstAidProvidersFile,
+  MedicalCheckLocationsFile,
 } from "../../types/data";
 
 /*
@@ -66,4 +68,11 @@ export function getCsddCenters(): CsddCentersFile {
 
 export function getFirstAidProviders(): FirstAidProvidersFile {
   return loadFixture("first_aid_providers.json", FirstAidProvidersFileSchema);
+}
+
+export function getMedicalCheckLocations(): MedicalCheckLocationsFile {
+  return loadFixture(
+    "medical_check_locations.json",
+    MedicalCheckLocationsFileSchema,
+  );
 }

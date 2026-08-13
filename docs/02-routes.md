@@ -51,7 +51,7 @@
 | `p1-vecums` | `/ka-iegut-tiesibas/vecums/` | `/kak-poluchit-prava/vozrast/` | справочная статья | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-038) |
 | `p1-medicina-index` | `/ka-iegut-tiesibas/medicina/` | `/kak-poluchit-prava/medicina/` | подраздел-хаб | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-068) |
 | `p1-medicina-izzina` | `/ka-iegut-tiesibas/medicina/izzina/` | `/kak-poluchit-prava/medicina/spravka/` | гайд | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-068) |
-| `p1-medicina-kur-iziet` | `/ka-iegut-tiesibas/medicina/kur-iziet/` | `/kak-poluchit-prava/medicina/gde-projti/` | каталог | `ToolPageTemplate` | Ф2 | ★ | `schools` (мед. учреждения, отдельная выборка) | план |
+| `p1-medicina-kur-iziet` | `/ka-iegut-tiesibas/medicina/kur-iziet/` | `/kak-poluchit-prava/medicina/gde-projti/` | каталог | `ToolPageTemplate` | Ф2 | ★ | `medical_check_locations` (T-072, см. `A-13`) | в проде (T-072) |
 | `p1-medicina-veselibas-ierobezojumi` | `/ka-iegut-tiesibas/medicina/veselibas-ierobezojumi/` | `/kak-poluchit-prava/medicina/ogranicheniya-zdorovya/` | справочная статья | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-068) |
 | `p1-medicina-atteikums` | `/ka-iegut-tiesibas/medicina/atteikums/` | `/kak-poluchit-prava/medicina/otkaz/` | гайд | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-068) |
 | `p1-baltas-tiesibas-index` | `/ka-iegut-tiesibas/baltas-tiesibas/` | `/kak-poluchit-prava/belye-prava/` | подраздел-хаб | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-069), D-01 исправлен |

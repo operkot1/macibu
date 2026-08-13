@@ -1,0 +1,24 @@
+---
+import ToolPageTemplate from "../../../../components/layout/ToolPageTemplate.astro";
+import MedicalCheckLocationList from "../../../../components/tools/medical-checks/MedicalCheckLocationList.tsx";
+import { getMedicalCheckLocations } from "../../../../lib/data";
+
+const locations = getMedicalCheckLocations().locations;
+---
+
+<ToolPageTemplate
+  currentLocale="ru"
+  routeId="p1-medicina-kur-iziet"
+  title="Где пройти медицинский осмотр"
+  description="Список мест, где можно пройти медицинский осмотр для получения водительских прав — фильтр по городу."
+  heading="Где пройти медицинский осмотр"
+  intro="Отфильтруй по городу, чтобы найти ближайшее место."
+  canonicalPath="/ru/kak-poluchit-prava/medicina/gde-projti/"
+  alternateUrl="/lv/ka-iegut-tiesibas/medicina/kur-iziet/"
+>
+  <MedicalCheckLocationList
+    client:visible
+    locations={locations}
+    currentLocale="ru"
+  />
+</ToolPageTemplate>
