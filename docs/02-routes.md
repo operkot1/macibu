@@ -95,7 +95,7 @@
 
 | route_id | путь LV | путь RU | тип | шаблон | фаза | инстр. | источник | статус |
 |---|---|---|---|---|---|---|---|---|
-| `p3-index` | `/autoskolas/` | `/avtoshkoly/` | pillar-хаб | `PillarIndexTemplate` | Ф2 | — | static-content | план |
+| `p3-index` | `/autoskolas/` | `/avtoshkoly/` | pillar-хаб | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-073) |
 | `p3-katalogs` | `/autoskolas/katalogs/` | `/avtoshkoly/katalog/` | каталог + фильтры | `CatalogTemplate` | Ф2 | ★★ | `schools` | в проде (T-054) |
 | `p3-reitings` | `/autoskolas/reitings/` | `/avtoshkoly/rejting/` | рейтинг школ | `ToolPageTemplate` | Ф2 | ★★ | `ratings`, `schools` | в проде (T-056) |
 | `p3-instruktori` | `/autoskolas/instruktori/` | `/avtoshkoly/instruktory/` | рейтинг инструкторов | `ToolPageTemplate` | Ф2 | ★★ | `ratings`, `instructors` | в проде (T-057) |
