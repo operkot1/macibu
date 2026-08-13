@@ -1,0 +1,20 @@
+---
+import ToolPageTemplate from "../../../../components/layout/ToolPageTemplate.astro";
+import FirstAidCourseList from "../../../../components/tools/first-aid-courses/FirstAidCourseList.tsx";
+import { getFirstAidProviders } from "../../../../lib/data";
+
+const providers = getFirstAidProviders().providers;
+---
+
+<ToolPageTemplate
+  currentLocale="ru"
+  routeId="p1-pirma-palidziba-kursi"
+  title="Список курсов первой помощи"
+  description="Поставщики курсов первой помощи в Латвии — фильтруемый список по городу."
+  heading="Список курсов первой помощи"
+  intro="Фильтруй по городу, чтобы найти ближайшего поставщика курса."
+  canonicalPath="/ru/kak-poluchit-prava/pervaya-pomoshch/spisok-kursov/"
+  alternateUrl="/lv/ka-iegut-tiesibas/pirma-palidziba/kursi-saraksts/"
+>
+  <FirstAidCourseList client:visible providers={providers} currentLocale="ru" />
+</ToolPageTemplate>

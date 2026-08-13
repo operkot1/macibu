@@ -1,0 +1,38 @@
+{
+  "updated_at": "2026-08-13T00:00:00Z",
+  "source": "placeholder",
+  "providers": [
+    {
+      "id": "fap-riga-1",
+      "name": "Piemēra pirmās palīdzības centrs",
+      "city_id": "riga",
+      "address": "Piemēra iela 8, Rīga",
+      "phone": "+371 20000020",
+      "website": null
+    },
+    {
+      "id": "fap-riga-2",
+      "name": "Piemēra apmācības punkts",
+      "city_id": "riga",
+      "address": "Piemēra iela 45, Rīga",
+      "phone": null,
+      "website": null
+    },
+    {
+      "id": "fap-daugavpils-1",
+      "name": "Piemēra pirmās palīdzības kursi",
+      "city_id": "daugavpils",
+      "address": "Piemēra iela 3, Daugavpils",
+      "phone": "+371 20000021",
+      "website": null
+    },
+    {
+      "id": "fap-liepaja-1",
+      "name": "Piemēra veselības apmācības centrs",
+      "city_id": "liepaja",
+      "address": "Piemēra iela 17, Liepāja",
+      "phone": null,
+      "website": null
+    }
+  ]
+}

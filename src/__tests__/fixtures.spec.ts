@@ -8,6 +8,8 @@ import {
   getTheoryQuestions,
   getUserStateFixture,
   getCostModel,
+  getCsddCenters,
+  getFirstAidProviders,
 } from "../lib/data";
 
 describe("fixtures проходят свою Zod-схему (docs/03-data-model.md)", () => {
@@ -41,5 +43,13 @@ describe("fixtures проходят свою Zod-схему (docs/03-data-model.
 
   it("cost_model.json", () => {
     expect(() => getCostModel()).not.toThrow();
+  });
+
+  it("csdd_centers.json", () => {
+    expect(() => getCsddCenters()).not.toThrow();
+  });
+
+  it("first_aid_providers.json", () => {
+    expect(() => getFirstAidProviders()).not.toThrow();
   });
 });

@@ -58,8 +58,8 @@
 | `p1-baltas-ka-sanemt` | `/ka-iegut-tiesibas/baltas-tiesibas/ka-sanemt/` | `/kak-poluchit-prava/belye-prava/kak-poluchit/` | HowTo | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-069) |
 | `p1-baltas-macities-ar-vecakiem` | `/ka-iegut-tiesibas/baltas-tiesibas/macities-ar-vecakiem/` | `/kak-poluchit-prava/belye-prava/uchit-s-roditelyami/` | гайд | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-069) |
 | `p1-baltas-atbildiba` | `/ka-iegut-tiesibas/baltas-tiesibas/atbildiba/` | `/kak-poluchit-prava/belye-prava/otvetstvennost/` | справочная статья | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-069) |
-| `p1-pirma-palidziba-index` | `/ka-iegut-tiesibas/pirma-palidziba/` | `/kak-poluchit-prava/pervaya-pomoshch/` | подраздел-хаб | `SubsectionIndexTemplate` | Ф2 | — | static-content | план |
-| `p1-pirma-palidziba-kursi` | `/ka-iegut-tiesibas/pirma-palidziba/kursi-saraksts/` | `/kak-poluchit-prava/pervaya-pomoshch/spisok-kursov/` | каталог | `ToolPageTemplate` | Ф2 | ★ | `schools` (курсы первой помощи, отдельная выборка) | план |
+| `p1-pirma-palidziba-index` | `/ka-iegut-tiesibas/pirma-palidziba/` | `/kak-poluchit-prava/pervaya-pomoshch/` | подраздел-хаб | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-070) |
+| `p1-pirma-palidziba-kursi` | `/ka-iegut-tiesibas/pirma-palidziba/kursi-saraksts/` | `/kak-poluchit-prava/pervaya-pomoshch/spisok-kursov/` | каталог | `ToolPageTemplate` | Ф2 | ★ | `first_aid_providers` (T-070, см. `A-12`) | в проде (T-070) |
 | `p1-arzemniekiem-index` | `/ka-iegut-tiesibas/arzemniekiem/` | `/kak-poluchit-prava/inostrancam/` | подраздел-хаб | `SubsectionIndexTemplate` | Ф2 | — | static-content | **см. дефект D-01** |
 | `p1-arzemniekiem-apmaina` | `/ka-iegut-tiesibas/arzemniekiem/apmaina/` | `/kak-poluchit-prava/inostrancam/obmen-prav/` | гайд | `ArticleTemplate` | Ф2 | — | static-content | план |
 | `p1-arzemniekiem-ukrainai` | `/ka-iegut-tiesibas/arzemniekiem/ukrainai/` | `/kak-poluchit-prava/inostrancam/dlya-grazhdan-ukrainy/` | гайд | `ArticleTemplate` | Ф2 | — | static-content | план |

@@ -8,6 +8,7 @@ import { TheoryQuestionsFileSchema } from "../../schemas/theoryQuestions";
 import { UserStateSchema } from "../../schemas/userState";
 import { CostModelFileSchema } from "../../schemas/costModel";
 import { CsddCentersFileSchema } from "../../schemas/csddCenters";
+import { FirstAidProvidersFileSchema } from "../../schemas/firstAidProviders";
 import type {
   CsddTariffsFile,
   SchoolsFile,
@@ -18,6 +19,7 @@ import type {
   UserState,
   CostModelFile,
   CsddCentersFile,
+  FirstAidProvidersFile,
 } from "../../types/data";
 
 /*
@@ -60,4 +62,8 @@ export function getCostModel(): CostModelFile {
 
 export function getCsddCenters(): CsddCentersFile {
   return loadFixture("csdd_centers.json", CsddCentersFileSchema);
+}
+
+export function getFirstAidProviders(): FirstAidProvidersFile {
+  return loadFixture("first_aid_providers.json", FirstAidProvidersFileSchema);
 }

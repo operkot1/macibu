@@ -224,3 +224,22 @@ export interface CsddCentersFile {
   source: "placeholder" | "csdd-export-xlsx";
   centers: CsddCenter[];
 }
+
+// 10. `first_aid_providers` — курсы первой помощи (T-070)
+
+export interface FirstAidProvider {
+  id: string;
+  name: string;
+  city_id: string;
+  address: string;
+  phone: string | null;
+  website: string | null;
+}
+
+export interface FirstAidProvidersFile {
+  updated_at: string;
+  // "placeholder" — тот же принцип, что csdd_centers (A-11): реального
+  // источника данных нет, адреса заведомо вымышленные.
+  source: "placeholder" | "editorial";
+  providers: FirstAidProvider[];
+}

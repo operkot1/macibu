@@ -395,11 +395,42 @@ interface CsddCentersFile {
   выдумывает города, которых нет в фикстуре; список городов — ровно те,
   что реально есть в `centers`, без утверждения о полном покрытии Латвии.
 
+## 10. `first_aid_providers` — курсы первой помощи
+
+```ts
+interface FirstAidProvider {
+  id: string;
+  name: string;
+  city_id: string;
+  address: string;
+  phone: string | null;
+  website: string | null;
+}
+
+interface FirstAidProvidersFile {
+  updated_at: string;
+  source: "placeholder" | "editorial";
+  providers: FirstAidProvider[];
+}
+```
+
+- **Откуда:** реального источника нет — курсы первой помощи ведут разные
+  частные и общественные организации, единого реестра CSDD для них нет
+  (в отличие от автошкол). `source: "placeholder"`, адреса заведомо
+  вымышленные («Piemēra iela»), тот же принцип, что `csdd_centers`
+  (`A-11`). **[ДОПУЩЕНИЕ]** — см. `A-12`, docs/00-assumptions.md.
+- **Как часто обновляется:** не определено, пока источник — плейсхолдер.
+- **Владелец:** не назначен (нет реального ETL).
+- **При отсутствии данных:** страница не рендерит пустой список молча —
+  показывает только реально существующие в фикстуре записи, без
+  утверждения о полном покрытии Латвии (тот же принцип, что
+  `csdd_centers`).
+
 ---
 
 ## Фикстуры
 
-Все восемь файлов лежат в `/fixtures/` в корне репозитория и валидны по
+Все десять файлов лежат в `/fixtures/` в корне репозитория и валидны по
 типам выше. Значения взяты из чисел, уже приведённых в прототипах Модуля 7
 (Экраны 2, 3, 5), чтобы фикстуры были правдоподобны, а не случайны.
 
@@ -413,6 +444,8 @@ interface CsddCentersFile {
 | `fixtures/theory_questions.json` | `TheoryQuestionsFile` |
 | `fixtures/user_state.json` | `UserState` (пример анонимной сессии после визарда) |
 | `fixtures/cost_model.json` | `CostModelFile` |
+| `fixtures/csdd_centers.json` | `CsddCentersFile` (T-042, изначально пропущен в этой таблице) |
+| `fixtures/first_aid_providers.json` | `FirstAidProvidersFile` (T-070) |
 
 Definition of Done для Ф0-задачи «типы данных» (см. docs/11-backlog.md):
 `tsc --noEmit` проходит на всех типах, все фикстуры проходят валидацию через
