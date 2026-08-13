@@ -1,0 +1,16 @@
+---
+import { getEntry, render } from "astro:content";
+import ArticleTemplate from "../../../../components/layout/ArticleTemplate.astro";
+
+const entry = await getEntry("pages", "ru/p1-arzemniekiem-index");
+if (!entry)
+  throw new Error("Content entry 'ru/p1-arzemniekiem-index' not found");
+const { Content } = await render(entry);
+---
+
+<ArticleTemplate
+  entry={entry}
+  Content={Content}
+  canonicalPath="/ru/kak-poluchit-prava/inostrancam/"
+  alternateUrl="/lv/ka-iegut-tiesibas/arzemniekiem/"
+/>

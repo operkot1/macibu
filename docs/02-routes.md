@@ -60,10 +60,10 @@
 | `p1-baltas-atbildiba` | `/ka-iegut-tiesibas/baltas-tiesibas/atbildiba/` | `/kak-poluchit-prava/belye-prava/otvetstvennost/` | справочная статья | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-069) |
 | `p1-pirma-palidziba-index` | `/ka-iegut-tiesibas/pirma-palidziba/` | `/kak-poluchit-prava/pervaya-pomoshch/` | подраздел-хаб | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-070) |
 | `p1-pirma-palidziba-kursi` | `/ka-iegut-tiesibas/pirma-palidziba/kursi-saraksts/` | `/kak-poluchit-prava/pervaya-pomoshch/spisok-kursov/` | каталог | `ToolPageTemplate` | Ф2 | ★ | `first_aid_providers` (T-070, см. `A-12`) | в проде (T-070) |
-| `p1-arzemniekiem-index` | `/ka-iegut-tiesibas/arzemniekiem/` | `/kak-poluchit-prava/inostrancam/` | подраздел-хаб | `SubsectionIndexTemplate` | Ф2 | — | static-content | **см. дефект D-01** |
-| `p1-arzemniekiem-apmaina` | `/ka-iegut-tiesibas/arzemniekiem/apmaina/` | `/kak-poluchit-prava/inostrancam/obmen-prav/` | гайд | `ArticleTemplate` | Ф2 | — | static-content | план |
-| `p1-arzemniekiem-ukrainai` | `/ka-iegut-tiesibas/arzemniekiem/ukrainai/` | `/kak-poluchit-prava/inostrancam/dlya-grazhdan-ukrainy/` | гайд | `ArticleTemplate` | Ф2 | — | static-content | план |
-| `p1-arzemniekiem-english` | `/ka-iegut-tiesibas/arzemniekiem/english/` | `/kak-poluchit-prava/inostrancam/english/` | EN-хаб (ссылка на `/en/`) | `LangHubStubTemplate` | Ф5 | — | static-content | план |
+| `p1-arzemniekiem-index` | `/ka-iegut-tiesibas/arzemniekiem/` | `/kak-poluchit-prava/inostrancam/` | подраздел-хаб | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-071), D-01 исправлен |
+| `p1-arzemniekiem-apmaina` | `/ka-iegut-tiesibas/arzemniekiem/apmaina/` | `/kak-poluchit-prava/inostrancam/obmen-prav/` | гайд | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-071) |
+| `p1-arzemniekiem-ukrainai` | `/ka-iegut-tiesibas/arzemniekiem/ukrainai/` | `/kak-poluchit-prava/inostrancam/dlya-grazhdan-ukrainy/` | гайд | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-071) |
+| `p1-arzemniekiem-english` | `/ka-iegut-tiesibas/arzemniekiem/english/` | `/kak-poluchit-prava/inostrancam/english/` | EN-хаб-заглушка | `ArticleTemplate` | Ф2 | — | static-content | в проде (T-071) |
 
 ## Pillar 2 — Экзамены CSDD (`/csdd-eksameni/` · `/ekzameny-csdd/`)
 
@@ -208,7 +208,7 @@
 
 ## Найденные проблемы дерева и предложенные исправления
 
-### D-01. Два подраздела Pillar 1 — тупики без инструмента
+### D-01. Два подраздела Pillar 1 — тупики без инструмента — ✅ исправлено (T-069, T-071)
 `/baltas-tiesibas/` (`ka-sanemt`, `macities-ar-vecakiem`, `atbildiba`) и
 `/arzemniekiem/` (`apmaina`, `ukrainai`, `english`) не имеют ни одного
 инструмента внутри подраздела — нарушение принципа 7.1 «текст без инструмента
@@ -224,7 +224,7 @@ docs/00-assumptions.md).
 - `/arzemniekiem/apmaina/` и `/arzemniekiem/ukrainai/` получают `Callout` со
   ссылкой на `wizard` (визард «Твой путь») — оба сценария («меняю права»,
   «гражданин Украины») можно закрыть отдельной веткой в визарде на будущее,
-  а сейчас — явным переходом к нему. Ожидает T-071.
+  а сейчас — явным переходом к нему. **Исправлено в T-071.**
 
 ### D-02. Слаг `/eksamens/` используется дважды с разным смыслом
 `/csdd-eksameni/teorija/eksamens/` («разбор экзамена теории») и
