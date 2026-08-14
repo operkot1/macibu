@@ -166,9 +166,9 @@
 | `p5-pirma-masina-kasko` | `/esmu-vaditajs/pirma-masina/kasko/` | `/ya-voditel/pervaya-mashina/kasko/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | в проде (T-089) |
 | `p5-pirma-masina-tehapskate` | `/esmu-vaditajs/pirma-masina/tehniska-apskate/` | `/ya-voditel/pervaya-mashina/tehosmotr/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | в проде (T-089) |
 | `p5-pirma-masina-registracija` | `/esmu-vaditajs/pirma-masina/registracija/` | `/ya-voditel/pervaya-mashina/registraciya/` | HowTo | `ArticleTemplate` | Ф3 | — | static-content | в проде (T-089) |
-| `p5-ziemas-riepas` | `/esmu-vaditajs/ziemas-riepas/` | `/ya-voditel/zimnie-shiny/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | план |
-| `p5-vinjete` | `/esmu-vaditajs/vinjete/` | `/ya-voditel/vinjetka/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | план |
-| `p5-stavvietas` | `/esmu-vaditajs/stavvietas/` | `/ya-voditel/stoyanki/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | план |
+| `p5-ziemas-riepas` | `/esmu-vaditajs/ziemas-riepas/` | `/ya-voditel/zimnie-shiny/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | в проде (T-090) |
+| `p5-vinjete` | `/esmu-vaditajs/vinjete/` | `/ya-voditel/vinjetka/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | в проде (T-090) |
+| `p5-stavvietas` | `/esmu-vaditajs/stavvietas/` | `/ya-voditel/stoyanki/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | в проде (T-090) |
 
 ## Категории (масштабирование)
 
