@@ -1,0 +1,115 @@
+---
+// FormTemplate — шаблон для страниц формы записи (T-076, apply-index/
+// apply-fors, docs/02-routes.md). Структурно почти идентичен
+// ToolPageTemplate — тот же Header/PhaseBar/Footer/canonical/hreflang
+// каркас, — но не алиас: обе страницы, которые когда-либо будут его
+// использовать, обязаны быть noindex (собирают PII, docs/07-i18n-seo.md
+// §6-7 — /pieteikties/ и /zapisatsya/ также в Disallow public/robots.txt),
+// в отличие от ToolPageTemplate, который обслуживает и индексируемые
+// инструменты тоже. Маршрут ещё не подключён (T-079/T-080, за
+// юридическим гейтом docs/09-legal-gdpr.md) — этот файл собирается и
+// проверяется отдельно, без реальной страницы.
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import LangSwitch from "./LangSwitch.astro";
+import PhaseBar from "./PhaseBar.tsx";
+import AnalyticsLayerA from "./AnalyticsLayerA.astro";
+import CookieBanner from "./CookieBanner.tsx";
+import { getCsddTariffs, getRatings } from "../../lib/data";
+import "../../styles/base.css";
+
+export interface FormTemplateProps {
+  currentLocale: "lv" | "ru";
+  routeId: string;
+  title: string;
+  description: string;
+  heading: string;
+  intro: string;
+  canonicalPath: string;
+  alternateUrl: string | null;
+}
+
+const {
+  currentLocale,
+  routeId,
+  title,
+  description,
+  heading,
+  intro,
+  canonicalPath,
+  alternateUrl,
+}: FormTemplateProps = Astro.props;
+
+// Плейсхолдер-домен — docs/07-i18n-seo.md §3, до появления реального (В-4,
+// docs/00-assumptions.md).
+const baseUrl = "https://example.lv";
+
+const lvPath = currentLocale === "lv" ? canonicalPath : alternateUrl;
+const ruPath = currentLocale === "ru" ? canonicalPath : alternateUrl;
+
+const csddTariffs = getCsddTariffs();
+const ratings = getRatings();
+---
+
+<html lang={currentLocale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href={`${baseUrl}${canonicalPath}`} />
+    {
+      lvPath && (
+        <link rel="alternate" hreflang="lv-LV" href={`${baseUrl}${lvPath}`} />
+      )
+    }
+    {
+      ruPath && (
+        <link rel="alternate" hreflang="ru-LV" href={`${baseUrl}${ruPath}`} />
+      )
+    }
+    {
+      lvPath && (
+        <link
+          rel="alternate"
+          hreflang="x-default"
+          href={`${baseUrl}${lvPath}`}
+        />
+      )
+    }
+  </head>
+  <body>
+    <AnalyticsLayerA routeId={routeId} />
+    <Header currentLocale={currentLocale} currentRouteId={routeId}>
+      <LangSwitch
+        slot="lang-switch"
+        currentLocale={currentLocale}
+        alternateUrl={alternateUrl}
+      />
+    </Header>
+    <PhaseBar
+      client:load
+      variant="sticky-mobile"
+      currentLocale={currentLocale}
+    />
+    <PhaseBar
+      client:load
+      variant="inline-desktop"
+      currentLocale={currentLocale}
+    />
+    <main class="p-4">
+      <h1 class="text-h1 text-neutral-900 mb-2">{heading}</h1>
+      <p class="text-body text-neutral-600 mb-6">{intro}</p>
+      <slot />
+    </main>
+    <Footer
+      currentLocale={currentLocale}
+      dataFreshness={{
+        csddTariffsUpdatedAt: csddTariffs.updated_at,
+        ratingsUpdatedAt: ratings.updated_at,
+      }}
+    />
+    <CookieBanner client:load currentLocale={currentLocale} />
+  </body>
+</html>
