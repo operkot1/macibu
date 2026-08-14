@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import ToolPageTemplate from "../../../components/layout/ToolPageTemplate.astro";
+import PointsCalculator from "../../../components/tools/points/PointsCalculator.tsx";
+
+const entries = await getCollection("violations");
+const violations = entries.map((e) => e.data);
+---
+
+<ToolPageTemplate
+  currentLocale="ru"
+  routeId="p5-punkti"
+  title="Калькулятор баллов"
+  description="Рассчитай свой статус по системе учёта баллов — насколько ты близок к приостановке прав."
+  heading="Калькулятор баллов"
+  intro="Отметь нарушения, выбери свой статус водителя — калькулятор покажет общее число баллов и ближайший порог."
+  canonicalPath="/ru/ya-voditel/punkty/"
+  alternateUrl="/lv/esmu-vaditajs/punkti/"
+>
+  <PointsCalculator client:visible violations={violations} currentLocale="ru" />
+</ToolPageTemplate>

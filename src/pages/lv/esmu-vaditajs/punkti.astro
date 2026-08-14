@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import ToolPageTemplate from "../../../components/layout/ToolPageTemplate.astro";
+import PointsCalculator from "../../../components/tools/points/PointsCalculator.tsx";
+
+const entries = await getCollection("violations");
+const violations = entries.map((e) => e.data);
+---
+
+<ToolPageTemplate
+  currentLocale="lv"
+  routeId="p5-punkti"
+  title="Punktu kalkulators"
+  description="Aprēķini savu pārkāpumu uzskaites punktu statusu — cik tuvu esi tiesību apturēšanai."
+  heading="Punktu kalkulators"
+  intro="Atzīmē pārkāpumus, izvēlies savu vadītāja statusu — kalkulators parāda kopējos punktus un tuvāko slieksni."
+  canonicalPath="/lv/esmu-vaditajs/punkti/"
+  alternateUrl="/ru/ya-voditel/punkty/"
+>
+  <PointsCalculator client:visible violations={violations} currentLocale="lv" />
+</ToolPageTemplate>

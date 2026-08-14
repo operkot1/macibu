@@ -155,7 +155,7 @@
 | `p5-jaunais-vaditajs` | `/esmu-vaditajs/jaunais-vaditajs/` | `/ya-voditel/novyj-voditel/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | в проде (T-084) |
 | `p5-pirmie-10` | `/esmu-vaditajs/pirmie-10-braucieni/` | `/ya-voditel/pervye-10-poezdok/` | план-чек-лист | `ToolPageTemplate` | Ф3 | ★ | static-content | в проде (T-084) |
 | `p5-sodi` | `/esmu-vaditajs/sodi/` | `/ya-voditel/shtrafy/` | справочник штрафов | `ToolPageTemplate` | Ф3 | ★★ | `violations` (Content Collection, T-085, см. `A-14`) | в проде (T-085) |
-| `p5-punkti` | `/esmu-vaditajs/punkti/` | `/ya-voditel/punkty/` | пункты + калькулятор | `ToolPageTemplate` | Ф3 | ★ | static-content | план |
+| `p5-punkti` | `/esmu-vaditajs/punkti/` | `/ya-voditel/punkty/` | пункты + калькулятор | `ToolPageTemplate` | Ф3 | ★ | `violations` + `pointsThresholds` (T-086, см. `A-14`) | в проде (T-086) |
 | `p5-csn-negadijums` | `/esmu-vaditajs/csn-negadijums/` | `/ya-voditel/dtp/` | что делать при ДТП + PDF | `ToolPageTemplate` | Ф3 | ★★ | static-content (PDF-актив) | план |
 | `p5-policija` | `/esmu-vaditajs/policija/` | `/ya-voditel/policiya/` | скрипт-гайд | `ArticleTemplate` | Ф3 | — | static-content | план |
 | `p5-pirma-masina-index` | `/esmu-vaditajs/pirma-masina/` | `/ya-voditel/pervaya-mashina/` | подраздел-хаб | `SubsectionIndexTemplate` | Ф3 | — | static-content | план |

@@ -3,6 +3,11 @@ import { getCollection } from "astro:content";
 import ToolPageTemplate from "../../../components/layout/ToolPageTemplate.astro";
 import Callout from "../../../components/content/Callout.astro";
 import ViolationSearch from "../../../components/tools/violations/ViolationSearch.tsx";
+import {
+  POINTS_THRESHOLDS,
+  POINTS_SOURCE_CITATION,
+  POINTS_VALIDITY_TEXT,
+} from "../../../lib/points/pointsThresholds";
 
 const entries = await getCollection("violations");
 const violations = entries.map((e) => e.data);
@@ -20,26 +25,24 @@ const violations = entries.map((e) => e.data);
 >
   <h2 class="text-h2 text-neutral-900 mb-2">Kā darbojas punktu sistēma</h2>
   <p class="text-body text-neutral-900 mb-4">
-    Par pārkāpumiem, kas apdraud satiksmes drošību, papildus naudas sodam
-    piešķir uzskaites punktus (0–8 par pārkāpumu). Punkti ir spēkā 2 gadus,
-    izņemot 8 punktu pārkāpumus — tiem 5 gadus.
+    {POINTS_VALIDITY_TEXT.lv}
   </p>
   <ul class="text-body text-neutral-900 mb-4 flex flex-col gap-1">
-    <li>4 punkti — rakstisks brīdinājums.</li>
-    <li>
-      8 punkti — obligāts satiksmes drošības kurss vai uzvedības korekcijas
-      grupa.
-    </li>
-    <li>
-      10 punkti — vadītājiem ar mazāku stāžu par 2 gadiem ("jaunais vadītājs")
-      tiesības aptur uz 1 gadu.
-    </li>
-    <li>12 punkti — obligāts teorijas un braukšanas eksāmens atkārtoti.</li>
-    <li>16 punkti — pieredzējušiem vadītājiem tiesības aptur uz 1 gadu.</li>
+    {
+      POINTS_THRESHOLDS.map((t) => (
+        <li>
+          {t.points} punkti — {t.description_lv}
+        </li>
+      ))
+    }
   </ul>
   <p class="text-body-sm text-neutral-600 mb-6">
-    Avots: Ministru kabineta noteikumi Nr. 551 "Pārkāpumu uzskaites punktu
-    sistēmas piemērošanas noteikumi"; Ceļu satiksmes likuma 55. pants.
+    {POINTS_SOURCE_CITATION.lv}
+  </p>
+  <p class="text-body-sm text-neutral-600 mb-6">
+    → <a href="/lv/esmu-vaditajs/punkti/" class="text-primary-600 underline">
+      Punktu kalkulators
+    </a> — aprēķini savu statusu pēc konkrētiem pārkāpumiem.
   </p>
 
   <Callout tone="warning" title="Ilustratīvi dati">
