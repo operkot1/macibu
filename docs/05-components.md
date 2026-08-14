@@ -137,6 +137,7 @@ interface StepListStep {
   title: string;
   priceEur?: number;
   durationLabel?: string;
+  note?: string; // короткая практическая подсказка (T-084)
   isDone?: boolean; // для интерактивного чек-листа "9 шагов"
 }
 interface StepListProps {

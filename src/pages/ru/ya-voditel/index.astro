@@ -1,0 +1,15 @@
+---
+import { getEntry, render } from "astro:content";
+import ArticleTemplate from "../../../components/layout/ArticleTemplate.astro";
+
+const entry = await getEntry("pages", "ru/p5-index");
+if (!entry) throw new Error("Content entry 'ru/p5-index' not found");
+const { Content } = await render(entry);
+---
+
+<ArticleTemplate
+  entry={entry}
+  Content={Content}
+  canonicalPath="/ru/ya-voditel/"
+  alternateUrl="/lv/esmu-vaditajs/"
+/>

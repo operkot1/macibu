@@ -151,9 +151,9 @@
 
 | route_id | путь LV | путь RU | тип | шаблон | фаза | инстр. | источник | статус |
 |---|---|---|---|---|---|---|---|---|
-| `p5-index` | `/esmu-vaditajs/` | `/ya-voditel/` | pillar-хаб | `PillarIndexTemplate` | Ф3 | — | static-content | план |
-| `p5-jaunais-vaditajs` | `/esmu-vaditajs/jaunais-vaditajs/` | `/ya-voditel/novyj-voditel/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | план |
-| `p5-pirmie-10` | `/esmu-vaditajs/pirmie-10-braucieni/` | `/ya-voditel/pervye-10-poezdok/` | план-чек-лист | `ToolPageTemplate` | Ф3 | ★ | static-content | план |
+| `p5-index` | `/esmu-vaditajs/` | `/ya-voditel/` | pillar-хаб | `ArticleTemplate` | Ф3 | — | static-content | в проде (T-084) |
+| `p5-jaunais-vaditajs` | `/esmu-vaditajs/jaunais-vaditajs/` | `/ya-voditel/novyj-voditel/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | в проде (T-084) |
+| `p5-pirmie-10` | `/esmu-vaditajs/pirmie-10-braucieni/` | `/ya-voditel/pervye-10-poezdok/` | план-чек-лист | `ToolPageTemplate` | Ф3 | ★ | static-content | в проде (T-084) |
 | `p5-sodi` | `/esmu-vaditajs/sodi/` | `/ya-voditel/shtrafy/` | справочник штрафов | `ToolPageTemplate` | Ф3 | ★★ | static-content (реестр штрафов, версионируемый) | план |
 | `p5-punkti` | `/esmu-vaditajs/punkti/` | `/ya-voditel/punkty/` | пункты + калькулятор | `ToolPageTemplate` | Ф3 | ★ | static-content | план |
 | `p5-csn-negadijums` | `/esmu-vaditajs/csn-negadijums/` | `/ya-voditel/dtp/` | что делать при ДТП + PDF | `ToolPageTemplate` | Ф3 | ★★ | static-content (PDF-актив) | план |

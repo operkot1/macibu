@@ -1,0 +1,28 @@
+---
+import ToolPageTemplate from "../../../components/layout/ToolPageTemplate.astro";
+import StepListInteractive from "../../../components/content/StepListInteractive.tsx";
+import { tenTrips } from "../../../content/shared/tenTrips";
+
+const steps = tenTrips.ru;
+---
+
+<ToolPageTemplate
+  currentLocale="ru"
+  routeId="p5-pirmie-10"
+  title="Первые 10 поездок"
+  description="Чек-лист самостоятельной практики после получения прав — 10 поездок от простого к сложному, с сохранением прогресса."
+  heading="Первые 10 поездок"
+  intro="Отмечай выполненные поездки — прогресс сохраняется в этом браузере. Порядок идёт от простого к сложному, необязательно следовать буквально, но помогает не спешить сразу к самому сложному."
+  canonicalPath="/ru/ya-voditel/pervye-10-poezdok/"
+  alternateUrl="/lv/esmu-vaditajs/pirmie-10-braucieni/"
+>
+  <StepListInteractive
+    client:visible
+    checklistId="p5-pirmie-10"
+    steps={steps.map((s, i) => ({
+      index: i + 1,
+      title: s.title,
+      note: s.note,
+    }))}
+  />
+</ToolPageTemplate>

@@ -25,6 +25,7 @@ export interface StepListInteractiveStep {
   title: string;
   priceEur?: number;
   durationLabel?: string;
+  note?: string; // короткая практическая подсказка (T-084, второй потребитель — pirmie-10-braucieni)
 }
 
 export interface StepListInteractiveProps {
@@ -137,6 +138,11 @@ export default function StepListInteractive({
               }`}
             >
               {step.title}
+              {step.note && (
+                <span className="text-body-sm text-neutral-600 mt-0.5 block">
+                  {step.note}
+                </span>
+              )}
             </label>
             {step.durationLabel && (
               <span className="text-body-sm text-neutral-600">

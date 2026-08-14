@@ -1,0 +1,28 @@
+---
+import ToolPageTemplate from "../../../components/layout/ToolPageTemplate.astro";
+import StepListInteractive from "../../../components/content/StepListInteractive.tsx";
+import { tenTrips } from "../../../content/shared/tenTrips";
+
+const steps = tenTrips.lv;
+---
+
+<ToolPageTemplate
+  currentLocale="lv"
+  routeId="p5-pirmie-10"
+  title="Pirmie 10 braucieni"
+  description="Čeklists patstāvīgai praksei pēc tiesību saņemšanas — 10 braucieni no vienkārša uz sarežģītu, ar progresa saglabāšanu."
+  heading="Pirmie 10 braucieni"
+  intro="Atzīmē paveiktos braucienus — progress tiek saglabāts šajā pārlūkā. Secība iet no vienkārša uz sarežģītu, nav obligāti jāievēro burtiski, bet palīdz nesteigties uz visgrūtāko uzreiz."
+  canonicalPath="/lv/esmu-vaditajs/pirmie-10-braucieni/"
+  alternateUrl="/ru/ya-voditel/pervye-10-poezdok/"
+>
+  <StepListInteractive
+    client:visible
+    checklistId="p5-pirmie-10"
+    steps={steps.map((s, i) => ({
+      index: i + 1,
+      title: s.title,
+      note: s.note,
+    }))}
+  />
+</ToolPageTemplate>
