@@ -157,7 +157,7 @@
 | `p5-sodi` | `/esmu-vaditajs/sodi/` | `/ya-voditel/shtrafy/` | справочник штрафов | `ToolPageTemplate` | Ф3 | ★★ | `violations` (Content Collection, T-085, см. `A-14`) | в проде (T-085) |
 | `p5-punkti` | `/esmu-vaditajs/punkti/` | `/ya-voditel/punkty/` | пункты + калькулятор | `ToolPageTemplate` | Ф3 | ★ | `violations` + `pointsThresholds` (T-086, см. `A-14`) | в проде (T-086) |
 | `p5-csn-negadijums` | `/esmu-vaditajs/csn-negadijums/` | `/ya-voditel/dtp/` | что делать при ДТП + PDF | `ToolPageTemplate` | Ф3 | ★★ | static-content (PDF-актив, `public/downloads/dtp-{lv,ru}.pdf`, T-087) | в проде (T-087) |
-| `p5-policija` | `/esmu-vaditajs/policija/` | `/ya-voditel/policiya/` | скрипт-гайд | `ArticleTemplate` | Ф3 | — | static-content | план |
+| `p5-policija` | `/esmu-vaditajs/policija/` | `/ya-voditel/policiya/` | скрипт-гайд | `ArticleTemplate` | Ф3 | — | static-content | в проде (T-088) |
 | `p5-pirma-masina-index` | `/esmu-vaditajs/pirma-masina/` | `/ya-voditel/pervaya-mashina/` | подраздел-хаб | `SubsectionIndexTemplate` | Ф3 | — | static-content | план |
 | `p5-pirma-masina-ka-izveleties` | `/esmu-vaditajs/pirma-masina/ka-izveleties/` | `/ya-voditel/pervaya-mashina/kak-vybrat/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | план |
 | `p5-pirma-masina-parbaude` | `/esmu-vaditajs/pirma-masina/parbaude-pirms-pirksanas/` | `/ya-voditel/pervaya-mashina/proverka-pered-pokupkoj/` | чек-лист | `ToolPageTemplate` | Ф3 | ★ | static-content | план |
