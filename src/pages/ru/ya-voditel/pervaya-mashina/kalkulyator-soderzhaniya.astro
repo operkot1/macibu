@@ -1,0 +1,24 @@
+---
+import ToolPageTemplate from "../../../../components/layout/ToolPageTemplate.astro";
+import MaintenanceCalculator from "../../../../components/tools/car-maintenance/MaintenanceCalculator.tsx";
+import { getCarMaintenanceCostModel } from "../../../../lib/data";
+
+const costModel = getCarMaintenanceCostModel();
+---
+
+<ToolPageTemplate
+  currentLocale="ru"
+  routeId="p5-pirma-masina-kalkulators"
+  title="Калькулятор содержания автомобиля"
+  description="Примерные расходы в месяц на топливо, ОСАГО, техосмотр и обслуживание — введи свои предположения."
+  heading="Калькулятор содержания автомобиля"
+  intro="Введи свои цифры — калькулятор посчитает примерные расходы в месяц. Цена техосмотра — реальный тариф CSDD, остальное — твой ввод."
+  canonicalPath="/ru/ya-voditel/pervaya-mashina/kalkulyator-soderzhaniya/"
+  alternateUrl="/lv/esmu-vaditajs/pirma-masina/uzturesanas-kalkulators/"
+>
+  <MaintenanceCalculator
+    client:visible
+    costModel={costModel}
+    currentLocale="ru"
+  />
+</ToolPageTemplate>

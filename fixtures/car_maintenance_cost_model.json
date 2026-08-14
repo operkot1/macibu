@@ -1,0 +1,14 @@
+{
+  "updated_at": "2026-08-14T00:00:00Z",
+  "source": "csdd-published-fee-and-market-research",
+  "inspection": {
+    "fee_eur": 36.95,
+    "source_document": "CSDD, M1 kategorijas transportlīdzekļa tehniskā apskate (pamatpārbaude 34,10 EUR + atļaujas maksa 2,85 EUR), MK noteikumi Nr. 1000 (24.09.2013)"
+  },
+  "octa": {
+    "typical_min_eur_year": 170,
+    "typical_max_eur_year": 360,
+    "note_lv": "Cena ir ļoti individuāla — atkarīga no vadītāja vecuma, stāža, bonusa-malusa klases, automašīnas un reģiona. Diapazons attiecas uz jaunu, mazpieredzējušu vadītāju; vidējā cena visiem vadītājiem ir zemāka (~90 EUR/gadā).",
+    "note_ru": "Цена очень индивидуальна — зависит от возраста водителя, стажа, класса бонус-малус, машины и региона. Диапазон указан для нового, малоопытного водителя; средняя цена по всем водителям ниже (~90 EUR/год)."
+  }
+}

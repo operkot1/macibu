@@ -261,3 +261,27 @@ export interface MedicalCheckLocationsFile {
   source: "placeholder" | "editorial";
   locations: MedicalCheckLocation[];
 }
+
+// 12. `car_maintenance_cost_model` — коэффициенты калькулятора содержания
+// первой машины (T-089). В отличие от cost_model (§8) — не три сценария
+// (optimist/realist/pessimist): tehniskā apskate — единственная реальная
+// фиксированная сумма (CSDD, MK noteikumi Nr. 1000), OCTA — реальный, но
+// широкий диапазон (цена крайне индивидуальна, docs/00-assumptions.md
+// A-15). Топливо и общее обслуживание сознательно НЕ в этой модели —
+// целиком пользовательский ввод в калькуляторе, не факт, который портал
+// мог бы утверждать.
+
+export interface CarMaintenanceCostModel {
+  updated_at: string;
+  source: "csdd-published-fee-and-market-research";
+  inspection: {
+    fee_eur: number;
+    source_document: string;
+  };
+  octa: {
+    typical_min_eur_year: number;
+    typical_max_eur_year: number;
+    note_lv: string;
+    note_ru: string;
+  };
+}

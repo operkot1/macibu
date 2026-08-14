@@ -458,11 +458,49 @@ interface MedicalCheckLocationsFile {
   утверждения о полном покрытии Латвии (тот же принцип, что
   `csdd_centers`/`first_aid_providers`).
 
+## 12. `car_maintenance_cost_model` — калькулятор содержания первой машины
+
+```ts
+interface CarMaintenanceCostModel {
+  updated_at: string;
+  source: "csdd-published-fee-and-market-research";
+  inspection: {
+    fee_eur: number;
+    source_document: string;
+  };
+  octa: {
+    typical_min_eur_year: number;
+    typical_max_eur_year: number;
+    note_lv: string;
+    note_ru: string;
+  };
+}
+```
+
+- **Откуда:** `inspection.fee_eur` — реальная, действующая цена CSDD за
+  техосмотр M1-категории (34,10 EUR базовая проверка + 2,85 EUR
+  плата за допуск = 36,95 EUR), проверена напрямую на официальной
+  странице CSDD, источник — `MK noteikumi Nr. 1000` (24.09.2013).
+  `octa.*` — реальный, но намеренно широкий диапазон: цена OCTA для
+  нового/малоопытного водителя крайне индивидуальна (возраст, стаж,
+  bonus-malus, авто, регион) — единого числа не существует по сути
+  вопроса, не из-за нехватки данных. **[ДОПУЩЕНИЕ]** — см. `A-15`,
+  docs/00-assumptions.md. Топливо и общее обслуживание в этой модели
+  сознательно отсутствуют — целиком пользовательский ввод в
+  калькуляторе (T-089), не факт, который портал мог бы утверждать.
+- **Как часто обновляется:** `inspection.fee_eur` — при изменении тарифа
+  CSDD (редко, регулируется MK noteikumi); `octa.*` — переоценивать при
+  признаках существенного рыночного сдвига, не по расписанию.
+- **Владелец:** не назначен (нет реального ETL, разовое ручное
+  исследование при создании T-089).
+- **При отсутствии данных:** неприменимо — оба поля всегда присутствуют
+  и не зависят от города/школы/пользователя.
+
 ---
 
 ## Фикстуры
 
-Все одиннадцать файлов лежат в `/fixtures/` в корне репозитория и валидны по
+Все двенадцать файлов лежат в `/fixtures/` в корне репозитория и валидны по
 типам выше. Значения взяты из чисел, уже приведённых в прототипах Модуля 7
 (Экраны 2, 3, 5), чтобы фикстуры были правдоподобны, а не случайны.
 
@@ -479,6 +517,7 @@ interface MedicalCheckLocationsFile {
 | `fixtures/csdd_centers.json` | `CsddCentersFile` (T-042, изначально пропущен в этой таблице) |
 | `fixtures/first_aid_providers.json` | `FirstAidProvidersFile` (T-070) |
 | `fixtures/medical_check_locations.json` | `MedicalCheckLocationsFile` (T-072) |
+| `fixtures/car_maintenance_cost_model.json` | `CarMaintenanceCostModel` (T-089) |
 
 Definition of Done для Ф0-задачи «типы данных» (см. docs/11-backlog.md):
 `tsc --noEmit` проходит на всех типах, все фикстуры проходят валидацию через

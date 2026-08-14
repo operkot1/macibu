@@ -1,0 +1,28 @@
+---
+import ToolPageTemplate from "../../../../components/layout/ToolPageTemplate.astro";
+import StepListInteractive from "../../../../components/content/StepListInteractive.tsx";
+import { prePurchaseChecklist } from "../../../../content/shared/prePurchaseChecklist";
+
+const steps = prePurchaseChecklist.lv;
+---
+
+<ToolPageTemplate
+  currentLocale="lv"
+  routeId="p5-pirma-masina-parbaude"
+  title="Pārbaude pirms auto pirkšanas"
+  description="Čeklists, ko pārbaudīt pirms lietotas automašīnas pirkšanas — no VIN koda līdz negadījumu vēsturei."
+  heading="Pārbaude pirms auto pirkšanas"
+  intro="Atzīmē pārbaudītos punktus — progress tiek saglabāts šajā pārlūkā."
+  canonicalPath="/lv/esmu-vaditajs/pirma-masina/parbaude-pirms-pirksanas/"
+  alternateUrl="/ru/ya-voditel/pervaya-mashina/proverka-pered-pokupkoj/"
+>
+  <StepListInteractive
+    client:visible
+    checklistId="p5-pirma-masina-parbaude"
+    steps={steps.map((s, i) => ({
+      index: i + 1,
+      title: s.title,
+      note: s.note,
+    }))}
+  />
+</ToolPageTemplate>

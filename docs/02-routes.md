@@ -158,14 +158,14 @@
 | `p5-punkti` | `/esmu-vaditajs/punkti/` | `/ya-voditel/punkty/` | пункты + калькулятор | `ToolPageTemplate` | Ф3 | ★ | `violations` + `pointsThresholds` (T-086, см. `A-14`) | в проде (T-086) |
 | `p5-csn-negadijums` | `/esmu-vaditajs/csn-negadijums/` | `/ya-voditel/dtp/` | что делать при ДТП + PDF | `ToolPageTemplate` | Ф3 | ★★ | static-content (PDF-актив, `public/downloads/dtp-{lv,ru}.pdf`, T-087) | в проде (T-087) |
 | `p5-policija` | `/esmu-vaditajs/policija/` | `/ya-voditel/policiya/` | скрипт-гайд | `ArticleTemplate` | Ф3 | — | static-content | в проде (T-088) |
-| `p5-pirma-masina-index` | `/esmu-vaditajs/pirma-masina/` | `/ya-voditel/pervaya-mashina/` | подраздел-хаб | `SubsectionIndexTemplate` | Ф3 | — | static-content | план |
-| `p5-pirma-masina-ka-izveleties` | `/esmu-vaditajs/pirma-masina/ka-izveleties/` | `/ya-voditel/pervaya-mashina/kak-vybrat/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | план |
-| `p5-pirma-masina-parbaude` | `/esmu-vaditajs/pirma-masina/parbaude-pirms-pirksanas/` | `/ya-voditel/pervaya-mashina/proverka-pered-pokupkoj/` | чек-лист | `ToolPageTemplate` | Ф3 | ★ | static-content | план |
-| `p5-pirma-masina-kalkulators` | `/esmu-vaditajs/pirma-masina/uzturesanas-kalkulators/` | `/ya-voditel/pervaya-mashina/kalkulyator-soderzhaniya/` | калькулятор содержания | `ToolPageTemplate` | Ф3 | ★ | `cost_model` (отдельный набор коэффициентов) | план |
-| `p5-pirma-masina-octa` | `/esmu-vaditajs/pirma-masina/octa/` | `/ya-voditel/pervaya-mashina/octa/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | план |
-| `p5-pirma-masina-kasko` | `/esmu-vaditajs/pirma-masina/kasko/` | `/ya-voditel/pervaya-mashina/kasko/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | план |
-| `p5-pirma-masina-tehapskate` | `/esmu-vaditajs/pirma-masina/tehniska-apskate/` | `/ya-voditel/pervaya-mashina/tehosmotr/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | план |
-| `p5-pirma-masina-registracija` | `/esmu-vaditajs/pirma-masina/registracija/` | `/ya-voditel/pervaya-mashina/registraciya/` | HowTo | `ArticleTemplate` | Ф3 | — | static-content | план |
+| `p5-pirma-masina-index` | `/esmu-vaditajs/pirma-masina/` | `/ya-voditel/pervaya-mashina/` | подраздел-хаб | `ArticleTemplate` | Ф3 | — | static-content | в проде (T-089) |
+| `p5-pirma-masina-ka-izveleties` | `/esmu-vaditajs/pirma-masina/ka-izveleties/` | `/ya-voditel/pervaya-mashina/kak-vybrat/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | в проде (T-089) |
+| `p5-pirma-masina-parbaude` | `/esmu-vaditajs/pirma-masina/parbaude-pirms-pirksanas/` | `/ya-voditel/pervaya-mashina/proverka-pered-pokupkoj/` | чек-лист | `ToolPageTemplate` | Ф3 | ★ | static-content | в проде (T-089) |
+| `p5-pirma-masina-kalkulators` | `/esmu-vaditajs/pirma-masina/uzturesanas-kalkulators/` | `/ya-voditel/pervaya-mashina/kalkulyator-soderzhaniya/` | калькулятор содержания | `ToolPageTemplate` | Ф3 | ★ | `car_maintenance_cost_model` (T-089, см. `A-15`) | в проде (T-089) |
+| `p5-pirma-masina-octa` | `/esmu-vaditajs/pirma-masina/octa/` | `/ya-voditel/pervaya-mashina/octa/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | в проде (T-089) |
+| `p5-pirma-masina-kasko` | `/esmu-vaditajs/pirma-masina/kasko/` | `/ya-voditel/pervaya-mashina/kasko/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | в проде (T-089) |
+| `p5-pirma-masina-tehapskate` | `/esmu-vaditajs/pirma-masina/tehniska-apskate/` | `/ya-voditel/pervaya-mashina/tehosmotr/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | в проде (T-089) |
+| `p5-pirma-masina-registracija` | `/esmu-vaditajs/pirma-masina/registracija/` | `/ya-voditel/pervaya-mashina/registraciya/` | HowTo | `ArticleTemplate` | Ф3 | — | static-content | в проде (T-089) |
 | `p5-ziemas-riepas` | `/esmu-vaditajs/ziemas-riepas/` | `/ya-voditel/zimnie-shiny/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | план |
 | `p5-vinjete` | `/esmu-vaditajs/vinjete/` | `/ya-voditel/vinjetka/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | план |
 | `p5-stavvietas` | `/esmu-vaditajs/stavvietas/` | `/ya-voditel/stoyanki/` | справочная статья | `ArticleTemplate` | Ф3 | — | static-content | план |

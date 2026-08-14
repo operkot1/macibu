@@ -1,0 +1,24 @@
+---
+import ToolPageTemplate from "../../../../components/layout/ToolPageTemplate.astro";
+import MaintenanceCalculator from "../../../../components/tools/car-maintenance/MaintenanceCalculator.tsx";
+import { getCarMaintenanceCostModel } from "../../../../lib/data";
+
+const costModel = getCarMaintenanceCostModel();
+---
+
+<ToolPageTemplate
+  currentLocale="lv"
+  routeId="p5-pirma-masina-kalkulators"
+  title="Auto uzturēšanas kalkulators"
+  description="Aptuvenās mēneša izmaksas par degvielu, OCTA, tehnisko apskati un apkopi — ievadi savus pieņēmumus."
+  heading="Auto uzturēšanas kalkulators"
+  intro="Ievadi savus skaitļus — kalkulators saskaita aptuvenās izmaksas mēnesī. Tehniskās apskates cena ir reāla CSDD maksa, pārējais — tavs ievads."
+  canonicalPath="/lv/esmu-vaditajs/pirma-masina/uzturesanas-kalkulators/"
+  alternateUrl="/ru/ya-voditel/pervaya-mashina/kalkulyator-soderzhaniya/"
+>
+  <MaintenanceCalculator
+    client:visible
+    costModel={costModel}
+    currentLocale="lv"
+  />
+</ToolPageTemplate>

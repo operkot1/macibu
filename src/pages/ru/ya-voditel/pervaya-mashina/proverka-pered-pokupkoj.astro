@@ -1,0 +1,28 @@
+---
+import ToolPageTemplate from "../../../../components/layout/ToolPageTemplate.astro";
+import StepListInteractive from "../../../../components/content/StepListInteractive.tsx";
+import { prePurchaseChecklist } from "../../../../content/shared/prePurchaseChecklist";
+
+const steps = prePurchaseChecklist.ru;
+---
+
+<ToolPageTemplate
+  currentLocale="ru"
+  routeId="p5-pirma-masina-parbaude"
+  title="Проверка перед покупкой машины"
+  description="Чек-лист, что проверить перед покупкой подержанного автомобиля — от VIN-кода до истории ДТП."
+  heading="Проверка перед покупкой машины"
+  intro="Отмечай проверенные пункты — прогресс сохраняется в этом браузере."
+  canonicalPath="/ru/ya-voditel/pervaya-mashina/proverka-pered-pokupkoj/"
+  alternateUrl="/lv/esmu-vaditajs/pirma-masina/parbaude-pirms-pirksanas/"
+>
+  <StepListInteractive
+    client:visible
+    checklistId="p5-pirma-masina-parbaude"
+    steps={steps.map((s, i) => ({
+      index: i + 1,
+      title: s.title,
+      note: s.note,
+    }))}
+  />
+</ToolPageTemplate>
