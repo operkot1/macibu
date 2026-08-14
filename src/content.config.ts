@@ -1,6 +1,7 @@
 import { defineCollection, z } from "astro:content";
 import { glob, file } from "astro/loaders";
 import { TheoryQuestionSchema } from "./schemas/theoryQuestions";
+import { ViolationSchema } from "./schemas/violation";
 
 /*
  * Схема frontmatter контентных страниц (docs/07-i18n-seo.md §1). route_id
@@ -33,4 +34,17 @@ const theoryQuestions = defineCollection({
   schema: TheoryQuestionSchema,
 });
 
-export const collections = { pages, theoryQuestions };
+/*
+ * violations — реестр нарушений/штрафов (p5-sodi, T-085). Тот же паттерн,
+ * что theoryQuestions: реальный редакционный контент через Content
+ * Collections, не fixtures/*.json (docs/06-tools/spravochnik-shtrafov.md
+ * прямо называет Content Collections). Сейчас все записи —
+ * `source: "placeholder"` (см. A-14, docs/00-assumptions.md): конкретные
+ * суммы штрафов не подтверждены достаточно надёжно в рамках этого сеанса.
+ */
+const violations = defineCollection({
+  loader: file("src/content/violations/violations.json"),
+  schema: ViolationSchema,
+});
+
+export const collections = { pages, theoryQuestions, violations };

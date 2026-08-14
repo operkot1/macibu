@@ -1,0 +1,98 @@
+[
+  {
+    "id": "v-speed-light",
+    "category": "speed",
+    "title_lv": "Ātruma pārsniegšana par 10–20 km/h",
+    "title_ru": "Превышение скорости на 10–20 км/ч",
+    "description_lv": "Neliela ātruma pārsniegšana apdzīvotā vietā vai ārpus tās.",
+    "description_ru": "Небольшое превышение скорости в населённом пункте или вне его.",
+    "fine_min_eur": 30,
+    "fine_max_eur": 40,
+    "points": 1,
+    "source": "placeholder"
+  },
+  {
+    "id": "v-speed-heavy",
+    "category": "speed",
+    "title_lv": "Ātruma pārsniegšana par vairāk nekā 40 km/h",
+    "title_ru": "Превышение скорости более чем на 40 км/ч",
+    "description_lv": "Būtiska ātruma pārsniegšana — augstākais soda līmenis šajā kategorijā.",
+    "description_ru": "Значительное превышение скорости — высшая ступень штрафа в этой категории.",
+    "fine_min_eur": 160,
+    "fine_max_eur": 400,
+    "points": 4,
+    "source": "placeholder"
+  },
+  {
+    "id": "v-alcohol",
+    "category": "alcohol",
+    "title_lv": "Braukšana alkohola reibumā",
+    "title_ru": "Управление в состоянии алкогольного опьянения",
+    "description_lv": "Viens no smagākajiem pārkāpumiem — augstākais punktu skaits un tiesību atņemšana.",
+    "description_ru": "Одно из самых серьёзных нарушений — максимальное число баллов и лишение прав.",
+    "fine_min_eur": 340,
+    "fine_max_eur": 640,
+    "points": 8,
+    "source": "placeholder"
+  },
+  {
+    "id": "v-phone",
+    "category": "phone",
+    "title_lv": "Mobilā tālruņa lietošana bez brīvroku ierīces",
+    "title_ru": "Использование телефона без устройства громкой связи",
+    "description_lv": "Tālruņa turēšana rokā braukšanas laikā.",
+    "description_ru": "Удержание телефона в руке во время движения.",
+    "fine_min_eur": 50,
+    "fine_max_eur": 70,
+    "points": 2,
+    "source": "placeholder"
+  },
+  {
+    "id": "v-seatbelt",
+    "category": "seatbelt",
+    "title_lv": "Braukšana bez drošības jostas",
+    "title_ru": "Езда без ремня безопасности",
+    "description_lv": "Attiecas gan uz vadītāju, gan pasažieriem.",
+    "description_ru": "Касается как водителя, так и пассажиров.",
+    "fine_min_eur": 30,
+    "fine_max_eur": 50,
+    "points": 0,
+    "source": "placeholder"
+  },
+  {
+    "id": "v-parking",
+    "category": "parking",
+    "title_lv": "Apstāšanās vai stāvēšana aizliegtā vietā",
+    "title_ru": "Остановка или стоянка в запрещённом месте",
+    "description_lv": "Piemēram, uz gājēju pārejas vai invalīdu stāvvietā bez tiesībām.",
+    "description_ru": "Например, на пешеходном переходе или на месте для инвалидов без прав на это.",
+    "fine_min_eur": 15,
+    "fine_max_eur": 30,
+    "points": 0,
+    "source": "placeholder"
+  },
+  {
+    "id": "v-documents",
+    "category": "documents",
+    "title_lv": "Braukšana bez transportlīdzekļa reģistrācijas dokumentiem",
+    "title_ru": "Управление без регистрационных документов на транспортное средство",
+    "description_lv": "Dokumentu neesamība līdzi braukšanas laikā (ne pati reģistrācija).",
+    "description_ru": "Отсутствие документов при себе во время движения (не сама регистрация).",
+    "fine_min_eur": 15,
+    "fine_max_eur": 30,
+    "points": 0,
+    "source": "placeholder"
+  },
+  {
+    "id": "v-red-light",
+    "category": "red-light",
+    "title_lv": "Sarkanā signāla neievērošana",
+    "title_ru": "Проезд на красный сигнал светофора",
+    "description_lv": "Braukšanas turpināšana pēc sarkanā signāla iedegšanās.",
+    "description_ru": "Продолжение движения после включения красного сигнала.",
+    "fine_min_eur": 70,
+    "fine_max_eur": 100,
+    "points": 2,
+    "source": "placeholder"
+  }
+]

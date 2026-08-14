@@ -1,0 +1,61 @@
+---
+import { getCollection } from "astro:content";
+import ToolPageTemplate from "../../../components/layout/ToolPageTemplate.astro";
+import Callout from "../../../components/content/Callout.astro";
+import ViolationSearch from "../../../components/tools/violations/ViolationSearch.tsx";
+
+const entries = await getCollection("violations");
+const violations = entries.map((e) => e.data);
+---
+
+<ToolPageTemplate
+  currentLocale="lv"
+  routeId="p5-sodi"
+  title="Sodi par pārkāpumiem"
+  description="Kā darbojas pārkāpumu uzskaites punktu sistēma Latvijā, un ilustratīvs pārkāpumu meklētājs pēc kategorijas, punktiem un soda summas."
+  heading="Sodi par pārkāpumiem"
+  intro="Kā darbojas punktu sistēma, un meklētājs pēc konkrētiem pārkāpumiem."
+  canonicalPath="/lv/esmu-vaditajs/sodi/"
+  alternateUrl="/ru/ya-voditel/shtrafy/"
+>
+  <h2 class="text-h2 text-neutral-900 mb-2">Kā darbojas punktu sistēma</h2>
+  <p class="text-body text-neutral-900 mb-4">
+    Par pārkāpumiem, kas apdraud satiksmes drošību, papildus naudas sodam
+    piešķir uzskaites punktus (0–8 par pārkāpumu). Punkti ir spēkā 2 gadus,
+    izņemot 8 punktu pārkāpumus — tiem 5 gadus.
+  </p>
+  <ul class="text-body text-neutral-900 mb-4 flex flex-col gap-1">
+    <li>4 punkti — rakstisks brīdinājums.</li>
+    <li>
+      8 punkti — obligāts satiksmes drošības kurss vai uzvedības korekcijas
+      grupa.
+    </li>
+    <li>
+      10 punkti — vadītājiem ar mazāku stāžu par 2 gadiem ("jaunais vadītājs")
+      tiesības aptur uz 1 gadu.
+    </li>
+    <li>12 punkti — obligāts teorijas un braukšanas eksāmens atkārtoti.</li>
+    <li>16 punkti — pieredzējušiem vadītājiem tiesības aptur uz 1 gadu.</li>
+  </ul>
+  <p class="text-body-sm text-neutral-600 mb-6">
+    Avots: Ministru kabineta noteikumi Nr. 551 "Pārkāpumu uzskaites punktu
+    sistēmas piemērošanas noteikumi"; Ceļu satiksmes likuma 55. pants.
+  </p>
+
+  <Callout tone="warning" title="Ilustratīvi dati">
+    <p>
+      Zemāk redzamās konkrētās soda summas un punktu vērtības par atsevišķiem
+      pārkāpumiem ir ilustratīvas, ne oficiāls, apstiprināts reģistrs —
+      precīzas, aktuālas summas skaties CSDD vai likumi.lv. Punktu sistēmas
+      apraksts augstāk ir pārbaudīts pret oficiāliem avotiem.
+    </p>
+  </Callout>
+
+  <div class="mt-6">
+    <ViolationSearch
+      client:visible
+      violations={violations}
+      currentLocale="lv"
+    />
+  </div>
+</ToolPageTemplate>

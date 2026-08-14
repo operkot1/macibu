@@ -1,0 +1,61 @@
+---
+import { getCollection } from "astro:content";
+import ToolPageTemplate from "../../../components/layout/ToolPageTemplate.astro";
+import Callout from "../../../components/content/Callout.astro";
+import ViolationSearch from "../../../components/tools/violations/ViolationSearch.tsx";
+
+const entries = await getCollection("violations");
+const violations = entries.map((e) => e.data);
+---
+
+<ToolPageTemplate
+  currentLocale="ru"
+  routeId="p5-sodi"
+  title="Штрафы за нарушения"
+  description="Как работает система баллов за нарушения в Латвии, и иллюстративный поиск по нарушениям — категория, баллы, сумма штрафа."
+  heading="Штрафы за нарушения"
+  intro="Как работает система баллов, и поиск по конкретным нарушениям."
+  canonicalPath="/ru/ya-voditel/shtrafy/"
+  alternateUrl="/lv/esmu-vaditajs/sodi/"
+>
+  <h2 class="text-h2 text-neutral-900 mb-2">Как работает система баллов</h2>
+  <p class="text-body text-neutral-900 mb-4">
+    За нарушения, угрожающие безопасности движения, помимо денежного штрафа
+    начисляются баллы (0–8 за нарушение). Баллы действуют 2 года, кроме
+    нарушений на 8 баллов — для них 5 лет.
+  </p>
+  <ul class="text-body text-neutral-900 mb-4 flex flex-col gap-1">
+    <li>4 балла — письменное предупреждение.</li>
+    <li>
+      8 баллов — обязательный курс безопасности движения или группа коррекции
+      поведения.
+    </li>
+    <li>
+      10 баллов — у водителей со стажем менее 2 лет ("новый водитель") права
+      приостанавливают на 1 год.
+    </li>
+    <li>12 баллов — обязательная повторная сдача теории и вождения.</li>
+    <li>16 баллов — у опытных водителей права приостанавливают на 1 год.</li>
+  </ul>
+  <p class="text-body-sm text-neutral-600 mb-6">
+    Источник: Правила Кабинета министров № 551 "Правила применения системы
+    учётных баллов нарушений"; статья 55 Закона о дорожном движении.
+  </p>
+
+  <Callout tone="warning" title="Иллюстративные данные">
+    <p>
+      Конкретные суммы штрафов и баллы за отдельные нарушения ниже —
+      иллюстративные, не официальный подтверждённый реестр — точные актуальные
+      суммы смотри на CSDD или likumi.lv. Описание системы баллов выше проверено
+      по официальным источникам.
+    </p>
+  </Callout>
+
+  <div class="mt-6">
+    <ViolationSearch
+      client:visible
+      violations={violations}
+      currentLocale="ru"
+    />
+  </div>
+</ToolPageTemplate>
