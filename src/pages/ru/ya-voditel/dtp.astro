@@ -1,0 +1,23 @@
+---
+import ToolPageTemplate from "../../../components/layout/ToolPageTemplate.astro";
+import AccidentGuide from "../../../components/tools/accident-guide/AccidentGuide.tsx";
+---
+
+<ToolPageTemplate
+  currentLocale="ru"
+  routeId="p5-csn-negadijums"
+  title="Что делать при ДТП"
+  description="Шаг за шагом, если случилось дорожно-транспортное происшествие — когда звонить 112, когда обязательно вызывать полицию, а когда можно заполнить извещение о ДТП."
+  heading="Что делать при ДТП"
+  intro="Ответь на вопросы, чтобы узнать, что делать в твоей ситуации."
+  canonicalPath="/ru/ya-voditel/dtp/"
+  alternateUrl="/lv/esmu-vaditajs/csn-negadijums/"
+>
+  <AccidentGuide client:visible currentLocale="ru" />
+
+  <p class="text-body-sm mt-6">
+    <a href="/downloads/dtp-ru.pdf" class="text-primary-600 underline" download>
+      Скачать в PDF (храни в бардачке)
+    </a>
+  </p>
+</ToolPageTemplate>

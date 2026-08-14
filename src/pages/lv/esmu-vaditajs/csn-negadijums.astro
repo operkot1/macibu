@@ -1,0 +1,23 @@
+---
+import ToolPageTemplate from "../../../components/layout/ToolPageTemplate.astro";
+import AccidentGuide from "../../../components/tools/accident-guide/AccidentGuide.tsx";
+---
+
+<ToolPageTemplate
+  currentLocale="lv"
+  routeId="p5-csn-negadijums"
+  title="Ko darīt, ja noticis satiksmes negadījums"
+  description="Soli pa solim, ja noticis ceļu satiksmes negadījums — kad zvanīt 112, kad ir obligāti jāsauc policija un kad var aizpildīt saskaņoto paziņojumu."
+  heading="Ko darīt, ja noticis satiksmes negadījums"
+  intro="Atbildi uz jautājumiem, lai uzzinātu, kas jādara tavā situācijā."
+  canonicalPath="/lv/esmu-vaditajs/csn-negadijums/"
+  alternateUrl="/ru/ya-voditel/dtp/"
+>
+  <AccidentGuide client:visible currentLocale="lv" />
+
+  <p class="text-body-sm mt-6">
+    <a href="/downloads/dtp-lv.pdf" class="text-primary-600 underline" download>
+      Lejupielādēt kā PDF (uzglabā cimdu nodalījumā)
+    </a>
+  </p>
+</ToolPageTemplate>
