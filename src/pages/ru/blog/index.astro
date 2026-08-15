@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import BlogIndexTemplate from "../../../components/layout/BlogIndexTemplate.astro";
+import { blogSlug, sortByPublishedAtDesc } from "../../../lib/blog/blogSlug";
+
+const entries = await getCollection("blogPosts", (e) => e.data.lang === "ru");
+const posts = sortByPublishedAtDesc(entries.map((e) => e.data)).map((data) => ({
+  title: data.title,
+  description: data.description,
+  publishedAt: data.publishedAt,
+  href: `/ru/blog/${blogSlug(data.route_id)}/`,
+}));
+---
+
+<BlogIndexTemplate
+  currentLocale="ru"
+  routeId="blog-index"
+  title="Новости изменений"
+  description="Новости об изменениях правил, касающихся получения и сохранения водительского удостоверения в Латвии."
+  heading="Новости изменений"
+  intro="Здесь публикуем новости об изменениях правил — не общий блог, только реально значимые изменения."
+  emptyStateText="Пока здесь нет публикаций."
+  posts={posts}
+  canonicalPath="/ru/blog/"
+  alternateUrl="/lv/blogs/"
+/>

@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import BlogIndexTemplate from "../../../components/layout/BlogIndexTemplate.astro";
+import { blogSlug, sortByPublishedAtDesc } from "../../../lib/blog/blogSlug";
+
+const entries = await getCollection("blogPosts", (e) => e.data.lang === "lv");
+const posts = sortByPublishedAtDesc(entries.map((e) => e.data)).map((data) => ({
+  title: data.title,
+  description: data.description,
+  publishedAt: data.publishedAt,
+  href: `/lv/blogs/${blogSlug(data.route_id)}/`,
+}));
+---
+
+<BlogIndexTemplate
+  currentLocale="lv"
+  routeId="blog-index"
+  title="Izmaiņu jaunumi"
+  description="Jaunumi par izmaiņām noteikumos, kas skar vadītāja apliecības iegūšanu un uzturēšanu Latvijā."
+  heading="Izmaiņu jaunumi"
+  intro="Šeit publicējam jaunumus par izmaiņām noteikumos — ne vispārīgu emuāru, tikai reāli būtiskas izmaiņas."
+  emptyStateText="Pagaidām šeit nav publikāciju."
+  posts={posts}
+  canonicalPath="/lv/blogs/"
+  alternateUrl="/ru/blog/"
+/>

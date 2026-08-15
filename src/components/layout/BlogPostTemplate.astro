@@ -1,0 +1,123 @@
+---
+// BlogPostTemplate — /blogs/{slug}/ (LV), /blog/{slug}/ (RU) (T-115).
+// Тот же контракт entry+Content, что ArticleTemplate, плюс то, чего у
+// обычных статей нет: видимая дата публикации и Schema.org `Article`
+// (docs/07-i18n-seo.md §8) — сгенерированная из типизированных пропсов,
+// не написанная вручную в MDX, тот же приём, что `LocalBusiness` в
+// SchoolCardTemplate.
+import { render, type CollectionEntry } from "astro:content";
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import LangSwitch from "./LangSwitch.astro";
+import PhaseBar from "./PhaseBar.tsx";
+import AnalyticsLayerA from "./AnalyticsLayerA.astro";
+import CookieBanner from "./CookieBanner.tsx";
+import { getCsddTariffs, getRatings } from "../../lib/data";
+import "../../styles/base.css";
+
+type RenderResult = Awaited<ReturnType<typeof render>>;
+
+export interface BlogPostTemplateProps {
+  entry: CollectionEntry<"blogPosts">;
+  Content: RenderResult["Content"];
+  canonicalPath: string;
+  alternateUrl: string | null;
+  blogIndexHref: string;
+  blogIndexLabel: string;
+}
+
+const {
+  entry,
+  Content,
+  canonicalPath,
+  alternateUrl,
+  blogIndexHref,
+  blogIndexLabel,
+}: BlogPostTemplateProps = Astro.props;
+const { route_id, lang, title, description, publishedAt, updatedAt } =
+  entry.data;
+
+// Плейсхолдер-домен — docs/07-i18n-seo.md §3, до появления реального (В-4,
+// docs/00-assumptions.md).
+const baseUrl = "https://example.lv";
+
+const lvPath = lang === "lv" ? canonicalPath : alternateUrl;
+const ruPath = lang === "ru" ? canonicalPath : alternateUrl;
+
+const csddTariffs = getCsddTariffs();
+const ratings = getRatings();
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: title,
+  description,
+  datePublished: publishedAt,
+  ...(updatedAt ? { dateModified: updatedAt } : {}),
+};
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={`${baseUrl}${canonicalPath}`} />
+    {
+      lvPath && (
+        <link rel="alternate" hreflang="lv-LV" href={`${baseUrl}${lvPath}`} />
+      )
+    }
+    {
+      ruPath && (
+        <link rel="alternate" hreflang="ru-LV" href={`${baseUrl}${ruPath}`} />
+      )
+    }
+    {
+      lvPath && (
+        <link
+          rel="alternate"
+          hreflang="x-default"
+          href={`${baseUrl}${lvPath}`}
+        />
+      )
+    }
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <AnalyticsLayerA routeId={route_id} />
+    <Header currentLocale={lang} currentRouteId={route_id}>
+      <LangSwitch
+        slot="lang-switch"
+        currentLocale={lang}
+        alternateUrl={alternateUrl}
+      />
+    </Header>
+    <PhaseBar client:load variant="sticky-mobile" currentLocale={lang} />
+    <PhaseBar client:load variant="inline-desktop" currentLocale={lang} />
+    <main class="p-4">
+      <h1 class="text-h1 text-neutral-900 mb-1">{title}</h1>
+      <p class="text-body-sm text-neutral-600 mb-4">{publishedAt}</p>
+      <div class="text-body text-neutral-900">
+        <Content />
+      </div>
+      <p class="mt-6">
+        <a
+          href={blogIndexHref}
+          class="text-primary-600 focus-visible:ring-focus-ring rounded-md underline focus-visible:ring-2"
+        >
+          {blogIndexLabel}
+        </a>
+      </p>
+    </main>
+    <Footer
+      currentLocale={lang}
+      dataFreshness={{
+        csddTariffsUpdatedAt: csddTariffs.updated_at,
+        ratingsUpdatedAt: ratings.updated_at,
+      }}
+    />
+    <CookieBanner client:load currentLocale={lang} />
+  </body>
+</html>

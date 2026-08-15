@@ -3755,9 +3755,84 @@ build (237 страниц, без изменений — правки конте
 budget/i18n:coverage (84 полных пары, без изменений) — зелёные;
 Lighthouse — тот же несвязанный `spawn Unknown system error -86`.
 
-**T-115 — `BlogIndexTemplate` + `BlogPostTemplate`**
+**T-115 — `BlogIndexTemplate` + `BlogPostTemplate`** ✅ выполнено
 Предусловия: T-016. DoD: СК-Инструмент (шаблоны) — не свалка, каждый пост
 имеет `route_id` и попадает в docs/02-routes.md по факту публикации.
+
+Реализовано: `docs/02-routes.md` называет **два разных** имени шаблона
+для `blog-index`/`blog-post` (в отличие от T-112, где `CategoryHubTemplate`
+был одним именем для хаба и всех 12 leaf-страниц) — построены два
+отдельных файла, не общий двухрежимный компонент.
+
+Новая Content Collection `blogPosts` (`content.config.ts`) — отдельная
+от `pages`: посту нужна `publishedAt` (обязательна) и `updatedAt`
+(опционально) для Schema.org `Article` (docs/07-i18n-seo.md §8) и
+хронологической сортировки, чего нет в общей схеме `pages`. Тот же
+паттерн `route_id = "blog-{slug}"`, что `cat-{code}` в
+`categoryOrder.ts` (T-112) — новый `src/lib/blog/blogSlug.ts` + `.spec.ts`
+(4 теста): `blogSlug()` (вычитание префикса) и
+`sortByPublishedAtDesc()` (сначала новые).
+
+`BlogIndexTemplate.astro` — короткие пропы, как `ToolPageTemplate` (у
+хаба нет своей длинной прозы, нет привязки к Content Collection
+`pages`), плюс список постов, переданный route-обёрткой из реального
+`getCollection("blogPosts", ...)`. Постов пока 0 (по правилу CLAUDE.md
+— блог только новости изменений правил, не свалка, публикация
+отдельной задачей T-116) — честный empty state
+(«Pagaidām šeit nav publikāciju»/«Пока здесь нет публикаций»), не
+пустой список молча.
+
+`BlogPostTemplate.astro` — тот же контракт `entry`+`Content`, что
+`ArticleTemplate`, плюс видимая дата публикации и Schema.org `Article`
+JSON-LD (headline/description/datePublished/dateModified), тот же
+приём генерации из типизированных пропсов, что `LocalBusiness` в
+`SchoolCardTemplate` — не написано вручную в MDX.
+
+`blog-post` — динамический маршрут (`getStaticPaths()` по коллекции,
+тот же паттерн, что `skola/[slug].astro`) — честно генерирует 0
+страниц при 0 постах, не ошибку и не заглушку. 4 route-обёртки:
+`src/pages/lv/blogs/{index,[slug]}.astro`,
+`src/pages/ru/blog/{index,[slug]}.astro` — LV/RU-асимметрия путей
+(`/blogs/` мн.ч. vs `/blog/` ед.ч.) соответствует уже
+зарегистрированным строкам `docs/02-routes.md`, не новое решение.
+
+Найден и задокументирован реальный, воспроизводимый баг кэширования
+Astro Content Layer API, не относящийся к коду проекта: после
+временного тестового поста (создан для живой проверки динамического
+маршрута с реальным контентом, не закоммичен) и его удаления сборка
+падала с `UnknownContentCollectionError` — `getStaticPaths()`
+продолжал возвращать удалённую запись. Причина — Astro кэширует
+Content Layer **в двух независимых местах** одновременно:
+`.astro/data-store.json` (в корне проекта) И
+`node_modules/.astro/data-store.json` — очистки только первого (даже
+вместе с `dist/` и `node_modules/.vite`) оказалось недостаточно,
+ошибка ушла только после очистки обоих. Оба каталога — в `.gitignore`,
+безопасно удалять; после очистки обоих сборка стабильно даёт
+правильное количество страниц что с тестовым постом, что без него.
+
+Живая проверка (Playwright, временный, `--no-save`, деинсталлирован по
+завершении, без diff в `package-lock.json`, 5 проверок — с временным
+тестовым постом, удалённым до коммита): `blog-index` (LV/RU) — 200,
+корректно показывает пост вместо empty state, пока он существует;
+`blog-post` — реальный контент, видимая дата, обратная ссылка на
+индекс; JSON-LD распарсен и проверен напрямую (`@type: "Article"`,
+`headline`/`datePublished`/`dateModified` совпадают с frontmatter);
+RU-версия + canonical/hreflang корректны; консольных ошибок сверх
+`/api/beacon/pageview` не найдено. После удаления тестового поста и
+очистки обоих кэшей `.astro/` — сборка снова даёт 239 страниц (было
+237), `blog-index` снова показывает честный empty state.
+
+`docs/02-routes.md`: `blog-index` → «в проде (T-115)»; `blog-post` →
+«в проде (T-115), инфраструктура — постов пока 0» — явно раскрыто, что
+это готовая, живая инфраструктура без контента, не законченная фича
+без постов.
+
+`npm run check`: typecheck/lint/format/test:unit (136, было 132 — 4
+новых теста `blogSlug`)/build (239 страниц, было 237)/budget/
+i18n:coverage (84 полных пары, без изменений — `blogPosts` не
+коллекция `pages`, корректно не учитывается, тот же вывод, что
+`/en/` в T-113) — зелёные; Lighthouse — тот же несвязанный `spawn
+Unknown system error -86`.
 
 **T-116 — Первые посты блога**
 Предусловия: T-115. DoD: СК-Контент ×3–5.

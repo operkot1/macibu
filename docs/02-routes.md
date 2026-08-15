@@ -192,8 +192,8 @@
 | `about` | `/par-mums/` | `/o-nas/` | статичная страница | `ArticleTemplate` | Ф0 | — | static-content | в проде (T-016) |
 | `contacts` | `/kontakti/` | `/kontakty/` | статичная страница | `ArticleTemplate` | Ф0 | — | static-content | в проде (T-024, плейсхолдер) |
 | `privacy` | `/privatuma-politika/` | `/politika-konfidencialnosti/` | юридическая страница | `ArticleTemplate` | Ф0 | — | static-content | в проде (T-024, плейсхолдер) — контент **БЛОКИРУЮЩЕЕ** для `apply-*` до финального текста (T-075), см. docs/09 |
-| `blog-index` | `/blogs/` | `/blog/` | новости изменений в правилах | `BlogIndexTemplate` | Ф5 | — | static-content (Content Collections) | план |
-| `blog-post` | `/blogs/{slug}/` | `/blog/{slug}/` | пост | `BlogPostTemplate` | Ф5 | — | static-content | план |
+| `blog-index` | `/blogs/` | `/blog/` | новости изменений в правилах | `BlogIndexTemplate` | Ф5 | — | static-content (Content Collections) | в проде (T-115) |
+| `blog-post` | `/blogs/{slug}/` | `/blog/{slug}/` | пост | `BlogPostTemplate` | Ф5 | — | static-content | в проде (T-115), инфраструктура — постов пока 0, публикация постов отдельными строками по факту (T-116) |
 
 ---
 

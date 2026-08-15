@@ -1,0 +1,26 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import BlogPostTemplate from "../../../components/layout/BlogPostTemplate.astro";
+import { blogSlug } from "../../../lib/blog/blogSlug";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("blogPosts", (e) => e.data.lang === "ru");
+  return entries.map((entry) => ({
+    params: { slug: blogSlug(entry.data.route_id) },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<"blogPosts"> };
+const { Content } = await render(entry);
+const slug = blogSlug(entry.data.route_id);
+---
+
+<BlogPostTemplate
+  entry={entry}
+  Content={Content}
+  canonicalPath={`/ru/blog/${slug}/`}
+  alternateUrl={`/lv/blogs/${slug}/`}
+  blogIndexHref="/ru/blog/"
+  blogIndexLabel="← Новости изменений"
+/>
