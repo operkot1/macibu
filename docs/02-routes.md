@@ -143,7 +143,7 @@
 | `p4-bailes-signale` | `/macos-braukt/bailes/signale-no-aizmugures/` | `/uchus-vodit/strahi/signalyat-szadi/` | скрипт-гайд | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-108) |
 | `p4-bailes-eksamena` | `/macos-braukt/bailes/eksamena-bailes/` | `/uchus-vodit/strahi/strah-ekzamena/` | гайд | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-108) |
 | `p4-bailes-kauns` | `/macos-braukt/bailes/kauns-pec-neveiksmes/` | `/uchus-vodit/strahi/styd-posle-neudachi/` | гайд | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-108) |
-| `p4-automats-manuala` | `/macos-braukt/automats-vai-manuala/` | `/uchus-vodit/avtomat-ili-mehanika/` | справочная статья | `ArticleTemplate` | Ф4 | — | static-content | план |
+| `p4-automats-manuala` | `/macos-braukt/automats-vai-manuala/` | `/uchus-vodit/avtomat-ili-mehanika/` | справочная статья | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-109) |
 | `p4-zimes` | `/macos-braukt/zimes/` | `/uchus-vodit/znaki/` | справочник знаков | `ToolPageTemplate` | Ф4 | ★ | static-content (структурированный справочник) | план |
 | `p4-termini` | `/macos-braukt/termini/` | `/uchus-vodit/sroki/` | таймлайн и дедлайны | `ToolPageTemplate` | Ф4 | ★ | `user_state` | план |
 
