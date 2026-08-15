@@ -193,7 +193,10 @@
 | `contacts` | `/kontakti/` | `/kontakty/` | статичная страница | `ArticleTemplate` | Ф0 | — | static-content | в проде (T-024, плейсхолдер) |
 | `privacy` | `/privatuma-politika/` | `/politika-konfidencialnosti/` | юридическая страница | `ArticleTemplate` | Ф0 | — | static-content | в проде (T-024, плейсхолдер) — контент **БЛОКИРУЮЩЕЕ** для `apply-*` до финального текста (T-075), см. docs/09 |
 | `blog-index` | `/blogs/` | `/blog/` | новости изменений в правилах | `BlogIndexTemplate` | Ф5 | — | static-content (Content Collections) | в проде (T-115) |
-| `blog-post` | `/blogs/{slug}/` | `/blog/{slug}/` | пост | `BlogPostTemplate` | Ф5 | — | static-content | в проде (T-115), инфраструктура — постов пока 0, публикация постов отдельными строками по факту (T-116) |
+| `blog-post` | `/blogs/{slug}/` | `/blog/{slug}/` | пост (паттерн) | `BlogPostTemplate` | Ф5 | — | static-content | в проде (T-115), сам паттерн — конкретные посты см. ниже (T-116) |
+| `blog-csdd-cenradis-2025` | `/blogs/csdd-cenradis-2025/` | `/blog/csdd-cenradis-2025/` | пост: изменение цен CSDD с 01.03.2025 | `BlogPostTemplate` | Ф5 | — | static-content | в проде (T-116) |
+| `blog-b-uz-d-bez-c1-d1` | `/blogs/b-uz-d-bez-c1-d1/` | `/blog/b-uz-d-bez-c1-d1/` | пост: путь B→D упрощён с 01.01.2025 | `BlogPostTemplate` | Ф5 | — | static-content | в проде (T-116) |
+| `blog-attalinata-apliecibas-sanemsana` | `/blogs/attalinata-apliecibas-sanemsana/` | `/blog/attalinata-apliecibas-sanemsana/` | пост: удалённое оформление, проект (план 02.01.2027) | `BlogPostTemplate` | Ф5 | — | static-content | в проде (T-116), сам пост честно раскрывает, что тема — ещё не принятый проект |
 
 ---
 
