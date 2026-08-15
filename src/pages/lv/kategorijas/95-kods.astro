@@ -1,0 +1,15 @@
+---
+import { getEntry, render } from "astro:content";
+import CategoryHubTemplate from "../../../components/layout/CategoryHubTemplate.astro";
+
+const entry = await getEntry("pages", "lv/cat-95-kods");
+if (!entry) throw new Error("Content entry 'lv/cat-95-kods' not found");
+const { Content } = await render(entry);
+---
+
+<CategoryHubTemplate
+  entry={entry}
+  Content={Content}
+  canonicalPath="/lv/kategorijas/95-kods/"
+  alternateUrl="/ru/kategorii/95-kods/"
+/>

@@ -1,0 +1,32 @@
+---
+import { getCollection, getEntry, render } from "astro:content";
+import CategoryHubTemplate from "../../../components/layout/CategoryHubTemplate.astro";
+import {
+  categoryCode,
+  sortByCategoryOrder,
+} from "../../../lib/categories/categoryOrder";
+
+const entry = await getEntry("pages", "ru/cat-index");
+if (!entry) throw new Error("Content entry 'ru/cat-index' not found");
+const { Content } = await render(entry);
+
+const categoryEntries = await getCollection(
+  "pages",
+  (e) => e.data.pageType === "category" && e.data.lang === "ru",
+);
+const categories = sortByCategoryOrder(categoryEntries.map((e) => e.data)).map(
+  (data) => ({
+    title: data.title,
+    description: data.description,
+    href: `/ru/kategorii/${categoryCode(data.route_id)}/`,
+  }),
+);
+---
+
+<CategoryHubTemplate
+  entry={entry}
+  Content={Content}
+  categories={categories}
+  canonicalPath="/ru/kategorii/"
+  alternateUrl="/lv/kategorijas/"
+/>

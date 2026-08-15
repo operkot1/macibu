@@ -1,0 +1,15 @@
+---
+import { getEntry, render } from "astro:content";
+import CategoryHubTemplate from "../../../components/layout/CategoryHubTemplate.astro";
+
+const entry = await getEntry("pages", "lv/cat-am");
+if (!entry) throw new Error("Content entry 'lv/cat-am' not found");
+const { Content } = await render(entry);
+---
+
+<CategoryHubTemplate
+  entry={entry}
+  Content={Content}
+  canonicalPath="/lv/kategorijas/am/"
+  alternateUrl="/ru/kategorii/am/"
+/>
