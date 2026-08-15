@@ -1,0 +1,15 @@
+---
+import { getEntry, render } from "astro:content";
+import ArticleTemplate from "../../../../components/layout/ArticleTemplate.astro";
+
+const entry = await getEntry("pages", "lv/p4-iemanas-sajugs");
+if (!entry) throw new Error("Content entry 'lv/p4-iemanas-sajugs' not found");
+const { Content } = await render(entry);
+---
+
+<ArticleTemplate
+  entry={entry}
+  Content={Content}
+  canonicalPath="/lv/macos-braukt/iemanas/sajugs/"
+  alternateUrl="/ru/uchus-vodit/navyki/sceplenie/"
+/>

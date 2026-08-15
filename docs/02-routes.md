@@ -121,17 +121,17 @@
 
 | route_id | путь LV | путь RU | тип | шаблон | фаза | инстр. | источник | статус |
 |---|---|---|---|---|---|---|---|---|
-| `p4-index` | `/macos-braukt/` | `/uchus-vodit/` | pillar-хаб | `PillarIndexTemplate` | Ф4 | — | static-content | план |
+| `p4-index` | `/macos-braukt/` | `/uchus-vodit/` | pillar-хаб | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-105) |
 | `p4-trakeris` | `/macos-braukt/nodarbibu-trakeris/` | `/uchus-vodit/treker-zanyatij/` | трекер занятий | `ToolPageTemplate` (account) | Ф4 | ★★ | `user_state` | план |
 | `p4-prasmju-karte` | `/macos-braukt/prasmju-karte/` | `/uchus-vodit/karta-navykov/` | карта навыков | `ToolPageTemplate` | Ф4 | ★ | `user_state` | план |
-| `p4-iemanas-index` | `/macos-braukt/iemanas/` | `/uchus-vodit/navyki/` | подраздел-хаб | `SubsectionIndexTemplate` | Ф4 | — | static-content | план |
-| `p4-iemanas-parkinga` | `/macos-braukt/iemanas/parallela-stavvieta/` | `/uchus-vodit/navyki/parallelnaya-parkovka/` | гайд-навык | `ArticleTemplate` | Ф4 | — | static-content | план |
-| `p4-iemanas-atpakalgaita` | `/macos-braukt/iemanas/atpakalgaita/` | `/uchus-vodit/navyki/zadnim-hodom/` | гайд-навык | `ArticleTemplate` | Ф4 | — | static-content | план |
-| `p4-iemanas-aplis` | `/macos-braukt/iemanas/aplis/` | `/uchus-vodit/navyki/krugovoe-dvizhenie/` | гайд-навык | `ArticleTemplate` | Ф4 | — | static-content | план |
-| `p4-iemanas-parbuve` | `/macos-braukt/iemanas/parbuve/` | `/uchus-vodit/navyki/perestroenie/` | гайд-навык | `ArticleTemplate` | Ф4 | — | static-content | план |
-| `p4-iemanas-kalns` | `/macos-braukt/iemanas/kalns/` | `/uchus-vodit/navyki/podyom-v-gorku/` | гайд-навык | `ArticleTemplate` | Ф4 | — | static-content | план |
-| `p4-iemanas-sajugs` | `/macos-braukt/iemanas/sajugs/` | `/uchus-vodit/navyki/sceplenie/` | гайд-навык | `ArticleTemplate` | Ф4 | — | static-content | план |
-| `p4-iemanas-ziema` | `/macos-braukt/iemanas/ziema/` | `/uchus-vodit/navyki/zimnee-vozhdenie/` | гайд-навык | `ArticleTemplate` | Ф4 | — | static-content | план |
+| `p4-iemanas-index` | `/macos-braukt/iemanas/` | `/uchus-vodit/navyki/` | подраздел-хаб | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-105) |
+| `p4-iemanas-parkinga` | `/macos-braukt/iemanas/parallela-stavvieta/` | `/uchus-vodit/navyki/parallelnaya-parkovka/` | гайд-навык | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-105) |
+| `p4-iemanas-atpakalgaita` | `/macos-braukt/iemanas/atpakalgaita/` | `/uchus-vodit/navyki/zadnim-hodom/` | гайд-навык | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-105) |
+| `p4-iemanas-aplis` | `/macos-braukt/iemanas/aplis/` | `/uchus-vodit/navyki/krugovoe-dvizhenie/` | гайд-навык | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-105) |
+| `p4-iemanas-parbuve` | `/macos-braukt/iemanas/parbuve/` | `/uchus-vodit/navyki/perestroenie/` | гайд-навык | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-105) |
+| `p4-iemanas-kalns` | `/macos-braukt/iemanas/kalns/` | `/uchus-vodit/navyki/podyom-v-gorku/` | гайд-навык | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-105) |
+| `p4-iemanas-sajugs` | `/macos-braukt/iemanas/sajugs/` | `/uchus-vodit/navyki/sceplenie/` | гайд-навык | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-105) |
+| `p4-iemanas-ziema` | `/macos-braukt/iemanas/ziema/` | `/uchus-vodit/navyki/zimnee-vozhdenie/` | гайд-навык | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-105) |
 | `p4-instruktors-index` | `/macos-braukt/instruktors/` | `/uchus-vodit/instruktor/` | подраздел-хаб | `SubsectionIndexTemplate` | Ф4 | — | static-content | план |
 | `p4-instruktors-tavas-tiesibas` | `/macos-braukt/instruktors/tavas-tiesibas/` | `/uchus-vodit/instruktor/tvoi-prava/` | права ученика | `ToolPageTemplate` | Ф4 | ★★ | static-content | план |
 | `p4-instruktors-mainit` | `/macos-braukt/instruktors/mainit-instruktoru/` | `/uchus-vodit/instruktor/smenit-instruktora/` | смена + генератор заявления | `ToolPageTemplate` | Ф4 | ★ | static-content (шаблон заявления) | план |

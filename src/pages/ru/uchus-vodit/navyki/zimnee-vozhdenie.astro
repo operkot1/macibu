@@ -1,0 +1,15 @@
+---
+import { getEntry, render } from "astro:content";
+import ArticleTemplate from "../../../../components/layout/ArticleTemplate.astro";
+
+const entry = await getEntry("pages", "ru/p4-iemanas-ziema");
+if (!entry) throw new Error("Content entry 'ru/p4-iemanas-ziema' not found");
+const { Content } = await render(entry);
+---
+
+<ArticleTemplate
+  entry={entry}
+  Content={Content}
+  canonicalPath="/ru/uchus-vodit/navyki/zimnee-vozhdenie/"
+  alternateUrl="/lv/macos-braukt/iemanas/ziema/"
+/>
