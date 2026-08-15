@@ -132,11 +132,11 @@
 | `p4-iemanas-kalns` | `/macos-braukt/iemanas/kalns/` | `/uchus-vodit/navyki/podyom-v-gorku/` | гайд-навык | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-105) |
 | `p4-iemanas-sajugs` | `/macos-braukt/iemanas/sajugs/` | `/uchus-vodit/navyki/sceplenie/` | гайд-навык | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-105) |
 | `p4-iemanas-ziema` | `/macos-braukt/iemanas/ziema/` | `/uchus-vodit/navyki/zimnee-vozhdenie/` | гайд-навык | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-105) |
-| `p4-instruktors-index` | `/macos-braukt/instruktors/` | `/uchus-vodit/instruktor/` | подраздел-хаб | `SubsectionIndexTemplate` | Ф4 | — | static-content | план |
-| `p4-instruktors-tavas-tiesibas` | `/macos-braukt/instruktors/tavas-tiesibas/` | `/uchus-vodit/instruktor/tvoi-prava/` | права ученика | `ToolPageTemplate` | Ф4 | ★★ | static-content | план |
+| `p4-instruktors-index` | `/macos-braukt/instruktors/` | `/uchus-vodit/instruktor/` | подраздел-хаб | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-106) |
+| `p4-instruktors-tavas-tiesibas` | `/macos-braukt/instruktors/tavas-tiesibas/` | `/uchus-vodit/instruktor/tvoi-prava/` | права ученика | `ArticleTemplate` | Ф4 | ★ | static-content | в проде (T-106) |
 | `p4-instruktors-mainit` | `/macos-braukt/instruktors/mainit-instruktoru/` | `/uchus-vodit/instruktor/smenit-instruktora/` | смена + генератор заявления | `ToolPageTemplate` | Ф4 | ★ | static-content (шаблон заявления) | план |
 | `p4-instruktors-e-csdd` | `/macos-braukt/instruktors/e-csdd-parbaude/` | `/uchus-vodit/instruktor/proverka-v-e-csdd/` | проверка регистрации | `ToolPageTemplate` | Ф4 | ★ | static-content (HowTo, внешняя проверка) | план |
-| `p4-instruktors-karogi` | `/macos-braukt/instruktors/sarkanie-karogi/` | `/uchus-vodit/instruktor/krasnye-flagi/` | справочная статья | `ArticleTemplate` | Ф4 | — | static-content | план |
+| `p4-instruktors-karogi` | `/macos-braukt/instruktors/sarkanie-karogi/` | `/uchus-vodit/instruktor/krasnye-flagi/` | справочная статья | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-106) |
 | `p4-bailes-index` | `/macos-braukt/bailes/` | `/uchus-vodit/strahi/` | подраздел-хаб | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-108) |
 | `p4-bailes-brauksanas` | `/macos-braukt/bailes/brauksanas-bailes/` | `/uchus-vodit/strahi/strah-vozhdeniya/` | cornerstone-гайд | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-108) |
 | `p4-bailes-panika` | `/macos-braukt/bailes/panika/` | `/uchus-vodit/strahi/panika/` | скрипт-гайд | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-108) |

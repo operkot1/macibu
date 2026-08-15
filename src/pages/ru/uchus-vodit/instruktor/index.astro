@@ -1,0 +1,16 @@
+---
+import { getEntry, render } from "astro:content";
+import ArticleTemplate from "../../../../components/layout/ArticleTemplate.astro";
+
+const entry = await getEntry("pages", "ru/p4-instruktors-index");
+if (!entry)
+  throw new Error("Content entry 'ru/p4-instruktors-index' not found");
+const { Content } = await render(entry);
+---
+
+<ArticleTemplate
+  entry={entry}
+  Content={Content}
+  canonicalPath="/ru/uchus-vodit/instruktor/"
+  alternateUrl="/lv/macos-braukt/instruktors/"
+/>

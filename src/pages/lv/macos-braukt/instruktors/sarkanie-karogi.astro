@@ -1,0 +1,16 @@
+---
+import { getEntry, render } from "astro:content";
+import ArticleTemplate from "../../../../components/layout/ArticleTemplate.astro";
+
+const entry = await getEntry("pages", "lv/p4-instruktors-karogi");
+if (!entry)
+  throw new Error("Content entry 'lv/p4-instruktors-karogi' not found");
+const { Content } = await render(entry);
+---
+
+<ArticleTemplate
+  entry={entry}
+  Content={Content}
+  canonicalPath="/lv/macos-braukt/instruktors/sarkanie-karogi/"
+  alternateUrl="/ru/uchus-vodit/instruktor/krasnye-flagi/"
+/>
