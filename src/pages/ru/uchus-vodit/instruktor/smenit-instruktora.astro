@@ -1,0 +1,17 @@
+---
+import ToolPageTemplate from "../../../../components/layout/ToolPageTemplate.astro";
+import InstructorChangeLetterForm from "../../../../components/tools/instruktors/InstructorChangeLetterForm.tsx";
+---
+
+<ToolPageTemplate
+  currentLocale="ru"
+  routeId="p4-instruktors-mainit"
+  title="Смена инструктора"
+  description="Сгенерируй текст заявления на смену инструктора — заполни поля и скопируй готовый текст."
+  heading="Смена инструктора"
+  intro="У тебя есть право свободно менять инструктора (см. Твои права) — заполни поля ниже, чтобы подготовить текст заявления для автошколы."
+  canonicalPath="/ru/uchus-vodit/instruktor/smenit-instruktora/"
+  alternateUrl="/lv/macos-braukt/instruktors/mainit-instruktoru/"
+>
+  <InstructorChangeLetterForm client:visible currentLocale="ru" />
+</ToolPageTemplate>

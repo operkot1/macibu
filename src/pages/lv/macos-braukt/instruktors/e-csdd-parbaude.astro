@@ -1,0 +1,28 @@
+---
+import ToolPageTemplate from "../../../../components/layout/ToolPageTemplate.astro";
+import StepListInteractive from "../../../../components/content/StepListInteractive.tsx";
+import { eCsddCheck } from "../../../../content/shared/eCsddCheck";
+
+const steps = eCsddCheck.lv;
+---
+
+<ToolPageTemplate
+  currentLocale="lv"
+  routeId="p4-instruktors-e-csdd"
+  title="Pārbaude e-CSDD"
+  description="Kā e-CSDD profilā pārbaudīt savu braukšanas apmācības progresu."
+  heading="Pārbaude e-CSDD"
+  intro="Soli pa solim, kā pārbaudīt savu reģistrāciju un braukšanas nodarbību progresu oficiālajā e-CSDD portālā."
+  canonicalPath="/lv/macos-braukt/instruktors/e-csdd-parbaude/"
+  alternateUrl="/ru/uchus-vodit/instruktor/proverka-v-e-csdd/"
+>
+  <StepListInteractive
+    client:visible
+    checklistId="p4-instruktors-e-csdd"
+    steps={steps.map((s, i) => ({
+      index: i + 1,
+      title: s.title,
+      note: s.note,
+    }))}
+  />
+</ToolPageTemplate>

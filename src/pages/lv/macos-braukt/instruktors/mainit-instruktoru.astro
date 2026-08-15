@@ -1,0 +1,17 @@
+---
+import ToolPageTemplate from "../../../../components/layout/ToolPageTemplate.astro";
+import InstructorChangeLetterForm from "../../../../components/tools/instruktors/InstructorChangeLetterForm.tsx";
+---
+
+<ToolPageTemplate
+  currentLocale="lv"
+  routeId="p4-instruktors-mainit"
+  title="Instruktora maiņa"
+  description="Ģenerē iesnieguma tekstu instruktora maiņai — aizpildi laukus un kopē gatavu tekstu."
+  heading="Instruktora maiņa"
+  intro="Tev ir tiesības brīvi mainīt instruktoru (skat. Tavas tiesības) — aizpildi laukus zemāk, lai sagatavotu iesnieguma tekstu autoskolai."
+  canonicalPath="/lv/macos-braukt/instruktors/mainit-instruktoru/"
+  alternateUrl="/ru/uchus-vodit/instruktor/smenit-instruktora/"
+>
+  <InstructorChangeLetterForm client:visible currentLocale="lv" />
+</ToolPageTemplate>
