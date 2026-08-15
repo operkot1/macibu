@@ -176,6 +176,7 @@
 |---|---|---|---|---|---|---|---|---|
 | `cat-index` | `/kategorijas/` | `/kategorii/` | хаб категорий | `CategoryHubTemplate` | Ф5 | — | static-content | в проде (T-112) |
 | `cat-a` … `cat-95-kods` | `/kategorijas/a/` … `/kategorijas/95-kods/` (12 кодов: a, a1, a2, am, b1, be, b96, c, c1, ce, d, 95-kods) | те же слаги (коды категорий не переводятся) | категория-хаб | `CategoryHubTemplate` | Ф5 | — | static-content | в проде (T-112) |
+| `en-index` | `/en/` (моноязычный маршрут, вне lv/ru-дерева — см. T-113) | — | EN-хаб (wayfinding) | нет (standalone `.astro`, не Content Collection/*Template) | Ф5 | — | static-content + внешние ссылки на csdd.lv/en | в проде (T-113) |
 
 ## Конверсия
 

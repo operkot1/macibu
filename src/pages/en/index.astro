@@ -1,0 +1,140 @@
+---
+// /en/ — standalone wayfinding page (T-113), deliberately outside
+// Content Collections/ArticleTemplate: the `pages` collection schema
+// (src/content.config.ts) hard-limits `lang` to "lv"/"ru", and every
+// shared layout component (Header/Footer/LangSwitch/PhaseBar/
+// CookieBanner) hardcodes `currentLocale: "lv" | "ru"` with lv/ru-only
+// copy. Per user decision (AskUserQuestion): a single, minimal,
+// non-growing EN page doesn't justify widening that shared contract —
+// this file owns its own head/nav/content instead.
+//
+// CookieBanner intentionally omitted here: Слой Б (docs/08-analytics.md
+// §1) doesn't exist yet, so accepting/declining currently has no
+// functional effect anywhere on the portal; there's also no EN privacy-
+// policy page yet to link from a consent notice. AnalyticsLayerA is
+// reused as-is — it's already locale-agnostic (cookieless, no consent
+// required, docs/08-analytics.md §1).
+import AnalyticsLayerA from "../../components/layout/AnalyticsLayerA.astro";
+import "../../styles/base.css";
+
+const baseUrl = "https://example.lv";
+const canonicalPath = "/en/";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>English</title>
+    <meta
+      name="description"
+      content="A Latvian driving-licence information portal, primarily in Latvian and Russian. This page points English speakers to official CSDD resources and to the full site."
+    />
+    <link rel="canonical" href={`${baseUrl}${canonicalPath}`} />
+    <link rel="alternate" hreflang="en" href={`${baseUrl}${canonicalPath}`} />
+    <link rel="alternate" hreflang="lv-LV" href={`${baseUrl}/lv/`} />
+    <link rel="alternate" hreflang="ru-LV" href={`${baseUrl}/ru/`} />
+    <link rel="alternate" hreflang="x-default" href={`${baseUrl}/lv/`} />
+  </head>
+  <body>
+    <AnalyticsLayerA routeId="en-index" />
+    <header
+      class="border-neutral-300 flex items-center justify-between border-b p-4"
+    >
+      <span class="text-h3 text-neutral-900">PORTAL</span>
+      <nav aria-label="Language">
+        <a
+          href="/lv/"
+          class="text-body-sm text-neutral-900 focus-visible:ring-focus-ring mr-3 rounded-md underline focus-visible:ring-2"
+        >
+          LV
+        </a>
+        <a
+          href="/ru/"
+          class="text-body-sm text-neutral-900 focus-visible:ring-focus-ring rounded-md underline focus-visible:ring-2"
+        >
+          RU
+        </a>
+      </nav>
+    </header>
+    <main class="p-4">
+      <h1 class="text-h1 text-neutral-900 mb-4">English</h1>
+      <div class="text-body text-neutral-900">
+        <p>
+          This is a Latvian driving-licence information portal — practical
+          guides, calculators and tools for getting and keeping a driving
+          licence in Latvia. The site is built primarily in
+          <strong>Latvian</strong> and <strong>Russian</strong>; this page is a
+          short English-language starting point, not a full translation.
+        </p>
+
+        <h2 class="text-h2 text-neutral-900 mt-6 mb-2">
+          Official information in English
+        </h2>
+        <p>
+          For authoritative information about driving licences in Latvia —
+          obtaining, exchanging or renewing one — the Road Traffic Safety
+          Directorate (<strong>CSDD</strong>) publishes an official English
+          section:
+        </p>
+        <ul class="mt-2 list-disc pl-6">
+          <li>
+            <a
+              href="https://www.csdd.lv/en/"
+              class="text-primary-600 focus-visible:ring-focus-ring rounded-md underline focus-visible:ring-2"
+            >
+              csdd.lv/en
+            </a>
+            — CSDD's English homepage.
+          </li>
+          <li>
+            <a
+              href="https://www.csdd.lv/en/driver/use-of-foreign-driving-licence/"
+              class="text-primary-600 focus-visible:ring-focus-ring rounded-md underline focus-visible:ring-2"
+            >
+              Use of a foreign driving licence
+            </a>
+            — a licence issued by an EU/EEA/EFTA member state or the United Kingdom
+            does not need to be exchanged. A licence issued anywhere else must be
+            exchanged if you stay in Latvia longer than one year.
+          </li>
+          <li>
+            <a
+              href="https://www.csdd.lv/en/driver/driver-s-license-exchange-and-renewal/izvelne/"
+              class="text-primary-600 focus-visible:ring-focus-ring rounded-md underline focus-visible:ring-2"
+            >
+              Driving licence exchange and renewal
+            </a>
+          </li>
+        </ul>
+
+        <h2 class="text-h2 text-neutral-900 mt-6 mb-2">
+          This portal, in your language
+        </h2>
+        <p>
+          The interactive tools on this site — the step-by-step wizard, the
+          theory-exam trainer, cost calculators and more — are only available in
+          Latvian and Russian:
+        </p>
+        <ul class="mt-2 list-disc pl-6">
+          <li>
+            <a
+              href="/lv/"
+              class="text-primary-600 focus-visible:ring-focus-ring rounded-md underline focus-visible:ring-2"
+            >
+              Latviešu valodā
+            </a>
+          </li>
+          <li>
+            <a
+              href="/ru/"
+              class="text-primary-600 focus-visible:ring-focus-ring rounded-md underline focus-visible:ring-2"
+            >
+              На русском языке
+            </a>
+          </li>
+        </ul>
+      </div>
+    </main>
+  </body>
+</html>
