@@ -73,20 +73,20 @@
 | `p2-teorija-index` | `/csdd-eksameni/teorija/` | `/ekzameny-csdd/teoriya/` | подраздел-хаб | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-039) |
 | `p2-teorija-eksamens` | `/csdd-eksameni/teorija/eksamens/` | `/ekzameny-csdd/teoriya/ekzamen/` | разбор экзамена | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-040) |
 | `p2-teorija-testi` | `/csdd-eksameni/teorija/testi/` | `/ekzameny-csdd/teoriya/testy/` | тренажёр | `ToolPageTemplate` | Ф1 | ★★ | `theory_questions`, `user_state` | в проде (T-047) |
-| `p2-teorija-rezims` | `/csdd-eksameni/teorija/eksamena-rezims/` | `/ekzameny-csdd/teoriya/rezhim-ekzamena/` | симулятор экзамена | `ToolPageTemplate` | Ф2 | ★★ | `theory_questions`, `user_state` | план |
-| `p2-teorija-video` | `/csdd-eksameni/teorija/video-jautajumi/` | `/ekzameny-csdd/teoriya/video-voprosy/` | тренажёр видео-вопросов | `ToolPageTemplate` | Ф2 | ★★ | `theory_questions` | план |
+| `p2-teorija-rezims` | `/csdd-eksameni/teorija/eksamena-rezims/` | `/ekzameny-csdd/teoriya/rezhim-ekzamena/` | симулятор экзамена | `ToolPageTemplate` | Ф2 | ★★ | `theory_questions`, `user_state` | план — T-066 (подключение route) не выполнена, ждёт сверки порогов с официальным регламентом CSDD |
+| `p2-teorija-video` | `/csdd-eksameni/teorija/video-jautajumi/` | `/ekzameny-csdd/teoriya/video-voprosy/` | тренажёр видео-вопросов | `ToolPageTemplate` | Ф2 | ★★ | `theory_questions` | план — T-067 отложена: ни один реальный вопрос не имеет `media_url`, маршрут сознательно не подключён |
 | `p2-teorija-kludas` | `/csdd-eksameni/teorija/biezakas-kludas/` | `/ekzameny-csdd/teoriya/chastye-oshibki/` | справочная статья | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-040) |
 | `p2-teorija-pieteiksanas` | `/csdd-eksameni/teorija/pieteiksanas/` | `/ekzameny-csdd/teoriya/zapis-na-ekzamen/` | HowTo | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-040) |
 | `p2-vadisana-index` | `/csdd-eksameni/vadisana/` | `/ekzameny-csdd/vozhdenie/` | подраздел-хаб | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-039) |
 | `p2-vadisana-eksamens` | `/csdd-eksameni/vadisana/eksamens/` | `/ekzameny-csdd/vozhdenie/ekzamen/` | разбор процедуры | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-041) |
 | `p2-vadisana-figuras` | `/csdd-eksameni/vadisana/figuras/` | `/ekzameny-csdd/vozhdenie/figury/` | справочная статья | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-041) |
 | `p2-vadisana-patstaviga` | `/csdd-eksameni/vadisana/patstaviga-brauksana/` | `/ekzameny-csdd/vozhdenie/samostoyatelnyj-marshrut/` | справочная статья | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-041) |
-| `p2-vadisana-zonas` | `/csdd-eksameni/vadisana/eksamena-zonas/` | `/ekzameny-csdd/vozhdenie/zony-ekzamena/` | карта зон (UGC) | `ToolPageTemplate` | Ф4 | ★★ | `exam_zones` | план |
+| `p2-vadisana-zonas` | `/csdd-eksameni/vadisana/eksamena-zonas/` | `/ekzameny-csdd/vozhdenie/zony-ekzamena/` | карта зон (UGC) | `ToolPageTemplate` | Ф4 | ★★ | `exam_zones` | план — T-100 транзитивно заблокирована T-092 (Supabase), см. docs/11-backlog.md |
 | `p2-vadisana-centri` | `/csdd-eksameni/vadisana/centri/` | `/ekzameny-csdd/vozhdenie/centry/` | карта центров | `ToolPageTemplate` | Ф1 | ★ | `csdd_centers` (`source: placeholder`, см. `A-11`) | в проде (T-042, данные — плейсхолдер) |
 | `p2-vadisana-ko-nemt` | `/csdd-eksameni/vadisana/ko-nemt-lidzi/` | `/ekzameny-csdd/vozhdenie/chto-vzyat-s-soboj/` | чек-лист | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-041) |
 | `p2-kapec-67` | `/csdd-eksameni/kapec-67-nenokarto/` | `/ekzameny-csdd/pochemu-67-ne-sdayut/` | флагманская статья | `ArticleTemplate` | Ф1 | — | static-content, `ratings` (агрегат) | в проде (T-043) |
 | `p2-nenokartoju-index` | `/csdd-eksameni/nenokartoju/` | `/ekzameny-csdd/ne-sdal/` | «Не сдал» — экран | `NotPassedTemplate` | Ф1 | ★★ | static-content, `theory_questions` (дедлайн-подсчёт) | в проде (T-049b) |
-| `p2-nenokartoju-protokols` | `/csdd-eksameni/nenokartoju/protokola-analize/` | `/ekzameny-csdd/ne-sdal/razbor-protokola/` | разбор протокола | `ToolPageTemplate` | Ф4 | ★★ | static-content (справочник кодов нарушений) | план |
+| `p2-nenokartoju-protokols` | `/csdd-eksameni/nenokartoju/protokola-analize/` | `/ekzameny-csdd/ne-sdal/razbor-protokola/` | разбор протокола | `ToolPageTemplate` | Ф4 | ★★ | static-content (справочник кодов нарушений) | план — T-103 заблокирована T-102 (нет публичного источника кодов) и транзитивно T-092 (Supabase), см. docs/11-backlog.md |
 | `p2-nenokartoju-atgriezties` | `/csdd-eksameni/nenokartoju/ka-atgriezties/` | `/ekzameny-csdd/ne-sdal/kak-vernutsya/` | гайд | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-049) |
 | `p2-nenokartoju-tresa` | `/csdd-eksameni/nenokartoju/tresa-reize/` | `/ekzameny-csdd/ne-sdal/tretya-popytka/` | гайд | `ArticleTemplate` | Ф1 | — | static-content | в проде (T-049) |
 | `p2-cenas` | `/csdd-eksameni/cenas/` | `/ekzameny-csdd/ceny/` | тарифы (из JSON) | `ArticleTemplate` + таблица | Ф1 | — | `csdd_tariffs` | в проде (T-050) |
@@ -115,15 +115,15 @@
 | `p3-city-rezekne` | `/autoskolas/rezekne/` | `/avtoshkoly/rezekne/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | в проде (T-061) |
 | `p3-city-ogre` | `/autoskolas/ogre/` | `/avtoshkoly/ogre/` | city-хаб | `CityHubTemplate` | Ф2 | ★ | `schools`, `ratings` | в проде (T-061) |
 | `school-card` | `/skola/{slug}/` | `/skola/{slug}/` | карточка школы (шаблон, вне пилларного префикса) | `SchoolCardTemplate` | Ф2 (каталог, все школы LV) / Ф3 (запись — только `is_partner`) | — | `schools`, `instructors`, `ratings` | в проде (T-059), см. `A-05` |
-| `school-card-fors` | `/skola/fors/` | `/skola/fors/` | карточка школы — экземпляр `school-card` | `SchoolCardTemplate` | Ф3 | — | `schools` (`is_partner: true`) | план |
+| `school-card-fors` | `/skola/fors/` | `/skola/fors/` | карточка школы — экземпляр `school-card` | `SchoolCardTemplate` | Ф3 | — | `schools` (`is_partner: true`) | в проде (T-059, найдено устаревшим статусом при ревизии T-117 — карточка реально живая с `is_partner: true` в `schools.json`, живо проверена ещё в T-091) |
 
 ## Pillar 4 — Учусь водить (`/macos-braukt/` · `/uchus-vodit/`)
 
 | route_id | путь LV | путь RU | тип | шаблон | фаза | инстр. | источник | статус |
 |---|---|---|---|---|---|---|---|---|
 | `p4-index` | `/macos-braukt/` | `/uchus-vodit/` | pillar-хаб | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-105) |
-| `p4-trakeris` | `/macos-braukt/nodarbibu-trakeris/` | `/uchus-vodit/treker-zanyatij/` | трекер занятий | `ToolPageTemplate` (account) | Ф4 | ★★ | `user_state` | план |
-| `p4-prasmju-karte` | `/macos-braukt/prasmju-karte/` | `/uchus-vodit/karta-navykov/` | карта навыков | `ToolPageTemplate` | Ф4 | ★ | `user_state` | план |
+| `p4-trakeris` | `/macos-braukt/nodarbibu-trakeris/` | `/uchus-vodit/treker-zanyatij/` | трекер занятий | `ToolPageTemplate` (account) | Ф4 | ★★ | `user_state` | план — T-096 транзитивно заблокирована T-092 (Supabase), см. docs/11-backlog.md |
+| `p4-prasmju-karte` | `/macos-braukt/prasmju-karte/` | `/uchus-vodit/karta-navykov/` | карта навыков | `ToolPageTemplate` | Ф4 | ★ | `user_state` | план — T-097 транзитивно заблокирована T-092 (Supabase), см. docs/11-backlog.md |
 | `p4-iemanas-index` | `/macos-braukt/iemanas/` | `/uchus-vodit/navyki/` | подраздел-хаб | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-105) |
 | `p4-iemanas-parkinga` | `/macos-braukt/iemanas/parallela-stavvieta/` | `/uchus-vodit/navyki/parallelnaya-parkovka/` | гайд-навык | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-105) |
 | `p4-iemanas-atpakalgaita` | `/macos-braukt/iemanas/atpakalgaita/` | `/uchus-vodit/navyki/zadnim-hodom/` | гайд-навык | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-105) |
@@ -144,8 +144,8 @@
 | `p4-bailes-eksamena` | `/macos-braukt/bailes/eksamena-bailes/` | `/uchus-vodit/strahi/strah-ekzamena/` | гайд | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-108) |
 | `p4-bailes-kauns` | `/macos-braukt/bailes/kauns-pec-neveiksmes/` | `/uchus-vodit/strahi/styd-posle-neudachi/` | гайд | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-108) |
 | `p4-automats-manuala` | `/macos-braukt/automats-vai-manuala/` | `/uchus-vodit/avtomat-ili-mehanika/` | справочная статья | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-109) |
-| `p4-zimes` | `/macos-braukt/zimes/` | `/uchus-vodit/znaki/` | справочник знаков | `ToolPageTemplate` | Ф4 | ★ | static-content (структурированный справочник) | план |
-| `p4-termini` | `/macos-braukt/termini/` | `/uchus-vodit/sroki/` | таймлайн и дедлайны | `ToolPageTemplate` | Ф4 | ★ | `user_state` | план |
+| `p4-zimes` | `/macos-braukt/zimes/` | `/uchus-vodit/znaki/` | справочник знаков | `ToolPageTemplate` | Ф4 | ★ | static-content (структурированный справочник) | план — T-109 отложена (масштаб + лицензии SVG требуют отдельного планирования), см. docs/11-backlog.md |
+| `p4-termini` | `/macos-braukt/termini/` | `/uchus-vodit/sroki/` | таймлайн и дедлайны | `ToolPageTemplate` | Ф4 | ★ | `user_state` | план — T-098 транзитивно заблокирована T-092 (Supabase), см. docs/11-backlog.md |
 
 ## Pillar 5 — Я водитель (`/esmu-vaditajs/` · `/ya-voditel/`)
 
