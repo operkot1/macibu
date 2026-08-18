@@ -285,3 +285,28 @@ export interface CarMaintenanceCostModel {
     note_ru: string;
   };
 }
+
+// 13. `traffic_signs` — узнаваемый справочник дорожных знаков (T-109,
+// первый срез). MK noteikumi Nr. 279 «Ceļu satiksmes noteikumi», Pielikums
+// 4 делит знаки на 8 официальных категорий — в этом срезе заполнена
+// только "priority" (201–209), остальные 7 (brīdinājuma, aizlieguma,
+// rīkojuma, norādījuma, servisa, virzienu rādītāji, papildzīmes) —
+// будущие срезы.
+
+export interface TrafficSign {
+  id: string; // строка номера знака, "203"
+  number: string; // официальный номер, тот же, что id
+  category: "priority";
+  name_lv: string;
+  name_ru: string;
+  meaning_lv: string;
+  meaning_ru: string;
+  image: string; // путь в /public, "/zimes/lv-203.svg"
+  official_reference: string; // "MK noteikumi Nr. 279, Pielikums 4, Nr. 203"
+}
+
+export interface TrafficSignsFile {
+  updated_at: string;
+  source: "editorial";
+  signs: TrafficSign[];
+}

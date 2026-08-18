@@ -144,7 +144,7 @@
 | `p4-bailes-eksamena` | `/macos-braukt/bailes/eksamena-bailes/` | `/uchus-vodit/strahi/strah-ekzamena/` | гайд | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-108) |
 | `p4-bailes-kauns` | `/macos-braukt/bailes/kauns-pec-neveiksmes/` | `/uchus-vodit/strahi/styd-posle-neudachi/` | гайд | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-108) |
 | `p4-automats-manuala` | `/macos-braukt/automats-vai-manuala/` | `/uchus-vodit/avtomat-ili-mehanika/` | справочная статья | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-109) |
-| `p4-zimes` | `/macos-braukt/zimes/` | `/uchus-vodit/znaki/` | справочник знаков | `ToolPageTemplate` | Ф4 | ★ | static-content (структурированный справочник) | план — T-109 отложена (масштаб + лицензии SVG требуют отдельного планирования), см. docs/11-backlog.md |
+| `p4-zimes` | `/macos-braukt/zimes/` | `/uchus-vodit/znaki/` | справочник знаков | `ToolPageTemplate` | Ф4 | ★ | `traffic_signs` (частично — только категория `priority`, 201–209) | в проде (T-109, первый срез) |
 | `p4-termini` | `/macos-braukt/termini/` | `/uchus-vodit/sroki/` | таймлайн и дедлайны | `ToolPageTemplate` | Ф4 | ★ | `user_state` | план — T-098 транзитивно заблокирована T-092 (Supabase), см. docs/11-backlog.md |
 
 ## Pillar 5 — Я водитель (`/esmu-vaditajs/` · `/ya-voditel/`)

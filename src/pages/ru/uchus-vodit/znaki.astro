@@ -1,0 +1,20 @@
+---
+import ToolPageTemplate from "../../../components/layout/ToolPageTemplate.astro";
+import TrafficSignSearch from "../../../components/tools/traffic-signs/TrafficSignSearch.tsx";
+import { getTrafficSigns } from "../../../lib/data";
+
+const signs = getTrafficSigns().signs;
+---
+
+<ToolPageTemplate
+  currentLocale="ru"
+  routeId="p4-zimes"
+  title="Справочник дорожных знаков"
+  description="Справочный материал по дорожным знакам с поиском — знаки приоритета с изображениями и пояснениями."
+  heading="Дорожные знаки"
+  intro="Ищи по номеру знака или названию. Пока доступна одна категория — знаки приоритета (201–209), остальные появятся позже."
+  canonicalPath="/ru/uchus-vodit/znaki/"
+  alternateUrl="/lv/macos-braukt/zimes/"
+>
+  <TrafficSignSearch client:visible signs={signs} currentLocale="ru" />
+</ToolPageTemplate>

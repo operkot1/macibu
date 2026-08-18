@@ -1,0 +1,105 @@
+{
+  "updated_at": "2026-08-18T00:00:00Z",
+  "source": "editorial",
+  "signs": [
+    {
+      "id": "201",
+      "number": "201",
+      "category": "priority",
+      "name_lv": "Galvenais ceļš",
+      "name_ru": "Главная дорога",
+      "meaning_lv": "Apzīmē ceļu kā galveno — tā vadītājiem ir priekšroka pret transportlīdzekļiem, kas iebrauc no mazāk svarīgiem ceļiem nekontrolētos krustojumos, ja vien nav norādīts citādi.",
+      "meaning_ru": "Обозначает дорогу как главную — водители на ней имеют преимущество перед транспортом, выезжающим с второстепенных дорог на нерегулируемых перекрёстках, если не указано иное.",
+      "image": "/zimes/lv-201.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 201"
+    },
+    {
+      "id": "202",
+      "number": "202",
+      "category": "priority",
+      "name_lv": "Galvenā ceļa beigas",
+      "name_ru": "Конец главной дороги",
+      "meaning_lv": "Apzīmē vietu, kur beidzas ar zīmi 201 noteiktais galvenā ceļa statuss — turpmāk nekontrolētos krustojumos darbojas priekšroka no labās puses, ja vien nav norādīts citādi.",
+      "meaning_ru": "Обозначает место, где заканчивается статус главной дороги, установленный знаком 201 — далее на нерегулируемых перекрёстках действует правило помехи справа, если не указано иное.",
+      "image": "/zimes/lv-202.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 202"
+    },
+    {
+      "id": "203",
+      "number": "203",
+      "category": "priority",
+      "name_lv": "Krustojums ar mazāk svarīgu ceļu (no abām pusēm)",
+      "name_ru": "Пересечение с второстепенной дорогой (с обеих сторон)",
+      "meaning_lv": "Brīdina par tuvojošos krustojumu, kurā mazāk svarīgs ceļš pievienojas GAN no kreisās, GAN no labās puses. Vadītājs uz galvenā ceļa saglabā priekšroku.",
+      "meaning_ru": "Предупреждает о приближающемся перекрёстке, где второстепенная дорога примыкает И слева, И справа. Водитель на главной дороге сохраняет преимущество.",
+      "image": "/zimes/lv-203.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 203"
+    },
+    {
+      "id": "204",
+      "number": "204",
+      "category": "priority",
+      "name_lv": "Krustojums ar mazāk svarīgu ceļu (no labās puses)",
+      "name_ru": "Пересечение с второстепенной дорогой (справа)",
+      "meaning_lv": "Brīdina par tuvojošos krustojumu, kurā mazāk svarīgs ceļš pievienojas tikai no LABĀS puses. Vadītājs uz galvenā ceļa saglabā priekšroku.",
+      "meaning_ru": "Предупреждает о приближающемся перекрёстке, где второстепенная дорога примыкает только СПРАВА. Водитель на главной дороге сохраняет преимущество.",
+      "image": "/zimes/lv-204.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 204"
+    },
+    {
+      "id": "205",
+      "number": "205",
+      "category": "priority",
+      "name_lv": "Krustojums ar mazāk svarīgu ceļu (no kreisās puses)",
+      "name_ru": "Пересечение с второстепенной дорогой (слева)",
+      "meaning_lv": "Brīdina par tuvojošos krustojumu, kurā mazāk svarīgs ceļš pievienojas tikai no KREISĀS puses. Vadītājs uz galvenā ceļa saglabā priekšroku.",
+      "meaning_ru": "Предупреждает о приближающемся перекрёстке, где второстепенная дорога примыкает только СЛЕВА. Водитель на главной дороге сохраняет преимущество.",
+      "image": "/zimes/lv-205.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 205"
+    },
+    {
+      "id": "206",
+      "number": "206",
+      "category": "priority",
+      "name_lv": "Dodiet ceļu",
+      "name_ru": "Уступите дорогу",
+      "meaning_lv": "Uzliek pienākumu dot ceļu transportlīdzekļiem uz krustojošā ceļa (vai galvenajam ceļam, ja darbojas papildzīme). Braukt tālāk drīkst tikai tad, kad tas ir droši — obligāta apstāšanās likumā nav prasīta, ja redzamība to ļauj.",
+      "meaning_ru": "Обязывает уступить дорогу транспорту на пересекаемой дороге (либо главной дороге, если действует дополнительная табличка). Продолжать движение можно только когда это безопасно — обязательная остановка законом не требуется, если видимость это позволяет.",
+      "image": "/zimes/lv-206.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 206"
+    },
+    {
+      "id": "207",
+      "number": "207",
+      "category": "priority",
+      "name_lv": "\"STOP\" (apstāšanās)",
+      "name_ru": "«СТОП» (обязательная остановка)",
+      "meaning_lv": "Uzliek pienākumu pilnībā apstāties pie stopa līnijas (vai pirms krustojuma) pirms turpināt braukt — neatkarīgi no tā, vai satiksme redzama. Bieži uzstādīta pie dzelzceļa pārbrauktuvēm un sarežģītiem krustojumiem.",
+      "meaning_ru": "Обязывает полностью остановиться у стоп-линии (или перед перекрёстком) перед продолжением движения — независимо от того, видно ли движение. Часто устанавливается у железнодорожных переездов и сложных перекрёстков.",
+      "image": "/zimes/lv-207.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 207"
+    },
+    {
+      "id": "208",
+      "number": "208",
+      "category": "priority",
+      "name_lv": "Priekšroka pretim braucošajiem",
+      "name_ru": "Преимущество встречного движения",
+      "meaning_lv": "Šaurā ceļa posmā priekšroka ir pretim braucošajam transportam — vadītājam, kas redz šo zīmi, jādod ceļš un vajadzības gadījumā jāgaida.",
+      "meaning_ru": "На узком участке дороги преимущество имеет встречный транспорт — водитель, видящий этот знак, обязан уступить и при необходимости подождать.",
+      "image": "/zimes/lv-208.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 208"
+    },
+    {
+      "id": "209",
+      "number": "209",
+      "category": "priority",
+      "name_lv": "Priekšroka attiecībā pret pretim braucošo satiksmi",
+      "name_ru": "Преимущество перед встречным движением",
+      "meaning_lv": "Šaurā ceļa posmā priekšroka ir vadītājam, kas redz šo zīmi — pretim braucošajam transportam jādod ceļš.",
+      "meaning_ru": "На узком участке дороги преимущество имеет водитель, видящий этот знак — встречный транспорт обязан уступить.",
+      "image": "/zimes/lv-209.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 209"
+    }
+  ]
+}

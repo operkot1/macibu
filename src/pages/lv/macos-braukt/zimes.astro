@@ -1,0 +1,20 @@
+---
+import ToolPageTemplate from "../../../components/layout/ToolPageTemplate.astro";
+import TrafficSignSearch from "../../../components/tools/traffic-signs/TrafficSignSearch.tsx";
+import { getTrafficSigns } from "../../../lib/data";
+
+const signs = getTrafficSigns().signs;
+---
+
+<ToolPageTemplate
+  currentLocale="lv"
+  routeId="p4-zimes"
+  title="Ceļa zīmju uzziņa"
+  description="Meklējams ceļa zīmju uzziņu materiāls — priekšrocības zīmes ar attēliem un skaidrojumiem."
+  heading="Ceļa zīmes"
+  intro="Meklē pēc zīmes numura vai nosaukuma. Pagaidām pieejama viena kategorija — priekšrocības zīmes (201–209), pārējās sekos."
+  canonicalPath="/lv/macos-braukt/zimes/"
+  alternateUrl="/ru/uchus-vodit/znaki/"
+>
+  <TrafficSignSearch client:visible signs={signs} currentLocale="lv" />
+</ToolPageTemplate>

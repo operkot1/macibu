@@ -11,6 +11,7 @@ import { CsddCentersFileSchema } from "../../schemas/csddCenters";
 import { FirstAidProvidersFileSchema } from "../../schemas/firstAidProviders";
 import { MedicalCheckLocationsFileSchema } from "../../schemas/medicalCheckLocations";
 import { CarMaintenanceCostModelSchema } from "../../schemas/carMaintenanceCostModel";
+import { TrafficSignsFileSchema } from "../../schemas/trafficSigns";
 import type {
   CsddTariffsFile,
   SchoolsFile,
@@ -24,6 +25,7 @@ import type {
   FirstAidProvidersFile,
   MedicalCheckLocationsFile,
   CarMaintenanceCostModel,
+  TrafficSignsFile,
 } from "../../types/data";
 
 /*
@@ -84,4 +86,8 @@ export function getCarMaintenanceCostModel(): CarMaintenanceCostModel {
     "car_maintenance_cost_model.json",
     CarMaintenanceCostModelSchema,
   );
+}
+
+export function getTrafficSigns(): TrafficSignsFile {
+  return loadFixture("traffic_signs.json", TrafficSignsFileSchema);
 }

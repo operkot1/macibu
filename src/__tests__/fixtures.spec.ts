@@ -12,6 +12,7 @@ import {
   getFirstAidProviders,
   getMedicalCheckLocations,
   getCarMaintenanceCostModel,
+  getTrafficSigns,
 } from "../lib/data";
 
 describe("fixtures проходят свою Zod-схему (docs/03-data-model.md)", () => {
@@ -61,5 +62,9 @@ describe("fixtures проходят свою Zod-схему (docs/03-data-model.
 
   it("car_maintenance_cost_model.json", () => {
     expect(() => getCarMaintenanceCostModel()).not.toThrow();
+  });
+
+  it("traffic_signs.json", () => {
+    expect(() => getTrafficSigns()).not.toThrow();
   });
 });
