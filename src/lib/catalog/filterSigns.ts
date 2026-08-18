@@ -2,15 +2,17 @@ import type { TrafficSign } from "../../types/data";
 
 export interface TrafficSignFilters {
   query?: string;
+  category?: TrafficSign["category"];
 }
 
 /*
- * filterSigns — поиск по номеру знака или ключевому слову в его
- * названии/значении (T-109, первый срез). Не фильтр по category — в этом
- * срезе заполнена только одна категория ("priority"), фильтр по ней был
- * бы бессмысленным UI до появления следующих срезов. Сортировка всегда по
- * номеру знака — справочник читается по порядку, не по алфавиту (в
- * отличие от filterByCity, где нет естественного порядка кроме имени).
+ * filterSigns — поиск по номеру знака/ключевому слову + фильтр по
+ * категории (T-109). Фильтр по category добавлен во втором срезе
+ * (mandatory, T-109) — в первом срезе (только priority) он был бы
+ * бессмысленным UI при единственной категории, теперь при двух и более
+ * категориях помогает сузить список. Сортировка всегда по номеру знака —
+ * справочник читается по порядку, не по алфавиту (в отличие от
+ * filterByCity, где нет естественного порядка кроме имени).
  */
 export function filterSigns(
   signs: TrafficSign[],
@@ -19,8 +21,12 @@ export function filterSigns(
 ): TrafficSign[] {
   const query = filters.query?.trim().toLowerCase();
 
+  const byCategory = filters.category
+    ? signs.filter((sign) => sign.category === filters.category)
+    : signs;
+
   const filtered = query
-    ? signs.filter((sign) => {
+    ? byCategory.filter((sign) => {
         const haystack = [
           sign.number,
           currentLocale === "lv" ? sign.name_lv : sign.name_ru,
@@ -30,7 +36,7 @@ export function filterSigns(
           .toLowerCase();
         return haystack.includes(query);
       })
-    : signs;
+    : byCategory;
 
   return [...filtered].sort((a, b) => Number(a.number) - Number(b.number));
 }

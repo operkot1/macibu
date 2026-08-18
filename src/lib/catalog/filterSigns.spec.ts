@@ -51,4 +51,42 @@ describe("filterSigns на реальной фикстуре fixtures/traffic_si
     expect(left.meaning_lv).toContain("KREISĀS");
     expect(left.meaning_lv).not.toContain("LABĀS");
   });
+
+  it("фильтр category=priority — только 9 знаков приоритета", () => {
+    const result = filterSigns(signs, { category: "priority" }, "lv");
+    expect(result).toHaveLength(9);
+    expect(result.every((s) => s.category === "priority")).toBe(true);
+  });
+
+  it("фильтр category=mandatory — только 27 знаков предписания", () => {
+    const result = filterSigns(signs, { category: "mandatory" }, "lv");
+    expect(result).toHaveLength(27);
+    expect(result.every((s) => s.category === "mandatory")).toBe(true);
+  });
+
+  it("category + query вместе сужают до пересечения", () => {
+    const result = filterSigns(
+      signs,
+      { category: "mandatory", query: "labi" },
+      "lv",
+    );
+    expect(result.length).toBeGreaterThan(0);
+    expect(result.every((s) => s.category === "mandatory")).toBe(true);
+    // "priority" content also uses "labās" (204) but must not leak in when category is mandatory
+    expect(result.some((s) => s.number === "204")).toBe(false);
+  });
+
+  it("402/403 — геометрически подтверждённая пара право/лево, отличается по тексту", () => {
+    const right = filterSigns(signs, { query: "402" }, "lv")[0];
+    const left = filterSigns(signs, { query: "403" }, "lv")[0];
+    expect(right.name_lv).toContain("labi");
+    expect(left.name_lv).toContain("kreisi");
+  });
+
+  it("419/421 — зеркальная пара (велосипедисты/пешеходы слева-справа), различаются по названию", () => {
+    const bikeLeft = filterSigns(signs, { query: "419" }, "lv")[0];
+    const pedLeft = filterSigns(signs, { query: "421" }, "lv")[0];
+    expect(bikeLeft.name_lv).toContain("velosipēdisti pa kreisi");
+    expect(pedLeft.name_lv).toContain("gājēji pa kreisi");
+  });
 });
