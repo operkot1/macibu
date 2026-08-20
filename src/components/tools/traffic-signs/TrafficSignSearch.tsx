@@ -5,7 +5,8 @@ import type { TrafficSign } from "../../../types/data";
 
 /*
  * TrafficSignSearch — справочник дорожных знаков (T-109, срезы: priority
- * 201–209, mandatory 401–427). Реестр (docs/02-routes.md) называет
+ * 201–209, mandatory 401–427, service 601–634). Реестр (docs/02-routes.md)
+ * называет
  * ToolPageTemplate, не CatalogTemplate — тот же паттерн, что
  * FirstAidCourseList (T-070)/MedicalCheckLocation (T-072): единственный
  * client:visible остров, без zero-JS SSR-архитектуры каталога школ
@@ -43,10 +44,12 @@ const categoryLabels = {
   lv: {
     priority: "Priekšrocības zīmes",
     mandatory: "Rīkojuma zīmes",
+    service: "Servisa zīmes",
   },
   ru: {
     priority: "Знаки приоритета",
     mandatory: "Знаки предписания",
+    service: "Знаки сервиса",
   },
 } as const;
 

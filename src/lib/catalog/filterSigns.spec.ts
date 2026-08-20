@@ -89,4 +89,25 @@ describe("filterSigns на реальной фикстуре fixtures/traffic_si
     expect(bikeLeft.name_lv).toContain("velosipēdisti pa kreisi");
     expect(pedLeft.name_lv).toContain("gājēji pa kreisi");
   });
+
+  it("фильтр category=service — только 34 знака сервиса", () => {
+    const result = filterSigns(signs, { category: "service" }, "lv");
+    expect(result).toHaveLength(34);
+    expect(result.every((s) => s.category === "service")).toBe(true);
+  });
+
+  it("без фильтра — все три категории представлены (9+27+34=70)", () => {
+    const result = filterSigns(signs, {}, "lv");
+    expect(result).toHaveLength(70);
+  });
+
+  it("607/633 — оба телефон, но текст явно разграничивает обычный и аварийный", () => {
+    const plain = filterSigns(signs, {}, "lv").find((s) => s.number === "607");
+    const emergency = filterSigns(signs, {}, "lv").find(
+      (s) => s.number === "633",
+    );
+    expect(plain?.name_lv).toBe("Telefons");
+    expect(emergency?.name_lv).toContain("Avārijas");
+    expect(emergency?.meaning_lv).toContain("607");
+  });
 });
