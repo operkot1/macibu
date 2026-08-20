@@ -96,11 +96,6 @@ describe("filterSigns на реальной фикстуре fixtures/traffic_si
     expect(result.every((s) => s.category === "service")).toBe(true);
   });
 
-  it("без фильтра — все три категории представлены (9+27+34=70)", () => {
-    const result = filterSigns(signs, {}, "lv");
-    expect(result).toHaveLength(70);
-  });
-
   it("607/633 — оба телефон, но текст явно разграничивает обычный и аварийный", () => {
     const plain = filterSigns(signs, {}, "lv").find((s) => s.number === "607");
     const emergency = filterSigns(signs, {}, "lv").find(
@@ -109,5 +104,42 @@ describe("filterSigns на реальной фикстуре fixtures/traffic_si
     expect(plain?.name_lv).toBe("Telefons");
     expect(emergency?.name_lv).toContain("Avārijas");
     expect(emergency?.meaning_lv).toContain("607");
+  });
+
+  it("фильтр category=prohibition — только 34 знака запрета", () => {
+    const result = filterSigns(signs, { category: "prohibition" }, "lv");
+    expect(result).toHaveLength(34);
+    expect(result.every((s) => s.category === "prohibition")).toBe(true);
+  });
+
+  it("без фильтра — все четыре категории представлены (9+27+34+34=104)", () => {
+    const result = filterSigns(signs, {}, "lv");
+    expect(result).toHaveLength(104);
+  });
+
+  it("315/316 — геометрически подтверждённая пара право/лево запрета поворота", () => {
+    const right = filterSigns(signs, {}, "lv").find((s) => s.number === "315");
+    const left = filterSigns(signs, {}, "lv").find((s) => s.number === "316");
+    expect(right?.name_lv).toContain("pa labi");
+    expect(left?.name_lv).toContain("pa kreisi");
+  });
+
+  it("326/327 — остановка vs стоянка, явно разграничены по строгости", () => {
+    const noStopping = filterSigns(signs, {}, "lv").find(
+      (s) => s.number === "326",
+    );
+    const noParking = filterSigns(signs, {}, "lv").find(
+      (s) => s.number === "327",
+    );
+    expect(noStopping?.name_lv).toBe("Apstāties aizliegts");
+    expect(noParking?.name_lv).toBe("Stāvēt aizliegts");
+    expect(noStopping?.meaning_lv).toContain("327");
+  });
+
+  it("332 (обязательная остановка у поста) явно отличается от сервисного 620", () => {
+    const mustStop = filterSigns(signs, {}, "lv").find(
+      (s) => s.number === "332" && s.category === "prohibition",
+    );
+    expect(mustStop?.meaning_lv).toContain("620");
   });
 });
