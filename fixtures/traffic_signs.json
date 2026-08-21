@@ -1618,6 +1618,182 @@
       "meaning_ru": "Предупреждает о возможном заторе движения впереди.",
       "image": "/zimes/lv-143.svg",
       "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 143"
+    },
+    {
+      "id": "711",
+      "number": "711",
+      "category": "direction",
+      "name_lv": "Strupceļš",
+      "name_ru": "Тупик",
+      "meaning_lv": "Norāda, ka ceļš priekšā nav caurbraucams — tālāk nav izejas uz citu ceļu.",
+      "meaning_ru": "Указывает, что дорога впереди не сквозная — дальше нет выезда на другую дорогу.",
+      "image": "/zimes/lv-711.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 711"
+    },
+    {
+      "id": "723",
+      "number": "723",
+      "category": "direction",
+      "name_lv": "Apgriešanās vieta",
+      "name_ru": "Место для разворота",
+      "meaning_lv": "Norāda vietu sadalošajā joslā, kur atļauta apgriešanās braukšanai pretējā virzienā.",
+      "meaning_ru": "Указывает место на разделительной полосе, где разрешён разворот для движения в обратном направлении.",
+      "image": "/zimes/lv-723.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 723"
+    },
+    {
+      "id": "725",
+      "number": "725",
+      "category": "direction",
+      "name_lv": "Ieteicamais ātrums",
+      "name_ru": "Рекомендуемая скорость",
+      "meaning_lv": "Norāda ieteicamo (nevis obligāto) braukšanas ātrumu tālākajam ceļa posmam (attēlā — piemērs, 40 km/h; reālā vērtība atkarīga no konkrētās uzstādīšanas vietas). Atšķirībā no zīmes 323 (maksimālā ātruma ierobežojums) — pārsniegšana nav pārkāpums.",
+      "meaning_ru": "Указывает рекомендуемую (а не обязательную) скорость движения на следующем участке дороги (на знаке — пример, 40 км/ч; реальное значение зависит от места установки). В отличие от знака 323 (ограничение максимальной скорости) — превышение не является нарушением.",
+      "image": "/zimes/lv-725.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 725"
+    },
+    {
+      "id": "726",
+      "number": "726",
+      "category": "direction",
+      "name_lv": "Kravas automobiļu braukšanas virziens (taisni)",
+      "name_ru": "Рекомендуемое направление для грузовых автомобилей (прямо)",
+      "meaning_lv": "Norāda kravas automobiļiem ieteicamo braukšanas virzienu — taisni (piemēram, lai novirzītu no apdzīvotas vietas centra).",
+      "meaning_ru": "Указывает рекомендуемое направление движения для грузовых автомобилей — прямо (например, в объезд центра населённого пункта).",
+      "image": "/zimes/lv-726.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 726"
+    },
+    {
+      "id": "727",
+      "number": "727",
+      "category": "direction",
+      "name_lv": "Kravas automobiļu braukšanas virziens (pa labi)",
+      "name_ru": "Рекомендуемое направление для грузовых автомобилей (направо)",
+      "meaning_lv": "Norāda kravas automobiļiem ieteicamo braukšanas virzienu — pa labi.",
+      "meaning_ru": "Указывает рекомендуемое направление движения для грузовых автомобилей — направо.",
+      "image": "/zimes/lv-727.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 727"
+    },
+    {
+      "id": "728",
+      "number": "728",
+      "category": "direction",
+      "name_lv": "Kravas automobiļu braukšanas virziens (pa kreisi)",
+      "name_ru": "Рекомендуемое направление для грузовых автомобилей (налево)",
+      "meaning_lv": "Norāda kravas automobiļiem ieteicamo braukšanas virzienu — pa kreisi.",
+      "meaning_ru": "Указывает рекомендуемое направление движения для грузовых автомобилей — налево.",
+      "image": "/zimes/lv-728.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 728"
+    },
+    {
+      "id": "729",
+      "number": "729",
+      "category": "direction",
+      "name_lv": "Gājēju apakšzemes vai virszemes pāreja",
+      "name_ru": "Пешеходный подземный или надземный переход",
+      "meaning_lv": "Norāda tuvumā esošu gājēju apakšzemes (tuneļa) vai virszemes (tilta) pāreju.",
+      "meaning_ru": "Указывает на находящийся поблизости пешеходный подземный (тоннель) или надземный (мост) переход.",
+      "image": "/zimes/lv-729.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 729"
+    },
+    {
+      "id": "740",
+      "number": "740",
+      "category": "direction",
+      "name_lv": "Ceļa numurs (valsts galvenais ceļš)",
+      "name_ru": "Номер дороги (главная государственная дорога)",
+      "meaning_lv": "Norāda valsts galvenā ceļa numuru — sarkans fons, sākas ar burtu \"A\" (attēlā — piemērs, A 12; reālais numurs atkarīgs no konkrētā ceļa).",
+      "meaning_ru": "Указывает номер главной государственной дороги — красный фон, начинается с буквы «A» (на знаке — пример, A 12; реальный номер зависит от конкретной дороги).",
+      "image": "/zimes/lv-740.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 740"
+    },
+    {
+      "id": "741",
+      "number": "741",
+      "category": "direction",
+      "name_lv": "Ceļa numurs (valsts reģionālais ceļš)",
+      "name_ru": "Номер дороги (региональная государственная дорога)",
+      "meaning_lv": "Norāda valsts reģionālā ceļa numuru — zils fons, sākas ar burtu \"P\" (attēlā — piemērs, P 28; reālais numurs atkarīgs no konkrētā ceļa).",
+      "meaning_ru": "Указывает номер региональной государственной дороги — синий фон, начинается с буквы «P» (на знаке — пример, P 28; реальный номер зависит от конкретной дороги).",
+      "image": "/zimes/lv-741.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 741"
+    },
+    {
+      "id": "742",
+      "number": "742",
+      "category": "direction",
+      "name_lv": "Ceļa numurs (Eiropas ceļš)",
+      "name_ru": "Номер дороги (европейский маршрут)",
+      "meaning_lv": "Norāda starptautiskā Eiropas ceļa numuru — zaļš fons, sākas ar burtu \"E\" (attēlā — piemērs, E 20; reālais numurs atkarīgs no konkrētā ceļa).",
+      "meaning_ru": "Указывает номер международного европейского маршрута — зелёный фон, начинается с буквы «E» (на знаке — пример, E 20; реальный номер зависит от конкретной дороги).",
+      "image": "/zimes/lv-742.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 742"
+    },
+    {
+      "id": "746",
+      "number": "746",
+      "category": "direction",
+      "name_lv": "Maiņvirziena satiksme",
+      "name_ru": "Начало участка с реверсивным движением",
+      "meaning_lv": "Apzīmē ceļa posma sākumu, kurā vienā vai vairākās joslās braukšanas virziens var mainīties atkarībā no satiksmes intensitātes.",
+      "meaning_ru": "Обозначает начало участка дороги, на котором направление движения по одной или нескольким полосам может меняться в зависимости от интенсивности движения.",
+      "image": "/zimes/lv-746.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 746"
+    },
+    {
+      "id": "747",
+      "number": "747",
+      "category": "direction",
+      "name_lv": "Maiņvirziena satiksmes beigas",
+      "name_ru": "Конец участка с реверсивным движением",
+      "meaning_lv": "Apzīmē vietu, kur beidzas ar zīmi 746 apzīmētais maiņvirziena satiksmes posms.",
+      "meaning_ru": "Обозначает место, где заканчивается участок реверсивного движения, обозначенный знаком 746.",
+      "image": "/zimes/lv-747.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 747"
+    },
+    {
+      "id": "748",
+      "number": "748",
+      "category": "direction",
+      "name_lv": "Izbraukšana uz ceļa, kur organizēta maiņvirziena satiksme",
+      "name_ru": "Выезд на дорогу с реверсивным движением",
+      "meaning_lv": "Brīdina, ka priekšā ir izbraukšana uz ceļu, kurā organizēta maiņvirziena satiksme (skat. zīmi 746) — jāpievērš īpaša uzmanība braukšanas joslas virzienam.",
+      "meaning_ru": "Предупреждает, что впереди — выезд на дорогу с реверсивным движением (см. знак 746) — нужно обратить особое внимание на направление движения в полосе.",
+      "image": "/zimes/lv-748.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 748"
+    },
+    {
+      "id": "751",
+      "number": "751",
+      "category": "direction",
+      "name_lv": "Tūrisma objektu teritorija",
+      "name_ru": "Территория туристических объектов",
+      "meaning_lv": "Norāda ieeju teritorijā ar tūrisma objektiem (attēlā — reāls piemērs, \"Kurzemes Šveice\"; reālais nosaukums atkarīgs no konkrētās vietas).",
+      "meaning_ru": "Указывает вход на территорию с туристическими объектами (на знаке — реальный пример, «Kurzemes Šveice»; реальное название зависит от конкретного места).",
+      "image": "/zimes/lv-751.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 751"
+    },
+    {
+      "id": "752",
+      "number": "752",
+      "category": "direction",
+      "name_lv": "Avārijas izeja",
+      "name_ru": "Аварийный выход",
+      "meaning_lv": "Norāda avārijas izejas atrašanās vietu — parasti izmantota tuneļos.",
+      "meaning_ru": "Указывает местонахождение аварийного выхода — обычно используется в туннелях.",
+      "image": "/zimes/lv-752.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 752"
+    },
+    {
+      "id": "753",
+      "number": "753",
+      "category": "direction",
+      "name_lv": "Avārijas izejas virziens",
+      "name_ru": "Направление к аварийному выходу",
+      "meaning_lv": "Norāda virzienu un attālumu līdz tuvākajai avārijas izejai (attēlā — piemērs, 150 m; reālā vērtība atkarīga no konkrētās uzstādīšanas vietas).",
+      "meaning_ru": "Указывает направление и расстояние до ближайшего аварийного выхода (на знаке — пример, 150 м; реальное значение зависит от места установки).",
+      "image": "/zimes/lv-753.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 753"
     }
   ]
 }

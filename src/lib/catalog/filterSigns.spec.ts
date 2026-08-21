@@ -144,11 +144,6 @@ describe("filterSigns на реальной фикстуре fixtures/traffic_si
     expect(result.every((s) => s.category === "warning")).toBe(true);
   });
 
-  it("без фильтра — все пять категорий представлены (9+27+34+34+43=147)", () => {
-    const result = filterSigns(signs, {}, "lv");
-    expect(result).toHaveLength(147);
-  });
-
   it("103/104 — геометрически подтверждённая пара опасного поворота", () => {
     const right = filterSigns(signs, {}, "lv").find((s) => s.number === "103");
     const left = filterSigns(signs, {}, "lv").find((s) => s.number === "104");
@@ -169,5 +164,39 @@ describe("filterSigns на реальной фикстуре fixtures/traffic_si
     expect(s139.name_lv).toContain("kreisajā");
     expect(s140.name_lv).toContain("labajā");
     expect(s141.name_lv).toContain("kreisajā");
+  });
+
+  it("фильтр category=direction — только 16 знаков (частичный срез, не все 53)", () => {
+    const result = filterSigns(signs, { category: "direction" }, "lv");
+    expect(result).toHaveLength(16);
+    expect(result.every((s) => s.category === "direction")).toBe(true);
+  });
+
+  it("без фильтра — все шесть категорий представлены (9+27+34+34+43+16=163)", () => {
+    const result = filterSigns(signs, {}, "lv");
+    expect(result).toHaveLength(163);
+  });
+
+  it("740/741/742 — цвета номеров дорог, исправленные после визуальной проверки (не из текста-источника)", () => {
+    const main = filterSigns(signs, {}, "lv").find((s) => s.number === "740");
+    const regional = filterSigns(signs, {}, "lv").find(
+      (s) => s.number === "741",
+    );
+    const european = filterSigns(signs, {}, "lv").find(
+      (s) => s.number === "742",
+    );
+    expect(main?.meaning_lv).toContain("sarkans");
+    expect(main?.meaning_lv).toContain('"A"');
+    expect(regional?.meaning_lv).toContain("zils");
+    expect(regional?.meaning_lv).toContain('"P"');
+    expect(european?.meaning_lv).toContain("zaļš");
+    expect(european?.meaning_lv).toContain('"E"');
+  });
+
+  it("725 (рекомендуемая скорость) явно отличается от обязательного знака 323", () => {
+    const recommended = filterSigns(signs, {}, "lv").find(
+      (s) => s.number === "725",
+    );
+    expect(recommended?.meaning_lv).toContain("323");
   });
 });
