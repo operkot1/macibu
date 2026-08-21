@@ -290,10 +290,10 @@ export interface CarMaintenanceCostModel {
 // срезы). MK noteikumi Nr. 279 «Ceļu satiksmes noteikumi», Pielikums 4
 // делит знаки на 8 официальных категорий — заполнены "priority" (201–209),
 // "mandatory" (401–427), "service" (601–634), "prohibition" (301–334),
-// "warning" (101–143) и "direction" — последняя ЧАСТИЧНО: 16 из 53
-// официальных номеров virzienu rādītāji (701–753), см. §13
-// docs/03-data-model.md за объяснением, почему остальные 37 исключены.
-// Остальные 2 категории (norādījuma, papildzīmes) — будущие срезы.
+// "warning" (101–143), "direction" (частично, 16 из 53 virzienu
+// rādītāji 701–753 — см. §13 docs/03-data-model.md за объяснением) и
+// "information" (norādījuma zīmes, 501–556, 56 из 56). Осталась 1
+// категория (papildzīmes) — будущий срез.
 
 export interface TrafficSign {
   id: string; // строка номера знака, "203"
@@ -304,7 +304,8 @@ export interface TrafficSign {
     | "service"
     | "prohibition"
     | "warning"
-    | "direction";
+    | "direction"
+    | "information";
   name_lv: string;
   name_ru: string;
   meaning_lv: string;

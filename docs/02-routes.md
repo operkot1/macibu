@@ -144,7 +144,7 @@
 | `p4-bailes-eksamena` | `/macos-braukt/bailes/eksamena-bailes/` | `/uchus-vodit/strahi/strah-ekzamena/` | гайд | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-108) |
 | `p4-bailes-kauns` | `/macos-braukt/bailes/kauns-pec-neveiksmes/` | `/uchus-vodit/strahi/styd-posle-neudachi/` | гайд | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-108) |
 | `p4-automats-manuala` | `/macos-braukt/automats-vai-manuala/` | `/uchus-vodit/avtomat-ili-mehanika/` | справочная статья | `ArticleTemplate` | Ф4 | — | static-content | в проде (T-109) |
-| `p4-zimes` | `/macos-braukt/zimes/` | `/uchus-vodit/znaki/` | справочник знаков | `ToolPageTemplate` | Ф4 | ★ | `traffic_signs` (частично — категории `priority` 201–209, `mandatory` 401–427, `service` 601–634, `prohibition` 301–334, `warning` 101–143 и `direction` 16/53 подмножество virzienu rādītāji 701–753, 2 из 8 официальных категорий ещё впереди) | в проде (T-109, шестой срез) |
+| `p4-zimes` | `/macos-braukt/zimes/` | `/uchus-vodit/znaki/` | справочник знаков | `ToolPageTemplate` | Ф4 | ★ | `traffic_signs` (частично — категории `priority` 201–209, `mandatory` 401–427, `service` 601–634, `prohibition` 301–334, `warning` 101–143, `direction` 16/53 подмножество virzienu rādītāji 701–753 и `information` 501–556 (полная), 1 из 8 официальных категорий ещё впереди — `papildzīmes`) | в проде (T-109, седьмой срез) |
 | `p4-termini` | `/macos-braukt/termini/` | `/uchus-vodit/sroki/` | таймлайн и дедлайны | `ToolPageTemplate` | Ф4 | ★ | `user_state` | план — T-098 транзитивно заблокирована T-092 (Supabase), см. docs/11-backlog.md |
 
 ## Pillar 5 — Я водитель (`/esmu-vaditajs/` · `/ya-voditel/`)

@@ -13,7 +13,11 @@ describe("filterSigns на реальной фикстуре fixtures/traffic_si
   });
 
   it("поиск по номеру знака (LV)", () => {
-    const result = filterSigns(signs, { query: "207" }, "lv");
+    // Не просто { query: "207" } — с ростом справочника число "207"
+    // неизбежно появляется и в перекрёстных ссылках других знаков
+    // (546 явно ссылается на 207 в тексте) — та же коллизия, что уже
+    // была с 402/407 и 607/633. Ищем по номеру+началу названия.
+    const result = filterSigns(signs, { query: '207 "' }, "lv");
     expect(result).toHaveLength(1);
     expect(result[0].number).toBe("207");
   });
@@ -172,11 +176,6 @@ describe("filterSigns на реальной фикстуре fixtures/traffic_si
     expect(result.every((s) => s.category === "direction")).toBe(true);
   });
 
-  it("без фильтра — все шесть категорий представлены (9+27+34+34+43+16=163)", () => {
-    const result = filterSigns(signs, {}, "lv");
-    expect(result).toHaveLength(163);
-  });
-
   it("740/741/742 — цвета номеров дорог, исправленные после визуальной проверки (не из текста-источника)", () => {
     const main = filterSigns(signs, {}, "lv").find((s) => s.number === "740");
     const regional = filterSigns(signs, {}, "lv").find(
@@ -198,5 +197,57 @@ describe("filterSigns на реальной фикстуре fixtures/traffic_si
       (s) => s.number === "725",
     );
     expect(recommended?.meaning_lv).toContain("323");
+  });
+
+  it("фильтр category=information — только 56 знаков (норādījuma zīmes, полная категория)", () => {
+    const result = filterSigns(signs, { category: "information" }, "lv");
+    expect(result).toHaveLength(56);
+    expect(result.every((s) => s.category === "information")).toBe(true);
+  });
+
+  it("без фильтра — все семь категорий представлены (9+27+34+34+43+16+56=219)", () => {
+    const result = filterSigns(signs, {}, "lv");
+    expect(result).toHaveLength(219);
+  });
+
+  it("503/504 — геометрически подтверждённая пара стрелок право/лево", () => {
+    const right = filterSigns(signs, {}, "lv").find((s) => s.number === "503");
+    const left = filterSigns(signs, {}, "lv").find((s) => s.number === "504");
+    expect(right?.name_lv).toContain("pa labi");
+    expect(left?.name_lv).toContain("pa kreisi");
+  });
+
+  it("535/536 — подтверждённая MD5-сравнением зеркальная пара, явно объяснена в тексте", () => {
+    const right = filterSigns(signs, {}, "lv").find((s) => s.number === "535");
+    const left = filterSigns(signs, {}, "lv").find((s) => s.number === "536");
+    expect(right?.meaning_lv).toContain("spoguļattēli");
+    expect(left?.meaning_lv).toContain("spoguļoti");
+  });
+
+  it("524 — раскрывает найденную датированную ревизию дизайна (2011 vs 2016)", () => {
+    const sign524 = filterSigns(signs, {}, "lv").find(
+      (s) => s.number === "524",
+    );
+    expect(sign524?.meaning_lv).toContain("2016");
+    expect(sign524?.meaning_lv).toContain("Muitas zona");
+  });
+
+  it("521/522 vs 555/556 — два визуально разных стиля таблички с названием, оба честно описаны", () => {
+    const entering521 = filterSigns(signs, {}, "lv").find(
+      (s) => s.number === "521",
+    );
+    const entering555 = filterSigns(signs, {}, "lv").find(
+      (s) => s.number === "555",
+    );
+    expect(entering521?.meaning_lv).toContain("Zils fons");
+    expect(entering555?.meaning_lv).toContain("baltā");
+    expect(entering555?.meaning_lv).toContain("521");
+  });
+
+  it("546 (место остановки) явно отличается от обязательного знака 207 (STOP)", () => {
+    const sign546 = filterSigns(signs, {}, "lv").find(
+      (s) => s.number === "546",
+    );
+    expect(sign546?.meaning_lv).toContain("207");
   });
 });

@@ -6,9 +6,9 @@ import type { TrafficSign } from "../../../types/data";
 /*
  * TrafficSignSearch — справочник дорожных знаков (T-109, срезы: priority
  * 201–209, mandatory 401–427, service 601–634, prohibition 301–334,
- * warning 101–143, direction — частично, 16 из 53 virzienu rādītāji).
- * Реестр (docs/02-routes.md) называет ToolPageTemplate, не
- * CatalogTemplate — тот же паттерн, что
+ * warning 101–143, direction — частично, 16 из 53 virzienu rādītāji,
+ * information 501–556). Реестр (docs/02-routes.md) называет
+ * ToolPageTemplate, не CatalogTemplate — тот же паттерн, что
  * FirstAidCourseList (T-070)/MedicalCheckLocation (T-072): единственный
  * client:visible остров, без zero-JS SSR-архитектуры каталога школ
  * (T-053) — та сложность оправдана SEO-важностью каталога школ, не
@@ -49,6 +49,7 @@ const categoryLabels = {
     prohibition: "Aizlieguma zīmes",
     warning: "Brīdinājuma zīmes",
     direction: "Virzienu rādītāji",
+    information: "Norādījuma zīmes",
   },
   ru: {
     priority: "Знаки приоритета",
@@ -57,6 +58,7 @@ const categoryLabels = {
     prohibition: "Знаки запрета",
     warning: "Предупреждающие знаки",
     direction: "Указатели направлений",
+    information: "Информационные знаки",
   },
 } as const;
 
