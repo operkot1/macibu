@@ -112,11 +112,6 @@ describe("filterSigns на реальной фикстуре fixtures/traffic_si
     expect(result.every((s) => s.category === "prohibition")).toBe(true);
   });
 
-  it("без фильтра — все четыре категории представлены (9+27+34+34=104)", () => {
-    const result = filterSigns(signs, {}, "lv");
-    expect(result).toHaveLength(104);
-  });
-
   it("315/316 — геометрически подтверждённая пара право/лево запрета поворота", () => {
     const right = filterSigns(signs, {}, "lv").find((s) => s.number === "315");
     const left = filterSigns(signs, {}, "lv").find((s) => s.number === "316");
@@ -141,5 +136,38 @@ describe("filterSigns на реальной фикстуре fixtures/traffic_si
       (s) => s.number === "332" && s.category === "prohibition",
     );
     expect(mustStop?.meaning_lv).toContain("620");
+  });
+
+  it("фильтр category=warning — только 43 предупреждающих знака", () => {
+    const result = filterSigns(signs, { category: "warning" }, "lv");
+    expect(result).toHaveLength(43);
+    expect(result.every((s) => s.category === "warning")).toBe(true);
+  });
+
+  it("без фильтра — все пять категорий представлены (9+27+34+34+43=147)", () => {
+    const result = filterSigns(signs, {}, "lv");
+    expect(result).toHaveLength(147);
+  });
+
+  it("103/104 — геометрически подтверждённая пара опасного поворота", () => {
+    const right = filterSigns(signs, {}, "lv").find((s) => s.number === "103");
+    const left = filterSigns(signs, {}, "lv").find((s) => s.number === "104");
+    expect(right?.name_lv).toContain("pa labi");
+    expect(left?.name_lv).toContain("pa kreisi");
+  });
+
+  it("136–141 — 3 пары знаков приближения к переезду, все различаются числом полос и стороной", () => {
+    const nums = ["136", "137", "138", "139", "140", "141"];
+    const found = nums.map((n) =>
+      filterSigns(signs, {}, "lv").find((s) => s.number === n)!,
+    );
+    expect(found.every(Boolean)).toBe(true);
+    const [s136, s137, s138, s139, s140, s141] = found;
+    expect(s136.name_lv).toContain("labajā");
+    expect(s137.name_lv).toContain("kreisajā");
+    expect(s138.name_lv).toContain("labajā");
+    expect(s139.name_lv).toContain("kreisajā");
+    expect(s140.name_lv).toContain("labajā");
+    expect(s141.name_lv).toContain("kreisajā");
   });
 });

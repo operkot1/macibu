@@ -3,7 +3,13 @@ import { z } from "zod";
 export const TrafficSignSchema = z.object({
   id: z.string(),
   number: z.string(),
-  category: z.enum(["priority", "mandatory", "service", "prohibition"]),
+  category: z.enum([
+    "priority",
+    "mandatory",
+    "service",
+    "prohibition",
+    "warning",
+  ]),
   name_lv: z.string(),
   name_ru: z.string(),
   meaning_lv: z.string(),
