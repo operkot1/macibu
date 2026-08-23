@@ -1620,6 +1620,17 @@
       "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 143"
     },
     {
+      "id": "710",
+      "number": "710",
+      "category": "direction",
+      "name_lv": "Šķēršļa apbraukšanas virziens",
+      "name_ru": "Направление объезда препятствия",
+      "meaning_lv": "Norāda virzienu, kurā jāapbrauc ceļa braucamajā daļā esošs šķērslis.",
+      "meaning_ru": "Указывает направление объезда препятствия на проезжей части.",
+      "image": "/zimes/lv-710.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 710"
+    },
+    {
       "id": "711",
       "number": "711",
       "category": "direction",
@@ -1631,6 +1642,127 @@
       "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 711"
     },
     {
+      "id": "712",
+      "number": "712",
+      "category": "direction",
+      "name_lv": "Iepriekšējs virziena rādītājs strupceļam (pa labi)",
+      "name_ru": "Заблаговременный указатель направления к тупику (направо)",
+      "meaning_lv": "Iepriekšēji brīdina, ka priekšā ir strupceļš, un norāda, ka ceļš uz to atrodas pa labi.",
+      "meaning_ru": "Заранее предупреждает о тупике впереди и указывает, что дорога к нему находится справа.",
+      "image": "/zimes/lv-712.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 712"
+    },
+    {
+      "id": "713",
+      "number": "713",
+      "category": "direction",
+      "name_lv": "Iepriekšējs virziena rādītājs strupceļam (pa kreisi)",
+      "name_ru": "Заблаговременный указатель направления к тупику (налево)",
+      "meaning_lv": "Iepriekšēji brīdina, ka priekšā ir strupceļš, un norāda, ka ceļš uz to atrodas pa kreisi.",
+      "meaning_ru": "Заранее предупреждает о тупике впереди и указывает, что дорога к нему находится слева.",
+      "image": "/zimes/lv-713.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 713"
+    },
+    {
+      "id": "714",
+      "number": "714",
+      "category": "direction",
+      "name_lv": "Joslas sākums (pa labi)",
+      "name_ru": "Начало полосы (справа)",
+      "meaning_lv": "Norāda, ka pa labi sākas papildu satiksmes josla.",
+      "meaning_ru": "Указывает, что справа начинается дополнительная полоса движения.",
+      "image": "/zimes/lv-714.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 714"
+    },
+    {
+      "id": "715",
+      "number": "715",
+      "category": "direction",
+      "name_lv": "Joslas sākums (pa kreisi)",
+      "name_ru": "Начало полосы (слева)",
+      "meaning_lv": "Norāda, ka pa kreisi sākas papildu satiksmes josla.",
+      "meaning_ru": "Указывает, что слева начинается дополнительная полоса движения.",
+      "image": "/zimes/lv-715.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 715"
+    },
+    {
+      "id": "716",
+      "number": "716",
+      "category": "direction",
+      "name_lv": "Joslas beigas (pa labi)",
+      "name_ru": "Конец полосы (справа)",
+      "meaning_lv": "Norāda, ka labā satiksmes josla tuvākajā laikā beidzas un jāpārkārtojas.",
+      "meaning_ru": "Указывает, что правая полоса движения скоро заканчивается и нужно перестроиться.",
+      "image": "/zimes/lv-716.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 716"
+    },
+    {
+      "id": "717",
+      "number": "717",
+      "category": "direction",
+      "name_lv": "Joslas beigas (pa kreisi)",
+      "name_ru": "Конец полосы (слева)",
+      "meaning_lv": "Norāda, ka kreisā satiksmes josla tuvākajā laikā beidzas un jāpārkārtojas.",
+      "meaning_ru": "Указывает, что левая полоса движения скоро заканчивается и нужно перестроиться.",
+      "image": "/zimes/lv-717.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 717"
+    },
+    {
+      "id": "718",
+      "number": "718",
+      "category": "direction",
+      "name_lv": "Braukšanas virzieni joslās",
+      "name_ru": "Направления движения по полосам",
+      "meaning_lv": "Norāda joslu skaitu un braukšanas virzienu ceļa posmā — pa kreisi pretējs virziens, pa labi divas tā paša virziena joslas. Attēlā papildus redzams piemērs ar aizlieguma zīmi (kravas transportam) vienā no joslām — tā nav universāla zīmes daļa, konkrētā vietā var atšķirties vai nebūt vispār.",
+      "meaning_ru": "Указывает количество полос и направление движения на участке дороги — слева встречное направление, справа две полосы того же направления. На изображении дополнительно показан пример с запрещающим знаком (для грузового транспорта) на одной из полос — это не универсальная часть знака, в конкретном месте может отличаться или отсутствовать.",
+      "image": "/zimes/lv-718.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 718"
+    },
+    {
+      "id": "719",
+      "number": "719",
+      "category": "direction",
+      "name_lv": "Braukšanas virzieni joslās",
+      "name_ru": "Направления движения по полосам",
+      "meaning_lv": "Norāda joslu skaitu un braukšanas virzienu ceļa posmā — pa kreisi un pa vidu pretējais virziens (divas joslas), pa labi jūsu virziens (viena josla).",
+      "meaning_ru": "Указывает количество полос и направление движения на участке дороги — слева и по центру встречное направление (две полосы), справа ваше направление (одна полоса).",
+      "image": "/zimes/lv-719.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 719"
+    },
+    {
+      "id": "720",
+      "number": "720",
+      "category": "direction",
+      "name_lv": "Braukšanas virzieni joslās",
+      "name_ru": "Направления движения по полосам",
+      "meaning_lv": "Norāda joslu skaitu un braukšanas virzienu ceļa posmā — pa kreisi pretējais virziens, pa labi jūsu virziena joslas.",
+      "meaning_ru": "Указывает количество полос и направление движения на участке дороги — слева встречное направление, справа полосы вашего направления.",
+      "image": "/zimes/lv-720.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 720"
+    },
+    {
+      "id": "721",
+      "number": "721",
+      "category": "direction",
+      "name_lv": "Joslas piekļaušanās pamatjoslām (pa labi)",
+      "name_ru": "Присоединение полосы к основным полосам (справа)",
+      "meaning_lv": "Norāda, ka pievienojamā josla no labās puses pievienojas pamata satiksmes joslām.",
+      "meaning_ru": "Указывает, что присоединяемая полоса справа вливается в основные полосы движения.",
+      "image": "/zimes/lv-721.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 721"
+    },
+    {
+      "id": "722",
+      "number": "722",
+      "category": "direction",
+      "name_lv": "Joslas piekļaušanās pamatjoslām (pa kreisi)",
+      "name_ru": "Присоединение полосы к основным полосам (слева)",
+      "meaning_lv": "Norāda, ka pievienojamā josla pievienojas pamata satiksmes joslām, kas šajā vietā iet diagonāli (spoguļattēls zīmei 721).",
+      "meaning_ru": "Указывает, что присоединяемая полоса вливается в основные полосы движения, идущие в этом месте по диагонали (зеркальное отражение знака 721).",
+      "image": "/zimes/lv-722.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 722"
+    },
+    {
       "id": "723",
       "number": "723",
       "category": "direction",
@@ -1640,6 +1772,17 @@
       "meaning_ru": "Указывает место на разделительной полосе, где разрешён разворот для движения в обратном направлении.",
       "image": "/zimes/lv-723.svg",
       "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 723"
+    },
+    {
+      "id": "724",
+      "number": "724",
+      "category": "direction",
+      "name_lv": "Satiksmes ierobežojumi Latvijā",
+      "name_ru": "Ограничения движения в Латвии",
+      "meaning_lv": "Robežzīme, kas apkopo Latvijā spēkā esošos noklusētos ātruma ierobežojumus pēc transportlīdzekļa veida — 50 km/h apdzīvotā vietā, 80–90 km/h ārpus tās atkarībā no transportlīdzekļa kategorijas, spēkā visu gadu.",
+      "meaning_ru": "Пограничный знак, обобщающий действующие в Латвии стандартные ограничения скорости по типу транспортного средства — 50 км/ч в населённом пункте, 80–90 км/ч вне его в зависимости от категории транспорта, действует круглый год.",
+      "image": "/zimes/lv-724.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 724"
     },
     {
       "id": "725",
@@ -1695,6 +1838,94 @@
       "meaning_ru": "Указывает на находящийся поблизости пешеходный подземный (тоннель) или надземный (мост) переход.",
       "image": "/zimes/lv-729.svg",
       "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 729"
+    },
+    {
+      "id": "731",
+      "number": "731",
+      "category": "direction",
+      "name_lv": "Apbraukšanas ceļa virziens (taisni)",
+      "name_ru": "Направление объездной дороги (прямо)",
+      "meaning_lv": "Norāda apbraukšanas ceļa virzienu — taisni. Avota (gross.lv) apgalvojums, ka šis numurs ir «pa labi», neapstiprinājās vizuālajā pārbaudē — attēlā ir taisna bulta; reālais virziens (taisni) atbilst zīmei 733, nevis 731, avota numerācijā.",
+      "meaning_ru": "Указывает направление объездной дороги — прямо. Утверждение источника (gross.lv), что этот номер означает «направо», не подтвердилось при визуальной проверке — на изображении прямая стрелка.",
+      "image": "/zimes/lv-731.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 731"
+    },
+    {
+      "id": "732",
+      "number": "732",
+      "category": "direction",
+      "name_lv": "Apbraukšanas ceļa virziens (pa labi)",
+      "name_ru": "Направление объездной дороги (направо)",
+      "meaning_lv": "Norāda apbraukšanas ceļa virzienu — pa labi.",
+      "meaning_ru": "Указывает направление объездной дороги — направо.",
+      "image": "/zimes/lv-732.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 732"
+    },
+    {
+      "id": "733",
+      "number": "733",
+      "category": "direction",
+      "name_lv": "Apbraukšanas ceļa virziens (pa kreisi)",
+      "name_ru": "Направление объездной дороги (налево)",
+      "meaning_lv": "Norāda apbraukšanas ceļa virzienu — pa kreisi.",
+      "meaning_ru": "Указывает направление объездной дороги — налево.",
+      "image": "/zimes/lv-733.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 733"
+    },
+    {
+      "id": "734",
+      "number": "734",
+      "category": "direction",
+      "name_lv": "Apbraukšanas ceļa beigas",
+      "name_ru": "Конец объездной дороги",
+      "meaning_lv": "Norāda apbraukšanas ceļa beigas — tālāk jāatgriežas uz sākotnējo ceļu.",
+      "meaning_ru": "Указывает конец объездной дороги — далее нужно вернуться на первоначальную дорогу.",
+      "image": "/zimes/lv-734.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 734"
+    },
+    {
+      "id": "735",
+      "number": "735",
+      "category": "direction",
+      "name_lv": "Iepriekšējs norādītājs pārkārtoties",
+      "name_ru": "Заблаговременный указатель необходимости перестроиться",
+      "meaning_lv": "Iepriekšējs norādītājs par nepieciešamību pārkārtoties joslu sašaurinājuma dēļ. Precīzā atšķirība no zīmēm 736 un 738 avotos nav vienoti apstiprināta — attēlā redzams tukšs aplis, kurā var būt izvietota papildu zīme.",
+      "meaning_ru": "Заблаговременный указатель необходимости перестроиться из-за сужения полос. Точное отличие от знаков 736 и 738 в источниках не подтверждено однозначно — на изображении показан пустой круг, в котором может размещаться дополнительный знак.",
+      "image": "/zimes/lv-735.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 735"
+    },
+    {
+      "id": "736",
+      "number": "736",
+      "category": "direction",
+      "name_lv": "Iepriekšējs norādītājs pārkārtoties (pa kreisi)",
+      "name_ru": "Заблаговременный указатель необходимости перестроиться (налево)",
+      "meaning_lv": "Iepriekšējs norādītājs par nepieciešamību pārkārtoties pa kreisi joslu sašaurinājuma dēļ.",
+      "meaning_ru": "Заблаговременный указатель необходимости перестроиться налево из-за сужения полос.",
+      "image": "/zimes/lv-736.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 736"
+    },
+    {
+      "id": "737",
+      "number": "737",
+      "category": "direction",
+      "name_lv": "Ievēro principu!",
+      "name_ru": "Соблюдай принцип!",
+      "meaning_lv": "Norāda pareizo rindas maiņas principu («rāvējslēdzēja» princips) joslu sašaurinājuma vietā — pārmaiņus jāielaiž transportlīdzekļi no abām joslām. Avota apgalvojums, ka šis numurs ir virziena rādītāja «detalizēts» variants, neapstiprinājās — attēlā ir šī pazīstamā instruktīvā zīme.",
+      "meaning_ru": "Показывает правильный принцип поочерёдного пропуска («принцип молнии») в месте сужения полос — нужно поочерёдно пропускать транспортные средства из обеих полос. Утверждение источника, что этот номер — «детальный» вариант указателя направления, не подтвердилось — на изображении этот известный инструктивный знак.",
+      "image": "/zimes/lv-737.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 737"
+    },
+    {
+      "id": "738",
+      "number": "738",
+      "category": "direction",
+      "name_lv": "Iepriekšējs norādītājs pārkārtoties (pa labi)",
+      "name_ru": "Заблаговременный указатель необходимости перестроиться (направо)",
+      "meaning_lv": "Iepriekšējs norādītājs par nepieciešamību pārkārtoties pa labi — attēlā redzama papildu «braukt aizliegts» zīme kreisajā joslā, kas to apzīmē kā pilnībā slēgtu.",
+      "meaning_ru": "Заблаговременный указатель необходимости перестроиться направо — на изображении дополнительный знак «въезд запрещён» на левой полосе, обозначающий её как полностью закрытую.",
+      "image": "/zimes/lv-738.svg",
+      "official_reference": "MK noteikumi Nr. 279, Pielikums 4, Nr. 738"
     },
     {
       "id": "740",

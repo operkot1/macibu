@@ -6,7 +6,7 @@ import type { TrafficSign } from "../../../types/data";
 /*
  * TrafficSignSearch — справочник дорожных знаков (T-109, срезы: priority
  * 201–209, mandatory 401–427, service 601–634, prohibition 301–334,
- * warning 101–143, direction — частично, 16 из 53 virzienu rādītāji,
+ * warning 101–143, direction — частично, 37 из 53 virzienu rādītāji,
  * information 501–556, additional 801–860 — все 8 официальных категорий
  * заполнены). Реестр (docs/02-routes.md) называет ToolPageTemplate, не
  * CatalogTemplate — тот же паттерн, что

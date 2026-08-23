@@ -170,10 +170,35 @@ describe("filterSigns на реальной фикстуре fixtures/traffic_si
     expect(s141.name_lv).toContain("kreisajā");
   });
 
-  it("фильтр category=direction — только 16 знаков (частичный срез, не все 53)", () => {
+  it("фильтр category=direction — 37 знаков (частичный срез, не все 53)", () => {
     const result = filterSigns(signs, { category: "direction" }, "lv");
-    expect(result).toHaveLength(16);
+    expect(result).toHaveLength(37);
     expect(result.every((s) => s.category === "direction")).toBe(true);
+  });
+
+  it("731/732/733 — порядок направлений объездной дороги исправлен визуальной проверкой (источник ошибочно указал 731=pa labi)", () => {
+    const straight = filterSigns(signs, {}, "lv").find(
+      (s) => s.number === "731",
+    );
+    const right = filterSigns(signs, {}, "lv").find((s) => s.number === "732");
+    const left = filterSigns(signs, {}, "lv").find((s) => s.number === "733");
+    expect(straight?.name_lv).toContain("taisni");
+    expect(right?.name_lv).toContain("pa labi");
+    expect(left?.name_lv).toContain("pa kreisi");
+  });
+
+  it("724 — Satiksmes ierobežojumi Latvijā переопределён как фиксированный (источник ошибочно относил к переменным)", () => {
+    const sign724 = filterSigns(signs, {}, "lv").find(
+      (s) => s.number === "724",
+    );
+    expect(sign724?.meaning_lv).toContain("50 km/h");
+  });
+
+  it("737 — Ievēro principu! подтверждён рендером как известный инструктивный знак, не «detalizēts» вариант из источника", () => {
+    const sign737 = filterSigns(signs, {}, "lv").find(
+      (s) => s.number === "737",
+    );
+    expect(sign737?.name_lv).toBe("Ievēro principu!");
   });
 
   it("740/741/742 — цвета номеров дорог, исправленные после визуальной проверки (не из текста-источника)", () => {
@@ -252,9 +277,9 @@ describe("filterSigns на реальной фикстуре fixtures/traffic_si
     expect(result.every((s) => s.category === "additional")).toBe(true);
   });
 
-  it("без фильтра — все восемь категорий представлены (219+60=279)", () => {
+  it("без фильтра — все восемь категорий представлены (279+21=300)", () => {
     const result = filterSigns(signs, {}, "lv");
-    expect(result).toHaveLength(279);
+    expect(result).toHaveLength(300);
   });
 
   it("814/816 — направление исправлено визуальной проверкой в обратную сторону от источника", () => {
