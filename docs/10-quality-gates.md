@@ -23,6 +23,7 @@
 | Unit-тесты формул | 100% покрытие для: `computeWizardPath`, `computeCalculator`, `wilsonLowerBound`, `computeTheoryValidityDeadline`, `decodePrice`, `evaluateSimulation` — каждая формула из `docs/06-tools/*.md` обязана иметь тест с числами из соответствующей фикстуры | Vitest |
 | Захардкоженные строки | 0 текстовых литералов в UI-компонентах островов (`.tsx` в `src/components/tools/*`, `src/components/layout/*`) вне словарей `src/i18n/{lv,ru}.json` | Кастомное ESLint-правило `no-hardcoded-ui-strings` |
 | Фикстуры | Все 8 файлов `/fixtures/*.json` проходят валидацию Zod-схемой, соответствующей типу из docs/03-data-model.md | Vitest (`fixtures.spec.ts`) |
+| Целостность собранного HTML | 0 байт `0x00` в любом `dist/**/*.html` | Кастомный скрипт `scripts/check-integrity.ts` — см. §2.1 за причиной |
 
 ## 2. Почему именно эти числа (коротко, для будущих споров «а можно 65 KB?»)
 
@@ -38,6 +39,51 @@
 - **SEO 100** — портал живёт с органики, это не «желательно», а
   единственный канал привлечения для контентных 85% дерева.
 
+### 2.1. Целостность собранного HTML — найдено при внутренней ревизии кода (август 2026)
+
+При ревизии, не связанной с этим гейтом напрямую (проверка утечки JS
+инструментов между страницами), обнаружено: три собранные страницы
+(`dist/lv/macos-braukt/zimes/`, `dist/ru/uchus-vodit/znaki/`,
+`dist/ru/avtoshkoly/kalkulyator/`) детерминированно содержат байты
+`0x00` внутри видимого текста, посреди слов (пример: «теорет**\0**ического»
+вместо «теоретического»). Браузер отрисовывает `0x00` в тексте как
+видимый символ замены «�» (стандартное поведение парсера HTML5) — это
+реальная порча текста на живой странице, не безобидный артефакт.
+
+Расследовано и исключено:
+- **Не источник данных** — ни один файл в `src/` или `fixtures/` не
+  содержит `0x00` (проверено побайтово).
+- **Не случайность** — два независимых чистых пересбора (`rm -rf dist
+  && npm run build`) дали побитово идентичную порчу: те же файлы, те же
+  количества байт, то же слово.
+- **Не голая конкатенация тех же строк** — тот же текст, склеенный
+  напрямую в Node без прохождения через Astro, порчи не воспроизводит.
+- **Не версия Node** — идентичный результат под Node v26.5.1
+  (`brew install node`, версия на момент находки) и под Node v24.19.0
+  (LTS, `brew install node@24`, отдельный keg-only инсталл специально
+  для этой проверки).
+
+**Первопричина найдена и локализована вне этого проекта.** Минимальный
+изолированный репро (~50 строк, только `react`+`react-dom`+
+`node:stream`, без Astro/Vite вообще) воспроизводит ту же порчу байт в
+байт: `react-dom@18.3.1` `ReactDOM.renderToPipeableStream(...)`,
+записанный в `Writable`-поток Node.js, детерминированно вставляет
+`0x00` при достаточно большом объёме вывода — синтетический ASCII-текст
+ловит порчу начиная примерно с 2000 повторяющихся элементов (~259 KB
+вывода), но реальный кириллический контент (многобайтовый UTF-8) ловит
+её уже на ~95 KB — то же самое количество, что даёт `zimes`/`znaki`.
+Подтверждено через `@astrojs/react/dist/server.js`: Astro использует
+именно этот путь (`renderToPipeableStreamAsync`), потому что
+`renderToReadableStream` не экспортируется из Node-сборки
+`react-dom/server` в этом окружении. `18.3.1` — последний
+опубликованный стабильный `18.x`-релиз на npm, патча с исправлением
+нет; апгрейд на React 19 не предпринят намеренно — это отдельное,
+более крупное решение с потенциально ломающими изменениями, вне
+рамок этой ревизии. `npm run check` намеренно остаётся красным на
+шаге `integrity`, пока эта внешняя причина не устранена (апгрейдом
+major-версии React или патчем от Facebook) — гейт корректно и честно
+сигнализирует о реальной, не выдуманной проблеме.
+
 ## 3. `npm run check`
 
 Один скрипт, агрегирующий все гейты, вызывается локально перед PR и в CI на
@@ -51,10 +97,11 @@
     "format:check": "prettier --check .",
     "test:unit": "vitest run",
     "build": "astro build",
+    "integrity": "tsx scripts/check-integrity.ts",
     "budget": "tsx scripts/check-bundle-budget.ts",
     "i18n:coverage": "tsx scripts/check-i18n-coverage.ts",
     "lighthouse": "lhci autorun",
-    "check": "npm run typecheck && npm run lint && npm run format:check && npm run test:unit && npm run build && npm run budget && npm run i18n:coverage && npm run lighthouse"
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm run test:unit && npm run build && npm run integrity && npm run budget && npm run i18n:coverage && npm run lighthouse"
   }
 }
 ```
