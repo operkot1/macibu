@@ -47,7 +47,7 @@ export interface School {
 
 export interface SchoolsFile {
   updated_at: string;
-  source: "csdd-export-xlsx" | "partner-onboarding-form";
+  source: "placeholder" | "csdd-export-xlsx" | "partner-onboarding-form";
   schools: School[];
 }
 
@@ -68,7 +68,7 @@ export interface Instructor {
 
 export interface InstructorsFile {
   updated_at: string;
-  source: "csdd-export-xlsx";
+  source: "placeholder" | "csdd-export-xlsx";
   instructors: Instructor[];
 }
 

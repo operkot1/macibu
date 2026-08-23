@@ -1588,6 +1588,25 @@ katalogs/` (временный Playwright) — после фильтра `conten
 Unknown system error -86`. `docs/02-routes.md`: `p3-katalogs` →
 «в проде (T-054)».
 
+**Правка задним числом (найдено при внутренней ревизии кода, август
+2026, после T-109):** `fixtures/schools.json` и `fixtures/
+instructors.json` были помечены `source: "csdd-export-xlsx"` —
+значением для реальной CSDD-выгрузки — хотя содержат заведомо тестовые
+данные (партнёр FORS с тестовым `info@fors.example.lv` и
+последовательным телефоном `+371 20000001`; инструкторы со ссылками на
+тестовые `school_id`). Тот же класс проблемы, что честно решён для
+`csdd_centers`/`first_aid_providers`/`medical_check_locations` (A-11–
+A-13, docs/00-assumptions.md) — там `source: "placeholder"` стоит с
+самого начала, здесь стоял неверный «боевой» ярлык. Исправлено:
+`source: "placeholder"` в обоих фикстурах, схемы (`src/schemas/
+schools.ts`, `src/schemas/instructors.ts`) и типы (`src/types/data.ts`)
+расширены, чтобы это значение проходило валидацию; добавлено новое
+допущение A-24 (docs/00-assumptions.md) и обновлены разделы 2/3
+docs/03-data-model.md. `npm run check`: typecheck/lint/format/test:unit
+(177, без изменений — исправление не меняет форму данных, только
+значение поля)/build (247 страниц)/budget/i18n:coverage (84 пары) —
+зелёные. Отдельный коммит, не переоткрывает T-054.
+
 **T-055 — `RatingTemplate` (общий для школ/инструкторов)** ✅ выполнено
 Предусловия: T-052. Файлы: `src/components/layout/RatingTemplate.astro`.
 Критерии: сортировка **не** настраивается пользователем (см.

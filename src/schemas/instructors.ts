@@ -15,6 +15,6 @@ export const InstructorSchema = z.object({
 
 export const InstructorsFileSchema = z.object({
   updated_at: z.string(),
-  source: z.literal("csdd-export-xlsx"),
+  source: z.enum(["placeholder", "csdd-export-xlsx"]),
   instructors: z.array(InstructorSchema),
 });

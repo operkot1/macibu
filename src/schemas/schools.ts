@@ -20,6 +20,10 @@ export const SchoolSchema = z.object({
 
 export const SchoolsFileSchema = z.object({
   updated_at: z.string(),
-  source: z.enum(["csdd-export-xlsx", "partner-onboarding-form"]),
+  source: z.enum([
+    "placeholder",
+    "csdd-export-xlsx",
+    "partner-onboarding-form",
+  ]),
   schools: z.array(SchoolSchema),
 });
