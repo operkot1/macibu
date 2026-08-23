@@ -11,6 +11,7 @@ export const TrafficSignSchema = z.object({
     "warning",
     "direction",
     "information",
+    "additional",
   ]),
   name_lv: z.string(),
   name_ru: z.string(),

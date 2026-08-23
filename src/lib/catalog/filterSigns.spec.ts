@@ -205,11 +205,6 @@ describe("filterSigns на реальной фикстуре fixtures/traffic_si
     expect(result.every((s) => s.category === "information")).toBe(true);
   });
 
-  it("без фильтра — все семь категорий представлены (9+27+34+34+43+16+56=219)", () => {
-    const result = filterSigns(signs, {}, "lv");
-    expect(result).toHaveLength(219);
-  });
-
   it("503/504 — геометрически подтверждённая пара стрелок право/лево", () => {
     const right = filterSigns(signs, {}, "lv").find((s) => s.number === "503");
     const left = filterSigns(signs, {}, "lv").find((s) => s.number === "504");
@@ -249,5 +244,55 @@ describe("filterSigns на реальной фикстуре fixtures/traffic_si
       (s) => s.number === "546",
     );
     expect(sign546?.meaning_lv).toContain("207");
+  });
+
+  it("фильтр category=additional — только 60 табличек (papildzīmes, полная категория, все 8 официальных категорий закрыты)", () => {
+    const result = filterSigns(signs, { category: "additional" }, "lv");
+    expect(result).toHaveLength(60);
+    expect(result.every((s) => s.category === "additional")).toBe(true);
+  });
+
+  it("без фильтра — все восемь категорий представлены (219+60=279)", () => {
+    const result = filterSigns(signs, {}, "lv");
+    expect(result).toHaveLength(279);
+  });
+
+  it("814/816 — направление исправлено визуальной проверкой в обратную сторону от источника", () => {
+    const left = filterSigns(signs, {}, "lv").find((s) => s.number === "814");
+    const right = filterSigns(signs, {}, "lv").find((s) => s.number === "816");
+    expect(left?.name_lv).toContain("pa kreisi");
+    expect(right?.name_lv).toContain("pa labi");
+    expect(left?.meaning_lv).toContain("gross.lv");
+    expect(right?.meaning_lv).toContain("gross.lv");
+  });
+
+  it("818–824 — тип транспорта переставлен по реальным пиктограммам, не по заявленному источником порядку", () => {
+    const bus = filterSigns(signs, {}, "lv").find((s) => s.number === "821");
+    const tractor = filterSigns(signs, {}, "lv").find(
+      (s) => s.number === "822",
+    );
+    expect(bus?.name_lv).toContain("autobuss");
+    expect(bus?.meaning_lv).toContain("gross.lv");
+    expect(tractor?.name_lv).toContain("traktors");
+    expect(tractor?.meaning_lv).toContain("gross.lv");
+  });
+
+  it("825 (Darbdienās) подтверждён напрямую метаданными файла Wikimedia, не только текстом-источником", () => {
+    const workdays = filterSigns(signs, {}, "lv").find(
+      (s) => s.number === "825",
+    );
+    expect(workdays?.meaning_lv).toContain("Wikimedia Commons");
+  });
+
+  it("849 (прочая информация) честно описан как шаблон без единого значения", () => {
+    const other = filterSigns(signs, {}, "lv").find((s) => s.number === "849");
+    expect(other?.meaning_lv).toContain("nav viena universāla satura");
+  });
+
+  it("858 (EuroVelo) использует реальный маршрут (EuroVelo 13), не выдуманный номер", () => {
+    const eurovelo = filterSigns(signs, {}, "lv").find(
+      (s) => s.number === "858",
+    );
+    expect(eurovelo?.meaning_lv).toContain("EuroVelo 13");
   });
 });
