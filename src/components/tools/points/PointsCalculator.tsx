@@ -10,9 +10,12 @@ import type { Violation } from "../../../schemas/violation";
  * дублировать список нарушений (docs/06-tools/spravochnik-shtrafov.md).
  * Не отслеживает даты/срок действия конкретных баллов — см.
  * computePointsStatus.ts. Суммарные баллы честные (сумма выбранных
- * violation.points, реальная арифметика), но сами исходные баллы по
- * нарушениям — placeholder (A-14) — предупреждение об этом уже есть на
- * p5-sodi, здесь дублируется коротко.
+ * violation.points, реальная арифметика). После ревизии кода (август
+ * 2026) часть категорий (speed/alcohol/phone/seatbelt/parking) получила
+ * реальные данные (parkapums.lv, `source: "editorial"`) — предупреждение
+ * «баллы иллюстративные» теперь условно, показывается только если среди
+ * ВЫБРАННЫХ нарушений есть хотя бы одно ещё не заполненное
+ * (documents/red-light, `source: "placeholder"`, A-14).
  */
 
 export interface PointsCalculatorProps {
@@ -63,12 +66,19 @@ export default function PointsCalculator({
 
   useEffect(() => trackEvent("points_calculator_viewed"), []);
 
-  const total = useMemo(
-    () =>
-      violations
-        .filter((v) => selected.has(v.id))
-        .reduce((sum, v) => sum + v.points, 0),
+  const selectedViolations = useMemo(
+    () => violations.filter((v) => selected.has(v.id)),
     [violations, selected],
+  );
+
+  const total = useMemo(
+    () => selectedViolations.reduce((sum, v) => sum + v.points, 0),
+    [selectedViolations],
+  );
+
+  const hasPlaceholderSelected = useMemo(
+    () => selectedViolations.some((v) => v.source === "placeholder"),
+    [selectedViolations],
   );
 
   const status = useMemo(
@@ -194,9 +204,11 @@ export default function PointsCalculator({
             </p>
           </>
         )}
-        <p className="text-body-sm text-neutral-600 mt-3">
-          {t.illustrativeNote}
-        </p>
+        {hasPlaceholderSelected && (
+          <p className="text-body-sm text-neutral-600 mt-3">
+            {t.illustrativeNote}
+          </p>
+        )}
       </div>
     </div>
   );

@@ -17,6 +17,8 @@ function violation(overrides: Partial<Violation>): Violation {
     fine_min_eur: 50,
     fine_max_eur: 100,
     points: 1,
+    driving_ban_months_min: null,
+    driving_ban_months_max: null,
     source: "placeholder",
     ...overrides,
   };
@@ -106,12 +108,43 @@ describe("реальная фикстура src/content/violations/violations.js
     expect(violations.length).toBeGreaterThan(0);
   });
 
-  it("честность: каждая запись явно помечена source, ни одна не выдаёт себя за editorial без основания (A-14)", () => {
-    expect(violations.every((v) => v.source === "placeholder")).toBe(true);
-  });
-
   it("filterViolations работает на реальных данных без ошибок", () => {
     const result = filterViolations(violations, DEFAULT_VIOLATION_FILTERS);
     expect(result.length).toBe(violations.length);
+  });
+
+  it("честность (найдено при ревизии кода, август 2026): 5 категорий получили реальные данные (parkapums.lv), documents/red-light остаются placeholder до будущего среза — 88 всего, 86 editorial + 2 placeholder", () => {
+    expect(violations).toHaveLength(88);
+    expect(violations.filter((v) => v.source === "editorial")).toHaveLength(86);
+    const placeholders = violations.filter((v) => v.source === "placeholder");
+    expect(placeholders).toHaveLength(2);
+    expect(placeholders.map((v) => v.category).sort()).toEqual([
+      "documents",
+      "red-light",
+    ]);
+  });
+
+  it("честность: каждая editorial-запись явно ссылается на источник (статью Ceļu satiksmes likums), не выдаёт себя за проверенную без основания", () => {
+    const editorial = violations.filter((v) => v.source === "editorial");
+    for (const v of editorial) {
+      expect(v.description_lv).toContain("Ceļu satiksmes likums");
+      expect(v.description_ru).toContain("Ceļu satiksmes likums");
+    }
+  });
+
+  it("честность: лишение прав указано только там, где значение реально известно (не выдуманный 0)", () => {
+    for (const v of violations) {
+      const hasMin = v.driving_ban_months_min !== null;
+      const hasMax = v.driving_ban_months_max !== null;
+      expect(hasMin).toBe(hasMax);
+      if (hasMin) {
+        expect(v.driving_ban_months_min).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it("810/811-стиль честности: расхождение с источником про «(mopēds)»-ярлык раскрыто в тексте, не скрыто", () => {
+    const v = violations.find((x) => x.id === "v-alcohol-over-15");
+    expect(v?.description_lv).toContain("A-14");
   });
 });
