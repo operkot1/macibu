@@ -3,6 +3,7 @@
 // доступность, работает без JS. Генерирует FAQPage Schema.org
 // автоматически из тех же пропсов (docs/07-i18n-seo.md §8) — разметка не
 // дублируется вручную в MDX.
+import { toSafeJsonLdString } from "../../lib/seo/safeJsonLd";
 
 export interface FAQItem {
   question: string;
@@ -42,4 +43,4 @@ const jsonLd = {
   }
 </div>
 
-<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+<script type="application/ld+json" set:html={toSafeJsonLdString(jsonLd)} />

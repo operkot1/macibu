@@ -3,6 +3,7 @@
 // interactive" получает HowTo Schema.org. Генерируется из типизированных
 // пропсов (не пишется вручную в MDX), тот же принцип, что FAQ.astro для
 // FAQPage.
+import { toSafeJsonLdString } from "../../lib/seo/safeJsonLd";
 
 export interface HowToStep {
   name: string;
@@ -30,4 +31,4 @@ const jsonLd = {
 };
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+<script type="application/ld+json" set:html={toSafeJsonLdString(jsonLd)} />

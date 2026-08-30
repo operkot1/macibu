@@ -12,6 +12,7 @@ import LangSwitch from "./LangSwitch.astro";
 import PhaseBar from "./PhaseBar.tsx";
 import AnalyticsLayerA from "./AnalyticsLayerA.astro";
 import CookieBanner from "./CookieBanner.tsx";
+import { toSafeJsonLdString } from "../../lib/seo/safeJsonLd";
 import { getCsddTariffs, getRatings } from "../../lib/data";
 import "../../styles/base.css";
 
@@ -83,7 +84,7 @@ const jsonLd = {
         />
       )
     }
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script type="application/ld+json" set:html={toSafeJsonLdString(jsonLd)} />
   </head>
   <body>
     <AnalyticsLayerA routeId={route_id} />

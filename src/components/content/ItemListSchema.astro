@@ -4,6 +4,7 @@
 // (T-036) — небольшой Schema.org-компонент, вставляется прямо в контент
 // страницы (не в head шаблона), т.к. используется только частью
 // tool-страниц, не всеми, кто использует ToolPageTemplate.
+import { toSafeJsonLdString } from "../../lib/seo/safeJsonLd";
 
 export interface ItemListSchemaItem {
   name: string;
@@ -28,4 +29,4 @@ const jsonLd = {
 };
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+<script type="application/ld+json" set:html={toSafeJsonLdString(jsonLd)} />

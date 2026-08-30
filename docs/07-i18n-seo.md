@@ -125,6 +125,19 @@ https://example.lv/sitemap-index.xml`.
 из типизированных пропсов компонента, не пишется вручную в MDX — иначе
 рассинхронизация контента и структурированных данных неизбежна.
 
+**Найдено при ревизии кода (август 2026):** все места, вставляющие
+JSON-LD (`CatalogTemplate`, `SchoolCardTemplate`, `BlogPostTemplate`,
+`HowToSchema`, `ItemListSchema`, `FAQ`), использовали `set:html={JSON.
+stringify(x)}` напрямую — `JSON.stringify` не экранирует `<`, а значит
+строковое значение внутри объекта, буквально содержащее `</script>`,
+разорвало бы тег и позволило вставить произвольный HTML/JS. Практический
+риск был низким (данные редакционные/плейсхолдер), но это стандартная,
+бесплатная защита (рекомендация OWASP). Исправлено: общий хелпер
+`src/lib/seo/toSafeJsonLdString()` (`src/lib/seo/safeJsonLd.ts`, покрыт
+`safeJsonLd.spec.ts`) экранирует символ `<` в строку `\u003c` перед
+вставкой — **любой новый компонент, вставляющий JSON-LD, обязан
+использовать этот хелпер, не голый `JSON.stringify`**.
+
 ## 9. EN-хаб (Ф5)
 
 `/ka-iegut-tiesibas/arzemniekiem/english/` и `/kak-poluchit-prava/inostrancam/english/`

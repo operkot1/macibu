@@ -17,6 +17,7 @@ import PhaseBar from "./PhaseBar.tsx";
 import AnalyticsLayerA from "./AnalyticsLayerA.astro";
 import CookieBanner from "./CookieBanner.tsx";
 import CatalogFilters from "../tools/catalog/CatalogFilters.tsx";
+import { toSafeJsonLdString } from "../../lib/seo/safeJsonLd";
 import Callout from "../content/Callout.astro";
 import DataFreshness from "../content/DataFreshness.astro";
 import { getCsddTariffs, getRatings } from "../../lib/data";
@@ -136,7 +137,7 @@ const itemListJsonLd = {
     }
     <script
       type="application/ld+json"
-      set:html={JSON.stringify(itemListJsonLd)}
+      set:html={toSafeJsonLdString(itemListJsonLd)}
     />
   </head>
   <body>
