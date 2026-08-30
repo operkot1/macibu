@@ -12,7 +12,9 @@
   обоснование выбора)
 - Tailwind CSS (токены — `docs/04-design-system.md`, зеркалятся в
   `tailwind.config.ts`)
-- React 18 — **только** внутри `client:*` островов, никогда в общем layout
+- React 19 (было 18, апгрейд август 2026 — см. `docs/01-stack-adr.md` и
+  `docs/10-quality-gates.md` §2.1) — **только** внутри `client:*`
+  островов, никогда в общем layout
 - Astro Content Collections + Zod-схемы — весь текстовый контент
 - Supabase (Postgres + Auth + RLS), регион EU (Frankfurt) — только для
   account-based инструментов (трекер занятий, карта зон), подключается Ф4
