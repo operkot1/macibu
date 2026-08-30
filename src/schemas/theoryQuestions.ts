@@ -13,7 +13,6 @@ export const TheoryQuestionSchema = z
     categories: z.array(z.string()),
     text_lv: z.string(),
     text_ru: z.string(),
-    media_url: z.string().nullable(),
     options: z.array(TheoryQuestionOptionSchema),
     explanation_lv: z.string(),
     explanation_ru: z.string(),

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { buildDailySession } from "../../../lib/trainer/buildDailySession";
 import { trackEvent } from "../../../lib/analytics/trackEvent";
-import VideoQuestion from "./VideoQuestion";
 import type { TheoryQuestion } from "../../../types/data";
 
 /*
@@ -25,11 +24,10 @@ import type { TheoryQuestion } from "../../../types/data";
  * контракт сам обуславливает его "если он уже в проде" (p2-teorija-rezims,
  * Ф2, не построен).
  *
- * T-067: рендерит VideoQuestion, если у вопроса задан media_url — прямое
- * расширение, не отдельный флоу. Реальных видео-вопросов в банке пока
- * нет (все 25 вопросов b.json — media_url: null), поэтому ветка сейчас
- * не задействуется реальными данными, но остров тестируем и готов —
- * маршрут p2-teorija-video отложен до появления видео-контента.
+ * Видео-вопросы (T-067, VideoQuestion.tsx, media_url) убраны из проекта
+ * целиком по решению пользователя (август 2026) — функция так и не
+ * получила реального видео-контента (ни один из 25 вопросов b.json не
+ * имел media_url), см. docs/11-backlog.md, T-067.
  */
 
 export interface TrainerProps {
@@ -323,7 +321,6 @@ export default function Trainer({
           {t.availableToday(totalAvailableToday)}
         </p>
       )}
-      {question.media_url && <VideoQuestion mediaUrl={question.media_url} />}
       <h2 className="text-h3 text-neutral-900 mb-4">{questionText}</h2>
       <fieldset className="mb-4 flex flex-col gap-2">
         {question.options.map((option) => {

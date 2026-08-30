@@ -4,7 +4,6 @@
     "categories": ["B"],
     "text_lv": "Kāds ir maksimālais atļautais braukšanas ātrums ārpus apdzīvotas vietas uz parasta ceļa, ja nav citu norāžu?",
     "text_ru": "Какая максимальная разрешённая скорость движения вне населённого пункта на обычной дороге при отсутствии иных знаков?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -35,7 +34,6 @@
     "categories": ["B"],
     "text_lv": "Krustojumā bez luksoforiem un ceļa zīmēm, kur ceļiem ir vienāds statuss, kuram transportlīdzeklim ir priekšroka?",
     "text_ru": "На перекрёстке без светофоров и знаков приоритета, где дороги равнозначны, у кого преимущество?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -66,7 +64,6 @@
     "categories": ["B"],
     "text_lv": "Ko nozīmē apaļa ceļa zīme ar sarkanu apmali un skaitli tās vidū?",
     "text_ru": "Что означает круглый дорожный знак с красной окантовкой и цифрой в центре?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -97,7 +94,6 @@
     "categories": ["B"],
     "text_lv": "Kādu informāciju parasti sniedz trīsstūrveida ceļa zīme ar sarkanu apmali?",
     "text_ru": "Какую информацию обычно даёт треугольный дорожный знак с красной окантовкой?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -128,7 +124,6 @@
     "categories": ["B"],
     "text_lv": "Vai ir atļauts apdzīt, ja uz brauktuves ir nepārtraukta (nepārtraukta viena) marķējuma līnija starp joslām?",
     "text_ru": "Разрешён ли обгон, если на проезжей части нанесена сплошная разделительная линия разметки?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -159,7 +154,6 @@
     "categories": ["B"],
     "text_lv": "Gājējs jau ir uzsācis nepazīmēta (negulēta) gājēju pārejas šķērsošanu. Kā jārīkojas vadītājam?",
     "text_ru": "Пешеход уже начал переходить дорогу по нерегулируемому пешеходному переходу. Как должен поступить водитель?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -190,7 +184,6 @@
     "categories": ["B"],
     "text_lv": "Kam transportlīdzeklī ir jālieto drošības josta?",
     "text_ru": "Кто в транспортном средстве обязан пристёгиваться ремнём безопасности?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -221,7 +214,6 @@
     "categories": ["B"],
     "text_lv": "Ko nozīmē apgriezta trīsstūra forma ceļa zīme «Dot ceļu»?",
     "text_ru": "Что означает знак «Уступи дорогу» в форме перевёрнутого треугольника?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -252,7 +244,6 @@
     "categories": ["B"],
     "text_lv": "Vadītājs tuvojas ceļa zīmei «Stop». Kā jārīkojas?",
     "text_ru": "Водитель приближается к знаку «Stop». Как нужно действовать?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -283,7 +274,6 @@
     "categories": ["B"],
     "text_lv": "Vai atļauts apdzīt tieši pirms gājēju pārejas?",
     "text_ru": "Разрешён ли обгон непосредственно перед пешеходным переходом?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -314,7 +304,6 @@
     "categories": ["B"],
     "text_lv": "Kam parasti ir priekšroka apļveida krustojumā (rotācijas aplī)?",
     "text_ru": "У кого обычно приоритет на кольцевом перекрёстке (круговом движении)?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -345,7 +334,6 @@
     "categories": ["B"],
     "text_lv": "Kāpēc jāievēro pietiekams distances attālums līdz priekšā braucošajam transportlīdzeklim?",
     "text_ru": "Зачем нужно соблюдать достаточную дистанцию до движущегося впереди транспортного средства?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -376,7 +364,6 @@
     "categories": ["B"],
     "text_lv": "Kad drīkst izmantot aizmugurējo miglas lukturi?",
     "text_ru": "Когда разрешено использовать задний противотуманный фонарь?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -407,7 +394,6 @@
     "categories": ["B"],
     "text_lv": "Kāpēc ziemas periodā ir noteiktas prasības riepām?",
     "text_ru": "Почему в зимний период установлены требования к шинам?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -438,7 +424,6 @@
     "categories": ["B"],
     "text_lv": "Kas jāievēro, pārvadājot mazu bērnu automašīnā?",
     "text_ru": "Что нужно соблюдать при перевозке маленького ребёнка в автомобиле?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -469,7 +454,6 @@
     "categories": ["B"],
     "text_lv": "Kāpēc braukšana alkohola ietekmē virs likumā noteiktās normas ir aizliegta?",
     "text_ru": "Почему запрещено управлять транспортным средством в состоянии алкогольного опьянения выше установленной законом нормы?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -500,7 +484,6 @@
     "categories": ["B"],
     "text_lv": "Kādi dokumenti vadītājam jāspēj uzrādīt CSDD vai policijas pārbaudē?",
     "text_ru": "Какие документы водитель должен предъявить по требованию CSDD или полиции?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -531,7 +514,6 @@
     "categories": ["B"],
     "text_lv": "Tuvojas operatīvais transportlīdzeklis (piemēram, ātrā palīdzība) ar ieslēgtu bākuguni un skaņas signālu. Kā jārīkojas?",
     "text_ru": "Приближается автомобиль оперативной службы (например, скорая помощь) с включёнными спецсигналами. Как нужно действовать?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -562,7 +544,6 @@
     "categories": ["B"],
     "text_lv": "Vadītājs vēlas pagriezties pa kreisi krustojumā, kur pretim brauc cits transportlīdzeklis taisni. Kam ir priekšroka?",
     "text_ru": "Водитель хочет повернуть налево на перекрёстке, где навстречу прямо едет другой автомобиль. У кого приоритет?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -593,7 +574,6 @@
     "categories": ["B"],
     "text_lv": "Vai drīkst apstāties vai novietot transportlīdzekli tieši pie krustojuma vai gājēju pārejas?",
     "text_ru": "Можно ли останавливаться или парковаться непосредственно у перекрёстка или пешеходного перехода?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -624,7 +604,6 @@
     "categories": ["B"],
     "text_lv": "Kāda ir papildu josla automaģistrāles labajā pusē ar pārtrauktu marķējumu, kas paredzēta avārijas situācijām?",
     "text_ru": "Что представляет собой дополнительная полоса справа на автомагистрали, предназначенная для аварийных ситуаций?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -655,7 +634,6 @@
     "categories": ["B"],
     "text_lv": "Kad ir aizliegts veikt apgriešanos (U-veida pagriezienu)?",
     "text_ru": "Когда запрещено выполнять разворот?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -686,7 +664,6 @@
     "categories": ["B"],
     "text_lv": "Vadītājs izbrauc no pagalma uz ielu ar aktīvu satiksmi. Kā jārīkojas?",
     "text_ru": "Водитель выезжает со двора на улицу с активным движением. Как нужно действовать?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -717,7 +694,6 @@
     "categories": ["B"],
     "text_lv": "Vadītājam jāpagriežas pa labi krustojumā, kur marķēta velosipēdistu pārbrauktuve šķērso viņa braukšanas virzienu. Kā jārīkojas?",
     "text_ru": "Водителю нужно повернуть направо на перекрёстке, где велопереезд пересекает направление его движения. Как нужно действовать?",
-    "media_url": null,
     "options": [
       {
         "id": "a",
@@ -748,7 +724,6 @@
     "categories": ["B"],
     "text_lv": "Kāpēc pirms manevra (piemēram, joslas maiņas vai pagrieziena) jāieslēdz pagrieziena rādītājs savlaicīgi?",
     "text_ru": "Зачем перед манёвром (например, сменой полосы или поворотом) заранее включать указатель поворота?",
-    "media_url": null,
     "options": [
       {
         "id": "a",

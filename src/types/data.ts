@@ -129,7 +129,6 @@ export interface TheoryQuestion {
   categories: string[]; // применимые категории прав, ["B"], ["B","A"]
   text_lv: string;
   text_ru: string;
-  media_url: string | null; // для video-jautajumi — ссылка на видео
   options: TheoryQuestionOption[];
   explanation_lv: string;
   explanation_ru: string;

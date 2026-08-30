@@ -87,7 +87,6 @@ describe(`hasSufficientQuestionBank (порог EXAM_QUESTION_COUNT=${EXAM_QUEST
       categories: ["B"],
       text_lv: "",
       text_ru: "",
-      media_url: null,
       options: [],
       explanation_lv: "",
       explanation_ru: "",

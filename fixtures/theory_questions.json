@@ -7,7 +7,6 @@
       "categories": ["B"],
       "text_lv": "Kāds ir maksimālais atļautais braukšanas ātrums apdzīvotā vietā, ja nav citu norāžu?",
       "text_ru": "Какая максимальная разрешённая скорость движения в населённом пункте при отсутствии иных знаков?",
-      "media_url": null,
       "options": [
         { "id": "a", "text_lv": "40 km/h", "text_ru": "40 км/ч", "is_correct": false },
         { "id": "b", "text_lv": "50 km/h", "text_ru": "50 км/ч", "is_correct": true },
@@ -23,7 +22,6 @@
       "categories": ["B"],
       "text_lv": "Kurā gadījumā transportlīdzekļa vadītājam ir pienākums ieslēgt avārijas gaismas signalizāciju?",
       "text_ru": "В каком случае водитель обязан включить аварийную сигнализацию?",
-      "media_url": null,
       "options": [
         { "id": "a", "text_lv": "Apstājoties negaidīti uz brauktuves", "text_ru": "При вынужденной остановке на проезжей части", "is_correct": true },
         { "id": "b", "text_lv": "Braucot pa apli", "text_ru": "При движении по кругу", "is_correct": false },
@@ -37,11 +35,10 @@
     {
       "id": "q-003",
       "categories": ["B"],
-      "text_lv": "Video jautājums: kā pareizi rīkoties, tuvojoties šim negulētam gājēju pārejai?",
-      "text_ru": "Видео-вопрос: как правильно действовать при приближении к этому нерегулируемому пешеходному переходу?",
-      "media_url": "https://example.lv/media/theory/q-003.mp4",
+      "text_lv": "Kā vadītājam jārīkojas, tuvojoties negulētam gājēju pārejai, uz kuras jau atrodas gājējs?",
+      "text_ru": "Как должен действовать водитель, приближаясь к нерегулируемому пешеходному переходу, на котором уже находится пешеход?",
       "options": [
-        { "id": "a", "text_lv": "Palēnināt un dot ceļu gājējiem, kas jau uzsākuši šķērsošanu", "text_ru": "Снизить скорость и уступить пешеходам, начавшим переход", "is_correct": true },
+        { "id": "a", "text_lv": "Palēnināt un dot ceļu gājējam, kas jau uzsācis šķērsošanu", "text_ru": "Снизить скорость и уступить пешеходу, начавшему переход", "is_correct": true },
         { "id": "b", "text_lv": "Turpināt braukt ar to pašu ātrumu", "text_ru": "Продолжать движение с той же скоростью", "is_correct": false }
       ],
       "explanation_lv": "Pie negulēta gājēju pārejas vadītājam jādod ceļš gājējiem, kas jau atrodas uz brauktuves.",
