@@ -2,6 +2,7 @@ import { defineCollection, z } from "astro:content";
 import { glob, file } from "astro/loaders";
 import { TheoryQuestionSchema } from "./schemas/theoryQuestions";
 import { ViolationSchema } from "./schemas/violation";
+import { ExamProtocolCriterionSchema } from "./schemas/examProtocol";
 
 /*
  * Схема frontmatter контентных страниц (docs/07-i18n-seo.md §1). route_id
@@ -70,4 +71,24 @@ const blogPosts = defineCollection({
   }),
 });
 
-export const collections = { pages, theoryQuestions, violations, blogPosts };
+/*
+ * examProtocolCriteria — структура протокола оценки практического
+ * экзамена CSDD (T-102). Источник — реальная официальная презентация
+ * CSDD «Vadīšanas eksāmena vērtēšana» (2018), не выгрузка/API — тот же
+ * паттерн Content Collections, что theoryQuestions/violations, не
+ * fixtures/ (docs/06-tools/razbor-protokola.md). Полный разбор находки
+ * и явно раскрытые расхождения с более ранним, менее надёжным
+ * WebSearch-исследованием — docs/11-backlog.md, T-102.
+ */
+const examProtocolCriteria = defineCollection({
+  loader: file("src/content/exam-protocol/criteria.json"),
+  schema: ExamProtocolCriterionSchema,
+});
+
+export const collections = {
+  pages,
+  theoryQuestions,
+  violations,
+  blogPosts,
+  examProtocolCriteria,
+};

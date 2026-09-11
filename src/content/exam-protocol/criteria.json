@@ -1,0 +1,156 @@
+[
+  {
+    "id": "ep-01",
+    "number": 1,
+    "category": "vehicle-control",
+    "title_lv": "Sagatavošanās braukšanai",
+    "title_ru": "Подготовка к вождению",
+    "description_lv": "Vai vadītājs pareizi sagatavojies braukšanai pirms uzsākšanas — sēdvietas, spoguļu, drošības jostas noregulēšana u.tml.",
+    "description_ru": "Правильно ли подготовился водитель к движению перед стартом — настройка сиденья, зеркал, ремня безопасности и т.п.",
+    "official_reference": "CSDD, «Vadīšanas eksāmena vērtēšana» (A. Krūmiņš, 2018), saskaņā ar MK noteikumiem Nr. 103/358",
+    "source": "editorial"
+  },
+  {
+    "id": "ep-02",
+    "number": 2,
+    "category": "vehicle-control",
+    "title_lv": "Darbības ar vadības ierīcēm un papildierīcēm",
+    "title_ru": "Действия с органами управления и дополнительными устройствами",
+    "description_lv": "Vai vadītājs pareizi izmanto vadības ierīces (stūre, pedāļi, ātrumkārba) un papildierīces (signālraidītāji, tīrītāji u.c.).",
+    "description_ru": "Правильно ли водитель использует органы управления (руль, педали, коробка передач) и дополнительные устройства (указатели поворота, стеклоочистители и др.).",
+    "official_reference": "CSDD, «Vadīšanas eksāmena vērtēšana» (A. Krūmiņš, 2018), saskaņā ar MK noteikumiem Nr. 103/358",
+    "source": "editorial"
+  },
+  {
+    "id": "ep-03",
+    "number": 3,
+    "category": "vehicle-control",
+    "title_lv": "Gabarītu, svara un citu raksturlielumu vērā ņemšana, pasažieru ērtības",
+    "title_ru": "Учёт габаритов, массы и других характеристик ТС, удобство пассажиров",
+    "description_lv": "Vai vadītājs ņem vērā transportlīdzekļa gabarītus, svaru un citas īpašības, kā arī rūpējas par pasažieru ērtībām braukšanas laikā.",
+    "description_ru": "Учитывает ли водитель габариты, массу и другие характеристики транспортного средства, а также заботится об удобстве пассажиров во время движения.",
+    "official_reference": "CSDD, «Vadīšanas eksāmena vērtēšana» (A. Krūmiņš, 2018), saskaņā ar MK noteikumiem Nr. 103/358",
+    "source": "editorial"
+  },
+  {
+    "id": "ep-04",
+    "number": 4,
+    "category": "vehicle-control",
+    "title_lv": "Braukšanas virziena ieturēšana, transportlīdzekļa kontrole",
+    "title_ru": "Удержание направления движения, контроль транспортного средства",
+    "description_lv": "Vai vadītājs stabili notur izvēlēto braukšanas virzienu un saglabā pilnu kontroli pār transportlīdzekli.",
+    "description_ru": "Уверенно ли водитель удерживает выбранное направление движения и сохраняет полный контроль над транспортным средством.",
+    "official_reference": "CSDD, «Vadīšanas eksāmena vērtēšana» (A. Krūmiņš, 2018), saskaņā ar MK noteikumiem Nr. 103/358",
+    "source": "editorial"
+  },
+  {
+    "id": "ep-05",
+    "number": 5,
+    "category": "traffic-rules",
+    "title_lv": "Satiksmes organizācijas un regulēšanas līdzekļi",
+    "title_ru": "Средства организации и регулирования движения",
+    "description_lv": "Vai vadītājs pareizi ievēro satiksmes organizācijas un regulēšanas līdzekļus — ceļa zīmes, apzīmējumus, luksoforus, regulētāja norādes.",
+    "description_ru": "Правильно ли водитель соблюдает средства организации и регулирования движения — дорожные знаки, разметку, светофоры, указания регулировщика.",
+    "official_reference": "CSDD, «Vadīšanas eksāmena vērtēšana» (A. Krūmiņš, 2018), saskaņā ar MK noteikumiem Nr. 103/358",
+    "source": "editorial"
+  },
+  {
+    "id": "ep-06",
+    "number": 6,
+    "category": "traffic-rules",
+    "title_lv": "Priekšrocību ievērošana un izmantošana",
+    "title_ru": "Соблюдение и использование права преимущественного проезда",
+    "description_lv": "Vai vadītājs pareizi nosaka un ievēro priekšroku krustojumos un citās situācijās, kā arī pareizi izmanto savu priekšroku, ja tā ir.",
+    "description_ru": "Правильно ли водитель определяет и соблюдает право преимущественного проезда на перекрёстках и в других ситуациях, а также правильно пользуется своим преимуществом, если оно есть.",
+    "official_reference": "CSDD, «Vadīšanas eksāmena vērtēšana» (A. Krūmiņš, 2018), saskaņā ar MK noteikumiem Nr. 103/358",
+    "source": "editorial"
+  },
+  {
+    "id": "ep-07",
+    "number": 7,
+    "category": "traffic-rules",
+    "title_lv": "Braukšanas virziena maiņa, brīdinājuma signāla lietošana",
+    "title_ru": "Изменение направления движения, использование сигналов поворота",
+    "description_lv": "Vai vadītājs pareizi un savlaicīgi maina braukšanas virzienu un izmanto brīdinājuma signālus (pagrieziena rādītājus).",
+    "description_ru": "Правильно и своевременно ли водитель меняет направление движения и использует сигналы поворота.",
+    "official_reference": "CSDD, «Vadīšanas eksāmena vērtēšana» (A. Krūmiņš, 2018), saskaņā ar MK noteikumiem Nr. 103/358",
+    "source": "editorial"
+  },
+  {
+    "id": "ep-08",
+    "number": 8,
+    "category": "traffic-rules",
+    "title_lv": "Atbilstoša ātruma izvēle, apdzīšana un apsteigšana",
+    "title_ru": "Выбор соответствующей скорости, обгон и опережение",
+    "description_lv": "Vai vadītājs izvēlas situācijai atbilstošu braukšanas ātrumu un droši veic apdzīšanu vai apsteigšanu.",
+    "description_ru": "Выбирает ли водитель скорость движения, соответствующую ситуации, и безопасно выполняет обгон или опережение.",
+    "official_reference": "CSDD, «Vadīšanas eksāmena vērtēšana» (A. Krūmiņš, 2018), saskaņā ar MK noteikumiem Nr. 103/358",
+    "source": "editorial"
+  },
+  {
+    "id": "ep-09",
+    "number": 9,
+    "category": "safety",
+    "title_lv": "Satiksmes pārlūkošana, pārliecināšanās par drošību",
+    "title_ru": "Обзор дорожной обстановки, проверка безопасности",
+    "description_lv": "Vai vadītājs regulāri pārlūko satiksmes situāciju (t.sk. spoguļus, aklo zonu) un pārliecinās par drošību pirms manevriem.",
+    "description_ru": "Регулярно ли водитель оценивает дорожную обстановку (включая зеркала, слепые зоны) и убеждается в безопасности перед манёврами.",
+    "official_reference": "CSDD, «Vadīšanas eksāmena vērtēšana» (A. Krūmiņš, 2018), saskaņā ar MK noteikumiem Nr. 103/358",
+    "source": "editorial"
+  },
+  {
+    "id": "ep-10",
+    "number": 10,
+    "category": "safety",
+    "title_lv": "Distances un intervāla ievērošana",
+    "title_ru": "Соблюдение дистанции и бокового интервала",
+    "description_lv": "Vai vadītājs ievēro drošu distanci līdz priekšā braucošajam transportlīdzeklim un sānu intervālu.",
+    "description_ru": "Соблюдает ли водитель безопасную дистанцию до движущегося впереди транспортного средства и боковой интервал.",
+    "official_reference": "CSDD, «Vadīšanas eksāmena vērtēšana» (A. Krūmiņš, 2018), saskaņā ar MK noteikumiem Nr. 103/358",
+    "source": "editorial"
+  },
+  {
+    "id": "ep-11",
+    "number": 11,
+    "category": "safety",
+    "title_lv": "Ceļa un laika apstākļu novērtēšana",
+    "title_ru": "Оценка дорожных и погодных условий",
+    "description_lv": "Vai vadītājs pareizi novērtē ceļa segumu, redzamību un citus laika apstākļus, pielāgojot braukšanas veidu tiem.",
+    "description_ru": "Правильно ли водитель оценивает дорожное покрытие, видимость и другие погодные условия, адаптируя стиль вождения под них.",
+    "official_reference": "CSDD, «Vadīšanas eksāmena vērtēšana» (A. Krūmiņš, 2018), saskaņā ar MK noteikumiem Nr. 103/358",
+    "source": "editorial"
+  },
+  {
+    "id": "ep-12",
+    "number": 12,
+    "category": "social-skills",
+    "title_lv": "Satiksmes situāciju novērtēšana (bīstamības paredzēšana)",
+    "title_ru": "Оценка дорожных ситуаций (предвидение опасности)",
+    "description_lv": "Vai vadītājs spēj savlaicīgi novērtēt satiksmes situācijas un paredzēt iespējamu bīstamību.",
+    "description_ru": "Способен ли водитель своевременно оценивать дорожные ситуации и предвидеть возможную опасность.",
+    "official_reference": "CSDD, «Vadīšanas eksāmena vērtēšana» (A. Krūmiņš, 2018), saskaņā ar MK noteikumiem Nr. 103/358",
+    "source": "editorial"
+  },
+  {
+    "id": "ep-13",
+    "number": 13,
+    "category": "social-skills",
+    "title_lv": "Tolerance un ceļa dalīšana ar citiem satiksmes dalībniekiem",
+    "title_ru": "Толерантность и совместное использование дороги с другими участниками движения",
+    "description_lv": "Vai vadītājs izrāda toleranci un pareizi dalās ar ceļu ar citiem satiksmes dalībniekiem — gājējiem, velosipēdistiem, citiem vadītājiem.",
+    "description_ru": "Проявляет ли водитель толерантность и правильно делит дорогу с другими участниками движения — пешеходами, велосипедистами, другими водителями.",
+    "official_reference": "CSDD, «Vadīšanas eksāmena vērtēšana» (A. Krūmiņš, 2018), saskaņā ar MK noteikumiem Nr. 103/358",
+    "source": "editorial"
+  },
+  {
+    "id": "ep-14",
+    "number": 14,
+    "category": "social-skills",
+    "title_lv": "Videi draudzīga pārvietošanās",
+    "title_ru": "Экологичное вождение",
+    "description_lv": "Vai vadītājs pārvietojas videi draudzīgā veidā — izvairās no nevajadzīgas paātrināšanās, bremzēšanas un dzinēja darbības tukšgaitā.",
+    "description_ru": "Передвигается ли водитель экологичным способом — избегает ненужного разгона, торможения и работы двигателя на холостом ходу.",
+    "official_reference": "CSDD, «Vadīšanas eksāmena vērtēšana» (A. Krūmiņš, 2018), saskaņā ar MK noteikumiem Nr. 103/358",
+    "source": "editorial"
+  }
+]
