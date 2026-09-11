@@ -101,3 +101,56 @@
     line-height: 2.5rem; /* 40px */
   }
 }
+
+/* Стилизация MDX-контента (`.article-content`, обёртка вокруг `<Content />`
+   в ArticleTemplate/CategoryHubTemplate — docs/11-backlog.md, правка
+   задним числом к T-016/T-112). Preflight обнуляет margin/list-style и
+   красит ссылки в `inherit`, поэтому теги, которые генерирует MDX
+   (h2/h3/p/ul/ol/a), без этого визуально неотличимы от обычного текста.
+   Значения шрифта продублированы литералами из .text-h2/.text-h3 выше по
+   файлу (не var(), т.к. составные --text-*--line-height/--font-weight не
+   предназначены для чтения через var() в произвольном CSS), цвет ссылки —
+   через var(--color-primary-600), т.к. цветовые токены для этого и
+   существуют. */
+.article-content h2 {
+  font-size: 1.375rem; /* 22px, = .text-h2 */
+  line-height: 1.875rem; /* 30px */
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.article-content h3 {
+  font-size: 1.125rem; /* 18px, = .text-h3 */
+  line-height: 1.625rem; /* 26px */
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.article-content p {
+  margin-bottom: 1rem;
+}
+
+.article-content ul,
+.article-content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.article-content ul {
+  list-style: disc;
+}
+
+.article-content ol {
+  list-style: decimal;
+}
+
+.article-content li {
+  margin-bottom: 0.25rem;
+}
+
+.article-content a {
+  color: var(--color-primary-600);
+  text-decoration: underline;
+}

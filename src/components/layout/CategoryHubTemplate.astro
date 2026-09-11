@@ -104,7 +104,13 @@ const ratings = getRatings();
     <main class="p-4">
       <h1 class="text-h1 text-neutral-900 mb-4">{title}</h1>
       <div class="text-body text-neutral-900">
-        {Content && <Content />}
+        {
+          Content && (
+            <div class="article-content">
+              <Content />
+            </div>
+          )
+        }
         {
           categories && (
             <div class="mt-4 grid gap-4 sm:grid-cols-2">
