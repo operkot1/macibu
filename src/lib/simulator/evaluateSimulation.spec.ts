@@ -2,10 +2,13 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import {
+  buildExamSession,
   evaluateSimulation,
+  getRemainingSeconds,
   hasSufficientQuestionBank,
   EXAM_MAX_ERRORS,
   EXAM_QUESTION_COUNT,
+  EXAM_TIME_LIMIT_MIN,
   type SimulationAnswer,
 } from "./evaluateSimulation";
 import type { TheoryQuestion } from "../../types/data";
@@ -37,7 +40,7 @@ function answers(correctCount: number, wrongCount: number): SimulationAnswer[] {
   return result;
 }
 
-describe("evaluateSimulation (docs/06-tools/simulyator-ekzamena.md, [ДОПУЩЕНИЕ] пороги)", () => {
+describe("evaluateSimulation (пороги подтверждены csdd.lv, T-066)", () => {
   it("0 ошибок — сдал", () => {
     const result = evaluateSimulation(answers(30, 0));
     expect(result).toEqual({ passed: true, errors_count: 0, total: 30 });
@@ -94,5 +97,82 @@ describe(`hasSufficientQuestionBank (порог EXAM_QUESTION_COUNT=${EXAM_QUEST
       official_reference: null,
     }));
     expect(hasSufficientQuestionBank(synthetic, "B")).toBe(true);
+  });
+});
+
+describe(`getRemainingSeconds (лимит EXAM_TIME_LIMIT_MIN=${EXAM_TIME_LIMIT_MIN})`, () => {
+  const start = 1_700_000_000_000;
+
+  it("сразу после старта — полный лимит в секундах", () => {
+    expect(getRemainingSeconds(start, start, EXAM_TIME_LIMIT_MIN)).toBe(
+      EXAM_TIME_LIMIT_MIN * 60,
+    );
+  });
+
+  it("через 1 минуту — лимит минус 60 секунд", () => {
+    expect(
+      getRemainingSeconds(start, start + 60_000, EXAM_TIME_LIMIT_MIN),
+    ).toBe(EXAM_TIME_LIMIT_MIN * 60 - 60);
+  });
+
+  it("ровно на границе лимита — 0, не отрицательное", () => {
+    expect(
+      getRemainingSeconds(
+        start,
+        start + EXAM_TIME_LIMIT_MIN * 60_000,
+        EXAM_TIME_LIMIT_MIN,
+      ),
+    ).toBe(0);
+  });
+
+  it("после истечения лимита — 0, не уходит в минус", () => {
+    expect(
+      getRemainingSeconds(
+        start,
+        start + (EXAM_TIME_LIMIT_MIN + 5) * 60_000,
+        EXAM_TIME_LIMIT_MIN,
+      ),
+    ).toBe(0);
+  });
+
+  it("округление вниз внутри секунды — 999мс не считаются прошедшей секундой", () => {
+    expect(getRemainingSeconds(start, start + 999, EXAM_TIME_LIMIT_MIN)).toBe(
+      EXAM_TIME_LIMIT_MIN * 60,
+    );
+  });
+});
+
+describe("buildExamSession", () => {
+  it("реальный банк B (25 вопросов) — возвращает все 25, без повторов, не притворяется, что их 30", () => {
+    const session = buildExamSession(realQuestions, "B", () => 0.5);
+    expect(session.length).toBe(25);
+    expect(new Set(session.map((q) => q.id)).size).toBe(25);
+  });
+
+  it("синтетический банк ровно EXAM_QUESTION_COUNT+10 — возвращает ровно EXAM_QUESTION_COUNT, без повторов", () => {
+    const synthetic = Array.from(
+      { length: EXAM_QUESTION_COUNT + 10 },
+      (_, i) => ({
+        id: `q-${i}`,
+        categories: ["B"],
+        text_lv: "",
+        text_ru: "",
+        options: [],
+        explanation_lv: "",
+        explanation_ru: "",
+        difficulty: "easy" as const,
+        official_reference: null,
+      }),
+    );
+    const session = buildExamSession(synthetic, "B");
+    expect(session.length).toBe(EXAM_QUESTION_COUNT);
+    expect(new Set(session.map((q) => q.id)).size).toBe(EXAM_QUESTION_COUNT);
+  });
+
+  it("детерминированный random даёт детерминированный порядок (тестируемость)", () => {
+    const constant = () => 0;
+    const a = buildExamSession(realQuestions, "B", constant);
+    const b = buildExamSession(realQuestions, "B", constant);
+    expect(a.map((q) => q.id)).toEqual(b.map((q) => q.id));
   });
 });

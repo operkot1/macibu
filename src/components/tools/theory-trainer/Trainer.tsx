@@ -20,9 +20,9 @@ import type { TheoryQuestion } from "../../../types/data";
  * же принцип, что фикс гидратации CookieBanner (T-022) и
  * StepListInteractive (T-036).
  *
- * CTA «Перейти к симулятору полного экзамена» из контракта не показан —
- * контракт сам обуславливает его "если он уже в проде" (p2-teorija-rezims,
- * Ф2, не построен).
+ * CTA «Перейти к симулятору полного экзамена» — контракт обуславливал
+ * его "если он уже в проде"; с T-066 (`p2-teorija-rezims`) это условие
+ * выполнено, ссылка показана на экране session-complete.
  *
  * Видео-вопросы (T-067, VideoQuestion.tsx, media_url) убраны из проекта
  * целиком по решению пользователя (август 2026) — функция так и не
@@ -118,6 +118,8 @@ const text = {
     scoreTitle: "Sesija pabeigta",
     scoreBody: (score: number, total: number) => `Rezultāts: ${score}/${total}`,
     again: "Vēlreiz",
+    tryExamMode: "Izmēģināt eksāmena režīmu",
+    examModeHref: "/lv/csdd-eksameni/teorija/eksamena-rezims/",
     categoryEmptyTitle: "Šī sadaļa vēl nav gatava",
     categoryEmptyBody: "Pieejams kategorijai B.",
     exhaustedTitle: "Šodien viss izpildīts",
@@ -138,6 +140,8 @@ const text = {
     scoreTitle: "Сессия завершена",
     scoreBody: (score: number, total: number) => `Результат: ${score}/${total}`,
     again: "Ещё раз",
+    tryExamMode: "Попробовать режим экзамена",
+    examModeHref: "/ru/ekzameny-csdd/teoriya/rezhim-ekzamena/",
     categoryEmptyTitle: "Этот раздел ещё не готов",
     categoryEmptyBody: "Доступно для категории B.",
     exhaustedTitle: "На сегодня всё пройдено",
@@ -294,10 +298,16 @@ export default function Trainer({
         <button
           type="button"
           onClick={startSession}
-          className="bg-primary-600 rounded-md p-3 px-4 text-white"
+          className="bg-primary-600 mr-3 rounded-md p-3 px-4 text-white"
         >
           {t.again}
         </button>
+        <a
+          href={t.examModeHref}
+          className="text-primary-600 focus-visible:ring-focus-ring rounded-md underline focus-visible:ring-2"
+        >
+          {t.tryExamMode}
+        </a>
       </div>
     );
   }

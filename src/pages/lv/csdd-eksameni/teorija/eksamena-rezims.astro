@@ -1,0 +1,26 @@
+---
+import ToolPageTemplate from "../../../../components/layout/ToolPageTemplate.astro";
+import Simulator from "../../../../components/tools/exam-simulator/Simulator.tsx";
+import { getCollection } from "astro:content";
+
+const entries = await getCollection("theoryQuestions");
+const questions = entries.map((e) => e.data);
+---
+
+<ToolPageTemplate
+  currentLocale="lv"
+  routeId="p2-teorija-rezims"
+  title="Eksāmena režīms — CSDD teorijas simulators"
+  description="Pilna CSDD teorijas eksāmena imitācija — reāls jautājumu skaits, laiks un kļūdu limits."
+  heading="Eksāmena režīms"
+  intro="Pilna eksāmena imitācija, tuvināta reālajam CSDD teorijas eksāmenam."
+  canonicalPath="/lv/csdd-eksameni/teorija/eksamena-rezims/"
+  alternateUrl="/ru/ekzameny-csdd/teoriya/rezhim-ekzamena/"
+>
+  <Simulator
+    client:visible
+    questions={questions}
+    category="B"
+    currentLocale="lv"
+  />
+</ToolPageTemplate>

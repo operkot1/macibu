@@ -1,14 +1,19 @@
+import { shuffle } from "../trainer/buildDailySession";
 import type { TheoryQuestion } from "../../types/data";
 
 /*
- * [ДОПУЩЕНИЕ] — числа не подтверждены официальным регламентом CSDD (в
- * материалах Модуля 7 их нет), docs/06-tools/simulyator-ekzamena.md.
- * Блокер: T-066 (UI + релиз) не выходит в прод, пока эти пороги не
- * сверены с официальным источником — задача T-065 (эта) реализует
- * формулу с явной пометкой, не разблокирует релиз сама по себе.
+ * Пороги подтверждены официальным источником (T-066, снят блокер
+ * T-065): csdd.lv, «Vieglā automobiļa vadītāja apliecība (B)» →
+ * «Teorētiskais eksāmens un pieteikšanās eksāmenam», со ссылкой на MK
+ * noteikumi Nr. 103 (02.02.2010) «Transportlīdzekļu vadītāju tiesību
+ * iegūšanas un atjaunošanas kārtība...». Дословно: «Eksāmenā jāatbild uz
+ * 30 jautājumiem... Atbilžu sniegšanai atvēlētais laiks ir 30 minūtes...
+ * Eksāmens ir nokārtots, ja nepareizi atbildēto jautājumu skaits
+ * nepārsniedz 3 jautājumus» — EXAM_MAX_ERRORS был занижен (2 вместо 3)
+ * до этой сверки, см. docs/06-tools/simulyator-ekzamena.md.
  */
 export const EXAM_QUESTION_COUNT = 30;
-export const EXAM_MAX_ERRORS = 2;
+export const EXAM_MAX_ERRORS = 3;
 export const EXAM_TIME_LIMIT_MIN = 30;
 
 export interface SimulationAnswer {
@@ -57,4 +62,38 @@ export function hasSufficientQuestionBank(
 ): boolean {
   const count = questions.filter((q) => q.categories.includes(category)).length;
   return count >= EXAM_QUESTION_COUNT;
+}
+
+/*
+ * getRemainingSeconds — чистая формула обратного отсчёта (T-066), без
+ * React и без реального `setInterval`, чтобы «таймер точен» проверялось
+ * unit-тестом на фиксированных временных метках (docs/06-tools/
+ * simulyator-ekzamena.md, критерии приёмки), а не «на глаз» в браузере.
+ * UI дергает её раз в секунду с `Date.now()` и своим `startedAt`.
+ */
+export function getRemainingSeconds(
+  startedAt: number,
+  now: number,
+  limitMinutes: number,
+): number {
+  const elapsedSec = Math.floor((now - startedAt) / 1000);
+  return Math.max(0, limitMinutes * 60 - elapsedSec);
+}
+
+/*
+ * buildExamSession — набор вопросов для одного прохождения симуляции,
+ * тот же `shuffle` (Fisher-Yates, инъекция `random` для тестируемости),
+ * что уже обкатан в `buildDailySession` (T-045) — не дублирую
+ * `Array.sort(() => Math.random() - 0.5)` (известно смещённый способ).
+ * Вызывающий код обязан сам проверить `hasSufficientQuestionBank` —
+ * здесь честно возвращается меньше `EXAM_QUESTION_COUNT`, если банк мал,
+ * без повторов вопросов.
+ */
+export function buildExamSession(
+  all: TheoryQuestion[],
+  category: string,
+  random: () => number = Math.random,
+): TheoryQuestion[] {
+  const pool = all.filter((q) => q.categories.includes(category));
+  return shuffle(pool, random).slice(0, EXAM_QUESTION_COUNT);
 }
