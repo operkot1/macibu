@@ -113,12 +113,61 @@ CSS (побайтовое совпадение цветов/радиусов/т�
 md-override `text-display`/`text-h1`), тестовая страница была временной и
 удалена после проверки.
 
-**T-005 — Деплой на Cloudflare Pages**
+**T-005 — Деплой на Cloudflare Pages** ✅ выполнено (техническая часть; сам
+публичный прод-URL — см. T-025b, зависит от ручного шага пользователя в
+Cloudflare dashboard)
 Цель: `@astrojs/cloudflare`-адаптер, preview-деплой на каждый PR, прод-деплой
 на `main`. Предусловия: T-001. Файлы: `astro.config.ts`, `wrangler.toml`.
 Критерии: PR получает публичный preview-URL автоматически. Проверка:
 открыть preview-URL тестового PR. DoD: прод-URL отвечает 200 (плейсхолдер-
 домен, см. `A-06`).
+
+Реализовано: `@astrojs/cloudflare` — **не** последняя версия (14.3.2,
+требует `astro@^7.2.0`), а `^12.6.13` — последняя, совместимая с реальной
+`astro@^5.18.2` проекта (`peerDependencies: { astro: '^5.7.0' }`), поймано
+через `npm install` peer-conflict до того, как что-либо сломалось.
+`wrangler` (4.59.2, версия зафиксирована самим адаптером как точная
+зависимость) добавлен явной `devDependency`, а не оставлен неявной
+транзитивной — `npm run preview` теперь вызывает его напрямую.
+`astro.config.ts`: `output: "static"` явно + `adapter: cloudflare()` —
+все 249 страниц остаются полностью статичными (адаптер не переводит
+существующие маршруты в SSR, только делает инфраструктуру готовой для уже
+задокументированных, но не реализованных Cloudflare Pages Functions —
+`/api/beacon/pageview`, T-021; `/api/leads/deliver`, T-083). `wrangler.toml`:
+`name = "macibu"`, `pages_build_output_dir = "dist"`.
+
+Два честных побочных открытия, оба исправлены в этом же коммите:
+1. **`astro preview` перестаёт работать целиком** с этим адаптером —
+   жёсткая ошибка "does not support the preview command" (задокументированное
+   поведение `@astrojs/cloudflare`, не баг). `npm run preview` переключён на
+   `wrangler pages dev dist --port 4321` — эмулирует реальный Cloudflare
+   Pages рантайм (включая `_worker.js`/`_routes.json`), не просто раздаёт
+   статику. `lighthouserc.cjs`: `startServerReadyPattern` обновлён под новый
+   формат строки готовности (`"Ready on"` вместо `"Local.*http"`).
+2. **Реальный, ранее невидимый баг** в `.github/workflows/ci.yml` (T-006),
+   найден первым же прогоном на настоящем GitHub Actions раннере (T-006c):
+   `tsc --noEmit` падает с `Cannot find module 'astro:content'` на чистом
+   чекауте — типы Content Collections генерируются `astro sync`, а этот шаг
+   нигде не вызывался явно, только неявно как часть `astro dev`/`astro
+   build`, кеш которых (`.astro/`) в `.gitignore` и никогда не существовал
+   в свежем окружении. Локально это было невидимо весь проект — `.astro/`
+   кеш уже существовал с самого первого `npm run dev`. Исправлено:
+   `"typecheck": "astro sync && tsc --noEmit"`. Проверено локально
+   удалением `.astro/`+`node_modules/.astro` (имитация чистого чекаута)
+   до и после фикса.
+
+Побочно: `npm audit` показывает 13 уязвимостей (`undici`/`ws`, high/critical)
+в транзитивных зависимостях `miniflare` (эмуляция Cloudflare Workers для
+`wrangler dev`/`pages dev` — только dev-инструмент, не код, попадающий в
+реальную статическую сборку). Предложенный `npm audit fix --force` откатил
+бы на `@astrojs/cloudflare@14.3.2`, несовместимый с Astro 5 — не применено,
+честно оставлено как известный компромисс dev-тулинга, не рантайма.
+
+Живая проверка: `npm run check` — все гейты зелёные (typecheck/lint/
+format/test:unit/build/integrity/budget/i18n:coverage; Lighthouse — тот же
+несвязанный `spawn Unknown system error -86`); отдельно проверено, что
+`npm run dev` и `npm run preview` (оба — с реальным Cloudflare-рантаймом
+через `wrangler pages dev`) отвечают 200 на `/lv/`.
 
 **T-006 — CI (GitHub Actions), workflow без деплоя** — ✅ выполнено
 Цель (пересмотрено): `.github/workflows/ci.yml` — `typecheck`+`lint`+

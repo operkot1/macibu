@@ -15,7 +15,10 @@ module.exports = {
   ci: {
     collect: {
       startServerCommand: "npm run preview",
-      startServerReadyPattern: "Local.*http",
+      // "preview" — `wrangler pages dev` (T-005, адаптер Cloudflare
+      // отключает `astro preview` целиком: "does not support the preview
+      // command"), не Vite dev-сервер — паттерн готовности другой.
+      startServerReadyPattern: "Ready on",
       url: ["http://localhost:4321/lv/", "http://localhost:4321/lv/par-mums/"],
       numberOfRuns: 1,
     },
