@@ -20,7 +20,14 @@ module.exports = {
       // command"), не Vite dev-сервер — паттерн готовности другой.
       startServerReadyPattern: "Ready on",
       url: ["http://localhost:4321/lv/", "http://localhost:4321/lv/par-mums/"],
-      numberOfRuns: 1,
+      // numberOfRuns: 1 давал флейки-гейт — первый же реальный прогон на
+      // GitHub Actions (T-006c) поймал total-blocking-time 204мс против
+      // порога 200мс, повтор на том же коммите без изменений в коде дал
+      // чистый проход. lhci по умолчанию берёт медиану при numberOfRuns >
+      // 1 — сам порог (200мс) не тронут, снижается только шум единичного
+      // замера, который иначе делал бы branch protection (T-006c)
+      // непредсказуемым для любого PR.
+      numberOfRuns: 3,
     },
     assert: {
       assertions: {
